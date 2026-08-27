@@ -33,7 +33,11 @@ out=$(sh scripts/validate-blueprint.sh 2>&1) || fail "validate-blueprint"
 echo "$out" | grep -q "blueprint validation: ok" || fail "blueprint sentinel"
 out=$(sh scripts/preflight.sh 2>&1) || fail "preflight"
 echo "$out" | grep -q "preflight: ok" || fail "preflight sentinel"
-sh scripts/graph-next.sh | grep -q "EP-000" || fail "graph dispatch not EP-000"
+# EP-000 must be either the current dispatch or already green (graph advance).
+if ! sh scripts/graph-next.sh | grep -q "EP-000"; then
+  git rev-parse -q --verify "refs/tags/green/EP-000" >/dev/null || fail "EP-000 not active and not green"
+fi
+echo "ep000_state=green_or_active"
 
 # 5. Evidence baseline is machine-readable and hash-verified.
 evidence_count=$(wc -l < .agent/state/source-evidence.jsonl)
