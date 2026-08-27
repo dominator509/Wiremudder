@@ -1,0 +1,6 @@
+# Exact path fence for EP-010 M5.
+tests/live-fire/LF-010-package-script-sandbox.sh
+scripts/node-verifiers/EP-010.sh
+docs/wiremudder/packages/
+.agent/state/evidence/EP-010/M5/
+.agent/state/LEDGER.md

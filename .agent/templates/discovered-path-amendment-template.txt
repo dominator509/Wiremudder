@@ -1,0 +1,4 @@
+# Discovered Path Amendment Schema
+# Append one compact JSON object through scripts/discovered-path-add.sh.
+# Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
+# The path is one tracked inherited file. The independent test exists before authorization. The evidence commit is an ancestor of HEAD.

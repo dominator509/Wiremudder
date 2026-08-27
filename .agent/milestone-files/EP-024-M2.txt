@@ -1,0 +1,7 @@
+# Exact path fence for EP-024 M2.
+wirecore/crates/wire-voice/
+src/wiremudder/ui/voice/
+schemas/wiremudder/voice/
+config/wiremudder/voice/
+tests/wiremudder/ep024/unit/
+.agent/state/evidence/EP-024/M2/

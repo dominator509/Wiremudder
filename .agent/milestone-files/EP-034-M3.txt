@@ -1,0 +1,9 @@
+# Exact path fence for EP-034 M3.
+src/wiremudder/updater/
+wirecore/crates/wire-updater/
+schemas/wiremudder/update/
+tools/update-fixtures/
+tests/wiremudder/ep034/integration/
+tests/wiremudder/ep034/e2e/
+docs/wiremudder/updater/design/
+.agent/state/evidence/EP-034/M3/

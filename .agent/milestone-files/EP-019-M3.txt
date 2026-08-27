@@ -1,0 +1,8 @@
+# Exact path fence for EP-019 M3.
+wirecore/crates/wire-autopilot/
+src/wiremudder/ui/autopilot/
+schemas/wiremudder/autopilot/
+tests/wiremudder/ep019/integration/
+tests/wiremudder/ep019/e2e/
+docs/wiremudder/autopilot/design/
+.agent/state/evidence/EP-019/M3/

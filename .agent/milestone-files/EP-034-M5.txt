@@ -1,0 +1,6 @@
+# Exact path fence for EP-034 M5.
+tests/live-fire/LF-034-signed-update-rollback.sh
+scripts/node-verifiers/EP-034.sh
+docs/wiremudder/updater/
+.agent/state/evidence/EP-034/M5/
+.agent/state/LEDGER.md

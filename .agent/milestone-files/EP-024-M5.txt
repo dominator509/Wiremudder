@@ -1,0 +1,6 @@
+# Exact path fence for EP-024 M5.
+tests/live-fire/LF-024-voice-privacy-command.sh
+scripts/node-verifiers/EP-024.sh
+docs/wiremudder/voice/
+.agent/state/evidence/EP-024/M5/
+.agent/state/LEDGER.md

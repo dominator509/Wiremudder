@@ -1,0 +1,406 @@
+term_id	canonical_term	definition_owner	status	change_rule
+WM-TERM-0001	abuse boundary	SPEC-022	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0002	accessibility spoken mode	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0003	accessibility tree	SPEC-007	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0004	Action Proposal	SPEC-009	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0005	active-session update deferral	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0006	Agent Council	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0007	Agent Memory Permission	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0008	Agent Skill Tree	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0009	AI cancellation and provider fallback	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0010	AI Companion profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0011	AI Confidence Meter	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0012	AI context disclosure	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0013	AI Debugger	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0014	AI Provider Router	SPEC-013	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0015	AI `Why?` explanations	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0016	aliases	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0017	ANSI/xterm/truecolor	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0018	ANSI/xterm/truecolor support path	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0019	Append-only ledger, lease, scheduler, green tags, and bounded retries	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0020	argument validation and deny allow rules	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0021	Ask WireMudder AI	SPEC-018	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0022	Ask WireMudder AI handoff	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0023	asset provenance	SPEC-016	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0024	audit event	SPEC-023	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0025	audit of sensitive default changes	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0026	audit of suggestion command pacing approval and send result	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0027	backpressure	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0028	backup	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0029	backup restore rollback and incident runbooks	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0030	barge-in	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0031	barge-in/cancel	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0032	batched IPC/UI updates	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0033	behavioral oracle	SPEC-027	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0034	behavioral parity	SPEC-005	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0035	bounded autonomous patch planning and validation	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0036	bounded event bus	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0037	bounded queue	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0038	Bridge Hello	SPEC-024	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0039	budget	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0040	bug remediation	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0041	builder tools	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0042	cancellation	SPEC-024	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0043	canonical term	SPEC-003	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0044	capability descriptor	SPEC-003	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0045	capture/output panes	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0046	capture pane	SPEC-007	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0047	causation ID	SPEC-003	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0048	Character Memory Profile	SPEC-010	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0049	Character Memory Profiles	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0050	character profile	SPEC-023	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0051	CHARSET	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0052	CLI/headless sessions	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0053	clickable and visible exits when available	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0054	coach cannot directly change protected settings or send commands	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0055	Command Database	SPEC-009	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0056	command history	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0057	command input triggers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0058	command packs	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0059	command palette	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0060	Command Safety Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0061	Compatibility Lab	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0062	compatibility level	SPEC-005	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0063	compensation	SPEC-025	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0064	confirmation	SPEC-009	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0065	consent receipt	SPEC-010	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0066	Context Capsule	SPEC-013	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0067	Context Distillation Engine	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0068	Contextual Help and Setup Coach Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0069	Core Classic profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0070	core release with optional providers visibly disabled until certification	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0071	correlation	SPEC-025	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0072	correlation ID	SPEC-003	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0073	crash-safe bounded ring buffers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0074	cross-session rule	SPEC-017	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0075	current-room hot cache	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0076	custom hidden locked one-way and portal exits	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0077	degradation	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0078	degradation/fallback per subsystem	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0079	degraded state	SPEC-025	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0080	destructive action confirmation	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0081	Developer profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0082	development canary beta and stable channels	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0083	diagnostic bundle	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0084	diagnostic deduplication without private content	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0085	differential fixture	SPEC-005	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0086	diorama	SPEC-016	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0087	direct/system-network profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0088	disabled automation	SPEC-021	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0089	dock	SPEC-007	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0090	Emergency Stop	SPEC-009	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0091	entity observations for NPCs mobs animals players and PvP-visible characters	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0092	EOR	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0093	error code	SPEC-025	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0094	event envelope	SPEC-003	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0095	event replay for scripts and triggers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0096	Expected-file scope fence with evidence-backed brownfield amendments	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0097	explicit egress verification	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0098	external VPN metadata profiles for WireGuard/OpenVPN/system VPN routes	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0099	failed update startup health and rollback	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0100	feature certification	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0101	Feature coverage gate	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0102	flaky test	SPEC-027	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0103	FTS	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0104	Full profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0105	future autonomous bug remediation	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0106	future interface binding	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0107	future Lua-compatible path	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0108	future self-hosted relay profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0109	future VM/container/network namespace profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0110	gag/highlight/substitute triggers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0111	generated Help Knowledge Index	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0112	GMCP	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0113	GPL compliance	SPEC-001	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0114	green tag	SPEC-028	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0115	Guarded Autopilot	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0116	headless session	SPEC-017	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0117	Headless Supervisor	SPEC-017	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0118	Headless Supervisor Dashboard	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0119	health	SPEC-026	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0120	help bubble	SPEC-018	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0121	Help Knowledge Index	SPEC-018	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0122	HTTP CONNECT profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0123	Human-Tempo Assist	SPEC-009	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0124	idle-only maintenance	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0125	Immersion profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0126	immutable audit timeline	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0127	import plan	SPEC-021	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0128	importer	SPEC-008	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0129	inherited feature	SPEC-005	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0130	interrupted download recovery	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0131	Isolated Rust WireCore sidecar	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0132	JSONL event	SPEC-017	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0133	JSONL event output	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0134	known risk	SPEC-028	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0135	known-safe and known-dangerous command policies	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0136	layouts, panes, dashboards, themes	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0137	least privilege	SPEC-022	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0138	live-fire	SPEC-027	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0139	local and remote AI provider adapters	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0140	Local authenticated versioned IPC	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0141	local diagnostic bundles	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0142	local-first STT/TTS	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0143	local-only and remote-redacted help modes	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0144	Local Only Lockdown	SPEC-010	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0145	Local Only Lockdown blocks remote update and asset checks	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0146	local peer authentication	SPEC-024	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0147	local/user-owned/signed/licensed assets	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0148	logging/transcripts	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0149	Lore and Memory Curator Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0150	Lua 5.1	SPEC-008	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0151	Macro Forge	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0152	macros/hotkeys	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0153	maintainer-controlled emergency patch workflow	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0154	maintenance graph	SPEC-028	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0155	map import export and backups	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0156	Mapper and Cartographer Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0157	MCCP	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0158	MCP	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0159	MCP/simpleedit path	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0160	memory fact	SPEC-012	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0161	metric	SPEC-026	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0162	migration	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0163	migration backup restore and resumability	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0164	migration report	SPEC-021	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0165	Minimal Qt and C++ native bridge	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0166	model health	SPEC-013	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0167	MSDP	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0168	MSP	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0169	MSSP	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0170	Mudlet core	SPEC-002	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0171	Mudlet-derived foundation	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0172	Mudlet fork with preserved Git history	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0173	Mudlet/MUSHclient/TinTin/zMUD/CMUD importers/research paths	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0174	multi-session orchestration rules	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0175	multi-state triggers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0176	multiple tabs/windows	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0177	MXP	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0178	NAWS	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0179	no hidden telemetry	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0180	No mass rename or broad source reorganization	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0181	opt-in remote voice providers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0182	optional local source checkout indexing	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0183	optional wake phrase after opt-in	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0184	origin	SPEC-001	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0185	original retro tile/sprite/diorama renderer	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0186	outbound queue	SPEC-009	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0187	P0	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0188	P0 hot path	SPEC-002	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0189	P0/P1/P2/P3/P4 priority rings	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0190	P1	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0191	P2	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0192	P3	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0193	P4	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0194	package	SPEC-008	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0195	package browser	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0196	patch classification	SPEC-001	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0197	per-character AI provider and privacy defaults	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0198	per-character default network routing profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0199	per-character macro trigger and script packs	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0200	per-character renderer and soundscape defaults	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0201	per-character Soul document and command database	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0202	per-character voice profiles	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0203	per-world capability detector	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0204	per-world command schema and risk tiers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0205	performance benchmark suite	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0206	performance fixture	SPEC-027	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0207	performance regression workflow	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0208	permission expansion rejection	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0209	permission manifest	SPEC-008	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0210	persistent room backdrops	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0211	Personal Narrator	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0212	Pinned upstream commit and stable release evidence	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0213	platform certification	SPEC-027	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0214	Player Copilot	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0215	plugin	SPEC-008	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0216	plugin/package permission firewall	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0217	Privacy Firewall	SPEC-010	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0218	Privacy Firewall Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0219	privacy modes	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0220	privacy route	SPEC-013	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0221	private tells pages and whispers protected by default	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0222	profile templates	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0223	prompt injection	SPEC-022	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0224	prompt injection defenses before automated commands	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0225	protected mic/listening state	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0226	Protocol Museum	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0227	Protocol Museum fake MUD servers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0228	provenance	SPEC-020	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0229	provenance record	SPEC-001	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0230	provider adapter	SPEC-013	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0231	Pueblo research	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0232	push-to-talk	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0233	push-to-talk and hold-to-talk	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0234	Qt desktop	SPEC-007	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0235	quarantine	SPEC-004	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0236	Quest Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0237	Quest Compass	SPEC-012	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0238	queue metrics	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0239	RAG memory	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0240	readiness	SPEC-026	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0241	real-time conversational Voice Companion	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0242	redaction	SPEC-022	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0243	redaction middleware	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0244	reference behavior	SPEC-005	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0245	release candidate	SPEC-028	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0246	release channel	SPEC-020	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0247	renderer confidence display	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0248	renderer emit dropping/coalescing	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0249	renderer packs	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0250	renderer provenance tracking	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0251	Renderer Scene Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0252	request ID	SPEC-024	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0253	restore	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0254	retention policy	SPEC-023	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0255	retro renderer	SPEC-016	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0256	retry class	SPEC-025	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0257	Reversible strangler migration for any inherited replacement	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0258	ring buffer	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0259	risk tier	SPEC-009	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0260	rollback drill	SPEC-028	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0261	rollback manifest	SPEC-020	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0262	room/area/combat/boss/weather/death/victory audio bindings	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0263	room backdrop	SPEC-016	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0264	room identity confidence	SPEC-012	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0265	root-cause routing by subsystem and priority ring	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0266	round trip	SPEC-021	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0267	routing audit log	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0268	routing default	SPEC-010	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0269	routing profile	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0270	runbook	SPEC-026	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0271	sanitized fixture generator	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0272	SBOM	SPEC-020	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0273	scenario file	SPEC-017	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0274	scenario files	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0275	schema negotiation	SPEC-024	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0276	schema version	SPEC-003	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0277	script debugger and variable inspector	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0278	script editor/debugger/variable inspector	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0279	script runtime	SPEC-008	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0280	scripting runtime abstraction	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0281	scrollback	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0282	Secrets Vault	SPEC-010	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0283	secure source and binary release artifacts with checksums SBOM and provenance	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0284	session	SPEC-017	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0285	Session Replay	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0286	Setup Coach	SPEC-018	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0287	severity classification for critical error warning info and debug	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0288	ship gate	SPEC-028	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0289	sidecar	SPEC-002	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0290	signed core app manifests and artifacts	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0291	signed manifest	SPEC-020	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0292	signed/provenance-aware packages	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0293	signed updates	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0294	Simutronics/GSL research	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0295	slow trigger and pathological regex quarantine	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0296	slow trigger quarantine	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0297	SOCKS4a profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0298	SOCKS5 profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0299	Soul.md	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0300	Soul.md personas	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0301	Soul.md Studio	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0302	Soul.md templates	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0303	soundscape	SPEC-016	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0304	soundscape packs	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0305	soundscape studio	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0306	source evidence	SPEC-003	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0307	Source evidence registry for every external symbol and command	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0308	source format	SPEC-021	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0309	source index	SPEC-018	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0310	Specification requirement trace gate	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0311	speed-walking	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0312	speedwalk throttling	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0313	spellcheck/autocorrect	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0314	spoken help and setup summaries	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0315	spoken room/map/quest/combat/setup summaries	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0316	sprite overlay	SPEC-016	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0317	SQLite	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0318	SSH dynamic-forward profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0319	staged rollout	SPEC-020	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0320	staged rollout and kill switch metadata	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0321	static/low-power/no-animation modes	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0322	status bars/gauges	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0323	strangler migration	SPEC-002	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0324	stream frame	SPEC-024	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0325	structured event fingerprints and correlation IDs	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0326	structured log	SPEC-026	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0327	STT	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0328	style capsules from World Bible	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0329	subtitles/transcript controls	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0330	sync branch	SPEC-001	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0331	tab/entity/command-template completion	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0332	Tactical Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0333	Tactical HUD	SPEC-012	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0334	telemetry event	SPEC-019	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0335	Telnet	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0336	Telnet basics	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0337	terminal	SPEC-007	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0338	terminal frame buffer	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0339	terminal pane	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0340	test double zone	SPEC-027	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0341	text-only fallback	SPEC-007	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0342	threat model	SPEC-022	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0343	Time Machine Memory	SPEC-012	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0344	timers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0345	TLS	SPEC-006	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0346	TLS/telnets path	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0347	Token Budget	SPEC-013	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0348	Token Budget Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0349	token budget and cost audit	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0350	Token Budget Dashboard	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0351	Tor-compatible local SOCKS endpoint profile	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0352	trace	SPEC-026	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0353	transcript chunk	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0354	trigger/macro packs	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0355	Trigger Test Lab	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0356	trigger wizard	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0357	triggers	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0358	trust boundary	SPEC-022	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0359	TTS	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0360	typed AnimalSeen event	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0361	typed CombatStarted and CombatEnded events	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0362	typed CommandSucceeded and CommandFailed events	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0363	typed ExitSeen event	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0364	typed ItemSeen and QuestClueSeen events	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0365	typed MobSeen event	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0366	typed PKerOrPvPerSeen event	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0367	typed PlayerSeen event	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0368	typed PromptSeen and HealthChanged events	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0369	typed RendererEmitCandidate event	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0370	typed RoomSeen event	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0371	typed SocialMessageSeen and redacted private message events	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0372	update lane	SPEC-020	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0373	upstream	SPEC-001	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0374	upstream baseline	SPEC-001	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0375	Upstream synchronization rehearsal and rollback	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0376	user correction and supersession workflow	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0377	user-reviewed diagnostic export	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0378	variables/state tables	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0379	vector index	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0380	visible AI command queue	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0381	visual emit	SPEC-016	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0382	voice cancellation and load shedding	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0383	Voice Companion	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0384	Voice Companion Agent	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0385	voice macro	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0386	voice macros	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0387	voice style	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0388	wake phrase	SPEC-015	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0389	WAL	SPEC-011	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0390	weighted and timed routing	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0391	Why explanation	SPEC-014	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0392	Windows macOS and Linux installer and upgrade certification	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0393	WireCore	SPEC-002	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0394	WireCore crash and hang isolation	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0395	WireMudder	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0396	WireMudder native bridge	SPEC-002	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0397	worker boundary	SPEC-002	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0398	workspace	SPEC-007	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0399	world	SPEC-023	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0400	World Bible	SPEC-012	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0401	World Brain	SPEC-012	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0402	world onboarding wizard	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0403	world pack	SPEC-008	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0404	world packs	SPEC-000	locked	ADR plus schema feature trace and ledger update
+WM-TERM-0405	zones and area clustering	SPEC-000	locked	ADR plus schema feature trace and ledger update

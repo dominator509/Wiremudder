@@ -1,0 +1,21 @@
+# Static expected paths for EP-039. Directory suffix authorizes descendants.
+.agent/execplans/EP-039-production-readiness-ship-and-run-complete.md
+.agent/node-contracts/EP-039.md
+.agent/expected-files/EP-039.txt
+.agent/expected-files/EP-039.discovered.txt
+.agent/milestone-files/EP-039-M1.txt
+.agent/milestone-files/EP-039-M2.txt
+.agent/milestone-files/EP-039-M3.txt
+.agent/milestone-files/EP-039-M4.txt
+.agent/milestone-files/EP-039-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-039/
+scripts/node-verifiers/EP-039.sh
+tests/live-fire/LF-039-ship-gate.sh
+tests/wiremudder/ep039/
+docs/wiremudder/ship/
+release/wiremudder/final/
+.agent/state/final-evidence/

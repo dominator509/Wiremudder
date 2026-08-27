@@ -1,0 +1,9 @@
+# Exact path fence for EP-014 M3.
+wirecore/crates/wire-storage/
+wirecore/migrations/
+schemas/wiremudder/storage/
+tools/wiremudder-backup/
+tests/wiremudder/ep014/integration/
+tests/wiremudder/ep014/e2e/
+docs/wiremudder/storage/design/
+.agent/state/evidence/EP-014/M3/

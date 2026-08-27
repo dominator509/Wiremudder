@@ -1,0 +1,9 @@
+# Exact path fence for EP-020 M3.
+wirecore/crates/wire-quest/
+wirecore/crates/wire-tactical/
+wirecore/crates/wire-narrator/
+src/wiremudder/ui/assistance/
+tests/wiremudder/ep020/integration/
+tests/wiremudder/ep020/e2e/
+docs/wiremudder/assistance/design/
+.agent/state/evidence/EP-020/M3/

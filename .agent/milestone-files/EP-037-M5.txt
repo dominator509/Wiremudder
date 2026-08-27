@@ -1,0 +1,6 @@
+# Exact path fence for EP-037 M5.
+tests/live-fire/LF-037-package-developer-workflow.sh
+scripts/node-verifiers/EP-037.sh
+docs/wiremudder/
+.agent/state/evidence/EP-037/M5/
+.agent/state/LEDGER.md

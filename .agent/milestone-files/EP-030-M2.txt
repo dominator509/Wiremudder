@@ -1,0 +1,7 @@
+# Exact path fence for EP-030 M2.
+wirecore/crates/wire-import/
+src/wiremudder/ui/import/
+compatibility/imports/
+schemas/wiremudder/import/
+tests/wiremudder/ep030/unit/
+.agent/state/evidence/EP-030/M2/

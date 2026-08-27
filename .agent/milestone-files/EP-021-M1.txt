@@ -1,0 +1,6 @@
+# Exact path fence for EP-021 M1.
+.agent/node-contracts/EP-021.md
+.agent/expected-files/EP-021.discovered.txt
+scripts/node-verifiers/EP-021.sh
+tests/wiremudder/ep021/contract/
+.agent/state/evidence/EP-021/M1/

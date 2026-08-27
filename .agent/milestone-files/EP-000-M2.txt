@@ -1,0 +1,8 @@
+# Exact path fence for EP-000 M2.
+UPSTREAM.lock.yaml
+docs/upstream/
+.agent/state/source-evidence.jsonl
+.agent/state/COMMANDS.lock.tsv
+.agent/state/upstream-tree.tsv
+tests/wiremudder/ep000/unit/
+.agent/state/evidence/EP-000/M2/

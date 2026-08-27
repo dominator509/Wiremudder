@@ -1,0 +1,6 @@
+# Exact path fence for EP-010 M4.
+tests/wiremudder/ep010/failure/
+tests/wiremudder/ep010/security/
+tests/wiremudder/ep010/performance/
+docs/wiremudder/packages/operations/
+.agent/state/evidence/EP-010/M4/

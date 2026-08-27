@@ -1,0 +1,146 @@
+source	source_index	section	title	normalized_title	feature_id	spec	node
+library/FEATURE_CATALOG(1).md	1	Classic Client Features	terminal pane	terminal pane	WM-FEAT-0001	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	2	Classic Client Features	ANSI/xterm/truecolor support path	ansi xterm truecolor support path	WM-FEAT-0002	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	3	Classic Client Features	scrollback	scrollback	WM-FEAT-0003	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	4	Classic Client Features	command history	command history	WM-FEAT-0004	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	5	Classic Client Features	aliases	aliases	WM-FEAT-0005	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	6	Classic Client Features	triggers	triggers	WM-FEAT-0006	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	7	Classic Client Features	timers	timers	WM-FEAT-0007	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	8	Classic Client Features	macros/hotkeys	macros hotkeys	WM-FEAT-0008	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	9	Classic Client Features	speed-walking	speed walking	WM-FEAT-0009	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	10	Classic Client Features	speedwalk throttling	speedwalk throttling	WM-FEAT-0010	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	11	Classic Client Features	capture/output panes	capture output panes	WM-FEAT-0011	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	12	Classic Client Features	status bars/gauges	status bars gauges	WM-FEAT-0012	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	13	Classic Client Features	variables/state tables	variables state tables	WM-FEAT-0013	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	14	Classic Client Features	trigger wizard	trigger wizard	WM-FEAT-0014	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	15	Classic Client Features	command input triggers	command input triggers	WM-FEAT-0015	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	16	Classic Client Features	gag/highlight/substitute triggers	gag highlight substitute triggers	WM-FEAT-0016	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	17	Classic Client Features	multi-state triggers	multi state triggers	WM-FEAT-0017	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	18	Classic Client Features	spellcheck/autocorrect	spellcheck autocorrect	WM-FEAT-0018	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	19	Classic Client Features	tab/entity/command-template completion	tab entity command template completion	WM-FEAT-0019	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	20	Classic Client Features	logging/transcripts	logging transcripts	WM-FEAT-0020	SPEC-005	EP-009
+library/FEATURE_CATALOG(1).md	21	Classic Client Features	layouts, panes, dashboards, themes	layouts panes dashboards themes	WM-FEAT-0021	SPEC-007	EP-012
+library/FEATURE_CATALOG(1).md	22	Protocol Features	Telnet basics	telnet basics	WM-FEAT-0022	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	23	Protocol Features	TLS/telnets path	tls telnets path	WM-FEAT-0023	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	24	Protocol Features	ANSI/xterm/truecolor	ansi xterm truecolor	WM-FEAT-0024	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	25	Protocol Features	MCCP	mccp	WM-FEAT-0025	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	26	Protocol Features	GMCP	gmcp	WM-FEAT-0026	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	27	Protocol Features	MSDP	msdp	WM-FEAT-0027	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	28	Protocol Features	MSSP	mssp	WM-FEAT-0028	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	29	Protocol Features	MXP	mxp	WM-FEAT-0029	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	30	Protocol Features	MSP	msp	WM-FEAT-0030	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	31	Protocol Features	MCP/simpleedit path	mcp simpleedit path	WM-FEAT-0031	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	32	Protocol Features	NAWS	naws	WM-FEAT-0032	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	33	Protocol Features	CHARSET	charset	WM-FEAT-0033	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	34	Protocol Features	EOR	eor	WM-FEAT-0034	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	35	Protocol Features	Pueblo research	pueblo research	WM-FEAT-0035	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	36	Protocol Features	Simutronics/GSL research	simutronics gsl research	WM-FEAT-0036	SPEC-006	EP-011
+library/FEATURE_CATALOG(1).md	37	AI and Memory Features	local and remote AI provider adapters	local and remote ai provider adapters	WM-FEAT-0037	SPEC-013	EP-016
+library/FEATURE_CATALOG(1).md	38	AI and Memory Features	AI Provider Router	ai provider router	WM-FEAT-0038	SPEC-013	EP-016
+library/FEATURE_CATALOG(1).md	39	AI and Memory Features	privacy modes	privacy modes	WM-FEAT-0039	SPEC-014	EP-017
+library/FEATURE_CATALOG(1).md	40	AI and Memory Features	Player Copilot	player copilot	WM-FEAT-0040	SPEC-014	EP-017
+library/FEATURE_CATALOG(1).md	41	AI and Memory Features	Guarded Autopilot	guarded autopilot	WM-FEAT-0041	SPEC-014	EP-019
+library/FEATURE_CATALOG(1).md	42	AI and Memory Features	Soul.md personas	soul md personas	WM-FEAT-0042	SPEC-014	EP-018
+library/FEATURE_CATALOG(1).md	43	AI and Memory Features	Soul.md Studio	soul md studio	WM-FEAT-0043	SPEC-014	EP-018
+library/FEATURE_CATALOG(1).md	44	AI and Memory Features	Agent Skill Tree	agent skill tree	WM-FEAT-0044	SPEC-014	EP-018
+library/FEATURE_CATALOG(1).md	45	AI and Memory Features	Agent Council	agent council	WM-FEAT-0045	SPEC-014	EP-018
+library/FEATURE_CATALOG(1).md	46	AI and Memory Features	AI Confidence Meter	ai confidence meter	WM-FEAT-0046	SPEC-014	EP-017
+library/FEATURE_CATALOG(1).md	47	AI and Memory Features	AI `Why?` explanations	ai why explanations	WM-FEAT-0047	SPEC-014	EP-017
+library/FEATURE_CATALOG(1).md	48	AI and Memory Features	Context Distillation Engine	context distillation engine	WM-FEAT-0048	SPEC-013	EP-015
+library/FEATURE_CATALOG(1).md	49	AI and Memory Features	Token Budget Dashboard	token budget dashboard	WM-FEAT-0049	SPEC-013	EP-015
+library/FEATURE_CATALOG(1).md	50	AI and Memory Features	World Brain	world brain	WM-FEAT-0050	SPEC-012	EP-021
+library/FEATURE_CATALOG(1).md	51	AI and Memory Features	World Bible	world bible	WM-FEAT-0051	SPEC-012	EP-021
+library/FEATURE_CATALOG(1).md	52	AI and Memory Features	RAG memory	rag memory	WM-FEAT-0052	SPEC-012	EP-021
+library/FEATURE_CATALOG(1).md	53	AI and Memory Features	Time Machine Memory	time machine memory	WM-FEAT-0053	SPEC-012	EP-021
+library/FEATURE_CATALOG(1).md	54	AI and Memory Features	Quest Compass	quest compass	WM-FEAT-0054	SPEC-014	EP-020
+library/FEATURE_CATALOG(1).md	55	AI and Memory Features	Tactical HUD	tactical hud	WM-FEAT-0055	SPEC-014	EP-020
+library/FEATURE_CATALOG(1).md	56	AI and Memory Features	Personal Narrator	personal narrator	WM-FEAT-0056	SPEC-014	EP-020
+library/FEATURE_CATALOG(1).md	57	Voice Features	real-time conversational Voice Companion	real time conversational voice companion	WM-FEAT-0057	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	58	Voice Features	push-to-talk and hold-to-talk	push to talk and hold to talk	WM-FEAT-0058	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	59	Voice Features	optional wake phrase after opt-in	optional wake phrase after opt in	WM-FEAT-0059	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	60	Voice Features	local-first STT/TTS	local first stt tts	WM-FEAT-0060	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	61	Voice Features	opt-in remote voice providers	opt in remote voice providers	WM-FEAT-0061	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	62	Voice Features	voice macros	voice macros	WM-FEAT-0062	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	63	Voice Features	spoken room/map/quest/combat/setup summaries	spoken room map quest combat setup summaries	WM-FEAT-0063	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	64	Voice Features	per-character voice profiles	per character voice profiles	WM-FEAT-0064	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	65	Voice Features	per-agent voice styles for copilot, mapper, quest, safety, narrator, renderer, and help agents	per agent voice styles for copilot mapper quest safety narrator renderer and help agents	WM-FEAT-0065	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	66	Voice Features	barge-in/cancel	barge in cancel	WM-FEAT-0066	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	67	Voice Features	subtitles/transcript controls	subtitles transcript controls	WM-FEAT-0067	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	68	Voice Features	accessibility spoken mode	accessibility spoken mode	WM-FEAT-0068	SPEC-015	EP-024
+library/FEATURE_CATALOG(1).md	69	Renderer and Soundscape Features	original retro tile/sprite/diorama renderer	original retro tile sprite diorama renderer	WM-FEAT-0069	SPEC-016	EP-025
+library/FEATURE_CATALOG(1).md	70	Renderer and Soundscape Features	persistent room backdrops	persistent room backdrops	WM-FEAT-0070	SPEC-016	EP-025
+library/FEATURE_CATALOG(1).md	71	Renderer and Soundscape Features	graphical emits for NPCs, mobs, animals, players, PKers/PvPers, items, spells, combat, movement, doors, weather, ambience, and room events	graphical emits for npcs mobs animals players pkers pvpers items spells combat movement doors weather ambience and room events	WM-FEAT-0071	SPEC-016	EP-025
+library/FEATURE_CATALOG(1).md	72	Renderer and Soundscape Features	static/low-power/no-animation modes	static low power no animation modes	WM-FEAT-0072	SPEC-016	EP-025
+library/FEATURE_CATALOG(1).md	73	Renderer and Soundscape Features	text-only fallback	text only fallback	WM-FEAT-0073	SPEC-016	EP-025
+library/FEATURE_CATALOG(1).md	74	Renderer and Soundscape Features	style capsules from World Bible	style capsules from world bible	WM-FEAT-0074	SPEC-016	EP-025
+library/FEATURE_CATALOG(1).md	75	Renderer and Soundscape Features	soundscape studio	soundscape studio	WM-FEAT-0075	SPEC-016	EP-026
+library/FEATURE_CATALOG(1).md	76	Renderer and Soundscape Features	room/area/combat/boss/weather/death/victory audio bindings	room area combat boss weather death victory audio bindings	WM-FEAT-0076	SPEC-016	EP-026
+library/FEATURE_CATALOG(1).md	77	Renderer and Soundscape Features	local/user-owned/signed/licensed assets	local user owned signed licensed assets	WM-FEAT-0077	SPEC-016	EP-025
+library/FEATURE_CATALOG(1).md	78	Multi-Session and Routing Features	multiple tabs/windows	multiple tabs windows	WM-FEAT-0078	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	79	Multi-Session and Routing Features	Character Memory Profiles	character memory profiles	WM-FEAT-0079	SPEC-010	EP-007
+library/FEATURE_CATALOG(1).md	80	Multi-Session and Routing Features	per-character default network routing profile	per character default network routing profile	WM-FEAT-0080	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	81	Multi-Session and Routing Features	direct/system-network profile	direct system network profile	WM-FEAT-0081	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	82	Multi-Session and Routing Features	SOCKS5 profile	socks5 profile	WM-FEAT-0082	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	83	Multi-Session and Routing Features	HTTP CONNECT profile	http connect profile	WM-FEAT-0083	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	84	Multi-Session and Routing Features	SOCKS4a profile	socks4a profile	WM-FEAT-0084	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	85	Multi-Session and Routing Features	Tor-compatible local SOCKS endpoint profile	tor compatible local socks endpoint profile	WM-FEAT-0085	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	86	Multi-Session and Routing Features	SSH dynamic-forward profile	ssh dynamic forward profile	WM-FEAT-0086	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	87	Multi-Session and Routing Features	external VPN metadata profiles for WireGuard/OpenVPN/system VPN routes	external vpn metadata profiles for wireguard openvpn system vpn routes	WM-FEAT-0087	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	88	Multi-Session and Routing Features	future interface binding	future interface binding	WM-FEAT-0088	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	89	Multi-Session and Routing Features	future VM/container/network namespace profile	future vm container network namespace profile	WM-FEAT-0089	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	90	Multi-Session and Routing Features	future self-hosted relay profile	future self hosted relay profile	WM-FEAT-0090	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	91	Multi-Session and Routing Features	explicit egress verification	explicit egress verification	WM-FEAT-0091	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	92	Multi-Session and Routing Features	routing audit log	routing audit log	WM-FEAT-0092	SPEC-006	EP-007
+library/FEATURE_CATALOG(1).md	93	Privacy and Security Features	Privacy Firewall	privacy firewall	WM-FEAT-0093	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	94	Privacy and Security Features	Local Only Lockdown	local only lockdown	WM-FEAT-0094	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	95	Privacy and Security Features	Secrets Vault	secrets vault	WM-FEAT-0095	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	96	Privacy and Security Features	redaction middleware	redaction middleware	WM-FEAT-0096	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	97	Privacy and Security Features	immutable audit timeline	immutable audit timeline	WM-FEAT-0097	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	98	Privacy and Security Features	plugin/package permission firewall	plugin package permission firewall	WM-FEAT-0098	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	99	Privacy and Security Features	protected mic/listening state	protected mic listening state	WM-FEAT-0099	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	100	Privacy and Security Features	AI context disclosure	ai context disclosure	WM-FEAT-0100	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	101	Privacy and Security Features	no hidden telemetry	no hidden telemetry	WM-FEAT-0101	SPEC-010	EP-006
+library/FEATURE_CATALOG(1).md	102	Privacy and Security Features	signed updates	signed updates	WM-FEAT-0102	SPEC-020	EP-034
+library/FEATURE_CATALOG(1).md	103	Privacy and Security Features	signed/provenance-aware packages	signed provenance aware packages	WM-FEAT-0103	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	104	Power User and Ecosystem Features	scripting runtime abstraction	scripting runtime abstraction	WM-FEAT-0104	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	105	Power User and Ecosystem Features	future Lua-compatible path	future lua compatible path	WM-FEAT-0105	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	106	Power User and Ecosystem Features	script editor/debugger/variable inspector	script editor debugger variable inspector	WM-FEAT-0106	SPEC-008	EP-022
+library/FEATURE_CATALOG(1).md	107	Power User and Ecosystem Features	Macro Forge	macro forge	WM-FEAT-0107	SPEC-008	EP-022
+library/FEATURE_CATALOG(1).md	108	Power User and Ecosystem Features	Trigger Test Lab	trigger test lab	WM-FEAT-0108	SPEC-008	EP-022
+library/FEATURE_CATALOG(1).md	109	Power User and Ecosystem Features	command palette	command palette	WM-FEAT-0109	SPEC-018	EP-027
+library/FEATURE_CATALOG(1).md	110	Power User and Ecosystem Features	profile templates	profile templates	WM-FEAT-0110	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	111	Power User and Ecosystem Features	world onboarding wizard	world onboarding wizard	WM-FEAT-0111	SPEC-018	EP-027
+library/FEATURE_CATALOG(1).md	112	Power User and Ecosystem Features	per-world capability detector	per world capability detector	WM-FEAT-0112	SPEC-018	EP-027
+library/FEATURE_CATALOG(1).md	113	Power User and Ecosystem Features	package browser	package browser	WM-FEAT-0113	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	114	Power User and Ecosystem Features	world packs	world packs	WM-FEAT-0114	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	115	Power User and Ecosystem Features	command packs	command packs	WM-FEAT-0115	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	116	Power User and Ecosystem Features	trigger/macro packs	trigger macro packs	WM-FEAT-0116	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	117	Power User and Ecosystem Features	renderer packs	renderer packs	WM-FEAT-0117	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	118	Power User and Ecosystem Features	soundscape packs	soundscape packs	WM-FEAT-0118	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	119	Power User and Ecosystem Features	Soul.md templates	soul md templates	WM-FEAT-0119	SPEC-008	EP-010
+library/FEATURE_CATALOG(1).md	120	Power User and Ecosystem Features	Mudlet/MUSHclient/TinTin/zMUD/CMUD importers/research paths	mudlet mushclient tintin zmud cmud importers research paths	WM-FEAT-0120	SPEC-021	EP-030
+library/FEATURE_CATALOG(1).md	121	Headless, Replay, and Developer Features	CLI/headless sessions	cli headless sessions	WM-FEAT-0121	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	122	Headless, Replay, and Developer Features	scenario files	scenario files	WM-FEAT-0122	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	123	Headless, Replay, and Developer Features	JSONL event output	jsonl event output	WM-FEAT-0123	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	124	Headless, Replay, and Developer Features	Headless Supervisor Dashboard	headless supervisor dashboard	WM-FEAT-0124	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	125	Headless, Replay, and Developer Features	multi-session orchestration rules	multi session orchestration rules	WM-FEAT-0125	SPEC-017	EP-023
+library/FEATURE_CATALOG(1).md	126	Headless, Replay, and Developer Features	Session Replay	session replay	WM-FEAT-0126	SPEC-019	EP-003
+library/FEATURE_CATALOG(1).md	127	Headless, Replay, and Developer Features	AI Debugger	ai debugger	WM-FEAT-0127	SPEC-019	EP-022
+library/FEATURE_CATALOG(1).md	128	Headless, Replay, and Developer Features	sanitized fixture generator	sanitized fixture generator	WM-FEAT-0128	SPEC-019	EP-028
+library/FEATURE_CATALOG(1).md	129	Headless, Replay, and Developer Features	Compatibility Lab	compatibility lab	WM-FEAT-0129	SPEC-019	EP-003
+library/FEATURE_CATALOG(1).md	130	Headless, Replay, and Developer Features	Protocol Museum fake MUD servers	protocol museum fake mud servers	WM-FEAT-0130	SPEC-019	EP-003
+library/FEATURE_CATALOG(1).md	131	Headless, Replay, and Developer Features	performance benchmark suite	performance benchmark suite	WM-FEAT-0131	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	132	Headless, Replay, and Developer Features	local diagnostic bundles	local diagnostic bundles	WM-FEAT-0132	SPEC-019	EP-028
+library/FEATURE_CATALOG(1).md	133	Headless, Replay, and Developer Features	future autonomous bug remediation	future autonomous bug remediation	WM-FEAT-0133	SPEC-019	EP-029
+library/FEATURE_CATALOG(1).md	134	Performance Features	P0/P1/P2/P3/P4 priority rings	p0 p1 p2 p3 p4 priority rings	WM-FEAT-0134	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	135	Performance Features	bounded event bus	bounded event bus	WM-FEAT-0135	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	136	Performance Features	terminal frame buffer	terminal frame buffer	WM-FEAT-0136	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	137	Performance Features	batched IPC/UI updates	batched ipc ui updates	WM-FEAT-0137	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	138	Performance Features	queue metrics	queue metrics	WM-FEAT-0138	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	139	Performance Features	degradation/fallback per subsystem	degradation fallback per subsystem	WM-FEAT-0139	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	140	Performance Features	idle-only maintenance	idle only maintenance	WM-FEAT-0140	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	141	Performance Features	slow trigger quarantine	slow trigger quarantine	WM-FEAT-0141	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	142	Performance Features	renderer emit dropping/coalescing	renderer emit dropping coalescing	WM-FEAT-0142	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	143	Performance Features	voice cancellation and load shedding	voice cancellation and load shedding	WM-FEAT-0143	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	144	Performance Features	AI cancellation and provider fallback	ai cancellation and provider fallback	WM-FEAT-0144	SPEC-004	EP-032
+library/FEATURE_CATALOG(1).md	145	Performance Features	token budget and cost audit	token budget and cost audit	WM-FEAT-0145	SPEC-004	EP-032

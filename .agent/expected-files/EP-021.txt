@@ -1,0 +1,23 @@
+# Static expected paths for EP-021. Directory suffix authorizes descendants.
+.agent/execplans/EP-021-world-brain-world-bible-and-time-machine.md
+.agent/node-contracts/EP-021.md
+.agent/expected-files/EP-021.txt
+.agent/expected-files/EP-021.discovered.txt
+.agent/milestone-files/EP-021-M1.txt
+.agent/milestone-files/EP-021-M2.txt
+.agent/milestone-files/EP-021-M3.txt
+.agent/milestone-files/EP-021-M4.txt
+.agent/milestone-files/EP-021-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-021/
+scripts/node-verifiers/EP-021.sh
+tests/live-fire/LF-021-world-memory-correction.sh
+tests/wiremudder/ep021/
+docs/wiremudder/world-brain/
+wirecore/crates/wire-world-brain/
+wirecore/crates/wire-world-bible/
+wirecore/crates/wire-time-machine/
+schemas/wiremudder/memory/

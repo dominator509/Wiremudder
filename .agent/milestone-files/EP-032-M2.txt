@@ -1,0 +1,7 @@
+# Exact path fence for EP-032 M2.
+benchmarks/wiremudder/
+tests/wiremudder/performance/
+docs/wiremudder/performance/
+tools/perf-capture/
+tests/wiremudder/ep032/unit/
+.agent/state/evidence/EP-032/M2/

@@ -1,0 +1,7 @@
+# Exact path fence for EP-037 M2.
+docs/wiremudder/user/
+docs/wiremudder/developer/
+docs/wiremudder/package-author/
+examples/wiremudder/
+tests/wiremudder/ep037/unit/
+.agent/state/evidence/EP-037/M2/

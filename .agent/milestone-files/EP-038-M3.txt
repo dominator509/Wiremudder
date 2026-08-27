@@ -1,0 +1,8 @@
+# Exact path fence for EP-038 M3.
+release/wiremudder/candidate/
+.agent/state/release-evidence/
+docs/wiremudder/release-candidate/
+tests/wiremudder/ep038/integration/
+tests/wiremudder/ep038/e2e/
+docs/wiremudder/release-candidate/design/
+.agent/state/evidence/EP-038/M3/

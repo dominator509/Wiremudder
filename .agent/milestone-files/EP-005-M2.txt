@@ -1,0 +1,7 @@
+# Exact path fence for EP-005 M2.
+src/wiremudder/bridge/
+wirecore/crates/wirecore-runtime/
+wirecore/crates/wire-contracts/
+schemas/wiremudder/bridge/
+tests/wiremudder/ep005/unit/
+.agent/state/evidence/EP-005/M2/

@@ -1,0 +1,6 @@
+# Exact path fence for EP-022 M5.
+tests/live-fire/LF-022-macro-trigger-debug.sh
+scripts/node-verifiers/EP-022.sh
+docs/wiremudder/power-tools/
+.agent/state/evidence/EP-022/M5/
+.agent/state/LEDGER.md

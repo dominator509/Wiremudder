@@ -1,0 +1,6 @@
+# Exact path fence for EP-028 M5.
+tests/live-fire/LF-028-diagnostic-bundle-redaction.sh
+scripts/node-verifiers/EP-028.sh
+docs/wiremudder/diagnostics/
+.agent/state/evidence/EP-028/M5/
+.agent/state/LEDGER.md

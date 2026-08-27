@@ -1,0 +1,7 @@
+# Exact path fence for EP-029 M2.
+wirecore/crates/wire-bug-automation/
+tools/wiremudder-bug-lab/
+schemas/wiremudder/bugs/
+maintenance/wiremudder/
+tests/wiremudder/ep029/unit/
+.agent/state/evidence/EP-029/M2/

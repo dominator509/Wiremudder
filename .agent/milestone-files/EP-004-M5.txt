@@ -1,0 +1,6 @@
+# Exact path fence for EP-004 M5.
+tests/live-fire/LF-004-schema-contract-roundtrip.sh
+scripts/node-verifiers/EP-004.sh
+docs/wiremudder/contracts/
+.agent/state/evidence/EP-004/M5/
+.agent/state/LEDGER.md

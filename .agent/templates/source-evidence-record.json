@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "evidence_id": "WM-SRC-000001",
+  "observed_at": "ISO8601-UTC",
+  "repository": "official repository URL",
+  "commit": "full commit SHA",
+  "path": "one tracked repository file",
+  "symbol_or_range": "exact symbol or line range",
+  "claim": "one factual claim",
+  "command": ["read-only-command", "argument"],
+  "exit_code": 0,
+  "output_path": ".agent/state/source-evidence/WM-SRC-000001.log",
+  "output_sha256": "sha256 of captured output",
+  "agent_id": "platform-handle"
+}

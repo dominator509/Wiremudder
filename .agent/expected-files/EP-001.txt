@@ -1,0 +1,21 @@
+# Static expected paths for EP-001. Directory suffix authorizes descendants.
+.agent/execplans/EP-001-graphlock-overlay-and-inherited-baseline.md
+.agent/node-contracts/EP-001.md
+.agent/expected-files/EP-001.txt
+.agent/expected-files/EP-001.discovered.txt
+.agent/milestone-files/EP-001-M1.txt
+.agent/milestone-files/EP-001-M2.txt
+.agent/milestone-files/EP-001-M3.txt
+.agent/milestone-files/EP-001-M4.txt
+.agent/milestone-files/EP-001-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-001/
+scripts/node-verifiers/EP-001.sh
+tests/live-fire/LF-001-unchanged-inherited-baseline.sh
+tests/wiremudder/ep001/
+docs/wiremudder/baseline/
+tests/wiremudder/baseline/
+.agent/state/baseline/

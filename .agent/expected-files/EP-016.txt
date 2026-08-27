@@ -1,0 +1,23 @@
+# Static expected paths for EP-016. Directory suffix authorizes descendants.
+.agent/execplans/EP-016-ai-provider-router-and-adapters.md
+.agent/node-contracts/EP-016.md
+.agent/expected-files/EP-016.txt
+.agent/expected-files/EP-016.discovered.txt
+.agent/milestone-files/EP-016-M1.txt
+.agent/milestone-files/EP-016-M2.txt
+.agent/milestone-files/EP-016-M3.txt
+.agent/milestone-files/EP-016-M4.txt
+.agent/milestone-files/EP-016-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-016/
+scripts/node-verifiers/EP-016.sh
+tests/live-fire/LF-016-provider-routing-fallback.sh
+tests/wiremudder/ep016/
+docs/wiremudder/ai-providers/
+wirecore/crates/wire-ai-router/
+wirecore/crates/wire-provider-adapters/
+schemas/wiremudder/ai/
+config/wiremudder/providers/

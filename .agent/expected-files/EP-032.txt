@@ -1,0 +1,22 @@
+# Static expected paths for EP-032. Directory suffix authorizes descendants.
+.agent/execplans/EP-032-performance-benchmarks-degradation-and-fairness.md
+.agent/node-contracts/EP-032.md
+.agent/expected-files/EP-032.txt
+.agent/expected-files/EP-032.discovered.txt
+.agent/milestone-files/EP-032-M1.txt
+.agent/milestone-files/EP-032-M2.txt
+.agent/milestone-files/EP-032-M3.txt
+.agent/milestone-files/EP-032-M4.txt
+.agent/milestone-files/EP-032-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-032/
+scripts/node-verifiers/EP-032.sh
+tests/live-fire/LF-032-performance-priority-flood.sh
+tests/wiremudder/ep032/
+docs/wiremudder/performance/
+benchmarks/wiremudder/
+tests/wiremudder/performance/
+tools/perf-capture/

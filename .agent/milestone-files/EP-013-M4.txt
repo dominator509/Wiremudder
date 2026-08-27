@@ -1,0 +1,6 @@
+# Exact path fence for EP-013 M4.
+tests/wiremudder/ep013/failure/
+tests/wiremudder/ep013/security/
+tests/wiremudder/ep013/performance/
+docs/wiremudder/mapper/operations/
+.agent/state/evidence/EP-013/M4/

@@ -1,0 +1,6 @@
+# Exact path fence for EP-008 M1.
+.agent/node-contracts/EP-008.md
+.agent/expected-files/EP-008.discovered.txt
+scripts/node-verifiers/EP-008.sh
+tests/wiremudder/ep008/contract/
+.agent/state/evidence/EP-008/M1/

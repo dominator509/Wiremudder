@@ -1,0 +1,6 @@
+# Exact path fence for EP-012 M5.
+tests/live-fire/LF-012-terminal-workspace-flow.sh
+scripts/node-verifiers/EP-012.sh
+docs/wiremudder/ui/
+.agent/state/evidence/EP-012/M5/
+.agent/state/LEDGER.md

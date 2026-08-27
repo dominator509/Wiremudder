@@ -1,0 +1,23 @@
+# Static expected paths for EP-034. Directory suffix authorizes descendants.
+.agent/execplans/EP-034-secure-updater-package-registry-and-rollback.md
+.agent/node-contracts/EP-034.md
+.agent/expected-files/EP-034.txt
+.agent/expected-files/EP-034.discovered.txt
+.agent/milestone-files/EP-034-M1.txt
+.agent/milestone-files/EP-034-M2.txt
+.agent/milestone-files/EP-034-M3.txt
+.agent/milestone-files/EP-034-M4.txt
+.agent/milestone-files/EP-034-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-034/
+scripts/node-verifiers/EP-034.sh
+tests/live-fire/LF-034-signed-update-rollback.sh
+tests/wiremudder/ep034/
+docs/wiremudder/updater/
+src/wiremudder/updater/
+wirecore/crates/wire-updater/
+schemas/wiremudder/update/
+tools/update-fixtures/

@@ -1,0 +1,11 @@
+# Exact path fence for EP-003 M3.
+compatibility/framework/
+compatibility/replay/
+compatibility/protocol-museum/
+tests/wiremudder/oracle/
+tools/protocol-museum/
+schemas/wiremudder/replay/
+tests/wiremudder/ep003/integration/
+tests/wiremudder/ep003/e2e/
+docs/wiremudder/compatibility/design/
+.agent/state/evidence/EP-003/M3/

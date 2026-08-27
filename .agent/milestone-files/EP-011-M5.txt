@@ -1,0 +1,6 @@
+# Exact path fence for EP-011 M5.
+tests/live-fire/LF-011-protocol-negotiation-matrix.sh
+scripts/node-verifiers/EP-011.sh
+docs/wiremudder/protocols/
+.agent/state/evidence/EP-011/M5/
+.agent/state/LEDGER.md

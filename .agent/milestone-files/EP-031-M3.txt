@@ -1,0 +1,9 @@
+# Exact path fence for EP-031 M3.
+src/wiremudder/accessibility/
+tests/wiremudder/accessibility/
+docs/wiremudder/accessibility/
+translations/wiremudder/
+tests/wiremudder/ep031/integration/
+tests/wiremudder/ep031/e2e/
+docs/wiremudder/accessibility/design/
+.agent/state/evidence/EP-031/M3/

@@ -16,11 +16,10 @@ src/crash_reporter/build/
 /portable*
 /Mudlet*
 
-
-# Qt creator's clangd cache
+# Qt Creator clangd cache
 .cache
 
-# ignore macOS apps in general, but keep the Autoupdater from Sparkle
+# Ignore macOS apps in general, but keep the Autoupdater from Sparkle
 3rdparty/boost/*
 3rdparty/cocoapods/*
 !3rdparty/sparkle/Sparkle.framework/Versions/A/Resources/Autoupdate.app
@@ -29,29 +28,50 @@ translations/translated/lrelease_output.txt
 translations/translated/translation-stats.json
 CMakeLists.txt.user
 
-#CLion
+# CLion
 .idea
 cmake-build-*/
 
-#VS Code
+# VS Code
 .vscode/*.code-workspace
 
-#Docker
+# Docker
 docker/docker-compose.override.yml
 docker/.env
 
 # Build information for Clang-based tools
 compile_commands.json
 
-#Visual Studio
+# Visual Studio
 .vs
 out
 CMakeSettings.json
 
-# flatpak builder
+# Flatpak builder
 CI/.flatpak-builder
 CI/build-dir
 
-# python bytecode (CI helper scripts)
+# Python bytecode
 __pycache__/
 *.pyc
+
+# WireMudder Graphlock and local runtime additions
+.env
+.env.*
+!.env.example
+secrets/
+target/
+node_modules/
+coverage/
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+artifacts/local/
+backups/local/
+.agent/state/*.tmp
+.agent/state/leases/
+.agent/state/runtime/
+!.agent/state/LEDGER.md
+!.agent/state/README.md

@@ -1,0 +1,7 @@
+# Exact path fence for EP-006 M2.
+src/wiremudder/privacy/
+wirecore/crates/wire-privacy/
+wirecore/crates/wire-secrets/
+schemas/wiremudder/privacy/
+tests/wiremudder/ep006/unit/
+.agent/state/evidence/EP-006/M2/

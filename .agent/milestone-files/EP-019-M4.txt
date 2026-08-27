@@ -1,0 +1,6 @@
+# Exact path fence for EP-019 M4.
+tests/wiremudder/ep019/failure/
+tests/wiremudder/ep019/security/
+tests/wiremudder/ep019/performance/
+docs/wiremudder/autopilot/operations/
+.agent/state/evidence/EP-019/M4/

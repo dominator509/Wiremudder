@@ -1,0 +1,4 @@
+# Brownfield discovered-path amendment for EP-020
+# One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
+# Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
+# Directory-wide inherited authorization is forbidden.

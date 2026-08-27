@@ -1,0 +1,6 @@
+# Exact path fence for EP-030 M5.
+tests/live-fire/LF-030-import-migration-disabled-automation.sh
+scripts/node-verifiers/EP-030.sh
+docs/wiremudder/imports/
+.agent/state/evidence/EP-030/M5/
+.agent/state/LEDGER.md

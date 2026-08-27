@@ -1,0 +1,25 @@
+# Static expected paths for EP-003. Directory suffix authorizes descendants.
+.agent/execplans/EP-003-compatibility-oracle-protocol-museum-and-replay.md
+.agent/node-contracts/EP-003.md
+.agent/expected-files/EP-003.txt
+.agent/expected-files/EP-003.discovered.txt
+.agent/milestone-files/EP-003-M1.txt
+.agent/milestone-files/EP-003-M2.txt
+.agent/milestone-files/EP-003-M3.txt
+.agent/milestone-files/EP-003-M4.txt
+.agent/milestone-files/EP-003-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-003/
+scripts/node-verifiers/EP-003.sh
+tests/live-fire/LF-003-compatibility-oracle-roundtrip.sh
+tests/wiremudder/ep003/
+docs/wiremudder/compatibility/
+compatibility/framework/
+compatibility/replay/
+compatibility/protocol-museum/
+tests/wiremudder/oracle/
+tools/protocol-museum/
+schemas/wiremudder/replay/

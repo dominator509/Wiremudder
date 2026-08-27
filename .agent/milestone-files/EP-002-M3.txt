@@ -1,0 +1,10 @@
+# Exact path fence for EP-002 M3.
+docs/wiremudder/upstream/
+docs/adr/
+LICENSE_STRATEGY.md
+UPSTREAM_SYNC_POLICY.md
+BRANDING_POLICY.md
+tests/wiremudder/ep002/integration/
+tests/wiremudder/ep002/e2e/
+docs/wiremudder/upstream/design/
+.agent/state/evidence/EP-002/M3/

@@ -1,0 +1,23 @@
+# Static expected paths for EP-029. Directory suffix authorizes descendants.
+.agent/execplans/EP-029-bounded-bug-automation-and-remediation.md
+.agent/node-contracts/EP-029.md
+.agent/expected-files/EP-029.txt
+.agent/expected-files/EP-029.discovered.txt
+.agent/milestone-files/EP-029-M1.txt
+.agent/milestone-files/EP-029-M2.txt
+.agent/milestone-files/EP-029-M3.txt
+.agent/milestone-files/EP-029-M4.txt
+.agent/milestone-files/EP-029-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-029/
+scripts/node-verifiers/EP-029.sh
+tests/live-fire/LF-029-bug-remediation-replay.sh
+tests/wiremudder/ep029/
+docs/wiremudder/bug-automation/
+wirecore/crates/wire-bug-automation/
+tools/wiremudder-bug-lab/
+schemas/wiremudder/bugs/
+maintenance/wiremudder/

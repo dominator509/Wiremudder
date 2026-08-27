@@ -1,0 +1,6 @@
+# Exact path fence for EP-016 M5.
+tests/live-fire/LF-016-provider-routing-fallback.sh
+scripts/node-verifiers/EP-016.sh
+docs/wiremudder/ai-providers/
+.agent/state/evidence/EP-016/M5/
+.agent/state/LEDGER.md

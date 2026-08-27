@@ -1,0 +1,6 @@
+# Exact path fence for EP-008 M5.
+tests/live-fire/LF-008-emergency-stop-command-gate.sh
+scripts/node-verifiers/EP-008.sh
+docs/wiremudder/command-safety/
+.agent/state/evidence/EP-008/M5/
+.agent/state/LEDGER.md

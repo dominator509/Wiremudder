@@ -1,0 +1,6 @@
+# Exact path fence for EP-021 M4.
+tests/wiremudder/ep021/failure/
+tests/wiremudder/ep021/security/
+tests/wiremudder/ep021/performance/
+docs/wiremudder/world-brain/operations/
+.agent/state/evidence/EP-021/M4/

@@ -1,0 +1,21 @@
+# Static expected paths for EP-004. Directory suffix authorizes descendants.
+.agent/execplans/EP-004-canonical-vocabulary-schemas-and-traceability.md
+.agent/node-contracts/EP-004.md
+.agent/expected-files/EP-004.txt
+.agent/expected-files/EP-004.discovered.txt
+.agent/milestone-files/EP-004-M1.txt
+.agent/milestone-files/EP-004-M2.txt
+.agent/milestone-files/EP-004-M3.txt
+.agent/milestone-files/EP-004-M4.txt
+.agent/milestone-files/EP-004-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-004/
+scripts/node-verifiers/EP-004.sh
+tests/live-fire/LF-004-schema-contract-roundtrip.sh
+tests/wiremudder/ep004/
+docs/wiremudder/contracts/
+schemas/wiremudder/
+tools/schema-bindings/

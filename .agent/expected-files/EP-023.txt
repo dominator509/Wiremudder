@@ -1,0 +1,23 @@
+# Static expected paths for EP-023. Directory suffix authorizes descendants.
+.agent/execplans/EP-023-multi-session-headless-cli-and-supervisor.md
+.agent/node-contracts/EP-023.md
+.agent/expected-files/EP-023.txt
+.agent/expected-files/EP-023.discovered.txt
+.agent/milestone-files/EP-023-M1.txt
+.agent/milestone-files/EP-023-M2.txt
+.agent/milestone-files/EP-023-M3.txt
+.agent/milestone-files/EP-023-M4.txt
+.agent/milestone-files/EP-023-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-023/
+scripts/node-verifiers/EP-023.sh
+tests/live-fire/LF-023-headless-multisession.sh
+tests/wiremudder/ep023/
+docs/wiremudder/headless/
+src/wiremudder/headless/
+wirecore/crates/wire-headless/
+schemas/wiremudder/headless/
+tools/wiremudder-supervisor/

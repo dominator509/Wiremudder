@@ -1,0 +1,9 @@
+# Exact path fence for EP-028 M3.
+wirecore/crates/wire-telemetry/
+wirecore/crates/wire-replay/
+src/wiremudder/ui/diagnostics/
+schemas/wiremudder/telemetry/
+tests/wiremudder/ep028/integration/
+tests/wiremudder/ep028/e2e/
+docs/wiremudder/diagnostics/design/
+.agent/state/evidence/EP-028/M3/

@@ -1,0 +1,6 @@
+# Exact path fence for EP-038 M5.
+tests/live-fire/LF-038-release-candidate-full-suite.sh
+scripts/node-verifiers/EP-038.sh
+docs/wiremudder/release-candidate/
+.agent/state/evidence/EP-038/M5/
+.agent/state/LEDGER.md

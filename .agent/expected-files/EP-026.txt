@@ -1,0 +1,23 @@
+# Static expected paths for EP-026. Directory suffix authorizes descendants.
+.agent/execplans/EP-026-soundscape-engine-and-audio-studio.md
+.agent/node-contracts/EP-026.md
+.agent/expected-files/EP-026.txt
+.agent/expected-files/EP-026.discovered.txt
+.agent/milestone-files/EP-026-M1.txt
+.agent/milestone-files/EP-026-M2.txt
+.agent/milestone-files/EP-026-M3.txt
+.agent/milestone-files/EP-026-M4.txt
+.agent/milestone-files/EP-026-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-026/
+scripts/node-verifiers/EP-026.sh
+tests/live-fire/LF-026-soundscape-degradation.sh
+tests/wiremudder/ep026/
+docs/wiremudder/soundscape/
+wirecore/crates/wire-soundscape/
+src/wiremudder/ui/soundscape/
+schemas/wiremudder/audio/
+assets/wiremudder/audio/

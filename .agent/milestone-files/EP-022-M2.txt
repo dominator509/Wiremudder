@@ -1,0 +1,7 @@
+# Exact path fence for EP-022 M2.
+src/wiremudder/ui/power-tools/
+wirecore/crates/wire-debugger/
+compatibility/automation/
+schemas/wiremudder/debug/
+tests/wiremudder/ep022/unit/
+.agent/state/evidence/EP-022/M2/

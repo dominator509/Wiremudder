@@ -1,0 +1,7 @@
+# Exact path fence for EP-016 M2.
+wirecore/crates/wire-ai-router/
+wirecore/crates/wire-provider-adapters/
+schemas/wiremudder/ai/
+config/wiremudder/providers/
+tests/wiremudder/ep016/unit/
+.agent/state/evidence/EP-016/M2/

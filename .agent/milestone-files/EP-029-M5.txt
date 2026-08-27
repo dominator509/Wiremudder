@@ -1,0 +1,6 @@
+# Exact path fence for EP-029 M5.
+tests/live-fire/LF-029-bug-remediation-replay.sh
+scripts/node-verifiers/EP-029.sh
+docs/wiremudder/bug-automation/
+.agent/state/evidence/EP-029/M5/
+.agent/state/LEDGER.md

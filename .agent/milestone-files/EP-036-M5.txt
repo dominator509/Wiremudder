@@ -1,0 +1,6 @@
+# Exact path fence for EP-036 M5.
+tests/live-fire/LF-036-platform-chaos-matrix.sh
+scripts/node-verifiers/EP-036.sh
+docs/wiremudder/certification/
+.agent/state/evidence/EP-036/M5/
+.agent/state/LEDGER.md

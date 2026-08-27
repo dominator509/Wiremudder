@@ -1,0 +1,23 @@
+# Static expected paths for EP-005. Directory suffix authorizes descendants.
+.agent/execplans/EP-005-native-bridge-wirecore-boundary-and-supervision.md
+.agent/node-contracts/EP-005.md
+.agent/expected-files/EP-005.txt
+.agent/expected-files/EP-005.discovered.txt
+.agent/milestone-files/EP-005-M1.txt
+.agent/milestone-files/EP-005-M2.txt
+.agent/milestone-files/EP-005-M3.txt
+.agent/milestone-files/EP-005-M4.txt
+.agent/milestone-files/EP-005-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-005/
+scripts/node-verifiers/EP-005.sh
+tests/live-fire/LF-005-sidecar-crash-isolation.sh
+tests/wiremudder/ep005/
+docs/wiremudder/bridge/
+src/wiremudder/bridge/
+wirecore/crates/wirecore-runtime/
+wirecore/crates/wire-contracts/
+schemas/wiremudder/bridge/

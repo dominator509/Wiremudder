@@ -1,0 +1,8 @@
+# Exact path fence for EP-001 M3.
+docs/wiremudder/baseline/
+tests/wiremudder/baseline/
+.agent/state/baseline/
+tests/wiremudder/ep001/integration/
+tests/wiremudder/ep001/e2e/
+docs/wiremudder/baseline/design/
+.agent/state/evidence/EP-001/M3/

@@ -1,0 +1,41 @@
+id	name	node	profile	script	description
+LF-000	upstream-baseline-discovery	EP-000	core	tests/live-fire/LF-000-upstream-baseline-discovery.sh	Pinned repository and commit are reachable and checked out.
+LF-001	unchanged-inherited-baseline	EP-001	core	tests/live-fire/LF-001-unchanged-inherited-baseline.sh	Graphlock adapters have byte-identical prime blocks.
+LF-002	upstream-sync-drill	EP-002	core	tests/live-fire/LF-002-upstream-sync-drill.sh	Origin and upstream roles are unambiguous.
+LF-003	compatibility-oracle-roundtrip	EP-003	core	tests/live-fire/LF-003-compatibility-oracle-roundtrip.sh	Reference and candidate executions produce normalized semantic traces.
+LF-004	schema-contract-roundtrip	EP-004	core	tests/live-fire/LF-004-schema-contract-roundtrip.sh	Every public term is vocabulary locked.
+LF-005	sidecar-crash-isolation	EP-005	core	tests/live-fire/LF-005-sidecar-crash-isolation.sh	WireCore lifecycle is bounded and observable.
+LF-006	local-only-lockdown	EP-006	core	tests/live-fire/LF-006-local-only-lockdown.sh	Local Only blocks all declared remote egress and downloads.
+LF-007	profile-routing-persistence	EP-007	core	tests/live-fire/LF-007-profile-routing-persistence.sh	Profile defaults persist and export correctly.
+LF-008	emergency-stop-command-gate	EP-008	core	tests/live-fire/LF-008-emergency-stop-command-gate.sh	All non-manual sources use one action gateway.
+LF-009	classic-client-regression	EP-009	core	tests/live-fire/LF-009-classic-client-regression.sh	All feature-catalog classic behaviors have fixtures or explicit research status.
+LF-010	package-script-sandbox	EP-010	core	tests/live-fire/LF-010-package-script-sandbox.sh	Lua compatibility corpus passes.
+LF-011	protocol-negotiation-matrix	EP-011	core	tests/live-fire/LF-011-protocol-negotiation-matrix.sh	Protocol matrix covers every listed protocol.
+LF-012	terminal-workspace-flow	EP-012	core	tests/live-fire/LF-012-terminal-workspace-flow.sh	Terminal remains visible and responsive with all docks enabled.
+LF-013	mapper-route-roundtrip	EP-013	core	tests/live-fire/LF-013-mapper-route-roundtrip.sh	Advanced exit and zone behaviors round-trip.
+LF-014	storage-export-restore	EP-014	core	tests/live-fire/LF-014-storage-export-restore.sh	Database choice and versions are pinned by ADR.
+LF-015	distilled-context-budget	EP-015	extended	tests/live-fire/LF-015-distilled-context-budget.sh	Typed events preserve command-relevant state.
+LF-016	provider-routing-fallback	EP-016	extended	tests/live-fire/LF-016-provider-routing-fallback.sh	At least one real local provider path is certified for the selected release profile or AI remains disabled.
+LF-017	copilot-suggestion-explanation	EP-017	extended	tests/live-fire/LF-017-copilot-suggestion-explanation.sh	Copilot never hidden-sends commands.
+LF-018	soul-agent-permission	EP-018	extended	tests/live-fire/LF-018-soul-agent-permission.sh	Soul cannot override policy.
+LF-019	guarded-autopilot-confirmation	EP-019	extended	tests/live-fire/LF-019-guarded-autopilot-confirmation.sh	Autopilot is off by default and profile-scoped.
+LF-020	quest-tactical-narration	EP-020	extended	tests/live-fire/LF-020-quest-tactical-narration.sh	Quest state cites clues and corrections.
+LF-021	world-memory-correction	EP-021	extended	tests/live-fire/LF-021-world-memory-correction.sh	Facts carry provenance and confidence.
+LF-022	macro-trigger-debug	EP-022	extended	tests/live-fire/LF-022-macro-trigger-debug.sh	Macro and trigger creation is previewable and disabled until approved.
+LF-023	headless-multisession	EP-023	extended	tests/live-fire/LF-023-headless-multisession.sh	Desktop sessions cannot starve each other.
+LF-024	voice-privacy-command	EP-024	extended	tests/live-fire/LF-024-voice-privacy-command.sh	Mic state is always visible.
+LF-025	renderer-degradation	EP-025	extended	tests/live-fire/LF-025-renderer-degradation.sh	Assets are original or properly licensed.
+LF-026	soundscape-degradation	EP-026	extended	tests/live-fire/LF-026-soundscape-degradation.sh	All binding classes are represented.
+LF-027	help-coach-no-side-effects	EP-027	extended	tests/live-fire/LF-027-help-coach-no-side-effects.sh	Help content is generated from accepted sources.
+LF-028	diagnostic-bundle-redaction	EP-028	extended	tests/live-fire/LF-028-diagnostic-bundle-redaction.sh	Telemetry remains off externally by default.
+LF-029	bug-remediation-replay	EP-029	extended	tests/live-fire/LF-029-bug-remediation-replay.sh	Automation requires reproduction or evidence-backed explanation.
+LF-030	import-migration-disabled-automation	EP-030	extended	tests/live-fire/LF-030-import-migration-disabled-automation.sh	Mudlet formats are discovered from source and corpus.
+LF-031	accessibility-keyboard-screenreader	EP-031	extended	tests/live-fire/LF-031-accessibility-keyboard-screenreader.sh	Every critical flow is keyboard operable.
+LF-032	performance-priority-flood	EP-032	extended	tests/live-fire/LF-032-performance-priority-flood.sh	All required benchmark fixtures run reproducibly.
+LF-033	security-supply-chain-denial	EP-033	extended	tests/live-fire/LF-033-security-supply-chain-denial.sh	Threat models cover every trust boundary.
+LF-034	signed-update-rollback	EP-034	extended	tests/live-fire/LF-034-signed-update-rollback.sh	Invalid signature and hash are rejected.
+LF-035	installer-release-channel	EP-035	extended	tests/live-fire/LF-035-installer-release-channel.sh	Windows, macOS, and Linux builds are reproducible enough for audit.
+LF-036	platform-chaos-matrix	EP-036	extended	tests/live-fire/LF-036-platform-chaos-matrix.sh	Clean build and core flow pass on three platforms.
+LF-037	package-developer-workflow	EP-037	extended	tests/live-fire/LF-037-package-developer-workflow.sh	Every enabled feature has user documentation.
+LF-038	release-candidate-full-suite	EP-038	full	tests/live-fire/LF-038-release-candidate-full-suite.sh	Feature and source coverage are complete.
+LF-039	ship-gate	EP-039	full	tests/live-fire/LF-039-ship-gate.sh	Fresh verify and production-readiness sentinels are observed in one session.

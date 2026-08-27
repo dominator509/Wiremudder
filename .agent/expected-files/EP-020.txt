@@ -1,0 +1,23 @@
+# Static expected paths for EP-020. Directory suffix authorizes descendants.
+.agent/execplans/EP-020-quest-compass-tactical-hud-and-personal-narrator.md
+.agent/node-contracts/EP-020.md
+.agent/expected-files/EP-020.txt
+.agent/expected-files/EP-020.discovered.txt
+.agent/milestone-files/EP-020-M1.txt
+.agent/milestone-files/EP-020-M2.txt
+.agent/milestone-files/EP-020-M3.txt
+.agent/milestone-files/EP-020-M4.txt
+.agent/milestone-files/EP-020-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-020/
+scripts/node-verifiers/EP-020.sh
+tests/live-fire/LF-020-quest-tactical-narration.sh
+tests/wiremudder/ep020/
+docs/wiremudder/assistance/
+wirecore/crates/wire-quest/
+wirecore/crates/wire-tactical/
+wirecore/crates/wire-narrator/
+src/wiremudder/ui/assistance/

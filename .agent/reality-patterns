@@ -1,0 +1,9 @@
+TODO|FIXME|XXX|HACK
+unimplemented!\(|todo!\(
+NotImplementedError|raise NotImplemented
+not implemented|Not implemented|NOT IMPLEMENTED
+PLACEHOLDER|__REPLACE__|CHANGEME|changeme
+\{\{[A-Z_]+\}\}
+lorem ipsum|Lorem Ipsum
+sleep\([0-9]+\).*success
+mock success|fake success|demo success|sample success

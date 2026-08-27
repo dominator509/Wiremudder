@@ -1,0 +1,6 @@
+# Exact path fence for EP-017 M5.
+tests/live-fire/LF-017-copilot-suggestion-explanation.sh
+scripts/node-verifiers/EP-017.sh
+docs/wiremudder/copilot/
+.agent/state/evidence/EP-017/M5/
+.agent/state/LEDGER.md

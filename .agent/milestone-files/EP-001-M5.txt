@@ -1,0 +1,6 @@
+# Exact path fence for EP-001 M5.
+tests/live-fire/LF-001-unchanged-inherited-baseline.sh
+scripts/node-verifiers/EP-001.sh
+docs/wiremudder/baseline/
+.agent/state/evidence/EP-001/M5/
+.agent/state/LEDGER.md

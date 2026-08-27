@@ -1,0 +1,6 @@
+# Exact path fence for EP-018 M5.
+tests/live-fire/LF-018-soul-agent-permission.sh
+scripts/node-verifiers/EP-018.sh
+docs/wiremudder/agents/
+.agent/state/evidence/EP-018/M5/
+.agent/state/LEDGER.md

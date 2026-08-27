@@ -1,0 +1,6 @@
+# Exact path fence for EP-033 M5.
+tests/live-fire/LF-033-security-supply-chain-denial.sh
+scripts/node-verifiers/EP-033.sh
+docs/wiremudder/security/
+.agent/state/evidence/EP-033/M5/
+.agent/state/LEDGER.md

@@ -1,0 +1,6 @@
+# Exact path fence for EP-039 M2.
+release/wiremudder/final/
+.agent/state/final-evidence/
+docs/wiremudder/ship/
+tests/wiremudder/ep039/unit/
+.agent/state/evidence/EP-039/M2/

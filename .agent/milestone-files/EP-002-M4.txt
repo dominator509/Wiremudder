@@ -1,0 +1,6 @@
+# Exact path fence for EP-002 M4.
+tests/wiremudder/ep002/failure/
+tests/wiremudder/ep002/security/
+tests/wiremudder/ep002/performance/
+docs/wiremudder/upstream/operations/
+.agent/state/evidence/EP-002/M4/

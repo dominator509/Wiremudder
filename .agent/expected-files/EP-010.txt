@@ -1,0 +1,23 @@
+# Static expected paths for EP-010. Directory suffix authorizes descendants.
+.agent/execplans/EP-010-scripting-plugins-packages-and-permissions.md
+.agent/node-contracts/EP-010.md
+.agent/expected-files/EP-010.txt
+.agent/expected-files/EP-010.discovered.txt
+.agent/milestone-files/EP-010-M1.txt
+.agent/milestone-files/EP-010-M2.txt
+.agent/milestone-files/EP-010-M3.txt
+.agent/milestone-files/EP-010-M4.txt
+.agent/milestone-files/EP-010-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-010/
+scripts/node-verifiers/EP-010.sh
+tests/live-fire/LF-010-package-script-sandbox.sh
+tests/wiremudder/ep010/
+docs/wiremudder/packages/
+src/wiremudder/packages/
+wirecore/crates/wire-packages/
+schemas/wiremudder/packages/
+compatibility/packages/

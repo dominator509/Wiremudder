@@ -1,0 +1,6 @@
+# Exact path fence for EP-036 M4.
+tests/wiremudder/ep036/failure/
+tests/wiremudder/ep036/security/
+tests/wiremudder/ep036/performance/
+docs/wiremudder/certification/operations/
+.agent/state/evidence/EP-036/M4/

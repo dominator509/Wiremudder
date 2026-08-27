@@ -1,0 +1,6 @@
+# Exact path fence for EP-004 M2.
+schemas/wiremudder/
+tools/schema-bindings/
+docs/wiremudder/contracts/
+tests/wiremudder/ep004/unit/
+.agent/state/evidence/EP-004/M2/

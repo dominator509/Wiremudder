@@ -1,0 +1,23 @@
+# Static expected paths for EP-022. Directory suffix authorizes descendants.
+.agent/execplans/EP-022-macro-forge-trigger-lab-and-ai-debugger.md
+.agent/node-contracts/EP-022.md
+.agent/expected-files/EP-022.txt
+.agent/expected-files/EP-022.discovered.txt
+.agent/milestone-files/EP-022-M1.txt
+.agent/milestone-files/EP-022-M2.txt
+.agent/milestone-files/EP-022-M3.txt
+.agent/milestone-files/EP-022-M4.txt
+.agent/milestone-files/EP-022-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-022/
+scripts/node-verifiers/EP-022.sh
+tests/live-fire/LF-022-macro-trigger-debug.sh
+tests/wiremudder/ep022/
+docs/wiremudder/power-tools/
+src/wiremudder/ui/power-tools/
+wirecore/crates/wire-debugger/
+compatibility/automation/
+schemas/wiremudder/debug/

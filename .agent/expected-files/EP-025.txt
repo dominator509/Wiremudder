@@ -1,0 +1,23 @@
+# Static expected paths for EP-025. Directory suffix authorizes descendants.
+.agent/execplans/EP-025-retro-renderer-diorama-and-visual-emits.md
+.agent/node-contracts/EP-025.md
+.agent/expected-files/EP-025.txt
+.agent/expected-files/EP-025.discovered.txt
+.agent/milestone-files/EP-025-M1.txt
+.agent/milestone-files/EP-025-M2.txt
+.agent/milestone-files/EP-025-M3.txt
+.agent/milestone-files/EP-025-M4.txt
+.agent/milestone-files/EP-025-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-025/
+scripts/node-verifiers/EP-025.sh
+tests/live-fire/LF-025-renderer-degradation.sh
+tests/wiremudder/ep025/
+docs/wiremudder/renderer/
+src/wiremudder/ui/renderer/
+wirecore/crates/wire-renderer/
+schemas/wiremudder/renderer/
+assets/wiremudder/renderer/

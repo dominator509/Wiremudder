@@ -1,0 +1,9 @@
+# Exact path fence for EP-036 M3.
+tests/wiremudder/platform/
+tests/wiremudder/chaos/
+compatibility/platform/
+docs/wiremudder/certification/
+tests/wiremudder/ep036/integration/
+tests/wiremudder/ep036/e2e/
+docs/wiremudder/certification/design/
+.agent/state/evidence/EP-036/M3/

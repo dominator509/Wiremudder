@@ -1,0 +1,22 @@
+# Static expected paths for EP-031. Directory suffix authorizes descendants.
+.agent/execplans/EP-031-accessibility-localization-and-ux-hardening.md
+.agent/node-contracts/EP-031.md
+.agent/expected-files/EP-031.txt
+.agent/expected-files/EP-031.discovered.txt
+.agent/milestone-files/EP-031-M1.txt
+.agent/milestone-files/EP-031-M2.txt
+.agent/milestone-files/EP-031-M3.txt
+.agent/milestone-files/EP-031-M4.txt
+.agent/milestone-files/EP-031-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-031/
+scripts/node-verifiers/EP-031.sh
+tests/live-fire/LF-031-accessibility-keyboard-screenreader.sh
+tests/wiremudder/ep031/
+docs/wiremudder/accessibility/
+src/wiremudder/accessibility/
+tests/wiremudder/accessibility/
+translations/wiremudder/

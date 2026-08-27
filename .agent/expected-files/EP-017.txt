@@ -1,0 +1,22 @@
+# Static expected paths for EP-017. Directory suffix authorizes descendants.
+.agent/execplans/EP-017-player-copilot-explanations-and-confidence.md
+.agent/node-contracts/EP-017.md
+.agent/expected-files/EP-017.txt
+.agent/expected-files/EP-017.discovered.txt
+.agent/milestone-files/EP-017-M1.txt
+.agent/milestone-files/EP-017-M2.txt
+.agent/milestone-files/EP-017-M3.txt
+.agent/milestone-files/EP-017-M4.txt
+.agent/milestone-files/EP-017-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-017/
+scripts/node-verifiers/EP-017.sh
+tests/live-fire/LF-017-copilot-suggestion-explanation.sh
+tests/wiremudder/ep017/
+docs/wiremudder/copilot/
+wirecore/crates/wire-copilot/
+src/wiremudder/ui/copilot/
+schemas/wiremudder/copilot/

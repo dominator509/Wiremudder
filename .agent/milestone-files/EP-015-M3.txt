@@ -1,0 +1,9 @@
+# Exact path fence for EP-015 M3.
+wirecore/crates/wire-context/
+wirecore/crates/wire-token-budget/
+schemas/wiremudder/context/
+compatibility/context/
+tests/wiremudder/ep015/integration/
+tests/wiremudder/ep015/e2e/
+docs/wiremudder/context/design/
+.agent/state/evidence/EP-015/M3/

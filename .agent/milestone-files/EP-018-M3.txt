@@ -1,0 +1,9 @@
+# Exact path fence for EP-018 M3.
+wirecore/crates/wire-agents/
+wirecore/crates/wire-soul/
+src/wiremudder/ui/soul/
+schemas/wiremudder/agents/
+tests/wiremudder/ep018/integration/
+tests/wiremudder/ep018/e2e/
+docs/wiremudder/agents/design/
+.agent/state/evidence/EP-018/M3/

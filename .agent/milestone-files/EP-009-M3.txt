@@ -1,0 +1,8 @@
+# Exact path fence for EP-009 M3.
+tests/wiremudder/classic/
+compatibility/classic/
+docs/wiremudder/classic-parity/
+tests/wiremudder/ep009/integration/
+tests/wiremudder/ep009/e2e/
+docs/wiremudder/classic-parity/design/
+.agent/state/evidence/EP-009/M3/

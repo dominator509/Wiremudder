@@ -1,0 +1,6 @@
+# Exact path fence for EP-007 M4.
+tests/wiremudder/ep007/failure/
+tests/wiremudder/ep007/security/
+tests/wiremudder/ep007/performance/
+docs/wiremudder/profiles-routing/operations/
+.agent/state/evidence/EP-007/M4/

@@ -1,0 +1,6 @@
+# Exact path fence for EP-000 M5.
+tests/live-fire/LF-000-upstream-baseline-discovery.sh
+scripts/node-verifiers/EP-000.sh
+docs/wiremudder/discovery/
+.agent/state/evidence/EP-000/M5/
+.agent/state/LEDGER.md

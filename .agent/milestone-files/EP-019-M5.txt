@@ -1,0 +1,6 @@
+# Exact path fence for EP-019 M5.
+tests/live-fire/LF-019-guarded-autopilot-confirmation.sh
+scripts/node-verifiers/EP-019.sh
+docs/wiremudder/autopilot/
+.agent/state/evidence/EP-019/M5/
+.agent/state/LEDGER.md

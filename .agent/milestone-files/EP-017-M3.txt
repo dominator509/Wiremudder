@@ -1,0 +1,8 @@
+# Exact path fence for EP-017 M3.
+wirecore/crates/wire-copilot/
+src/wiremudder/ui/copilot/
+schemas/wiremudder/copilot/
+tests/wiremudder/ep017/integration/
+tests/wiremudder/ep017/e2e/
+docs/wiremudder/copilot/design/
+.agent/state/evidence/EP-017/M3/

@@ -1,0 +1,9 @@
+# Exact path fence for EP-035 M3.
+CI/wiremudder/
+installers/wiremudder/
+packaging/wiremudder/
+docs/wiremudder/release/
+tests/wiremudder/ep035/integration/
+tests/wiremudder/ep035/e2e/
+docs/wiremudder/release/design/
+.agent/state/evidence/EP-035/M3/

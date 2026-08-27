@@ -1,0 +1,9 @@
+# Exact path fence for EP-026 M3.
+wirecore/crates/wire-soundscape/
+src/wiremudder/ui/soundscape/
+schemas/wiremudder/audio/
+assets/wiremudder/audio/
+tests/wiremudder/ep026/integration/
+tests/wiremudder/ep026/e2e/
+docs/wiremudder/soundscape/design/
+.agent/state/evidence/EP-026/M3/

@@ -1,0 +1,9 @@
+# Exact path fence for EP-021 M3.
+wirecore/crates/wire-world-brain/
+wirecore/crates/wire-world-bible/
+wirecore/crates/wire-time-machine/
+schemas/wiremudder/memory/
+tests/wiremudder/ep021/integration/
+tests/wiremudder/ep021/e2e/
+docs/wiremudder/world-brain/design/
+.agent/state/evidence/EP-021/M3/

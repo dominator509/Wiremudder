@@ -1,0 +1,83 @@
+source	sha256	disposition	authoritative_destination
+first-generation-pack/.agent/EXECUTION_RULES.md	6c0f5a61bc56cf67400e424d287cfcb7d5795dba0de3748e5528c95d68fb87e0	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/PLANS.md	c2c398cea927be8eb32758a4515a6d637634243f15cfbecfbbf528cbb8fbf8bb	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/agent-readiness.md	e0d18e0b73b1ec7ae3ead30fbc5b8c29bdf5d5611999aef934a322c47a0d7773	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/final-review.md	5a461cdf8ac2245061a38904fca27a24f5f55376767bac198a503c6c76b1f622	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/implementation.md	f5c354825c85256ade3b2002432801002466dff1cb9e3b17f57c2a32685bcc11	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/incident-response.md	9ce84c0877c83964575d6a3acc1682e2eeac189fdf32b3cfc4c58294cd716ee3	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/preflight.md	35153ef63ea203d4cd57908f0234ab6779863676f338ccca492dd9457292cdd0	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/production-readiness.md	02a0557bb90757dac218adc10375369e405f7f64e73297be571114c404905013	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/release.md	401dc2980fe1a77578b4e70946564ba6016e00b7487adbdcf7d2d407c1d6d341	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/rollback.md	a389a9febb28ec5bca40b9b2f1d8d70bc31938b8c91c250dcb91d13c31e07cb1	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/checklists/validation.md	1ef6f9c7b4dda3f8659d62809ce663d764e81c65bc7d713eef8bb19cc79f2a4c	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/execplans/EP-000-repository-discovery.md	15e35d50b1768db2ccdb4835d62ae38a308b28ec07ad71024825d9a1d79980e3	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-001-foundation.md	8d20680401154cc8ee78f4640c7c44e2d32e9d7f6c2412068afa6e173b70f9c8	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-002-core-domain.md	fbc4b40629f8f72731a912c4d30d03b6c7fff7f865e24e2ec92f913a3d237bad	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-003-data-and-persistence.md	ff6604bf4428789d91b7f81143af564dc899cf3d2cf071f4c3bb45e5a81b1e54	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-004-api-or-service-layer.md	61f75948076a100b917efe588da8e3081687a0e08bfc3f5b19f6dca62f256cb0	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-005-user-interface-or-client.md	bf6d79c5e588498c04694de1777a7c103aeffcdd5faf029b4f8ee2703604c3a9	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-006-auth-security-and-permissions.md	be62c0c3c108dc947fe90f7f0bac725e1e8572525bb248f1661a6bdbdb63858c	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-007-testing-hardening.md	e94b46a59c997d232ca5a068bd38674c34b516984bf44aa4b29d3ab0267ac738	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-008-observability-and-operations.md	d4f555346ff119055b7ef94b430e44af345281033d08599d559b9ab2e514da89	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-009-deployment-and-release.md	989ee3675681e593eca068b74fc434fc068f423cd2edf49b3eeffbdea056782c	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/execplans/EP-010-production-readiness.md	b4d4f9ddbf48de8925815f9cfba21ea71cf9fc905096549ba6bc199f98633fa4	superseded-by-graphlock-execplans	.agent/execplans/EP-000 through EP-039
+first-generation-pack/.agent/prompts/continue-execplan.md	4b80c04e7cefba0e4b6abc649cf6e11f5ac55b56f7b46e1c2c2a98a068c860be	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/prompts/debug-validation-failure.md	bd3d0b3fcd8f078da1e44bc83e71b51ae7db6450c0d5b2af32971f13c4bda191	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/prompts/execute-active-execplan.md	29aa766611f5f3e3e059d16693266f57e05069666f33066161ed44b163de6f25	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/prompts/final-review.md	2ee7e3cbacf6f1544bf1c9ed13bab2ea5b1565ff79f3ed3ff1b45864c569e3d8	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/specs/SPEC-000-product-scope.md	2933de1f096ce0eb904c0ab1767b875ee31c2160a308fabdb5ac114a2f09d265	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-001-core-domain.md	760d3130b1d8dacb1e491609b837de5411e9849da0f810020e0ace851ad6e3cf	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-002-data-model.md	7905a1f166ec8f48c2395037cfbbb73aaf8b88e7f8f4c1fffc6643bfcf002384	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-003-api-contracts.md	2930d52bdd272f6a1eb38dc213f16218568e615c50271460beb288c4147bbdf7	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-004-ui-ux-behavior.md	d6448286780a0920ae4936bbe078ea41811e52e27d0bf59694f5398fe58eec4c	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-005-auth-and-permissions.md	f615226b9907a99af464507ba955a3c65e263c0d2b095b3a733f9048970dfea4	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-006-error-handling.md	c80546c052560597ab423e1264dea41ab7611f887b5cb681b54c2149d7bf38fd	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-007-observability.md	65592350099101667e489019ee7e98e0f9f620ee9623e425ed477855d3b2323b	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/specs/SPEC-008-production-readiness.md	92286f9e1e2945692625929d7aeb54bc14891319e557b6de6e416e4cdc7ad002	reconciled-into-accepted-specifications	.agent/specs/SPEC-000 through SPEC-028
+first-generation-pack/.agent/templates/adr-template.md	4f08a482f392c0eb52f5f5d1c853df010e1c3f2c9770cfcdc5ca7c440aad5c3a	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/templates/execplan-template.md	fd4d86df7418cf882eb7a17b0ec68e62ce1342dda1bbc93cdc07f52576b2878b	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/templates/runbook-template.md	be6a0be1a3eeec1adfd8876f75741c641e38dbaa4c1150d273041784a27eac5b	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/templates/spec-template.md	c1ed3a17311b3d61343a9f24a79898da8a051f6214b9dc3e27e42fc48e59d4f6	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/.agent/templates/test-case-template.md	99819f1a4da409487d9cd3aa88f95718cefe64bc029096f8952c8a1addf76104	superseded-by-complete-graphlock-control-plane	.agent control graph and verification files
+first-generation-pack/AGENTS.md	2630b9b6f870fa8cb625a51af76230b87641cf5704fb8afb2cc694459acbcaf6	reviewed-and-rewritten	AGENTS.md
+first-generation-pack/ARCHITECTURE.md	98bcefdbff1ab6ffbb96f2b075c5c71bf06a0997d69f9a5d1f845fc15f61fc1a	requirements-retained-architecture-replaced	ARCHITECTURE.md; SPEC-001; SPEC-002; SPEC-004
+first-generation-pack/ASSUMPTIONS.md	1acd3389ac37fb516dcf9d9f657d102f1608f853f13f0f7a30b56453ace70fd3	reviewed-and-rewritten	ASSUMPTIONS.md
+first-generation-pack/COMMANDS.md	f3254a6f56101a54090437a18fd084c963bb66624837baaf17982df3625be782	reviewed-and-rewritten	COMMANDS.md
+first-generation-pack/CONTRIBUTING.md	5f1ad26cb9a90ffba0b65e53abe63cd661fbd62ed7aabfeab8eb2da16249ab66	reviewed-and-rewritten	CONTRIBUTING.md
+first-generation-pack/DECISIONS.md	fc0686e7bc4ca4af5a41a99332bbb4031da2853d6f2787af616684001954ea07	reviewed-and-rewritten	DECISIONS.md
+first-generation-pack/DEPLOYMENT.md	e142ed6a1b40e05d191f4af603b9a7932d18df834d0d49f6a8cec60b25d4c8a7	reviewed-and-rewritten	DEPLOYMENT.md
+first-generation-pack/ENVIRONMENT.md	b25d8f957aacc14b90b8b34058298b8170d28173866e57b8b1dca389e079221c	reviewed-and-rewritten	ENVIRONMENT.md
+first-generation-pack/OBSERVABILITY.md	27929babc225a6e8f9f10b79db3c1b691801a27c858d40a3ec5406d0fcfe722d	reviewed-and-rewritten	OBSERVABILITY.md
+first-generation-pack/OPERATIONS.md	896d4cb36e282197e55c32b178795f04877df69b8f613e69d377cf8b4bafd1c6	reviewed-and-rewritten	OPERATIONS.md
+first-generation-pack/PRODUCTION_READINESS.md	6632b43be6838a00370f3abcd7a4c44a4d6a16bfbebb1d736ef383c374a826fd	reviewed-and-rewritten	PRODUCTION_READINESS.md
+first-generation-pack/PROJECT_BRIEF.md	e1f46e5c4f5ae8aa7598a7e968699a0d97e49d93f5f416ded6c35d6e2e2cfaab	requirements-retained-and-expanded	PROJECT_BRIEF.md; SPEC-000; FEATURE_CATALOG.md
+first-generation-pack/RELEASE.md	91c75967f2ef3b2185c6549cd021dcfdabf6a040c6db295315fb7c097fd38c6f	reviewed-and-rewritten	RELEASE.md
+first-generation-pack/ROADMAP.md	a66da7341ecdff474609a2649e34b7d7cfcd8d98268c49902a357d1b240c2bfd	superseded-by-40-node-graph	ROADMAP.md; .agent/GRAPH.md
+first-generation-pack/ROLLBACK.md	efdd19ae83599a21dfbfcd710fc4fdcae4ddebde3929382e88c955a5ff74f049	reviewed-and-rewritten	ROLLBACK.md
+first-generation-pack/SECURITY.md	d56683ea2683350afe35b5dc38b26c8856c13f8c6a5bf65494c2ffaa1813955e	requirements-retained-and-expanded	WIREMUDDER_SECURITY.md; SPEC-010; SPEC-022
+first-generation-pack/TESTING.md	76d7e9a31971533167ecc87e3f7fc8e3438938d566c99cc37af965bb54533eb7	requirements-retained-and-expanded	TESTING.md; SPEC-027; COMPATIBILITY_ORACLE.md
+first-generation-pack/scripts/build.sh	557ae22485d26c12852b297822cdb918bbcacbb2acbe4808283c63d37271a43b	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/dependency-audit.sh	9affb7e29594258fabb0ed537eac581fb94f3ea9e692f5330d6211582d0329b8	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/format-check.sh	9d139e9512e2e048ebf67d66b6111c241a0dacbcdf350c6c622dbb8dc37bc3fa	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/install.sh	aea7616c5063943671ffae4869de51224472988b05ac0cf56102be88dd115e6f	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/lint.sh	ef724282795bc94c7decc8c2204ecee5984d326a0a4d4f3c7440762c6a04b348	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/preflight.sh	d598ee3219e34187b840df215e4d0619b4ad5baf575a8b02e6ec8c78d2153d43	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/production-readiness-check.sh	3b9de02a5b378bb8428dac840d249addffb2ec931afd461d1ff526fe45faa6aa	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/security-check.sh	9c006f1e15b41442992f300ebcc2ab689e6a5a4380aeced657f617a157226bdc	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/smoke-test.sh	a6615e6b2a6251224fdf95ec2ef374f4b4657757ca13dec64841c1b1b2060a10	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/test-e2e.sh	c8912a9e08d663d666974477dc6e0cee27000dc67c62747b937aad91f3089694	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/test-integration.sh	a4a5d9b669b25aa3246dc83884214741a2744c6ac5057d1af404a1418d905a13	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/test-unit.sh	41d44dadccf3997ee4f17e38f4719c54bd0d587e61d2c4b5697b35c26ce6cd2a	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/typecheck.sh	d32beb413cd656960c926e74c4343f7dc552531b41558a358060bf20414c6470	superseded-by-deterministic-gates	scripts and COMMANDS.md
+first-generation-pack/scripts/verify.sh	3ee5c50214356f5139d058fce37d38614a75a230b232707141168cd2c0880291	superseded-by-deterministic-gates	scripts and COMMANDS.md
+library/FEATURE_CATALOG(1).md	e332baca25936b96f0ac6e5effa9e5f7df1127f740315a19acfced56138966a2	requirements-retained-and-expanded	FEATURE_CATALOG.md; .agent/features/FEATURES.tsv
+library/BUG_AUTOMATION_PIPELINE(1).md	eb60539dbdc06ddae8ab9aa3fb49ee6ce4e5c450d5a8507ae25921119b269e47	requirements-retained-and-expanded	BUG_AUTOMATION_PIPELINE.md; SPEC-019; EP-028; EP-029
+library/ARCHITECTURE(1).md	3ab193ac198ecb1031446961448504481ecfdb97bb1cf9f8752131b74bd545a2	requirements-retained-architecture-replaced	ARCHITECTURE.md; accepted specifications
+library/PERFORMANCE_CONSTITUTION.md	7385842641b45016270be41ca1008ad38adcb3cdab9e88c333e17b665465ca8f	requirements-retained-as-binding	PERFORMANCE_CONSTITUTION.md; SPEC-004; EP-032
+library/AUTO_UPDATE_ARCHITECTURE(1).md	44db0a3ef1214c1adce100aa3c120fb1fa6ed7bdf82e242d1947c507098a77f9	requirements-retained-and-expanded	AUTO_UPDATE_ARCHITECTURE.md; SPEC-020; EP-034
+library/NEXT_LEVEL_DIFFERENTIATORS_VOICE_RENDERER_UPDATE(1).md	1d9df8d4b5fd37282a92e4e8858002b607eb832f5cf0b402f73daa60d19d2c3a	requirements-retained-and-expanded	FEATURE_CATALOG.md; EP-015 through EP-029
+library/LEGACY_POWER_CLIENT_COMPATIBILITY_UPDATE.md	88b881d9a9f075dc14d71b109dba4129cda215e697e3001d73263b4b76d60bae	requirements-retained-and-expanded	SPEC-005; SPEC-006; SPEC-007; SPEC-008; SPEC-012; SPEC-021
+library/CONTEXTUAL_HELP_AI_SETUP_COACH_UPDATE.md	10974537628f98f5f1dd4fad0332aa7e2c01499b8781bcbfad8126885c944eac	requirements-retained-and-expanded	SPEC-018; EP-027
+library/PERFORMANCE_OPTIMIZATION_UPDATE.md	d35756d4a7de91b31a8624a04837549d190e7acc396f410c6c1118c22262998e	requirements-retained-as-binding	PERFORMANCE_CONSTITUTION.md; SPEC-004; EP-032
+attachment/6Layer-MasterPrompt-v2-GRAPHLOCK(2).md	15e91346ed7696460131336548168aa6e16c9d1e50181b0f5feec2303dc2b28d	adapted-for-brownfield-fork	GRAPHLOCK_ADAPTATION.md; AGENTS.md; .agent control plane
+attachment/wiremudder-blueprint-pack(2).zip	31e4dd00fe3529b23b998eb5818121bf518615052d41d15c62291ed851c329b7	fully-inventoried-and-superseded	docs/provenance/SOURCE_DOCUMENT_COVERAGE.tsv

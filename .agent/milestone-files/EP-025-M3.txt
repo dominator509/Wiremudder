@@ -1,0 +1,9 @@
+# Exact path fence for EP-025 M3.
+src/wiremudder/ui/renderer/
+wirecore/crates/wire-renderer/
+schemas/wiremudder/renderer/
+assets/wiremudder/renderer/
+tests/wiremudder/ep025/integration/
+tests/wiremudder/ep025/e2e/
+docs/wiremudder/renderer/design/
+.agent/state/evidence/EP-025/M3/

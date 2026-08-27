@@ -1,0 +1,6 @@
+# Exact path fence for EP-002 M5.
+tests/live-fire/LF-002-upstream-sync-drill.sh
+scripts/node-verifiers/EP-002.sh
+docs/wiremudder/upstream/
+.agent/state/evidence/EP-002/M5/
+.agent/state/LEDGER.md

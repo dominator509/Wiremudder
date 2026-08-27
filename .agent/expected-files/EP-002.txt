@@ -1,0 +1,23 @@
+# Static expected paths for EP-002. Directory suffix authorizes descendants.
+.agent/execplans/EP-002-fork-governance-upstream-sync-and-branding.md
+.agent/node-contracts/EP-002.md
+.agent/expected-files/EP-002.txt
+.agent/expected-files/EP-002.discovered.txt
+.agent/milestone-files/EP-002-M1.txt
+.agent/milestone-files/EP-002-M2.txt
+.agent/milestone-files/EP-002-M3.txt
+.agent/milestone-files/EP-002-M4.txt
+.agent/milestone-files/EP-002-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-002/
+scripts/node-verifiers/EP-002.sh
+tests/live-fire/LF-002-upstream-sync-drill.sh
+tests/wiremudder/ep002/
+docs/wiremudder/upstream/
+docs/adr/
+LICENSE_STRATEGY.md
+UPSTREAM_SYNC_POLICY.md
+BRANDING_POLICY.md

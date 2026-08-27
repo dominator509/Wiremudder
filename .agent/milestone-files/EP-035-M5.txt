@@ -1,0 +1,6 @@
+# Exact path fence for EP-035 M5.
+tests/live-fire/LF-035-installer-release-channel.sh
+scripts/node-verifiers/EP-035.sh
+docs/wiremudder/release/
+.agent/state/evidence/EP-035/M5/
+.agent/state/LEDGER.md

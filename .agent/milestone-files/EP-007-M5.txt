@@ -1,0 +1,6 @@
+# Exact path fence for EP-007 M5.
+tests/live-fire/LF-007-profile-routing-persistence.sh
+scripts/node-verifiers/EP-007.sh
+docs/wiremudder/profiles-routing/
+.agent/state/evidence/EP-007/M5/
+.agent/state/LEDGER.md

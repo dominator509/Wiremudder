@@ -1,0 +1,22 @@
+# Static expected paths for EP-019. Directory suffix authorizes descendants.
+.agent/execplans/EP-019-guarded-autopilot-and-action-queue.md
+.agent/node-contracts/EP-019.md
+.agent/expected-files/EP-019.txt
+.agent/expected-files/EP-019.discovered.txt
+.agent/milestone-files/EP-019-M1.txt
+.agent/milestone-files/EP-019-M2.txt
+.agent/milestone-files/EP-019-M3.txt
+.agent/milestone-files/EP-019-M4.txt
+.agent/milestone-files/EP-019-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-019/
+scripts/node-verifiers/EP-019.sh
+tests/live-fire/LF-019-guarded-autopilot-confirmation.sh
+tests/wiremudder/ep019/
+docs/wiremudder/autopilot/
+wirecore/crates/wire-autopilot/
+src/wiremudder/ui/autopilot/
+schemas/wiremudder/autopilot/

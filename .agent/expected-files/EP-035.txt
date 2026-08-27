@@ -1,0 +1,22 @@
+# Static expected paths for EP-035. Directory suffix authorizes descendants.
+.agent/execplans/EP-035-installers-ci-release-channels-and-artifacts.md
+.agent/node-contracts/EP-035.md
+.agent/expected-files/EP-035.txt
+.agent/expected-files/EP-035.discovered.txt
+.agent/milestone-files/EP-035-M1.txt
+.agent/milestone-files/EP-035-M2.txt
+.agent/milestone-files/EP-035-M3.txt
+.agent/milestone-files/EP-035-M4.txt
+.agent/milestone-files/EP-035-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-035/
+scripts/node-verifiers/EP-035.sh
+tests/live-fire/LF-035-installer-release-channel.sh
+tests/wiremudder/ep035/
+docs/wiremudder/release/
+CI/wiremudder/
+installers/wiremudder/
+packaging/wiremudder/

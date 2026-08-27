@@ -1,0 +1,23 @@
+# Static expected paths for EP-027. Directory suffix authorizes descendants.
+.agent/execplans/EP-027-contextual-help-setup-coach-and-source-index.md
+.agent/node-contracts/EP-027.md
+.agent/expected-files/EP-027.txt
+.agent/expected-files/EP-027.discovered.txt
+.agent/milestone-files/EP-027-M1.txt
+.agent/milestone-files/EP-027-M2.txt
+.agent/milestone-files/EP-027-M3.txt
+.agent/milestone-files/EP-027-M4.txt
+.agent/milestone-files/EP-027-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-027/
+scripts/node-verifiers/EP-027.sh
+tests/live-fire/LF-027-help-coach-no-side-effects.sh
+tests/wiremudder/ep027/
+docs/wiremudder/help/
+src/wiremudder/ui/help/
+wirecore/crates/wire-help/
+schemas/wiremudder/help/
+tools/help-indexer/

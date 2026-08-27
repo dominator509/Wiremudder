@@ -1,0 +1,7 @@
+# Exact path fence for EP-007 M2.
+src/wiremudder/profiles/
+src/wiremudder/routing/
+wirecore/crates/wire-profiles/
+wirecore/crates/wire-routing/
+tests/wiremudder/ep007/unit/
+.agent/state/evidence/EP-007/M2/

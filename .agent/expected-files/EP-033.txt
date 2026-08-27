@@ -1,0 +1,23 @@
+# Static expected paths for EP-033. Directory suffix authorizes descendants.
+.agent/execplans/EP-033-security-threat-model-license-sbom-and-supply-chain.md
+.agent/node-contracts/EP-033.md
+.agent/expected-files/EP-033.txt
+.agent/expected-files/EP-033.discovered.txt
+.agent/milestone-files/EP-033-M1.txt
+.agent/milestone-files/EP-033-M2.txt
+.agent/milestone-files/EP-033-M3.txt
+.agent/milestone-files/EP-033-M4.txt
+.agent/milestone-files/EP-033-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-033/
+scripts/node-verifiers/EP-033.sh
+tests/live-fire/LF-033-security-supply-chain-denial.sh
+tests/wiremudder/ep033/
+docs/wiremudder/security/
+security/wiremudder/
+sbom/wiremudder/
+licenses/wiremudder/
+tests/wiremudder/security/

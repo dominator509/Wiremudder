@@ -1,0 +1,23 @@
+# Static expected paths for EP-037. Directory suffix authorizes descendants.
+.agent/execplans/EP-037-documentation-package-developer-and-community-ecosystem.md
+.agent/node-contracts/EP-037.md
+.agent/expected-files/EP-037.txt
+.agent/expected-files/EP-037.discovered.txt
+.agent/milestone-files/EP-037-M1.txt
+.agent/milestone-files/EP-037-M2.txt
+.agent/milestone-files/EP-037-M3.txt
+.agent/milestone-files/EP-037-M4.txt
+.agent/milestone-files/EP-037-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-037/
+scripts/node-verifiers/EP-037.sh
+tests/live-fire/LF-037-package-developer-workflow.sh
+tests/wiremudder/ep037/
+docs/wiremudder/
+docs/wiremudder/user/
+docs/wiremudder/developer/
+docs/wiremudder/package-author/
+examples/wiremudder/

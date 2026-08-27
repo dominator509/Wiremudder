@@ -1,0 +1,23 @@
+schema_version: 1
+verified_at: "2026-08-14"
+repository: "https://github.com/Mudlet/Mudlet.git"
+default_branch: "development"
+development_commit: "77086c295f4adf59197e586e689d19bdde8e1008"
+stable_release:
+  tag: "Mudlet-4.22.0"
+  published_at: "2026-07-06T07:48:31Z"
+evidence:
+  project_instructions:
+    path: "docs/ai-instructions.md"
+    sha: "847993467861ebd871628467701d8237fe86721c"
+  build_skill:
+    path: ".agents/skills/build-mudlet/SKILL.md"
+    sha: "57931ceee73cc62a5c6f821d7f7c269a1503dc4c"
+policy:
+  ep_000_must_verify: true
+  preserve_git_history: true
+  preserve_upstream_remote: true
+  no_mass_rename: true
+  no_greenfield_rewrite: true
+  source_evidence_required_for_inherited_edits: true
+  signing_keys_available_to_agents: false

@@ -1,0 +1,7 @@
+# Exact path fence for EP-008 M2.
+src/wiremudder/command-safety/
+wirecore/crates/wire-actions/
+wirecore/crates/wire-policy/
+schemas/wiremudder/actions/
+tests/wiremudder/ep008/unit/
+.agent/state/evidence/EP-008/M2/

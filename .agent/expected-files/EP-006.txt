@@ -1,0 +1,23 @@
+# Static expected paths for EP-006. Directory suffix authorizes descendants.
+.agent/execplans/EP-006-privacy-consent-secrets-and-local-only.md
+.agent/node-contracts/EP-006.md
+.agent/expected-files/EP-006.txt
+.agent/expected-files/EP-006.discovered.txt
+.agent/milestone-files/EP-006-M1.txt
+.agent/milestone-files/EP-006-M2.txt
+.agent/milestone-files/EP-006-M3.txt
+.agent/milestone-files/EP-006-M4.txt
+.agent/milestone-files/EP-006-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-006/
+scripts/node-verifiers/EP-006.sh
+tests/live-fire/LF-006-local-only-lockdown.sh
+tests/wiremudder/ep006/
+docs/wiremudder/privacy/
+src/wiremudder/privacy/
+wirecore/crates/wire-privacy/
+wirecore/crates/wire-secrets/
+schemas/wiremudder/privacy/

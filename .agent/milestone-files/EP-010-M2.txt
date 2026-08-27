@@ -1,0 +1,7 @@
+# Exact path fence for EP-010 M2.
+src/wiremudder/packages/
+wirecore/crates/wire-packages/
+schemas/wiremudder/packages/
+compatibility/packages/
+tests/wiremudder/ep010/unit/
+.agent/state/evidence/EP-010/M2/

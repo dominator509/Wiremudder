@@ -1,0 +1,23 @@
+# Static expected paths for EP-011. Directory suffix authorizes descendants.
+.agent/execplans/EP-011-protocols-network-and-capability-detection.md
+.agent/node-contracts/EP-011.md
+.agent/expected-files/EP-011.txt
+.agent/expected-files/EP-011.discovered.txt
+.agent/milestone-files/EP-011-M1.txt
+.agent/milestone-files/EP-011-M2.txt
+.agent/milestone-files/EP-011-M3.txt
+.agent/milestone-files/EP-011-M4.txt
+.agent/milestone-files/EP-011-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-011/
+scripts/node-verifiers/EP-011.sh
+tests/live-fire/LF-011-protocol-negotiation-matrix.sh
+tests/wiremudder/ep011/
+docs/wiremudder/protocols/
+src/wiremudder/protocol/
+compatibility/protocols/
+tools/protocol-museum/
+schemas/wiremudder/protocol/

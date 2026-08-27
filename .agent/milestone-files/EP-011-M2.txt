@@ -1,0 +1,7 @@
+# Exact path fence for EP-011 M2.
+src/wiremudder/protocol/
+compatibility/protocols/
+tools/protocol-museum/
+schemas/wiremudder/protocol/
+tests/wiremudder/ep011/unit/
+.agent/state/evidence/EP-011/M2/

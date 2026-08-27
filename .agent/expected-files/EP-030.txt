@@ -1,0 +1,23 @@
+# Static expected paths for EP-030. Directory suffix authorizes descendants.
+.agent/execplans/EP-030-imports-migrations-and-client-ecosystem.md
+.agent/node-contracts/EP-030.md
+.agent/expected-files/EP-030.txt
+.agent/expected-files/EP-030.discovered.txt
+.agent/milestone-files/EP-030-M1.txt
+.agent/milestone-files/EP-030-M2.txt
+.agent/milestone-files/EP-030-M3.txt
+.agent/milestone-files/EP-030-M4.txt
+.agent/milestone-files/EP-030-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-030/
+scripts/node-verifiers/EP-030.sh
+tests/live-fire/LF-030-import-migration-disabled-automation.sh
+tests/wiremudder/ep030/
+docs/wiremudder/imports/
+wirecore/crates/wire-import/
+src/wiremudder/ui/import/
+compatibility/imports/
+schemas/wiremudder/import/

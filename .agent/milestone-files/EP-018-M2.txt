@@ -1,0 +1,7 @@
+# Exact path fence for EP-018 M2.
+wirecore/crates/wire-agents/
+wirecore/crates/wire-soul/
+src/wiremudder/ui/soul/
+schemas/wiremudder/agents/
+tests/wiremudder/ep018/unit/
+.agent/state/evidence/EP-018/M2/

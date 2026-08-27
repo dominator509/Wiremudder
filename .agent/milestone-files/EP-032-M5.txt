@@ -1,0 +1,6 @@
+# Exact path fence for EP-032 M5.
+tests/live-fire/LF-032-performance-priority-flood.sh
+scripts/node-verifiers/EP-032.sh
+docs/wiremudder/performance/
+.agent/state/evidence/EP-032/M5/
+.agent/state/LEDGER.md

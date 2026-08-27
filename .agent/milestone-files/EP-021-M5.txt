@@ -1,0 +1,6 @@
+# Exact path fence for EP-021 M5.
+tests/live-fire/LF-021-world-memory-correction.sh
+scripts/node-verifiers/EP-021.sh
+docs/wiremudder/world-brain/
+.agent/state/evidence/EP-021/M5/
+.agent/state/LEDGER.md

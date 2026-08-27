@@ -1,0 +1,23 @@
+# Static expected paths for EP-014. Directory suffix authorizes descendants.
+.agent/execplans/EP-014-local-storage-transcripts-search-and-backup.md
+.agent/node-contracts/EP-014.md
+.agent/expected-files/EP-014.txt
+.agent/expected-files/EP-014.discovered.txt
+.agent/milestone-files/EP-014-M1.txt
+.agent/milestone-files/EP-014-M2.txt
+.agent/milestone-files/EP-014-M3.txt
+.agent/milestone-files/EP-014-M4.txt
+.agent/milestone-files/EP-014-M5.txt
+.agent/state/LEDGER.md
+.agent/state/source-evidence.jsonl
+.agent/state/source-evidence/
+.agent/state/COMMANDS.lock.tsv
+.agent/state/evidence/EP-014/
+scripts/node-verifiers/EP-014.sh
+tests/live-fire/LF-014-storage-export-restore.sh
+tests/wiremudder/ep014/
+docs/wiremudder/storage/
+wirecore/crates/wire-storage/
+wirecore/migrations/
+schemas/wiremudder/storage/
+tools/wiremudder-backup/

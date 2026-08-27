@@ -1,0 +1,6 @@
+# Exact path fence for EP-020 M5.
+tests/live-fire/LF-020-quest-tactical-narration.sh
+scripts/node-verifiers/EP-020.sh
+docs/wiremudder/assistance/
+.agent/state/evidence/EP-020/M5/
+.agent/state/LEDGER.md

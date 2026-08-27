@@ -1,0 +1,9 @@
+# Exact path fence for EP-012 M3.
+src/wiremudder/ui/
+src/wiremudder/models/
+tests/wiremudder/ui/
+docs/wiremudder/ui/
+tests/wiremudder/ep012/integration/
+tests/wiremudder/ep012/e2e/
+docs/wiremudder/ui/design/
+.agent/state/evidence/EP-012/M3/

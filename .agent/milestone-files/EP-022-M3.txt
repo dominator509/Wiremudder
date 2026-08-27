@@ -1,0 +1,9 @@
+# Exact path fence for EP-022 M3.
+src/wiremudder/ui/power-tools/
+wirecore/crates/wire-debugger/
+compatibility/automation/
+schemas/wiremudder/debug/
+tests/wiremudder/ep022/integration/
+tests/wiremudder/ep022/e2e/
+docs/wiremudder/power-tools/design/
+.agent/state/evidence/EP-022/M3/

@@ -1,0 +1,7 @@
+# Exact path fence for EP-023 M2.
+src/wiremudder/headless/
+wirecore/crates/wire-headless/
+schemas/wiremudder/headless/
+tools/wiremudder-supervisor/
+tests/wiremudder/ep023/unit/
+.agent/state/evidence/EP-023/M2/

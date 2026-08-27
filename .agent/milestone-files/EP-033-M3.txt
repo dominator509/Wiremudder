@@ -1,0 +1,10 @@
+# Exact path fence for EP-033 M3.
+docs/wiremudder/security/
+security/wiremudder/
+sbom/wiremudder/
+licenses/wiremudder/
+tests/wiremudder/security/
+tests/wiremudder/ep033/integration/
+tests/wiremudder/ep033/e2e/
+docs/wiremudder/security/design/
+.agent/state/evidence/EP-033/M3/

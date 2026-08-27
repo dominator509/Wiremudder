@@ -1,0 +1,9 @@
+# Exact path fence for EP-027 M3.
+src/wiremudder/ui/help/
+wirecore/crates/wire-help/
+schemas/wiremudder/help/
+tools/help-indexer/
+tests/wiremudder/ep027/integration/
+tests/wiremudder/ep027/e2e/
+docs/wiremudder/help/design/
+.agent/state/evidence/EP-027/M3/

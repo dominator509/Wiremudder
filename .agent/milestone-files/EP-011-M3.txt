@@ -1,0 +1,9 @@
+# Exact path fence for EP-011 M3.
+src/wiremudder/protocol/
+compatibility/protocols/
+tools/protocol-museum/
+schemas/wiremudder/protocol/
+tests/wiremudder/ep011/integration/
+tests/wiremudder/ep011/e2e/
+docs/wiremudder/protocols/design/
+.agent/state/evidence/EP-011/M3/

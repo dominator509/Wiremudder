@@ -1,0 +1,6 @@
+# Exact path fence for EP-014 M5.
+tests/live-fire/LF-014-storage-export-restore.sh
+scripts/node-verifiers/EP-014.sh
+docs/wiremudder/storage/
+.agent/state/evidence/EP-014/M5/
+.agent/state/LEDGER.md

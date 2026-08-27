@@ -1,0 +1,8 @@
+# Exact path fence for EP-002 M2.
+docs/wiremudder/upstream/
+docs/adr/
+LICENSE_STRATEGY.md
+UPSTREAM_SYNC_POLICY.md
+BRANDING_POLICY.md
+tests/wiremudder/ep002/unit/
+.agent/state/evidence/EP-002/M2/
