@@ -308,7 +308,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -318,9 +318,15 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
 
+- 2026-08-27: Source-evidence store requires schema_version 2 records with claim/command/commit/evidence_id/exit_code/observed_at/output_path/output_sha256/repository/symbol_or_range; raw JSONL appends break source-evidence-check. Use scripts/source-evidence-record.sh only.
+- 2026-08-27: TSpeedWalk.h does not exist in the pinned tree; speedwalk lives in T2DMap.h (initiateSpeedWalk, line 452) plus Lua speedwalk tables in TLuaInterpreterMapper.cpp. Classic fixtures must ground on those symbols.
+- 2026-08-27: Logging/transcript surface is inside TConsole (logToHtml path); there is no standalone TConsoleLog.h or LogViewer.h in the pinned tree.
+
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-27: M1 interface lock grounded on 15 inherited source surfaces (WM-SRC-000062..000076) covering terminal/ANSI/truecolor, scrollback, triggers, aliases, timers, actions, variables, Lua, trigger editor/wizard, events, mapper, speedwalk, package import/export, command line, and console logging. No inherited-source edits made in M1; the discovered amendment stays empty until an inherited edit is authorized by evidence. Evidence: source-evidence.jsonl rows 62-76. Alternatives: fixtures only from prose (rejected: anti-hallucination). Consequence: M2/M3 may build fixtures purely in namespaced trees. Affects: WM-FEAT-0002/0005-0010/0013-0017/0020, WM-SPEC-005/007/008.
 
 # 14. Outcomes and Retrospective
 
