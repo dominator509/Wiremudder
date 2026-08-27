@@ -1,0 +1,8 @@
+{
+  "fixture_id": "msdp-negotiation",
+  "description": "MSDP WILL/DO handshake: server WILL 69, client DO 69.",
+  "stream_hex": "fffb45fffd45",
+  "expected": [
+    {"protocol": "MSDP", "negotiated": true, "status": "negotiated", "note": "observed WILL/DO for option MSDP"}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/protocol/capability.schema.json",
+  "title": "WireMudder Protocol Capability Report",
+  "description": "Capability detection result per protocol (EP-011).",
+  "type": "object",
+  "required": ["protocol", "negotiated", "status", "note"],
+  "properties": {
+    "protocol": {"type": "string"},
+    "negotiated": {"type": "boolean"},
+    "status": {"enum": ["negotiated", "declined", "absent", "research"]},
+    "note": {"type": "string"}
+  }
+}

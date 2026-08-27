@@ -1,0 +1,8 @@
+{
+  "fixture_id": "gmcp-negotiation",
+  "description": "GMCP WILL/DO handshake: server WILL 201, client DO 201.",
+  "stream_hex": "fffbc9fffdc9",
+  "expected": [
+    {"protocol": "GMCP", "negotiated": true, "status": "negotiated", "note": "observed WILL/DO for option GMCP"}
+  ]
+}

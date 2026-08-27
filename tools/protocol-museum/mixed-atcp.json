@@ -1,0 +1,9 @@
+{
+  "fixture_id": "mixed-atcp",
+  "description": "ATCP (200) WILL + GMCP WILL in one stream.",
+  "stream_hex": "fffbc8fffbc9",
+  "expected": [
+    {"protocol": "ATCP", "negotiated": true, "status": "negotiated", "note": "observed WILL/DO for option ATCP"},
+    {"protocol": "GMCP", "negotiated": true, "status": "negotiated", "note": "observed WILL/DO for option GMCP"}
+  ]
+}

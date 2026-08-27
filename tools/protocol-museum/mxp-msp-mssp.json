@@ -1,0 +1,10 @@
+{
+  "fixture_id": "mxp-msp-mssp",
+  "description": "MXP (91), MSP (90), MSSP (70) options: all WILL.",
+  "stream_hex": "fffb5bfffb5afffb46",
+  "expected": [
+    {"protocol": "MXP", "negotiated": true, "status": "negotiated", "note": "observed WILL/DO for option MXP"},
+    {"protocol": "MSP", "negotiated": true, "status": "negotiated", "note": "observed WILL/DO for option MSP"},
+    {"protocol": "MSSP", "negotiated": true, "status": "negotiated", "note": "observed WILL/DO for option MSSP"}
+  ]
+}
