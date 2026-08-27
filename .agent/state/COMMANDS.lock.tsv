@@ -1,1 +1,4 @@
 key	command	evidence_id	owner_node	platform	verified_at
+configure	cmake --preset linux-debug-nosan	WM-SRC-000019	EP-000	linux	2026-08-27T10:41:04Z
+build	cmake --build --preset linux-debug-nosan	WM-SRC-000019	EP-000	linux	2026-08-27T10:41:04Z
+unit	ctest --preset linux-debug-nosan	WM-SRC-000019	EP-000	linux	2026-08-27T10:41:05Z
