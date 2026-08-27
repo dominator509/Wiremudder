@@ -208,7 +208,7 @@ impl RequestRedactor {
             ("cred-05", "login", r"(?i)\b(login|log in|sign in)\s+\S+(\s+\S+)?", "[REDACTED:login]"),
             ("cred-06", "login", r"(?i)\b(quit|logout)\b", "[REDACTED:login]"),
             ("cred-07", "private-message", r"(?im)^\s*(tell|whisper|gtell|ptell|mtell)\s+\S+\s+.*$", "[REDACTED:private-message]"),
-            ("cred-08", "voice", r"(?i)(voice\s*content\s*[:=]|\[voice:)[^\n]*", "[REDACTED:voice-content]"),
+            ("cred-08", "voice", r"(?i)(voice\s*content\s*[:=]|voice\s*[:=]|\[voice:)[^\n]*", "[REDACTED:voice-content]"),
         ] {
             if let Ok(p) = wire_privacy::RedactionPattern::new(id, class, re, rep) {
                 engine.add_pattern(p);
@@ -274,9 +274,20 @@ impl OllamaAdapter {
     }
 
     fn http_request(&self, path: &str, body: Option<&str>) -> Result<String, AdapterError> {
+        use std::io::{ErrorKind, Read, Write};
+        let timeout_err = |e: std::io::Error| {
+            if matches!(e.kind(), ErrorKind::WouldBlock | ErrorKind::TimedOut) {
+                AdapterError::Timeout {
+                    provider: self.capabilities.provider_id.clone(),
+                    budget_ms: self.timeout_ms,
+                }
+            } else {
+                AdapterError::Unavailable(e.to_string())
+            }
+        };
         let addr = format!("{}:{}", self.host, self.port);
-        let mut stream = TcpStream::connect(&addr)
-            .map_err(|e| AdapterError::Unavailable(e.to_string()))?;
+        let mut stream =
+            TcpStream::connect(&addr).map_err(|e| AdapterError::Unavailable(e.to_string()))?;
         stream
             .set_read_timeout(Some(Duration::from_millis(self.timeout_ms)))
             .map_err(|e| AdapterError::Protocol(e.to_string()))?;
@@ -284,7 +295,6 @@ impl OllamaAdapter {
             .set_write_timeout(Some(Duration::from_millis(self.timeout_ms)))
             .map_err(|e| AdapterError::Protocol(e.to_string()))?;
 
-        use std::io::{Read, Write};
         let method = if body.is_some() { "POST" } else { "GET" };
         let body = body.unwrap_or("");
         let req = format!(
@@ -295,21 +305,43 @@ impl OllamaAdapter {
         );
         stream
             .write_all(req.as_bytes())
-            .map_err(|e| AdapterError::Unavailable(e.to_string()))?;
+            .map_err(&timeout_err)?;
         let mut buf = Vec::new();
-        stream
-            .read_to_end(&mut buf)
-            .map_err(|e| AdapterError::Unavailable(e.to_string()))?;
+        stream.read_to_end(&mut buf).map_err(&timeout_err)?;
         let resp = String::from_utf8_lossy(&buf).into_owned();
         let status = resp.lines().next().unwrap_or("");
         if !status.contains(" 200 ") {
-            return Err(AdapterError::Protocol(format!("http status: {}", status.trim())));
+            return Err(AdapterError::Protocol(format!(
+                "http status: {}",
+                status.trim()
+            )));
         }
         let body_start = resp
             .find("\r\n\r\n")
             .ok_or_else(|| AdapterError::Protocol("missing header separator".into()))?
             + 4;
         Ok(resp[body_start..].to_string())
+    }
+}
+
+/// A cancel handle sharing the adapter's cancel flag. Move or clone to any
+/// thread; `cancel()` aborts in-flight requests (WM-SPEC-025-R07).
+#[derive(Clone)]
+pub struct CancelHandle(Arc<AtomicBool>);
+
+impl CancelHandle {
+    pub fn cancel(&self) {
+        self.0.store(true, Ordering::SeqCst);
+    }
+
+    pub fn is_cancelled(&self) -> bool {
+        self.0.load(Ordering::SeqCst)
+    }
+}
+
+impl OllamaAdapter {
+    pub fn clone_cancel_handle(&self) -> CancelHandle {
+        CancelHandle(self.cancel_flag.clone())
     }
 }
 

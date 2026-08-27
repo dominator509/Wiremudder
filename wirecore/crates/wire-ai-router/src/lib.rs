@@ -253,21 +253,25 @@ impl AiRouter {
             };
         }
 
-        // 4. Deterministic ordering: local first, then cost, latency, id.
-        candidates.sort_by(|a, b| {
-            let la = if a.locality == "local" { 0 } else { 1 };
-            let lb = if b.locality == "local" { 0 } else { 1 };
-            la.cmp(&lb)
-                .then(
-                    a.cost_per_1k
-                        .partial_cmp(&b.cost_per_1k)
-                        .unwrap_or(std::cmp::Ordering::Equal),
-                )
-                .then(a.est_latency_ms.cmp(&b.est_latency_ms))
-                .then(a.route_id.cmp(&b.route_id))
-        });
-
-        let chosen = candidates[0];
+        // 4. Deterministic selection: pick the best candidate under the
+        //    same ordering (local first, then cost, latency, id) with an
+        //    O(n) min-scan instead of a full O(n log n) sort - only the
+        //    best route is needed, and routing must never add P0 work.
+        let chosen = candidates
+            .iter()
+            .min_by(|a, b| {
+                let la = if a.locality == "local" { 0 } else { 1 };
+                let lb = if b.locality == "local" { 0 } else { 1 };
+                la.cmp(&lb)
+                    .then(
+                        a.cost_per_1k
+                            .partial_cmp(&b.cost_per_1k)
+                            .unwrap_or(std::cmp::Ordering::Equal),
+                    )
+                    .then(a.est_latency_ms.cmp(&b.est_latency_ms))
+                    .then(a.route_id.cmp(&b.route_id))
+            })
+            .expect("candidates non-empty");
 
         // 5. Latency budget check on the chosen route.
         if chosen.est_latency_ms > inputs.latency_budget_ms && !chosen.remote_egress {
