@@ -180,3 +180,6 @@
 2026-08-27T21:32:51Z | ipman-hermes | EP-014 | MILESTONE_PASS | M1 EP-014 M1: ok; evidence=.agent/state/evidence/EP-014/M1
 2026-08-27T21:35:40Z | ipman-hermes | EP-014 | MILESTONE_PASS | M2 EP-014 M2: ok; evidence=.agent/state/evidence/EP-014/M2
 2026-08-27T21:36:18Z | ipman-hermes | EP-014 | MILESTONE_PASS | M3 EP-014 M3: ok; evidence=.agent/state/evidence/EP-014/M3
+2026-08-27T22:41:35Z | ipman-hermes | EP-014 | MILESTONE_PASS | M4 EP-014 M4: ok; evidence=.agent/state/evidence/EP-014/M4
+2026-08-27T22:41:35Z | ipman-hermes | EP-014 | MILESTONE_PASS | M5 EP-014 M5: ok; LF-014 green; requirements 11/11
+2026-08-27T22:41:35Z | ipman-hermes | EP-014 | NODE_DONE | node verify EP-014: ok; green/EP-014 tag created

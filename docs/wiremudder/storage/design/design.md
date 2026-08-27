@@ -14,6 +14,12 @@ chain:
 - `tools/wiremudder-backup/` - backup/export/verify shell tool using
   SQLite's online backup (VACUUM INTO).
 
+Storage is strictly OS-local: the database is a single file opened in
+WAL mode (`PRAGMA journal_mode=WAL`, `synchronous=NORMAL`) with no
+network, socket, or remote-I/O dependency in the crate. Access is
+permission-restricted by the operating system file permissions on the
+database path (SPEC-024, WM-SPEC-024-R02).
+
 The inherited Mudlet surface (TLuaInterpreter luasql.sqlite3,
 searchRoom, getRoomHidden) remains unedited. Evidence:
 WM-SRC-000101..000103.

@@ -15,3 +15,13 @@ CREATE TRIGGER IF NOT EXISTS transcripts_ai AFTER INSERT ON transcripts BEGIN
     INSERT INTO transcripts_fts(rowid, profile, direction, text)
     VALUES (new.seq, new.profile, new.direction, new.text);
 END;
+CREATE TRIGGER IF NOT EXISTS transcripts_ad AFTER DELETE ON transcripts BEGIN
+    INSERT INTO transcripts_fts(transcripts_fts, rowid, profile, direction, text)
+    VALUES ('delete', old.seq, old.profile, old.direction, old.text);
+END;
+CREATE TRIGGER IF NOT EXISTS transcripts_au AFTER UPDATE ON transcripts BEGIN
+    INSERT INTO transcripts_fts(transcripts_fts, rowid, profile, direction, text)
+    VALUES ('delete', old.seq, old.profile, old.direction, old.text);
+    INSERT INTO transcripts_fts(rowid, profile, direction, text)
+    VALUES (new.seq, new.profile, new.direction, new.text);
+END;
