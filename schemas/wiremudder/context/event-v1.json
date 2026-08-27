@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://wiremudder.dev/schemas/context/event-v1.json",
+  "title": "WireMudder Context Typed Event v1",
+  "description": "Deterministic typed events distilled from raw game text (WM-SPEC-013-R01, WM-FEAT-0196..0206).",
+  "type": "object",
+  "required": ["schema_version", "event"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "event": { "$ref": "#/definitions/event" }
+  },
+  "definitions": {
+    "event": {
+      "oneOf": [
+        { "type": "object", "required": ["RoomSeen"], "properties": { "RoomSeen": { "type": "object", "required": ["name", "exits"], "properties": { "name": { "type": "string" }, "exits": { "type": "array", "items": { "type": "string" } }, "description": { "type": ["string", "null"] } } } } },
+        { "type": "object", "required": ["ExitSeen"], "properties": { "ExitSeen": { "type": "object", "required": ["direction"], "properties": { "direction": { "type": "string" }, "destination": { "type": ["string", "null"] } } } } },
+        { "type": "object", "required": ["MobSeen"], "properties": { "MobSeen": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } } } },
+        { "type": "object", "required": ["PlayerSeen"], "properties": { "PlayerSeen": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } } } },
+        { "type": "object", "required": ["AnimalSeen"], "properties": { "AnimalSeen": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } } } },
+        { "type": "object", "required": ["PKerOrPvPerSeen"], "properties": { "PKerOrPvPerSeen": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } } } },
+        { "type": "object", "required": ["CombatStarted"], "properties": { "CombatStarted": { "type": "object", "required": ["target"], "properties": { "target": { "type": "string" } } } } },
+        { "type": "object", "required": ["CombatEnded"], "properties": { "CombatEnded": { "type": "object", "required": ["target"], "properties": { "target": { "type": ["string", "null"] } } } } },
+        { "type": "object", "required": ["ItemSeen"], "properties": { "ItemSeen": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" } } } } },
+        { "type": "object", "required": ["QuestClueSeen"], "properties": { "QuestClueSeen": { "type": "object", "required": ["clue"], "properties": { "clue": { "type": "string" } } } } },
+        { "type": "object", "required": ["PromptSeen"], "properties": { "PromptSeen": { "type": "object", "required": ["prompt"], "properties": { "prompt": { "type": "string" }, "health": { "type": ["integer", "null"] }, "mana": { "type": ["integer", "null"] } } } } },
+        { "type": "object", "required": ["HealthChanged"], "properties": { "HealthChanged": { "type": "object", "required": ["delta", "current"], "properties": { "delta": { "type": "integer" }, "current": { "type": "integer" } } } } },
+        { "type": "object", "required": ["CommandSucceeded"], "properties": { "CommandSucceeded": { "type": "object", "required": ["command"], "properties": { "command": { "type": "string" } } } } },
+        { "type": "object", "required": ["CommandFailed"], "properties": { "CommandFailed": { "type": "object", "required": ["command", "reason"], "properties": { "command": { "type": "string" }, "reason": { "type": "string" } } } } },
+        { "type": "object", "required": ["SocialMessageSeen"], "properties": { "SocialMessageSeen": { "type": "object", "required": ["channel", "sender", "text"], "properties": { "channel": { "type": "string" }, "sender": { "type": "string" }, "text": { "type": "string" } } } } },
+        { "type": "object", "required": ["PrivateMessageRedacted"], "properties": { "PrivateMessageRedacted": { "type": "object", "required": ["sender"], "properties": { "sender": { "type": "string" } } } } }
+      ]
+    }
+  }
+}

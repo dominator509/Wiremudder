@@ -1,0 +1,10 @@
+[package]
+name = "wire-token-budget"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder token and cost budgets: deterministic estimation, routing criteria, degradation policy, usage records, and untrusted-output validation (SPEC-013, EP-015)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

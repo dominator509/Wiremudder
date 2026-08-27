@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://wiremudder.dev/schemas/context/capsule-v1.json",
+  "title": "WireMudder Context Capsule v1",
+  "description": "Compact cited context capsule: preserved game state with spam removed (WM-SPEC-013-R02, WM-FEAT-0048).",
+  "type": "object",
+  "required": ["schema_version", "room", "exits", "entities"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "room": { "type": ["string", "null"] },
+    "exits": { "type": "array", "items": { "type": "string" } },
+    "entities": { "type": "array", "items": { "type": "string" }, "maxItems": 64 },
+    "combat": { "type": ["string", "null"] },
+    "health": { "type": ["integer", "null"] },
+    "mana": { "type": ["integer", "null"] },
+    "prompt": { "type": ["string", "null"] },
+    "quest_clues": { "type": "array", "items": { "type": "string" } },
+    "command_policy": { "type": "array", "items": { "type": "string" } },
+    "memory_citations": { "type": "array", "items": { "type": "string" } },
+    "safety_evidence": { "type": "array", "items": { "type": "string" } },
+    "user_request": { "type": ["string", "null"] },
+    "spam_collapsed": { "type": "integer", "minimum": 0 }
+  }
+}

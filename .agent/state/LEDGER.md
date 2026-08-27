@@ -185,3 +185,4 @@
 2026-08-27T22:41:35Z | ipman-hermes | EP-014 | NODE_DONE | node verify EP-014: ok; green/EP-014 tag created
 2026-08-27T22:42:51Z | ipman-hermes | EP-015 | LEASE | holder=ipman-hermes base=3ae36c74f0fd478335122e233619346afc718176
 2026-08-27T22:44:40Z | ipman-hermes | EP-015 | MILESTONE_PASS | M1 EP-015 M1: ok; evidence=.agent/state/evidence/EP-015/M1
+2026-08-27T22:48:43Z | ipman-hermes | EP-015 | MILESTONE_PASS | M2 EP-015 M2: ok; evidence=.agent/state/evidence/EP-015/M2
