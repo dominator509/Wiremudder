@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wiremudder/storage/transcript-export.schema.json",
+  "title": "WireMudder Transcript Export",
+  "description": "Append-only transcript export format (SPEC-011, EP-014). Schema version 1.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["seq", "profile", "direction", "text", "time"],
+    "properties": {
+      "seq": { "type": "integer", "minimum": 1 },
+      "profile": { "type": "string", "minLength": 1 },
+      "direction": { "enum": ["in", "out", "note"] },
+      "text": { "type": "string" },
+      "time": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

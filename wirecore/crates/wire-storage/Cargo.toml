@@ -1,0 +1,10 @@
+[package]
+name = "wire-storage"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder local storage: append-only transcript metadata, FTS5 search, versioned SQLite migrations, backup/restore/export/delete, bounded async write queue (SPEC-011, SPEC-023, EP-014)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
