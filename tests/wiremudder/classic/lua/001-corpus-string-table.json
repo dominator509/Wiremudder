@@ -9,17 +9,17 @@
   "reference_trace": [
     {"seq": 1, "kind": "lua_eval", "payload": "string.upper('mud')"},
     {"seq": 2, "kind": "lua_result", "payload": "MUD"},
-    {"seq": 3, "kind": "lua_eval", "payload": "t = {a=1, b=2}; return #t"},
+    {"seq": 3, "kind": "lua_eval", "payload": "#{'a', 'b'}"},
     {"seq": 4, "kind": "lua_result", "payload": "2"},
-    {"seq": 5, "kind": "lua_eval", "payload": "return string.format('%s-%d', 'r', 5)"},
+    {"seq": 5, "kind": "lua_eval", "payload": "string.format('%s-%d', 'r', 5)"},
     {"seq": 6, "kind": "lua_result", "payload": "r-5"}
   ],
   "wiremudder_trace": [
     {"seq": 1, "kind": "lua_eval", "payload": "string.upper('mud')"},
     {"seq": 2, "kind": "lua_result", "payload": "MUD"},
-    {"seq": 3, "kind": "lua_eval", "payload": "t = {a=1, b=2}; return #t"},
+    {"seq": 3, "kind": "lua_eval", "payload": "#{'a', 'b'}"},
     {"seq": 4, "kind": "lua_result", "payload": "2"},
-    {"seq": 5, "kind": "lua_eval", "payload": "return string.format('%s-%d', 'r', 5)"},
+    {"seq": 5, "kind": "lua_eval", "payload": "string.format('%s-%d', 'r', 5)"},
     {"seq": 6, "kind": "lua_result", "payload": "r-5"}
   ]
 }
