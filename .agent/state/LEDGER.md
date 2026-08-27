@@ -52,3 +52,5 @@
 2026-08-27T10:50:30Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-27T10:50:40Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-27T10:50:41Z | ipman-hermes | EP-000 | MILESTONE_PASS | M5 EP-000 M5: ok; evidence=.agent/state/evidence/EP-000/M5
+2026-08-27T10:50:53Z | ipman-hermes | EP-000 | NODE_DONE | node verify EP-000: ok; green/EP-000 tag created
+2026-08-27T10:51:02Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
