@@ -1,0 +1,16 @@
+{
+  "agent_id": "ipman-hermes",
+  "command": [
+    "sh",
+    "scripts/node-verifiers/EP-002.sh",
+    "M3"
+  ],
+  "exit_code": 0,
+  "expected_sentinel": "EP-002 M3: ok",
+  "milestone": "M3",
+  "node": "EP-002",
+  "observed_at": "2026-08-27T11:56:34Z",
+  "output_sha256": "0c9eac148d3048d43efe0ac0cdc2e55debc38cd9a24ec1fb214be00628e4d598",
+  "schema_version": 1,
+  "sentinel_observed": true
+}
