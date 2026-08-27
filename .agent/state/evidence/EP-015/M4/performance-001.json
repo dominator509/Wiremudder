@@ -1,0 +1,28 @@
+{
+  "node": "EP-015",
+  "milestone": "M4",
+  "fixture": "context-distill-budget",
+  "hardware": {
+    "uname": {
+      "system": "Linux",
+      "node": "vmi3357656",
+      "release": "6.8.0-106-generic",
+      "version": "#106-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar  6 07:58:08 UTC 2026",
+      "machine": "x86_64",
+      "processor": "x86_64"
+    },
+    "cpu_count": 6
+  },
+  "workload": {
+    "lines": 20000,
+    "events": 2808
+  },
+  "per_line_ms": 0.00010072045,
+  "total_ms": 2.014409,
+  "capsule_bytes": 305,
+  "budgets_ms": {
+    "per_line": 0.1
+  },
+  "ok": true,
+  "observed_at": "2026-08-27T22:52:27Z"
+}

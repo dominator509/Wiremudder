@@ -306,7 +306,12 @@ pub fn validate_output(text: &str, policy: &[&str], require_citation: bool) -> O
     if require_citation && !text.contains('[') {
         reasons.push("missing citation".into());
     }
-    if text.contains("Bearer ") || text.contains("api_key=") || text.contains("password=") {
+    if text.contains("Bearer ")
+        || text.contains("api_key=")
+        || text.contains("token=")
+        || text.contains("secret=")
+        || text.contains("password=")
+    {
         reasons.push("secret leakage".into());
     }
     // Command safety: policy-listed dangerous commands are refused.

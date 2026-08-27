@@ -302,19 +302,20 @@ pub fn parse_line(line: &str) -> Vec<Event> {
         return out;
     }
 
-    // Mobs/animals: "A <name> is here." / "A huge wolf is here."
-    if let Some(name) = strip_prefix(t, "A ") {
-        if let Some(name) = name.strip_suffix(" is here.") {
+    // Mobs/animals: "A <name> is here." with trailing junk tolerated
+    // (injected text after the marker stays unparsed DATA).
+    if let Some(rest) = strip_prefix(t, "A ") {
+        if let Some(name) = name_before_marker(rest, " is here") {
             out.push(Event::MobSeen {
-                name: name.to_string(),
+                name: name.trim().to_string(),
             });
             return out;
         }
     }
-    if let Some(name) = strip_prefix(t, "An ") {
-        if let Some(name) = name.strip_suffix(" is here.") {
+    if let Some(rest) = strip_prefix(t, "An ") {
+        if let Some(name) = name_before_marker(rest, " is here") {
             out.push(Event::AnimalSeen {
-                name: name.to_string(),
+                name: name.trim().to_string(),
             });
             return out;
         }
@@ -322,36 +323,36 @@ pub fn parse_line(line: &str) -> Vec<Event> {
 
     // Items first ("You see a <item> here.") so item names are never
     // mistaken for players; players use the bare "You see <Name> here."
-    if let Some(name) = strip_prefix(t, "You see a ") {
-        if let Some(name) = name.strip_suffix(" here.") {
+    if let Some(rest) = strip_prefix(t, "You see a ") {
+        if let Some(name) = name_before_marker(rest, " here") {
             out.push(Event::ItemSeen {
-                name: name.to_string(),
+                name: name.trim().to_string(),
             });
             return out;
         }
     }
-    if let Some(name) = strip_prefix(t, "You see an ") {
-        if let Some(name) = name.strip_suffix(" here.") {
+    if let Some(rest) = strip_prefix(t, "You see an ") {
+        if let Some(name) = name_before_marker(rest, " here") {
             out.push(Event::ItemSeen {
-                name: name.to_string(),
+                name: name.trim().to_string(),
             });
             return out;
         }
     }
     // Players: "<name> is standing here."
-    if let Some(name) = strip_prefix(t, "You see ") {
-        if let Some(name) = name.strip_suffix(" here.") {
+    if let Some(rest) = strip_prefix(t, "You see ") {
+        if let Some(name) = name_before_marker(rest, " here") {
             out.push(Event::PlayerSeen {
-                name: name.to_string(),
+                name: name.trim().to_string(),
             });
             return out;
         }
     }
     // PKer/PvPer: "<name> is here (PK)."
-    if let Some(name) = strip_prefix(t, "You notice ") {
-        if let Some(name) = name.strip_suffix(" (PK).") {
+    if let Some(rest) = strip_prefix(t, "You notice ") {
+        if let Some(name) = name_before_marker(rest, " (PK)") {
             out.push(Event::PKerOrPvPerSeen {
-                name: name.to_string(),
+                name: name.trim().to_string(),
             });
             return out;
         }
@@ -521,6 +522,23 @@ fn extract_sender(t: &str) -> String {
 
 fn strip_prefix<'a>(s: &'a str, prefix: &str) -> Option<&'a str> {
     s.strip_prefix(prefix)
+}
+
+/// Extract the name before `marker` in `rest`, tolerating trailing junk
+/// (the marker must be followed by end, '.', ',', '!', or whitespace).
+fn name_before_marker<'a>(rest: &'a str, marker: &str) -> Option<&'a str> {
+    let idx = rest.find(marker)?;
+    let after = &rest[idx + marker.len()..];
+    let ok = after.is_empty()
+        || after.starts_with('.')
+        || after.starts_with(',')
+        || after.starts_with('!')
+        || after.starts_with(' ');
+    if ok {
+        Some(&rest[..idx])
+    } else {
+        None
+    }
 }
 
 fn strip_suffix<'a>(s: &'a str, suffix: &str) -> Option<&'a str> {
