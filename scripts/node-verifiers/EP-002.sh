@@ -18,8 +18,8 @@ check_remotes() {
     *) fail "upstream remote is not Mudlet: $upstream" ;;
   esac
   case "$origin" in
-    https://github.com/dominator509/WireMudder.git|git@github.com:dominator509/WireMudder.git) ;;
-    *) fail "origin remote is not dominator509/WireMudder: $origin" ;;
+    https://github.com/dominator509/Wiremudder.git|git@github.com:dominator509/Wiremudder.git|https://github.com/dominator509/WireMudder.git|git@github.com:dominator509/WireMudder.git) ;;
+    *) fail "origin remote is not dominator509/Wiremudder: $origin" ;;
   esac
 }
 check_pinned_commit() {

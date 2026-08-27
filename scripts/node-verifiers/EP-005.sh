@@ -50,7 +50,8 @@ case "${1:-}" in
     [ -d wirecore/crates/wirecore-runtime ] || fail "missing wirecore-runtime"
     [ -d wirecore/crates/wire-contracts ] || fail "missing wire-contracts"
     [ -d schemas/wiremudder/bridge ] || fail "missing bridge schemas"
-    [ -f wirecore/Cargo.toml ] || fail "missing wirecore workspace"
+    [ -f wirecore/crates/wire-contracts/Cargo.toml ] || fail "missing wire-contracts manifest"
+    [ -f wirecore/crates/wirecore-runtime/Cargo.toml ] || fail "missing wirecore-runtime manifest"
     [ -d tests/wiremudder/ep005/unit ] || fail "missing unit tests"
     for t in tests/wiremudder/ep005/unit/*.sh; do
       [ -f "$t" ] || fail "no unit tests found"

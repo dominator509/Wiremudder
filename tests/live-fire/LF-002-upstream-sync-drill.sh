@@ -16,7 +16,7 @@ echo "observed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 up=$(git config --get remote.upstream.url)
 or=$(git config --get remote.origin.url)
 case "$up" in https://github.com/Mudlet/Mudlet.git|git@github.com:Mudlet/Mudlet.git) ;; *) fail "upstream=$up" ;; esac
-case "$or" in https://github.com/dominator509/WireMudder.git|git@github.com:dominator509/WireMudder.git) ;; *) fail "origin=$or" ;; esac
+case "$or" in https://github.com/dominator509/Wiremudder.git|git@github.com:dominator509/Wiremudder.git|https://github.com/dominator509/WireMudder.git|git@github.com:dominator509/WireMudder.git) ;; *) fail "origin=$or" ;; esac
 echo "remotes=upstream:$up origin:$or"
 
 # 2. Fetch upstream and verify provenance.
