@@ -136,3 +136,4 @@
 2026-08-27T16:54:18Z | ipman-hermes | EP-008 | MILESTONE_PASS | M2 EP-008 M2: ok; evidence=.agent/state/evidence/EP-008/M2
 2026-08-27T16:54:18Z | ipman-hermes | EP-008 | HEARTBEAT | holder=ipman-hermes
 2026-08-27T16:58:02Z | ipman-hermes | EP-008 | MILESTONE_PASS | M3 EP-008 M3: ok; evidence=.agent/state/evidence/EP-008/M3
+2026-08-27T17:00:26Z | ipman-hermes | EP-008 | MILESTONE_PASS | M4 EP-008 M4: ok; evidence=.agent/state/evidence/EP-008/M4

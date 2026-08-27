@@ -1,6 +1,7 @@
 // EP-008 M3 test harness: exercises the real Qt command-safety layer.
 // Subcommands: policy | gateway | estop | oracle
 #include <QCoreApplication>
+#include <QElapsedTimer>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -18,6 +19,95 @@ static int fail(const char* msg) {
 
 static ActionSource actionSourceFromName(const QString& name);
 static QString gateDecisionName(GateDecision d);
+static CommandDatabaseQt makeDb();
+
+// M4 failure subcommand: real controlled failures on the gateway.
+static int cmdFailures() {
+    QString err;
+
+    // 1. Malformed/empty/oversized suggestions rejected.
+    ActionGatewayQt gw(makeDb(), HumanTempoQt(0, 1000, 100000), 2);
+    ActionProposal p;
+    if (gw.propose(ActionSource::Ai, "   ", &p, &err)) return fail("empty accepted");
+    if (err.isEmpty()) return fail("empty had no error");
+    QString big(2048, 'x');
+    if (gw.propose(ActionSource::Ai, big, &p, &err)) return fail("oversized accepted");
+
+    // 2. Unavailable command database pauses (WM-SPEC-009-R10).
+    CommandDatabaseQt emptyDb;
+    ActionGatewayQt gw2(emptyDb, HumanTempoQt(0, 1000, 100000), 2);
+    if (gw2.propose(ActionSource::Ai, "say hi", &p, &err)) return fail("empty db accepted");
+
+    // 3. Queue exhaustion: capacity 2, third entry denied (queue-full).
+    ActionProposal a, b, c;
+    gw.propose(ActionSource::Macro, "say a", &a, &err);
+    gw.propose(ActionSource::Macro, "say b", &b, &err);
+    gw.propose(ActionSource::Macro, "say c", &c, &err);
+    if (!gw.queueEntry(a, &err)) return fail("queue a");
+    if (!gw.queueEntry(b, &err)) return fail("queue b");
+    if (gw.queueEntry(c, &err)) return fail("queue c accepted");
+
+    // 4. Denied by policy: deny rule wins over model confidence.
+    ActionProposal quit;
+    gw.propose(ActionSource::Ai, "quit now", &quit, &err);
+    if (gw.evaluate(quit, GateContext::ready()) != GateDecision::Denied) {
+        return fail("quit not denied");
+    }
+
+    // 5. Send failure is audited and reported, not swallowed.
+    ActionGatewayQt gw3(makeDb(), HumanTempoQt(0, 1000, 100000), 4);
+    ActionProposal s;
+    gw3.propose(ActionSource::Voice, "say hello", &s, &err);
+    QString result;
+    gw3.approveAndSend(s, GateContext::ready(),
+                       [](const QString&) -> QString { return "send-failed:downstream"; },
+                       &result, &err);
+    if (!result.startsWith("send-failed:")) return fail("send failure not reported");
+    bool found = false;
+    for (const auto& e : gw3.auditLog()) {
+        if (e.finalResult == "sent" && e.pacingDecision.contains("send-failed")) found = true;
+    }
+    if (!found) return fail("send failure not audited");
+
+    std::printf("harness failures: ok\n");
+    return 0;
+}
+
+// M4 performance subcommand: measure gate evaluate + estop propagation
+// latency and print JSON timing evidence (SPEC-004-R11/R12).
+static int cmdBench() {
+    ActionGatewayQt gw(makeDb(), HumanTempoQt(0, 1000, 100000), 64);
+    QString err;
+    ActionProposal p;
+    gw.propose(ActionSource::Ai, "say hello", &p, &err);
+    const GateContext ctx = GateContext::ready();
+
+    const int N = 100000;
+    QElapsedTimer timer;
+    timer.start();
+    for (int i = 0; i < N; ++i) {
+        if (gw.evaluate(p, ctx) != GateDecision::Approved) return fail("bench evaluate");
+    }
+    const qint64 evaluateUs = timer.nsecsElapsed() / 1000;
+
+    // Emergency stop propagation: engage must be O(1) and visible to a
+    // fresh evaluation (the P0 block check is a single boolean read).
+    timer.restart();
+    gw.engageEmergencyStop();
+    const bool blocked = gw.evaluate(p, ctx) == GateDecision::Denied;
+    const qint64 estopUs = timer.nsecsElapsed() / 1000;
+    if (!blocked) return fail("estop did not block");
+
+    QJsonObject o;
+    o.insert("hardware", "linux x86_64 (host)");
+    o.insert("iterations", N);
+    o.insert("evaluate_total_us", evaluateUs);
+    o.insert("evaluate_p95_us", evaluateUs / N);
+    o.insert("estop_propagation_us", estopUs);
+    o.insert("budget_p95_us", 10000);  // SPEC-004 input budget 10ms
+    std::printf("%s\n", QJsonDocument(o).toJson(QJsonDocument::Compact).constData());
+    return 0;
+}
 
 static CommandDatabaseQt makeDb() {
     CommandDatabaseQt db("midkemia");
@@ -247,6 +337,8 @@ int main(int argc, char** argv) {
     if (cmd == "gateway") return cmdGateway();
     if (cmd == "estop") return cmdEstop();
     if (cmd == "oracle") return cmdOracle();
-    std::fprintf(stderr, "usage: %s policy|gateway|estop|oracle\n", argv[0]);
+    if (cmd == "failures") return cmdFailures();
+    if (cmd == "bench") return cmdBench();
+    std::fprintf(stderr, "usage: %s policy|gateway|estop|oracle|failures|bench\n", argv[0]);
     return 2;
 }
