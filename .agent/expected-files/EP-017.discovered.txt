@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-27T23:44:18Z","agent_id":"unknown-agent","node":"EP-017","path":"src/CMakeLists.txt","rationale":"Copilot UI sources must compile into the actual Mudlet-derived client; src/CMakeLists.txt set(mudlet_SRCS) is the explicit build list and the smallest evidence-backed inherited integration patch (execplan M1 goal).","repository_commit":"4fec153eefe5121d67894fd63bab0ce64e834b97","rollback":"Remove copilot .cpp entries from mudlet_SRCS and delete the copilot UI sources; client build returns to pre-EP-017 state.","source_evidence_id":"WM-SRC-000118","test":"tests/wiremudder/ep017/contract/build-integration.sh"}

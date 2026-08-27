@@ -309,11 +309,15 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 
 # 13. Decision Log
 
-- 2026-08-27 (M1): Player Copilot lives in a new standalone crate
+- 2026-08-27 (M1, CORRECTED): Player Copilot lives in a new standalone crate
   (wirecore/crates/wire-copilot) plus a new Qt UI boundary
   (src/wiremudder/ui/copilot) following the inherited pane pattern
-  (terminal_boundary.h precedent, WM-SRC-000114). No inherited file is
-  edited; discovered-path rows stay 0.
+  (terminal_boundary.h precedent, WM-SRC-000114). The copilot UI is REAL only
+  if compiled into the client: src/CMakeLists.txt set(mudlet_SRCS) is the
+  explicit build list and the smallest evidence-backed inherited integration
+  patch (WM-SRC-000118). Authorized via discovered-path amendment EP-017 ->
+  src/CMakeLists.txt; contract test build-integration.sh fails if a copilot
+  UI source exists without a build entry. No other inherited file is edited.
 - 2026-08-27 (M1): the copilot consumes approved context only (EP-015
   ContextCapsule) and routes through EP-016; it is suggestion-only and
   command-capable output enters SPEC-009 (contract test enforces the

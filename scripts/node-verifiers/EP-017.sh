@@ -27,6 +27,11 @@ case "${1:-}" in
     [ -f .agent/node-contracts/EP-017.md ] || fail "missing node contract"
     [ -f .agent/expected-files/EP-017.txt ] || fail "missing static fence"
     [ -f .agent/expected-files/EP-017.discovered.txt ] || fail "missing discovered amendment"
+    # The copilot UI must be compiled into the client: the discovered
+    # amendment MUST authorize the inherited build list (smallest integration
+    # patch, execplan M1 goal). Zero-integration is a deviation, not a choice.
+    grep -q '"path":"src/CMakeLists.txt"' .agent/expected-files/EP-017.discovered.txt \
+      || fail "discovered amendment missing inherited build list (src/CMakeLists.txt)"
     for m in M1 M2 M3 M4 M5; do
       [ -f ".agent/milestone-files/EP-017-$m.txt" ] || fail "missing milestone fence $m"
     done

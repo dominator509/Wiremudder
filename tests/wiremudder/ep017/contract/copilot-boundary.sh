@@ -25,8 +25,13 @@ grep -q "SPEC-009" .agent/specs/SPEC-014-agents-copilot-soul-and-guarded-autopil
 grep -q "never hidden-sends commands" .agent/node-contracts/EP-017.md \
   || fail "suggestion-only obligation missing"
 
-# Evidence locks the UI boundary precedent.
+# Evidence locks the UI boundary precedent AND the inherited build-list
+# integration (WM-SRC-000114 pane pattern; WM-SRC-000118 mudlet_SRCS).
 grep -qE '"symbol_or_range": *"TerminalPaneQt"' .agent/state/source-evidence.jsonl \
   || fail "no source evidence for UI boundary"
+grep -qE '"symbol_or_range": *"mudlet_SRCS"' .agent/state/source-evidence.jsonl \
+  || fail "no source evidence for build-list integration"
+grep -q '"path":"src/CMakeLists.txt"' .agent/expected-files/EP-017.discovered.txt \
+  || fail "discovered amendment missing src/CMakeLists.txt"
 
 echo "contract copilot-boundary: ok"
