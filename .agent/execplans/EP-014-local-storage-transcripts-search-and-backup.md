@@ -310,7 +310,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -318,11 +318,13 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-27: Inherited Mudlet loads luasql.sqlite3 only via TLuaInterpreter for Lua-side DB support; there is no QSqlDatabase surface and no existing wirecore migrations directory. EP-014 builds namespaced storage from scratch (WM-SRC-000101..000103).
+- 2026-08-27: Host sqlite3 is 3.45.1 (2024-01-30); the wire-storage crate and backup tool pin against the SQLite C API without editing inherited paths.
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-27: Storage core is a standalone Rust crate `wirecore/crates/wire-storage/` using the SQLite C API via rusqlite-style bindings, with versioned SQL migrations under `wirecore/migrations/` and JSON schemas under `schemas/wiremudder/storage/`. Inherited TLuaInterpreter remains unedited. Evidence: WM-SRC-000101..000103; contract EP-014 authorized boundaries. Alternatives: wrapping QSqlDatabase. Consequence: no inherited edit; cross-platform pure Rust core. Reversal: none without ADR.
+- 2026-08-27: All gameplay storage writes are bounded asynchronous queue operations (WM-SPEC-011-R06); migrations are versioned, backup-aware, resumable, and idempotent (WM-SPEC-011-R07, WM-SPEC-023-R08). Backup/export/restore live-fire proof is LF-014 (WM-SPEC-011-R08).
 
 # 14. Outcomes and Retrospective
 
