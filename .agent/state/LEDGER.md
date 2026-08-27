@@ -197,3 +197,5 @@
 2026-08-27T23:25:57Z | ipman-hermes | EP-016 | MILESTONE_PASS | M4 EP-016 M4: ok; evidence=.agent/state/evidence/EP-016/M4
 2026-08-27T23:28:06Z | ipman-hermes | EP-016 | MILESTONE_PASS | M5 EP-016 M5: ok; evidence=.agent/state/evidence/EP-016/M5
 2026-08-27T23:28:29Z | ipman-hermes | EP-016 | NODE_DONE | EP-016 complete: node verify EP-016: ok; green/EP-016
+2026-08-27T23:29:34Z | ipman-hermes | EP-017 | LEASE | holder=ipman-hermes base=a101d1c9286fd27c09262b3b66212903625d7ca9
+2026-08-27T23:34:31Z | ipman-hermes | EP-017 | MILESTONE_PASS | M1 EP-017 M1: ok; evidence=.agent/state/evidence/EP-017/M1

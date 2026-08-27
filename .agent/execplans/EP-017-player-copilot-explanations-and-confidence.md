@@ -297,7 +297,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -309,7 +309,15 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-27 (M1): Player Copilot lives in a new standalone crate
+  (wirecore/crates/wire-copilot) plus a new Qt UI boundary
+  (src/wiremudder/ui/copilot) following the inherited pane pattern
+  (terminal_boundary.h precedent, WM-SRC-000114). No inherited file is
+  edited; discovered-path rows stay 0.
+- 2026-08-27 (M1): the copilot consumes approved context only (EP-015
+  ContextCapsule) and routes through EP-016; it is suggestion-only and
+  command-capable output enters SPEC-009 (contract test enforces the
+  obligation).
 
 # 14. Outcomes and Retrospective
 
