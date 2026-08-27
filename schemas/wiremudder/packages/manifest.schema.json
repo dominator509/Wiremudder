@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/packages/manifest.schema.json",
+  "title": "WireMudder Package Manifest",
+  "description": "Package manifest per WM-SPEC-008-R03: version, provenance, license, content hash, requested permissions, update policy, compatibility.",
+  "type": "object",
+  "required": ["name", "version", "provenance", "license", "content_sha256", "requested_permissions", "update_policy", "compatibility"],
+  "properties": {
+    "name": {"type": "string"},
+    "version": {"type": "string"},
+    "provenance": {
+      "oneOf": [
+        {"type": "object", "required": ["kind", "author", "added_at"],
+         "properties": {"kind": {"const": "user_local"}, "author": {"type": "string"}, "added_at": {"type": "string"}}},
+        {"type": "object", "required": ["kind", "signer", "signature"],
+         "properties": {"kind": {"const": "signed"}, "signer": {"type": "string"}, "signature": {"type": "string"}}}
+      ]
+    },
+    "license": {"type": "string"},
+    "content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+    "requested_permissions": {
+      "type": "array",
+      "items": {"enum": ["filesystem", "network", "microphone", "ai_egress", "secrets", "routing", "updater", "telemetry", "ui", "command_send", "memory", "renderer", "audio"]}
+    },
+    "update_policy": {
+      "oneOf": [
+        {"type": "object", "required": ["kind"], "properties": {"kind": {"const": "never"}}},
+        {"type": "object", "required": ["kind"], "properties": {"kind": {"const": "manual"}}},
+        {"type": "object", "required": ["kind", "max_major"], "properties": {"kind": {"const": "auto"}, "max_major": {"type": "integer", "minimum": 0}}}
+      ]
+    },
+    "compatibility": {
+      "type": "object",
+      "required": ["wiremudder", "mudlet"],
+      "properties": {"wiremudder": {"type": "string"}, "mudlet": {"type": "string"}}
+    }
+  }
+}
