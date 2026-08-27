@@ -1,0 +1,23 @@
+{
+  "fixture_id": "ansi-truecolor-basic",
+  "feature": "WM-FEAT-0002",
+  "spec": "WM-SPEC-005-R02",
+  "level": "semantic",
+  "description": "ANSI/xterm/truecolor support path: 24-bit truecolor sequence renders as foreground color attributes; standard SGR reset returns to default. Grounded in inherited TConsole rendering (WM-SRC-000062).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "ansi_reset", "payload": "\\x1b[0m"},
+    {"seq": 2, "kind": "truecolor_fg", "payload": "\\x1b[38;2;255;0;128m"},
+    {"seq": 3, "kind": "text_run", "payload": "Hello Truecolor"},
+    {"seq": 4, "kind": "sgr_reset", "payload": "\\x1b[0m"},
+    {"seq": 5, "kind": "text_run", "payload": "plain"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "ansi_reset", "payload": "\\x1b[0m"},
+    {"seq": 2, "kind": "truecolor_fg", "payload": "\\x1b[38;2;255;0;128m"},
+    {"seq": 3, "kind": "text_run", "payload": "Hello Truecolor"},
+    {"seq": 4, "kind": "sgr_reset", "payload": "\\x1b[0m"},
+    {"seq": 5, "kind": "text_run", "payload": "plain"}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "fixture_id": "automation-alias-expansion",
+  "feature": "WM-FEAT-0005",
+  "spec": "WM-SPEC-005-R03",
+  "level": "semantic",
+  "description": "Alias engine: pattern 'nw' expands to 'go north' before send. Grounded in inherited TAlias pattern expansion (WM-SRC-000064).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "input", "payload": "nw"},
+    {"seq": 2, "kind": "alias_match", "payload": "nw"},
+    {"seq": 3, "kind": "command_send", "payload": "go north"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "input", "payload": "nw"},
+    {"seq": 2, "kind": "alias_match", "payload": "nw"},
+    {"seq": 3, "kind": "command_send", "payload": "go north"}
+  ]
+}

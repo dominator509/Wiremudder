@@ -1,0 +1,20 @@
+{
+  "fixture_id": "import-package-confirmation-gate",
+  "feature": "WM-FEAT-0020",
+  "spec": "WM-SPEC-008-R06",
+  "level": "subset",
+  "description": "Imported automation starts disabled or confirmation-gated and displays a migration report. WireMudder adds a confirmation gate event not present in the reference import flow (WM-SPEC-008-R06).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "package_import", "payload": "dummy pack"},
+    {"seq": 2, "kind": "import_report", "payload": "1 trigger 2 aliases"},
+    {"seq": 3, "kind": "automation_available", "payload": "disabled"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "package_import", "payload": "dummy pack"},
+    {"seq": 2, "kind": "import_report", "payload": "1 trigger 2 aliases"},
+    {"seq": 3, "kind": "confirmation_gate", "payload": "user must confirm"},
+    {"seq": 4, "kind": "automation_available", "payload": "disabled"}
+  ]
+}

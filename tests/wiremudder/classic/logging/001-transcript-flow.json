@@ -1,0 +1,23 @@
+{
+  "fixture_id": "logging-transcript-flow",
+  "feature": "WM-FEAT-0020",
+  "spec": "WM-SPEC-005-R02",
+  "level": "semantic",
+  "description": "Logging/transcript flow: log open, lines appended with timestamps, log close produces a transcript artifact. Grounded in inherited TConsole logging surface (WM-SRC-000062, WM-SRC-000076).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "log_open", "payload": "transcript.log"},
+    {"seq": 2, "kind": "log_line", "payload": "You have entered the hall."},
+    {"seq": 3, "kind": "log_line", "payload": "The guard eyes you warily."},
+    {"seq": 4, "kind": "log_close", "payload": "transcript.log"},
+    {"seq": 5, "kind": "log_artifact", "payload": "2 lines"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "log_open", "payload": "transcript.log"},
+    {"seq": 2, "kind": "log_line", "payload": "You have entered the hall."},
+    {"seq": 3, "kind": "log_line", "payload": "The guard eyes you warily."},
+    {"seq": 4, "kind": "log_close", "payload": "transcript.log"},
+    {"seq": 5, "kind": "log_artifact", "payload": "2 lines"}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "fixture_id": "lua-corpus-string-table",
+  "feature": "WM-FEAT-0013",
+  "spec": "WM-SPEC-005-R06",
+  "level": "semantic",
+  "description": "Lua 5.1 compatibility corpus: string library, table construction, and length operator behave per Lua 5.1 contract. Grounded in inherited TLuaInterpreter Lua 5.1 runtime (WM-SRC-000069, WM-SPEC-008-R01).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "lua_eval", "payload": "string.upper('mud')"},
+    {"seq": 2, "kind": "lua_result", "payload": "MUD"},
+    {"seq": 3, "kind": "lua_eval", "payload": "t = {a=1, b=2}; return #t"},
+    {"seq": 4, "kind": "lua_result", "payload": "2"},
+    {"seq": 5, "kind": "lua_eval", "payload": "return string.format('%s-%d', 'r', 5)"},
+    {"seq": 6, "kind": "lua_result", "payload": "r-5"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "lua_eval", "payload": "string.upper('mud')"},
+    {"seq": 2, "kind": "lua_result", "payload": "MUD"},
+    {"seq": 3, "kind": "lua_eval", "payload": "t = {a=1, b=2}; return #t"},
+    {"seq": 4, "kind": "lua_result", "payload": "2"},
+    {"seq": 5, "kind": "lua_eval", "payload": "return string.format('%s-%d', 'r', 5)"},
+    {"seq": 6, "kind": "lua_result", "payload": "r-5"}
+  ]
+}

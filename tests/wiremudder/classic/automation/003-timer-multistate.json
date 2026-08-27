@@ -1,0 +1,21 @@
+{
+  "fixture_id": "automation-timer-multistate",
+  "feature": "WM-FEAT-0007",
+  "spec": "WM-SPEC-005-R03",
+  "level": "semantic",
+  "description": "Multi-state trigger driven by a timer: state A on first fire, transitions to state B on second fire. Grounded in inherited TTimer + TTrigger multi-state semantics (WM-SRC-000063, WM-SRC-000065).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "timer_fire", "payload": "state_a"},
+    {"seq": 2, "kind": "trigger_state", "payload": "a"},
+    {"seq": 3, "kind": "timer_fire", "payload": "state_b"},
+    {"seq": 4, "kind": "trigger_state", "payload": "b"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "timer_fire", "payload": "state_a"},
+    {"seq": 2, "kind": "trigger_state", "payload": "a"},
+    {"seq": 3, "kind": "timer_fire", "payload": "state_b"},
+    {"seq": 4, "kind": "trigger_state", "payload": "b"}
+  ]
+}

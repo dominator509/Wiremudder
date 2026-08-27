@@ -1,0 +1,29 @@
+{
+  "fixture_id": "automation-macro-speedwalk-throttle",
+  "feature": "WM-FEAT-0009",
+  "spec": "WM-SPEC-005-R03",
+  "level": "semantic",
+  "description": "Speedwalk with throttling: macro key triggers speedwalk from room 1 to room 4 via path with pacing delay between steps. Grounded in inherited T2DMap::initiateSpeedWalk + speedwalk throttle (WM-SRC-000068).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "macro_hotkey", "payload": "F5"},
+    {"seq": 2, "kind": "speedwalk_start", "payload": "room 1 to room 4"},
+    {"seq": 3, "kind": "speedwalk_step", "payload": "n"},
+    {"seq": 4, "kind": "throttle_wait", "payload": "250ms"},
+    {"seq": 5, "kind": "speedwalk_step", "payload": "e"},
+    {"seq": 6, "kind": "throttle_wait", "payload": "250ms"},
+    {"seq": 7, "kind": "speedwalk_step", "payload": "n"},
+    {"seq": 8, "kind": "speedwalk_done", "payload": "arrived room 4"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "macro_hotkey", "payload": "F5"},
+    {"seq": 2, "kind": "speedwalk_start", "payload": "room 1 to room 4"},
+    {"seq": 3, "kind": "speedwalk_step", "payload": "n"},
+    {"seq": 4, "kind": "throttle_wait", "payload": "250ms"},
+    {"seq": 5, "kind": "speedwalk_step", "payload": "e"},
+    {"seq": 6, "kind": "throttle_wait", "payload": "250ms"},
+    {"seq": 7, "kind": "speedwalk_step", "payload": "n"},
+    {"seq": 8, "kind": "speedwalk_done", "payload": "arrived room 4"}
+  ]
+}

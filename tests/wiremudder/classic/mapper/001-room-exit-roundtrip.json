@@ -1,0 +1,23 @@
+{
+  "fixture_id": "mapper-room-exit-roundtrip",
+  "feature": "WM-FEAT-0009",
+  "spec": "WM-SPEC-005-R07",
+  "level": "semantic",
+  "description": "Mapper room/exit round trip: room 10 has exit north to room 11 with weight 2; serialization preserves room, exit, direction, and weight. Grounded in inherited TMap room/exit model (WM-SRC-000072).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "mapper_room_add", "payload": "room 10"},
+    {"seq": 2, "kind": "mapper_room_add", "payload": "room 11"},
+    {"seq": 3, "kind": "mapper_exit_add", "payload": "room 10 north to 11 weight 2"},
+    {"seq": 4, "kind": "mapper_serialize", "payload": "rooms 2 exits 1"},
+    {"seq": 5, "kind": "mapper_roundtrip", "payload": "room 10 exit north -> room 11"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "mapper_room_add", "payload": "room 10"},
+    {"seq": 2, "kind": "mapper_room_add", "payload": "room 11"},
+    {"seq": 3, "kind": "mapper_exit_add", "payload": "room 10 north to 11 weight 2"},
+    {"seq": 4, "kind": "mapper_serialize", "payload": "rooms 2 exits 1"},
+    {"seq": 5, "kind": "mapper_roundtrip", "payload": "room 10 exit north -> room 11"}
+  ]
+}

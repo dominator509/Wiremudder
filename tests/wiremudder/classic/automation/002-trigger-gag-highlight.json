@@ -1,0 +1,23 @@
+{
+  "fixture_id": "automation-trigger-gag-highlight",
+  "feature": "WM-FEAT-0016",
+  "spec": "WM-SPEC-005-R03",
+  "level": "semantic",
+  "description": "Trigger with gag + highlight + substitute actions on a matching line. Grounded in inherited TTrigger action semantics (WM-SRC-000063).",
+  "sanitized": true,
+  "research_status": "verified",
+  "reference_trace": [
+    {"seq": 1, "kind": "line_in", "payload": "The dragon roars loudly"},
+    {"seq": 2, "kind": "trigger_match", "payload": "dragon roars"},
+    {"seq": 3, "kind": "gag_line", "payload": "true"},
+    {"seq": 4, "kind": "highlight", "payload": "dragon roars"},
+    {"seq": 5, "kind": "substitute", "payload": "roars|speaks"}
+  ],
+  "wiremudder_trace": [
+    {"seq": 1, "kind": "line_in", "payload": "The dragon roars loudly"},
+    {"seq": 2, "kind": "trigger_match", "payload": "dragon roars"},
+    {"seq": 3, "kind": "gag_line", "payload": "true"},
+    {"seq": 4, "kind": "highlight", "payload": "dragon roars"},
+    {"seq": 5, "kind": "substitute", "payload": "roars|speaks"}
+  ]
+}
