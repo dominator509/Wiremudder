@@ -154,3 +154,4 @@
 2026-08-27T18:04:35Z | ipman-hermes | EP-010 | MILESTONE_PASS | M3 EP-010 M3: ok; evidence=.agent/state/evidence/EP-010/M3
 2026-08-27T18:05:19Z | ipman-hermes | EP-010 | MILESTONE_PASS | M4 EP-010 M4: ok; evidence=.agent/state/evidence/EP-010/M4
 2026-08-27T18:05:41Z | ipman-hermes | EP-010 | MILESTONE_PASS | M5 EP-010 M5: ok; evidence=.agent/state/evidence/EP-010/M5
+2026-08-27T18:05:45Z | ipman-hermes | EP-010 | NODE_DONE | node verify EP-010: ok; green/EP-010 tag created
