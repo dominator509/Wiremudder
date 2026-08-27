@@ -124,3 +124,6 @@
 2026-08-27T16:27:37Z | ipman-hermes | EP-007 | LEASE | holder=ipman-hermes base=591057b7e3381e13e492b61b735b7d17cd704b62
 2026-08-27T16:30:25Z | ipman-hermes | EP-007 | MILESTONE_PASS | M1 EP-007 M1: ok; evidence=.agent/state/evidence/EP-007/M1
 2026-08-27T16:32:25Z | ipman-hermes | EP-007 | MILESTONE_PASS | M2 EP-007 M2: ok; evidence=.agent/state/evidence/EP-007/M2
+2026-08-27T16:32:26Z | ipman-hermes | EP-007 | HEARTBEAT | holder=ipman-hermes
+2026-08-27T16:32:26Z | ipman-hermes | EP-007 | HEARTBEAT | holder=ipman-hermes
+2026-08-27T16:38:20Z | ipman-hermes | EP-007 | MILESTONE_PASS | M3 EP-007 M3: ok; evidence=.agent/state/evidence/EP-007/M3
