@@ -302,7 +302,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -315,6 +315,9 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-27: EP-001 M1 recorded source evidence for the Graphlock overlay and inherited baseline: AGENTS.md/CLAUDE.md prime blocks (WM-SRC-000021, 000022), preserved ai-instructions (000023), CMake Qt6/Lua requirements (000024), main entry (000025), Host save/read profile (000026), Lua startEmbedding (000027), trigger match (000028), mapper (000029), ctelnet connect (000030). Evidence: source-evidence.jsonl 30 records. Alternative: none - anti-hallucination rule requires path-level evidence before inherited claims. Consequence: every EP-001 inherited claim is evidence-backed. Reversal: remove records. Affects: WM-FEAT-0146, WM-FEAT-0154, WM-SPEC-005-R01. Security: n/a. License: GPL preserved. Compatibility: no inherited edits yet. Performance: n/a. Upstream impact: none.
+- 2026-08-27: EP-001 node verifier gates M3 on an actual configured+buildable inherited client (build-$preset/CMakeCache.txt and build-$preset/src/mudlet binary) plus integration/e2e tests; M5 gates on LF-001 live-fire. Alternative: a verifier that only checks scripts would weaken the reality gate; rejected. Consequence: EP-001 cannot close until the inherited client actually builds. Reversal: change verifier only through an accepted contract change. Affects: WM-SPEC-005-R01. Security: n/a. License: n/a. Compatibility: baseline build proven. Performance: build time bounded by wrapper. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 

@@ -59,3 +59,10 @@
 2026-08-27T10:51:42Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-27T10:51:47Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-27T10:51:52Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T10:52:06Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T10:52:08Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T10:52:13Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T10:52:18Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T10:52:23Z | ipman-hermes | EP-000 | LEASE_RELEASE | holder=ipman-hermes
+2026-08-27T10:52:40Z | ipman-hermes | EP-001 | LEASE | holder=ipman-hermes base=180dc34a29cbad1b7d17eaf66e52d350d8772008
+2026-08-27T10:53:43Z | ipman-hermes | EP-001 | MILESTONE_PASS | M1 EP-001 M1: ok; evidence=.agent/state/evidence/EP-001/M1
