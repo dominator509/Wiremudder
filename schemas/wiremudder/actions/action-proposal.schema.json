@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/actions/action-proposal.schema.json",
+  "title": "WireMudder Action Proposal",
+  "description": "A proposed automated action awaiting gate evaluation (SPEC-009, WM-SPEC-009-R02/R08).",
+  "type": "object",
+  "required": ["id", "source", "original_suggestion", "normalized_command", "risk_tier", "requires_confirmation", "created_ms"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "string",
+      "enum": ["ai", "autopilot", "voice", "macro", "trigger", "script", "plugin", "headless", "cross-session"]
+    },
+    "original_suggestion": { "type": "string" },
+    "normalized_command": { "type": "string", "minLength": 1 },
+    "args": { "type": "array", "items": { "type": "string" } },
+    "risk_tier": { "type": "string", "enum": ["safe", "standard", "risky", "destructive"] },
+    "requires_confirmation": { "type": "boolean" },
+    "created_ms": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

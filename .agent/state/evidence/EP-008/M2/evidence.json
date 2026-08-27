@@ -1,0 +1,16 @@
+{
+  "agent_id": "unknown-agent",
+  "command": [
+    "sh",
+    "scripts/node-verifiers/EP-008.sh",
+    "M2"
+  ],
+  "exit_code": 0,
+  "expected_sentinel": "EP-008 M2: ok",
+  "milestone": "M2",
+  "node": "EP-008",
+  "observed_at": "2026-08-27T16:54:14Z",
+  "output_sha256": "b0d427b693a83b5cd10ff5ed398d434eddcaca18cf23371c73de5c80b78dd6a6",
+  "schema_version": 1,
+  "sentinel_observed": true
+}

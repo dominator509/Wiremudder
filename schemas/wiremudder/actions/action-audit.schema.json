@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/actions/action-audit.schema.json",
+  "title": "WireMudder Action Audit Entry",
+  "description": "Replayable audit record for every automated action (SPEC-009, WM-SPEC-009-R09, WM-FEAT-0179).",
+  "type": "object",
+  "required": ["at_ms", "proposal_id", "source", "original_suggestion", "normalized_command", "risk_tier", "required_approval", "pacing_decision", "final_result"],
+  "properties": {
+    "at_ms": { "type": "integer", "minimum": 0 },
+    "proposal_id": { "type": "string", "minLength": 1 },
+    "source": { "type": "string", "enum": ["ai", "autopilot", "voice", "macro", "trigger", "script", "plugin", "headless", "cross-session"] },
+    "original_suggestion": { "type": "string" },
+    "normalized_command": { "type": "string" },
+    "risk_tier": { "type": "string", "enum": ["safe", "standard", "risky", "destructive"] },
+    "required_approval": { "type": "boolean" },
+    "pacing_decision": { "type": "string" },
+    "final_result": { "type": "string" }
+  },
+  "additionalProperties": false
+}

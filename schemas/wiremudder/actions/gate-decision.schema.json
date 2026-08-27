@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/actions/gate-decision.schema.json",
+  "title": "WireMudder Gate Decision",
+  "description": "Deterministic decision of the Action Proposal gateway (SPEC-009, WM-SPEC-009-R03).",
+  "type": "object",
+  "required": ["decision", "proposal_id"],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["approved", "needs-confirmation", "denied", "paused", "queued"]
+    },
+    "proposal_id": { "type": "string", "minLength": 1 },
+    "reason": {
+      "type": "string",
+      "enum": ["emergency-stop", "not-connected", "routing-unstable", "injection-flagged", "denied-by-policy", "automation-disabled", "pacing", "queue-full"]
+    },
+    "position": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}
