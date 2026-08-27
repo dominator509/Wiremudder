@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "description": "Deterministic distillation compatibility corpus: raw game lines mapped to expected typed-event tags. Locked by EP-015 compatibility/context oracle.",
+  "cases": [
+    { "line": "You are in The Dark Vault.", "tags": ["room"] },
+    { "line": "You are standing in a quiet glade.", "tags": ["room"] },
+    { "line": "Obvious exits: north, east", "tags": ["exit", "exit"] },
+    { "line": "Exits: n, s, w", "tags": ["exit", "exit", "exit"] },
+    { "line": "A goblin is here.", "tags": ["mob"] },
+    { "line": "An eagle is here.", "tags": ["animal"] },
+    { "line": "You see Bob here.", "tags": ["player"] },
+    { "line": "You notice Malice (PK).", "tags": ["pker"] },
+    { "line": "You hit the goblin for 12 damage.", "tags": ["combat-start"] },
+    { "line": "You miss the goblin.", "tags": ["combat-start"] },
+    { "line": "You kill the goblin.", "tags": ["combat-end"] },
+    { "line": "Combat ends.", "tags": ["combat-end"] },
+    { "line": "You see a rusty sword here.", "tags": ["item"] },
+    { "line": "You see an old tome here.", "tags": ["item"] },
+    { "line": "On the ground: coin, pouch", "tags": ["item", "item"] },
+    { "line": "A clue: the vault opens at midnight.", "tags": ["clue"] },
+    { "line": "You recall that the key is under the rug.", "tags": ["clue"] },
+    { "line": "<80>hp <50>m> ", "tags": ["prompt"] },
+    { "line": "<70/100hp>", "tags": ["prompt"] },
+    { "line": "Your health is 75/100.", "tags": ["health"] },
+    { "line": "Health: 40", "tags": ["health"] },
+    { "line": "You say, \"look north\"", "tags": ["cmd-ok"] },
+    { "line": "I don't understand 'frobnicate'.", "tags": ["cmd-fail"] },
+    { "line": "You tell gossip Alice: hi all", "tags": ["social"] },
+    { "line": "From Eve: meet me at the vault", "tags": ["private"] },
+    { "line": "You receive a private message from Zed.", "tags": ["private"] },
+    { "line": "The wind howls through the trees.", "tags": [] }
+  ]
+}
