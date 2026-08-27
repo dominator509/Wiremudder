@@ -307,7 +307,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
+- [x] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
@@ -321,6 +321,7 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 - 2026-08-27: EP-002 M1 recorded evidence for fork governance: remotes (upstream=Mudlet, origin=dominator509/WireMudder, WM-SRC-000033), sync policy (000034), branding policy (000035), license strategy (000036), upstream contribution policy (000037), and lock policy (000038). Contract tests verify remotes, governance policies, and history preservation. Evidence: M1 verifier sentinel; contract 001-003. Alternative: none - anti-hallucination requires evidence. Consequence: governance boundaries locked before sync drill. Reversal: git revert of M1 commit. Affects: WM-FEAT-0148, WM-FEAT-0149, WM-FEAT-0160, WM-SPEC-001-R04, WM-SPEC-001-R07. Security: no secrets. License: strategy reviewed (open-source compatible). Compatibility: history preserved. Performance: n/a. Upstream impact: origin repo created.
 - 2026-08-27: EP-002 M2 implemented patch classification (tests/wiremudder/ep002/unit/classify_patch.py) with deterministic dominant-category rules per SPEC-001-R04, and unit tests for classifier + governance docs. Evidence: M2 verifier sentinel; unit 001-002. Alternative: manual classification rejected (must be machine-checked). Consequence: review can enforce patch classification. Reversal: git revert of M2 commit. Affects: WM-FEAT-0149, WM-SPEC-001-R04. Security: fail-closed (unknown = unclassified). License: n/a. Compatibility: no inherited edits. Performance: classification is O(paths). Upstream impact: none.
 - 2026-08-27: EP-002 M3 integrated real upstream sync: fetched upstream/development (d00b2e7e), verified merge-base equals pinned commit, proved sync-branch merge + rollback mechanics with green/EP-001 intact. Evidence: M3 verifier sentinel; integration 001-002; e2e 001. Alternative: fake/offline drill rejected; real fetch and real branch operations used. Consequence: sync drill mechanics proven against live upstream. Reversal: git revert of M3 commit. Affects: WM-FEAT-0148, WM-SPEC-001-R09, WM-SPEC-001-R10. Security: no credentials. License: n/a. Compatibility: green tags intact after rollback. Performance: fetch + drill bounded. Upstream impact: read-only fetch.
+- 2026-08-27: EP-002 M4 added failure proofs (failed sync preserves green tag, classifier fail-closed, no-mass-rename enforced), security proofs (remote tree secret scan over 2045 files, governance docs scan), and performance budgets (classification 811ms/5x, sync drill 87ms). Evidence: M4 verifier sentinel. Alternative: mocks rejected. Consequence: sync failures cannot promote; secrets cannot reach origin. Reversal: git revert of M4 commit. Affects: WM-FEAT-0148, WM-FEAT-0149, WM-FEAT-0160, WM-SPEC-001-R10. Security: remote tree verified clean. License: n/a. Compatibility: green tags intact. Performance: budgets recorded. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 
