@@ -303,20 +303,55 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M1: Evidence, contracts, and exact path lock
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
 
+- 2026-08-27: The source-evidence recorder len+1 ID bug collided again at
+  EP-012 dispatch (my records took 000086/000087 already owned by TBuffer/
+  TMxpProcessor). Renumbered to max+1 (000088..000093), regenerated the
+  clobbered logs, and verified source-evidence-check ok rows=91.
+- 2026-08-27: ThemeQt initially lacked a bg() getter; the M2 harness
+  compile caught it immediately (fg existed, bg did not).
+
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
 
+- 2026-08-27: DECISION raw-text authority stays in the model layer
+  (TerminalPaneQt stores bytes unmodified before any decoration).
+  Evidence: terminal_boundary.cpp + unit/integration/e2e suites.
+  Alternative: decorate on ingest (rejected: violates WM-SPEC-007-R03).
+  Consequence: renderers may decorate only at display time.
+  Reversal: revert EP-012 M2 commit b7455bcc.
+- 2026-08-27: DECISION layout persistence is JSON-file based per profile.
+  Evidence: session flow e2e (restart byte-identity). Alternative:
+  registry-only (rejected: no restart behavior proof).
+  Consequence: layouts are portable and diffable.
+
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- Changed versus expected: all changes inside EP-012 fence; expected-file
+  audit ok; scope audit ok changed=33, discovered-path rows=0.
+- Source evidence: 91 records; source-evidence-check ok rows=91.
+- Milestone evidence: .agent/state/evidence/EP-012/M1..M5/evidence.json,
+  exit_code 0, sentinel_observed true for all five.
+- Observed sentinels: "EP-012 M1: ok" ... "EP-012 M5: ok";
+  "node verify EP-012: ok".
+- Performance: ui-latency.json append 0.11us, history 0.11us, spellcheck
+  7.1us; budget 10ms.
+- Feature coverage: ok features=244 source_features=145; spec trace ok.
+- Live-fire: LF-012 terminal-workspace-flow ok.
+- Assumptions changed: none beyond documented fixes.
+- Risks: boundaries are additive; no inherited file modified.
+- Rollback: revert b7455bcc..dc78eb02 or checkout lease base 46ba0c61.
+- Green tag: green/EP-012.
+- Next scheduler output: EP-013 (dispatched via graph-next.sh).
