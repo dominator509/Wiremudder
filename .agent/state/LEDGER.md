@@ -97,3 +97,4 @@
 2026-08-27T12:08:27Z | ipman-hermes | EP-004 | MILESTONE_PASS | M2 EP-004 M2: ok; evidence=.agent/state/evidence/EP-004/M2
 2026-08-27T12:08:55Z | ipman-hermes | EP-004 | MILESTONE_PASS | M3 EP-004 M3: ok; evidence=.agent/state/evidence/EP-004/M3
 2026-08-27T12:09:26Z | ipman-hermes | EP-004 | MILESTONE_PASS | M4 EP-004 M4: ok; evidence=.agent/state/evidence/EP-004/M4
+2026-08-27T12:09:49Z | ipman-hermes | EP-004 | MILESTONE_PASS | M5 EP-004 M5: ok; evidence=.agent/state/evidence/EP-004/M5

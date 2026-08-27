@@ -306,7 +306,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -324,3 +324,5 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- 2026-08-27: EP-004 completed. Changed vs expected files: all static expected paths present (schemas, schema-bindings, contracts docs, tests); 0 inherited paths modified. Source evidence: 48 records. Commands: python3 tools/schema-bindings/generate_bindings.py; sh scripts/feature-coverage-check.sh; sh scripts/spec-trace-check.sh; node-verifiers/EP-004.sh M1-M5. Sentinels observed: EP-004 M1 through M5: ok; contract check ok; scope audit ok; LF-004: ok; feature coverage ok; spec trace ok. Features: WM-FEAT-0151 (feature coverage gate), WM-FEAT-0152 (spec requirement trace gate), WM-FEAT-0153 (expected-file scope fence) implemented and certified by LF-004. Requirements: WM-SPEC-003-R01/R02/R07 closed by tests under tests/wiremudder/ep004/. Provider certification: none. Platform certification: linux. Assumptions: canonical vocabulary is schema-first; enums closed. Risks: future nodes must keep schemas versioned and gates green. Rollback: git revert per milestone; never cross green/EP-004. Green tag: green/EP-004. Next scheduler output: NEXT EP-005.
