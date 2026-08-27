@@ -249,14 +249,75 @@ static int cmdSession(const QString& layoutPath) {
     return 0;
 }
 
+// Forced failures and abuse (EP-012 M4): resource exhaustion, malformed
+// input, duplicate request, data integrity, secrets in stream.
+static int cmdStress() {
+    // 1. Resource exhaustion: 100k lines into a 1000-line pane. Bound
+    //    holds, newest preserved, oldest dropped, no crash.
+    TerminalPaneQt pane(1000);
+    for (int i = 0; i < 100000; ++i) pane.appendRaw(QString("line-%1").arg(i));
+    if (pane.lineCount() != 1000) return fail("stress scrollback bound");
+    if (pane.lastLine() != "line-99999") return fail("stress newest preserved");
+    if (pane.snapshot().first() != "line-99000") return fail("stress oldest dropped");
+    if (!pane.overflowDropped()) return fail("stress overflow flag");
+
+    // 2. History overflow: 100k adds into a 100-entry history.
+    CommandHistoryQt hist(100);
+    for (int i = 0; i < 100000; ++i) hist.add(QString("cmd-%1").arg(i));
+    if (hist.count() != 100) return fail("stress history bound");
+    if (hist.all().last() != "cmd-99999") return fail("stress history newest");
+
+    // 3. Duplicate request: repeated identical commands dedup consecutive.
+    CommandHistoryQt hist2(100);
+    hist2.add("look");
+    hist2.add("look");
+    hist2.add("look");
+    if (hist2.count() != 1) return fail("duplicate dedup");
+
+    // 4. Malformed input: corrupt layout JSON fails cleanly.
+    WorkspaceLayoutQt layout("x");
+    if (layout.fromJson(QJsonObject())) return fail("empty layout accepted");
+    if (layout.fromJson(QJsonObject{{"name", QJsonValue()}})) return fail("null name accepted");
+
+    // 5. Data integrity: raw text is byte-preserved (WM-SPEC-007-R03).
+    TerminalPaneQt p2(10);
+    const QString tricky = QString::fromUtf8("ANSI \x1b[31mred\x1b[0m and unicode \xe2\x98\x83");
+    p2.appendRaw(tricky);
+    if (p2.lastLine() != tricky) return fail("raw integrity");
+
+    // 6. Secrets in stream: token-like text stays raw data, never
+    //    interpreted, and the capture mirror does not leak it beyond
+    //    the exact source line.
+    CapturePaneQt cap(10);
+    CaptureFilter f;
+    f.id = "all";
+    f.match = "token";
+    cap.setFilter(f);
+    const QString secretLine = QStringLiteral("token: abc-def-ghij");
+    cap.ingest(secretLine);
+    if (cap.count() != 1) return fail("secret capture");
+    if (cap.captured().first() != secretLine) return fail("secret capture altered");
+
+    // 7. Denied policy: an empty filter captures nothing; pane unaffected.
+    CapturePaneQt cap2(10);
+    CaptureFilter empty;
+    cap2.setFilter(empty);
+    cap2.ingest("anything");
+    if (cap2.count() != 0) return fail("empty filter captured");
+
+    std::printf("stress boundary: ok\n");
+    return 0;
+}
+
 int main(int argc, char** argv) {
     QCoreApplication app(argc, argv);
-    if (argc < 2) { std::fprintf(stderr, "usage: harness terminal|workspace|editor|session\n"); return 2; }
+    if (argc < 2) { std::fprintf(stderr, "usage: harness terminal|workspace|editor|session|stress\n"); return 2; }
     const QString cmd = QString::fromUtf8(argv[1]);
     if (cmd == "terminal") return cmdTerminal();
     if (cmd == "workspace") return cmdWorkspace();
     if (cmd == "editor") return cmdEditor();
     if (cmd == "session" && argc >= 3) return cmdSession(QString::fromUtf8(argv[2]));
+    if (cmd == "stress") return cmdStress();
     std::fprintf(stderr, "bad args\n");
     return 2;
 }

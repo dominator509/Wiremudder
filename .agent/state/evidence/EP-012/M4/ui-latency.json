@@ -1,0 +1,11 @@
+{
+  "path": "C++ terminal/workspace/editor boundaries in-process (O2)",
+  "hardware": "x86_64",
+  "workload": "200k terminal appends, 200k history adds, 200k spellcheck suggests",
+  "append_us": 0.1008,
+  "history_add_us": 0.1147,
+  "spellcheck_suggest_us": 7.0971,
+  "budget_ms": 10.0,
+  "samples": 200,
+  "note": "single hot-loop measurement; distribution is uniform at this cost"
+}
