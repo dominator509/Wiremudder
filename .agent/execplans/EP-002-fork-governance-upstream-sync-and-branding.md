@@ -305,7 +305,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
+- [x] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
@@ -319,6 +319,7 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
 
 - 2026-08-27: EP-002 M1 recorded evidence for fork governance: remotes (upstream=Mudlet, origin=dominator509/WireMudder, WM-SRC-000033), sync policy (000034), branding policy (000035), license strategy (000036), upstream contribution policy (000037), and lock policy (000038). Contract tests verify remotes, governance policies, and history preservation. Evidence: M1 verifier sentinel; contract 001-003. Alternative: none - anti-hallucination requires evidence. Consequence: governance boundaries locked before sync drill. Reversal: git revert of M1 commit. Affects: WM-FEAT-0148, WM-FEAT-0149, WM-FEAT-0160, WM-SPEC-001-R04, WM-SPEC-001-R07. Security: no secrets. License: strategy reviewed (open-source compatible). Compatibility: history preserved. Performance: n/a. Upstream impact: origin repo created.
+- 2026-08-27: EP-002 M2 implemented patch classification (tests/wiremudder/ep002/unit/classify_patch.py) with deterministic dominant-category rules per SPEC-001-R04, and unit tests for classifier + governance docs. Evidence: M2 verifier sentinel; unit 001-002. Alternative: manual classification rejected (must be machine-checked). Consequence: review can enforce patch classification. Reversal: git revert of M2 commit. Affects: WM-FEAT-0149, WM-SPEC-001-R04. Security: fail-closed (unknown = unclassified). License: n/a. Compatibility: no inherited edits. Performance: classification is O(paths). Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 
