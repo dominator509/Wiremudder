@@ -1,7 +1,7 @@
 # Exact path fence for EP-013 M2.
 src/wiremudder/mapper/
 wirecore/crates/wire-world-graph/
+compatibility/maps/
 schemas/wiremudder/world/
 tests/wiremudder/ep013/unit/
-docs/wiremudder/mapper/
 .agent/state/evidence/EP-013/M2/

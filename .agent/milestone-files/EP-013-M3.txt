@@ -2,7 +2,8 @@
 src/wiremudder/mapper/
 wirecore/crates/wire-world-graph/
 compatibility/maps/
+schemas/wiremudder/world/
 tests/wiremudder/ep013/integration/
 tests/wiremudder/ep013/e2e/
-docs/wiremudder/mapper/
+docs/wiremudder/mapper/design/
 .agent/state/evidence/EP-013/M3/
