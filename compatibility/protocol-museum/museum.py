@@ -71,8 +71,11 @@ def text_stream_handler(conn: socket.socket) -> None:
 
 
 def malformed_handler(conn: socket.socket) -> None:
-    """Emit bytes that are deliberately not valid UTF-8 text."""
+    """Emit a text marker then bytes that are deliberately not valid
+    UTF-8 text (malformed input fixture)."""
+    conn.sendall(b'\r\n[malformed fixture begins]\r\n')
     conn.sendall(b'\xff\xfb\x01\x00\xff\xfe\x80\x81\xff\xfd\x18')
+    conn.sendall(b'\r\n[malformed fixture ends]\r\n')
 
 
 def latency_handler(conn: socket.socket) -> None:
