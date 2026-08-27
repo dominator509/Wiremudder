@@ -14,6 +14,8 @@
 #define WIREMUDDER_PRIVACY_SECRET_VAULT_H
 
 #include <QByteArray>
+#include <QHash>
+#include <QSet>
 #include <QString>
 #include <QStringList>
 
@@ -52,6 +54,8 @@ public:
 
 private:
     bool m_osBackend = false;
+    QHash<QString, QByteArray> m_memory;   // local-only fallback store
+    QSet<QString> m_ids;                   // index of stored secret ids
 };
 
 }  // namespace wiremudder

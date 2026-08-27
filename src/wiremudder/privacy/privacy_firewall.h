@@ -4,7 +4,8 @@
 // modes, Local Only Lockdown (denial-first egress), consent checks,
 // and deterministic redaction. The core logic lives in the Rust
 // wire-privacy crate; this header is the Qt-facing adapter surface
-// (implementation in the M3 integration milestone).
+// with the same deterministic semantics (cross-validated in the E2E
+// milestone).
 //
 // This header and its implementation are the C++ surface EP-006 owns;
 // no inherited source is modified by the privacy modules.
@@ -12,6 +13,7 @@
 #ifndef WIREMUDDER_PRIVACY_PRIVACY_FIREWALL_H
 #define WIREMUDDER_PRIVACY_PRIVACY_FIREWALL_H
 
+#include <QHash>
 #include <QString>
 #include <QStringList>
 
@@ -26,6 +28,14 @@ enum class PrivacyMode {
     RemoteApproved
 };
 
+// A user-visible, consent-backed egress override (WM-SPEC-010-R04).
+struct OverrideEntry {
+    QString overrideId;
+    QString category;
+    bool userVisible = false;
+    QString consentReceiptId;
+};
+
 // Denial-first egress control (WM-SPEC-010-R04, WM-SPEC-022-R03).
 // Default posture is LocalOnly + lockdown: no remote egress until the
 // user visibly overrides with a consent-backed override.
@@ -33,9 +43,9 @@ class PrivacyFirewall final {
 public:
     PrivacyFirewall();
 
-    // Egress decision. Returns false (denied) unless the destination
-    // is allow-listed and the category is not denied or has a
-    // user-visible, consent-backed override.
+    // Egress decision. Denied unless the destination is allow-listed
+    // and the category is not denied or has a user-visible,
+    // consent-backed override.
     bool canEgress(const QString& category, const QString& destination) const;
 
     // Lawful routing only (WM-SPEC-022-R07): proxy procurement,
@@ -54,10 +64,30 @@ public:
 
     void setMode(PrivacyMode mode);
     void setLockdown(bool enabled);
+    void addAllowedDestination(const QString& destination);
+    bool addOverride(const OverrideEntry& entry);
+
+    // Consent registry (WM-SPEC-010-R09): scoped, revocable receipts.
+    bool grantConsent(const QString& receiptId, const QString& feature,
+                      const QString& provider, const QString& dataClass,
+                      const QString& profile);
+    bool revokeConsent(const QString& receiptId);
+    bool isConsented(const QString& receiptId, const QString& feature,
+                     const QString& provider, const QString& dataClass,
+                     const QString& profile) const;
 
 private:
     PrivacyMode m_mode = PrivacyMode::LocalOnly;
     bool m_lockdown = true;
+    QStringList m_allowedDestinations;
+    QStringList m_deniedCategories{
+        QStringLiteral("ai"),          QStringLiteral("speech"),
+        QStringLiteral("asset-generation"), QStringLiteral("telemetry"),
+        QStringLiteral("package-download"), QStringLiteral("update-check"),
+    };
+    QHash<QString, OverrideEntry> m_overrides;
+    // consent receipt id -> (feature, provider, dataClass, profile, status)
+    QHash<QString, QStringList> m_consent;
 };
 
 }  // namespace wiremudder
