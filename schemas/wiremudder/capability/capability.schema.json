@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/capability/capability.schema.json",
+  "title": "WireMudder Capability",
+  "description": "Canonical capability declaration (SPEC-003).",
+  "type": "object",
+  "required": ["id", "name", "state", "owner_node"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^WM-FEAT-[0-9]{4}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "state": { "enum": ["uncertified", "implemented", "certified", "disabled"] },
+    "owner_node": { "type": "string", "pattern": "^EP-[0-9]{3}$" },
+    "release_profile": { "type": "string" },
+    "certified_at": { "type": "string", "format": "date-time" },
+    "evidence": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

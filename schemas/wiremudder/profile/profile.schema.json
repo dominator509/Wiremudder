@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/profile/profile.schema.json",
+  "title": "WireMudder Profile",
+  "description": "Canonical profile metadata (local-first, exportable).",
+  "type": "object",
+  "required": ["name", "schema_version"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "schema_version": { "const": 1 },
+    "world": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "settings": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": false
+}

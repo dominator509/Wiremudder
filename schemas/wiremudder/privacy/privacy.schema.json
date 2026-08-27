@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/privacy/privacy.schema.json",
+  "title": "WireMudder Privacy Class",
+  "description": "Canonical privacy classification for local data (SPEC-010/SPEC-022).",
+  "type": "object",
+  "required": ["classification", "redaction", "export_policy"],
+  "properties": {
+    "classification": {
+      "enum": ["public", "local", "private", "sensitive", "secret"]
+    },
+    "redaction": { "enum": ["none", "partial", "full"] },
+    "export_policy": { "enum": ["never", "user-consent", "opt-in-policy", "always-redacted"] },
+    "retention_days": { "type": "integer", "minimum": 0 },
+    "owner": { "type": "string" }
+  },
+  "additionalProperties": false
+}

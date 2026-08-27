@@ -1,0 +1,41 @@
+{
+  "schemas": [
+    {
+      "path": "schemas/wiremudder/capability/capability.schema.json",
+      "id": "https://wiremudder.dev/schemas/capability/capability.schema.json",
+      "title": "WireMudder Capability",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/error/error.schema.json",
+      "id": "https://wiremudder.dev/schemas/error/error.schema.json",
+      "title": "WireMudder Typed Error",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/privacy/privacy.schema.json",
+      "id": "https://wiremudder.dev/schemas/privacy/privacy.schema.json",
+      "title": "WireMudder Privacy Class",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/profile/profile.schema.json",
+      "id": "https://wiremudder.dev/schemas/profile/profile.schema.json",
+      "title": "WireMudder Profile",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/replay/session-replay.schema.json",
+      "id": "https://wiremudder.dev/schemas/replay/session-replay.schema.json",
+      "title": "WireMudder Session Replay",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/telemetry/event.schema.json",
+      "id": "https://wiremudder.dev/schemas/telemetry/event.schema.json",
+      "title": "WireMudder Telemetry Event",
+      "schema_version": 1
+    }
+  ],
+  "count": 6
+}

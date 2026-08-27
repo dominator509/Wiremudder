@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/error/error.schema.json",
+  "title": "WireMudder Typed Error",
+  "description": "Canonical typed error (SPEC-025).",
+  "type": "object",
+  "required": ["code", "message", "severity"],
+  "properties": {
+    "code": {
+      "enum": [
+        "validation", "consent", "policy", "authorization", "unavailable",
+        "timeout", "cancellation", "conflict", "security", "compatibility",
+        "verification", "rollback", "resource_exhaustion", "internal"
+      ]
+    },
+    "message": { "type": "string", "minLength": 1 },
+    "severity": { "enum": ["error", "warn", "info"] },
+    "correlation_id": { "type": "string" },
+    "details": { "type": "object", "additionalProperties": true },
+    "retryable": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
