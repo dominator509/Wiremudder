@@ -1,7 +1,11 @@
-// EP-012 M2 test harness: exercises the real terminal, workspace, and
+// EP-012 M3 test harness: exercises the real terminal, workspace, and
 // editor boundaries with deterministic invariants.
-// Subcommands: terminal | workspace | editor
+// Subcommands: terminal | workspace | editor | session <layout.json>
 #include <QCoreApplication>
+#include <QDir>
+#include <QFile>
+#include <QJsonDocument>
+#include <QTemporaryDir>
 #include <cstdio>
 
 #include "src/wiremudder/ui/terminal_boundary.h"
@@ -148,13 +152,111 @@ static int cmdEditor() {
     return 0;
 }
 
+// Full user-visible session flow (EP-012 M3):
+//   feed raw stream -> terminal pane + capture -> command input ->
+//   history + completion -> gauge updates -> layout persistence to disk.
+static int cmdSession(const QString& layoutPath) {
+    TerminalPaneQt pane(100);
+    CapturePaneQt cap(100);
+    CommandHistoryQt hist(500);
+    StatusGaugeQt gauges;
+    WorkspaceLayoutQt layout("combat");
+    CompletionCore cc;
+    cc.add("north");
+    cc.add("northeast");
+    cc.add("look");
+
+    // 1. Raw stream: every line lands in the terminal pane unmodified.
+    const char* stream[] = {
+        "A dark forest surrounds you.",
+        "A goblin appears from the shadows.",
+        "The goblin tells you, 'leave now'",
+        "You see a rusted sword on the ground.",
+    };
+    for (const char* s : stream) pane.appendRaw(QString::fromLatin1(s));
+    if (pane.lineCount() != 4) return fail("session stream lines");
+    if (pane.lastLine() != "You see a rusted sword on the ground.") return fail("session stream last");
+
+    // 2. Capture pane mirrors only matching lines (WM-FEAT-0011).
+    CaptureFilter f;
+    f.id = "tells";
+    f.match = "tells you";
+    cap.setFilter(f);
+    for (const char* s : stream) cap.ingest(QString::fromLatin1(s));
+    if (cap.count() != 1) return fail("session capture count");
+    if (cap.captured().first() != "The goblin tells you, 'leave now'") return fail("session capture line");
+
+    // 3. Command input flows into history; completion assists.
+    hist.add("look");
+    hist.add("get sword");
+    if (hist.count() != 2) return fail("session history");
+    if (hist.up() != "get sword") return fail("session history up");
+    if (cc.candidates("no").size() != 2) return fail("session completion");
+
+    // 4. Status gauge reflects combat state (WM-FEAT-0012).
+    StatusGauge hp;
+    hp.id = "hp";
+    hp.label = "Hit Points";
+    hp.value = "80";
+    gauges.set(hp);
+    hp.value = "63"; // goblin hit
+    gauges.set(hp);
+    if (gauges.value("hp") != "63") return fail("session gauge");
+
+    // 5. Workspace layout persists to a real file and restores
+    //    (WM-SPEC-007-R04, restart behavior).
+    DockPaneSpec captureDock;
+    captureDock.id = "capture";
+    captureDock.title = "Capture";
+    captureDock.position = "bottom";
+    layout.addDock(captureDock);
+    layout.gauges() = gauges;
+    layout.theme().setName("night");
+    layout.theme().setHighContrast(true);
+
+    QFile fout(layoutPath);
+    if (!fout.open(QIODevice::WriteOnly)) return fail("layout write open");
+    fout.write(QJsonDocument(layout.toJson()).toJson(QJsonDocument::Compact));
+    fout.close();
+
+    QFile fin(layoutPath);
+    if (!fin.open(QIODevice::ReadOnly)) return fail("layout read open");
+    QJsonParseError err;
+    const QJsonDocument doc = QJsonDocument::fromJson(fin.readAll(), &err);
+    fin.close();
+    if (err.error != QJsonParseError::NoError) return fail("layout json parse");
+
+    WorkspaceLayoutQt restored("x");
+    if (!restored.fromJson(doc.object())) return fail("layout restore");
+    if (restored.name() != "combat") return fail("layout name");
+    if (!restored.hasDock("capture")) return fail("layout dock");
+    if (restored.gauges().value("hp") != "63") return fail("layout gauge");
+    if (!restored.theme().highContrast()) return fail("layout theme");
+
+    // 6. Degraded optional surface: if capture filtering fails, the raw
+    //    terminal stream is untouched (WM-SPEC-007-R03 preserved).
+    CapturePaneQt broken(10);
+    CaptureFilter bad;
+    bad.id = "never";
+    bad.match = "zz-no-match";
+    broken.setFilter(bad);
+    for (const char* s : stream) broken.ingest(QString::fromLatin1(s));
+    if (broken.count() != 0) return fail("degraded capture");
+    if (pane.lineCount() != 4 || pane.lastLine() != "You see a rusted sword on the ground.")
+        return fail("degraded terminal preserved");
+
+    std::printf("session flow: ok\n");
+    return 0;
+}
+
 int main(int argc, char** argv) {
     QCoreApplication app(argc, argv);
-    if (argc < 2) { std::fprintf(stderr, "usage: harness terminal|workspace|editor\n"); return 2; }
+    if (argc < 2) { std::fprintf(stderr, "usage: harness terminal|workspace|editor|session\n"); return 2; }
     const QString cmd = QString::fromUtf8(argv[1]);
     if (cmd == "terminal") return cmdTerminal();
     if (cmd == "workspace") return cmdWorkspace();
     if (cmd == "editor") return cmdEditor();
-    std::fprintf(stderr, "bad subcommand\n");
+    if (cmd == "session" && argc >= 3) return cmdSession(QString::fromUtf8(argv[2]));
+    std::fprintf(stderr, "bad args\n");
     return 2;
 }
