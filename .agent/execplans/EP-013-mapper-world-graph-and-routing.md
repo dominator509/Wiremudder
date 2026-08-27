@@ -308,7 +308,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -329,4 +329,16 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+- Changed versus expected: all 23 static fence paths satisfied; scope audit `ok changed=49`; discovered-path rows=0 (no inherited edits).
+- Source evidence: WM-SRC-000094..000100 (mapper surface); checker `ok rows=98`.
+- Commands and sentinels: `sh scripts/node-verifiers/EP-013.sh M1..M5` all `EP-013 Mx: ok`; `node-contract-check EP-013: ok`; `scope-audit EP-013: ok`; LF-013 `LF-013: ok (parity=13 decisions, snapshot persisted)`.
+- Evidence hashes: `.agent/state/evidence/EP-013/M{1..5}/evidence.json` committed with sha256 per milestone.
+- Feature disposition: WM-FEAT-0165 zones/area clustering, WM-FEAT-0166 custom/hidden/locked/one-way/portal exits, WM-FEAT-0167 weighted and timed routing, WM-FEAT-0168 map import/export/backups all implemented and tested (feature-0165..0168 suites green).
+- Requirement disposition: WM-SPEC-005-R07 (fixtures via compatibility/maps + parity matrix), WM-SPEC-012-R02 (fact provenance + supersession), R03 (bounded hot cache + events), R04 (exit/routing preservation), R05 (ambiguous identity never merges), R10 (corrections supersede preserving history) all evidenced.
+- Provider/platform certification: none required by this node (no external provider).
+- Performance: p95 routing 6.2-8.7 ms on 10,000-room grid vs 10 ms budget (heap-optimized Dijkstra; 529 ms naive -> 5.4 ms p50, ~100x).
+- Assumptions changed: none.
+- Risks: wire-world-graph crate is namespaced and not yet wired into the Mudlet runtime UI; that is the responsibility of later nodes (EP-020/EP-021/EP-025/EP-026).
+- Rollback: revert commits aedf02a4..M5; never cross green/EP-012.
+- Green tag: `green/EP-013`.
+- Next scheduler output: `sh scripts/graph-next.sh` after NODE_DONE.
