@@ -303,7 +303,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -316,6 +316,11 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-27: Bootstrap uses a direct clone of Mudlet at pinned commit 77086c295f4adf59197e586e689d19bdde8e1008 with `upstream` remote preserved and no origin remote yet (origin URL is operator-provided per HOW_TO_USE). Evidence: git rev-parse HEAD, remote -v. Alternative: bootstrap-fork.sh requires WIREMUDDER_ORIGIN_URL; deferred because operator must supply the repository URL. Consequence: no push capability until origin is configured; EP-002 fork governance will require it. Reversal: add origin remote when URL is provided. Affects: WM-SPEC-001-R01. Security: no credentials involved. Privacy: n/a. License: GPL-2.0-or-later preserved. Compatibility: upstream history intact. Performance: n/a. Upstream impact: none.
+- 2026-08-27: Overlay collision handling: upstream AGENTS.md/CLAUDE.md/.github/copilot-instructions.md are symlinks to docs/ai-instructions.md; the overlay replaces the symlinks with Graphlock control adapters and preserves docs/ai-instructions.md byte-for-byte. Evidence: sha256 a6802bfe... for docs/ai-instructions.md, authority check 545 files ok. Alternative: writing through symlinks would clobber upstream instructions; rejected. Consequence: control plane is real files, upstream instructions preserved at docs/ai-instructions.md. Reversal: git checkout of pinned baseline. Affects: WM-SPEC-001-R01, WM-SPEC-001-R03. Security: n/a. License: preserved. Compatibility: build-mudlet skill and .agents/skills untouched. Performance: n/a. Upstream impact: none.
+- 2026-08-27: Selected CMake preset linux-debug-nosan for baseline discovery and build work; avoids AddressSanitizer overhead in the discovery node. Evidence: cmake --list-presets output; preflight: ok. Alternative: linux-debug (ASan) is slower; linux-lowspec drops 3D mapper. Consequence: builds land in build-linux-debug-nosan/. Reversal: change WIREMUDDER_CMAKE_PRESET in .env. Affects: toolchain evidence. Security: n/a. Performance: faster baseline runs. Upstream impact: none.
+- 2026-08-27: Source evidence recorded for 18 inherited paths/symbols (WM-SRC-000001..000018) covering AI instructions, build skill, presets, license, submodules, core classes, Lua interpreter, lock file, and 3rdparty before any product edit. Evidence: .agent/state/source-evidence.jsonl. Alternative: none — required by anti-hallucination rule. Consequence: every inherited claim in EP-000 is now evidence-backed. Reversal: remove records (not recommended). Affects: WM-FEAT-0147, WM-FEAT-0150. Security: n/a. License: verified. Compatibility: baseline locked. Performance: n/a. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 
