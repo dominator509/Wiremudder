@@ -307,7 +307,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -328,3 +328,5 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- 2026-08-27: EP-000 completed. Changed vs expected files: all 22 static expected paths present; 0 inherited paths modified (discovered amendment rows=0). Source evidence: 20 records (WM-SRC-000001 through WM-SRC-000020). Commands: validate-blueprint, preflight, graph-next, node-contract-check, node-verifiers/EP-000.sh M1-M5, record-evidence, scope-audit, ledger append, command-lock-add, source-evidence-record. Sentinels observed: blueprint validation: ok; preflight: ok; NEXT EP-000; node contract check EP-000: ok; EP-000 M1 through M5: ok; scope audit EP-000: ok; feature coverage: ok features=244; spec trace: ok; LF-000: ok. Features: WM-FEAT-0147 and WM-FEAT-0150 implemented and certified by LF-000. Requirements: WM-SPEC-000-R02/R04/R05/R06/R07/R08 and WM-SPEC-001-R01/R02/R05/R06/R09/R10 closed by tests under tests/wiremudder/ep000/. Provider certification: none (no providers in scope). Platform certification: linux gate chain proven; other platforms deferred to their nodes. Assumptions: submodules remain uninitialized gitlinks until the build node; origin remote awaits operator URL. Risks: upstream sync must re-run gates (SPEC-001-R06); inventory drift regenerable. Rollback: git revert per milestone; never cross green/EP-000. Green tag: green/EP-000 (created after NODE_DONE). Next scheduler output recorded after tag.
