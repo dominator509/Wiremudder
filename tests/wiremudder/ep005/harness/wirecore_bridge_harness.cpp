@@ -156,6 +156,49 @@ bool runCrashRestart(const QString& socketPath, const QString& binary) {
     return true;
 }
 
+bool runHangDetection(const QString& socketPath, const QString& binary) {
+    WireCoreSupervisor sup(socketPath);
+    bool readyOk = false;
+    int readyCount = 0;
+    bool crashed = false;
+
+    sup.setReadyCallback([&](bool ok, const QString& err) {
+        readyOk = ok;
+        readyCount++;
+        if (qEnvironmentVariableIsSet("WM_DEBUG"))
+            fprintf(stderr, "HANG ready#%d ok=%d err=%s\n", readyCount, ok ? 1 : 0, qPrintable(err));
+        if (!ok) fail("ready failed: " + err);
+    });
+    sup.setCrashCallback([&]() {
+        crashed = true;
+        if (qEnvironmentVariableIsSet("WM_DEBUG")) fprintf(stderr, "HANG crash fired\n");
+    });
+
+    if (!sup.start(binary)) fail("start returned false");
+    if (!waitFor([&]() { return readyOk && sup.isConnected(); }, 4000))
+        fail("no initial ready");
+
+    const qint64 pid = sup.pid();
+    if (pid <= 0) fail("no sidecar pid");
+
+    // Simulate a hang (not a crash): freeze the sidecar with SIGSTOP.
+    // The supervisor must detect stale pings and restart it.
+    if (::kill(static_cast<pid_t>(pid), SIGSTOP) != 0) fail("SIGSTOP failed");
+
+    // Stale-pong detection: health timer pings every 2 s; staleness
+    // threshold is 6 s. Allow up to 14 s for detect + restart.
+    if (!waitFor([&]() { return crashed; }, 14000)) fail("no hang detected");
+    if (!waitFor([&]() { return readyCount >= 2 && sup.isConnected(); }, 8000))
+        fail("no restart after hang");
+    if (!waitFor([&]() { return sup.healthy(); }, 6000))
+        fail("restarted sidecar unhealthy");
+
+    sup.stop();
+    if (g_fail) return false;
+    printf("failure hang-detection: ok\n");
+    return true;
+}
+
 bool runE2e(const QString& socketPath, const QString& binary) {
     WireCoreSupervisor sup(socketPath);
     bool readyOk = false;
@@ -257,6 +300,8 @@ int main(int argc, char** argv) {
         ok = runLifecycle(socketPath, binary);
     } else if (cmd == "crash") {
         ok = runCrashRestart(socketPath, binary);
+    } else if (cmd == "hang") {
+        ok = runHangDetection(socketPath, binary);
     } else if (cmd == "e2e") {
         ok = runE2e(socketPath, binary);
     } else {

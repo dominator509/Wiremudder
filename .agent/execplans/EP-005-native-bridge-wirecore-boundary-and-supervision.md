@@ -318,13 +318,17 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
+
+- 2026-08-27: Supervisor health baseline bug: `m_lastPongMs` started at 0, so a peer stopped (SIGSTOP) before its first ping/pong cycle was never considered stale (`m_lastPongMs > 0` guard never satisfied) — hang detection silently never fired. Fixed by baselining `m_lastPongMs` at hello_ack and removing the `== 0 → healthy` shortcut. Evidence: failure/001-hang-detection.sh (was "no restart after hang", now passes).
+- 2026-08-27: Overlapping restart churn: with a stalled peer, the health timer could fire crashCallback + schedule a second restart while the first restart was still killing/relaunching (observed "HANG crash fired" twice). Fixed with a `m_restartPending` guard shared by onDisconnected and the stale-health path. Evidence: failure/001-hang-detection.sh debug trace.
+- 2026-08-27: Kernel flow control on burst clients: a client that sends >~210 request frames without reading replies deadlocks on the local socket (sidecar's blocking writes + client's full send buffer). Not a sidecar defect: the real Qt supervisor drains continuously via readyRead; the M4 queue-exhaustion test now pipelines reads in batches of 50. Evidence: failure/003-queue-exhaustion.sh; /proc thread wchan diagnostic.
 
 # 13. Decision Log
 

@@ -65,6 +65,7 @@ bool WireCoreSupervisor::start(const QString& wirecoreBinary, QString* error) {
     m_handshakeDone = false;
     m_connected = false;
     m_lastPongMs = 0;
+    m_restartPending = false;
     launchAndConnect();
     return true;
 }
@@ -165,6 +166,9 @@ void WireCoreSupervisor::processFrame(const QByteArray& line) {
         const QJsonObject payload = frame.value("payload").toObject();
         m_connected = payload.value("status").toString() == "ok";
         m_handshakeDone = true;
+        // Baseline health from the handshake: a peer that goes silent
+        // right after connecting must still be detected as stale.
+        m_lastPongMs = QDateTime::currentMSecsSinceEpoch();
         if (m_readyCb) m_readyCb(m_connected, m_connected ? QString() : "handshake rejected");
         if (m_connected) flushPending();
         return;
@@ -180,6 +184,8 @@ void WireCoreSupervisor::onDisconnected() {
     m_connected = false;
     m_handshakeDone = false;
     if (m_stopping) return;
+    if (m_restartPending) return;  // one restart in flight is enough
+    m_restartPending = true;
     if (m_crashCb) m_crashCb();
     scheduleRestart();
 }
@@ -222,6 +228,8 @@ void WireCoreSupervisor::restartNow() {
     m_connected = false;
     m_handshakeDone = false;
     launchAndConnect();
+    m_restartPending = false;  // restart attempt launched; next health
+                               // tick decides whether it succeeded
 }
 
 void WireCoreSupervisor::sendPing() {
@@ -240,7 +248,8 @@ void WireCoreSupervisor::maybeRestartUnhealthy() {
     sendPing();
     const qint64 now = QDateTime::currentMSecsSinceEpoch();
     const bool stale = m_connected && m_lastPongMs > 0 && (now - m_lastPongMs) > kPongStaleMs;
-    if (stale && !m_stopping) {
+    if (stale && !m_stopping && !m_restartPending) {
+        m_restartPending = true;
         if (m_crashCb) m_crashCb();
         scheduleRestart();
     }
@@ -290,7 +299,7 @@ bool WireCoreSupervisor::healthy() const {
     if (!m_connected || !m_process || m_process->state() != QProcess::Running) {
         return false;
     }
-    if (m_lastPongMs == 0) return true;  // no ping cycle yet
+    if (m_lastPongMs == 0) return false;  // no handshake baseline yet
     const qint64 now = QDateTime::currentMSecsSinceEpoch();
     return (now - m_lastPongMs) <= kPongStaleMs;
 }

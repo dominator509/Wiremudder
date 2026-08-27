@@ -8,7 +8,9 @@
 //! client (crash isolation).
 
 use std::collections::VecDeque;
+use std::fs::Permissions;
 use std::io::{BufRead, BufReader, Write};
+use std::os::unix::fs::PermissionsExt;
 use std::os::unix::net::{UnixListener, UnixStream};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
@@ -199,6 +201,9 @@ fn main() {
             std::process::exit(1);
         }
     };
+    // Local peer authentication (SPEC-024-R02): the socket is
+    // owner-only, so arbitrary local users cannot connect.
+    let _ = std::fs::set_permissions(socket_path, Permissions::from_mode(0o700));
     let running = Arc::new(AtomicBool::new(true));
     println!("wirecore: listening on {socket_path} pid={}", std::process::id());
     // Supervision: accept loop; each connection handled on its own

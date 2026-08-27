@@ -1,0 +1,42 @@
+{
+  "node": "EP-005",
+  "milestone": "M4",
+  "fixture": "queue-latency",
+  "hardware": {
+    "uname": {
+      "system": "Linux",
+      "node": "vmi3357656",
+      "release": "6.8.0-106-generic",
+      "version": "#106-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar  6 07:58:08 UTC 2026",
+      "machine": "x86_64",
+      "processor": "x86_64"
+    },
+    "cpu_count": 6,
+    "python": "3.12.3"
+  },
+  "workload": {
+    "requests": 2000,
+    "queue_capacity": 256,
+    "frame_size_bytes": 128
+  },
+  "distributions_ms": {
+    "p50": 0.041,
+    "p95": 0.072,
+    "p99": 0.168,
+    "min": 0.013,
+    "max": 0.525
+  },
+  "throughput_req_per_s": 16998.8,
+  "wall_seconds": 0.118,
+  "snapshot": {
+    "dropped": 1744,
+    "queue_len": 256,
+    "uptime_ms": 0
+  },
+  "thresholds": {
+    "p95_ms_lt": 20.0,
+    "min_throughput_req_per_s": 500.0,
+    "queue_len_le": 256
+  },
+  "observed_at": "2026-08-27T15:22:32Z"
+}

@@ -116,6 +116,7 @@ private:
     bool m_connected = false;
     bool m_stopping = false;
     bool m_handshakeDone = false;
+    bool m_restartPending = false;
 
     ReadyCallback m_readyCb;
     CrashCallback m_crashCb;
