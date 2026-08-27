@@ -33,12 +33,19 @@ QList<NegotiationEvent> parseIac(const QByteArray& data, int maxSb) {
         if (verb == cmd::SB) {
             // subnegotiation: consume until IAC SE (bounded)
             int j = i + 2;
+            quint8 sbOpt = 0;
+            if (j < len) {
+                sbOpt = static_cast<quint8>(p[j]);
+                ++j;
+            }
             QByteArray sub;
+            bool closed = false;
             while (j + 1 < len) {
                 if (static_cast<quint8>(p[j]) == cmd::IAC &&
                     static_cast<quint8>(p[j + 1]) == cmd::SE) {
-                    out.append({cmd::SB, 0, sub, i});
+                    out.append({cmd::SB, sbOpt, sub, i});
                     i = j + 2;
+                    closed = true;
                     break;
                 }
                 if (static_cast<quint8>(p[j]) == cmd::IAC &&
@@ -50,10 +57,17 @@ QList<NegotiationEvent> parseIac(const QByteArray& data, int maxSb) {
                 sub.append(p[j]);
                 ++j;
                 if (sub.size() > maxSb) { // bound runaway subnegotiation
-                    out.append({cmd::SB, 0, sub.left(maxSb), i});
+                    out.append({cmd::SB, sbOpt, sub.left(maxSb), i});
                     i = j;
+                    closed = true;
                     break;
                 }
+            }
+            if (!closed) {
+                // Unterminated SB: report the partial event and stop,
+                // guaranteeing forward progress on malformed streams.
+                out.append({cmd::SB, sbOpt, sub, i});
+                i = len;
             }
             continue;
         }
