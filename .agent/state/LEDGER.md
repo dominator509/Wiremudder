@@ -188,3 +188,4 @@
 2026-08-27T22:48:43Z | ipman-hermes | EP-015 | MILESTONE_PASS | M2 EP-015 M2: ok; evidence=.agent/state/evidence/EP-015/M2
 2026-08-27T22:50:33Z | ipman-hermes | EP-015 | MILESTONE_PASS | M3 EP-015 M3: ok; evidence=.agent/state/evidence/EP-015/M3
 2026-08-27T22:52:33Z | ipman-hermes | EP-015 | MILESTONE_PASS | M4 EP-015 M4: ok; evidence=.agent/state/evidence/EP-015/M4
+2026-08-27T22:53:49Z | ipman-hermes | EP-015 | MILESTONE_PASS | M5 EP-015 M5: ok; LF-015 green; features 14/14; requirements 6/6
