@@ -1,1 +1,1 @@
-{"budget_p95_us":10000,"estop_propagation_us":12,"evaluate_p95_us":0,"evaluate_total_us":29059,"hardware":"linux x86_64 (host)","iterations":100000}
+{"budget_p95_us":10000,"estop_propagation_us":26,"evaluate_p95_us":0,"evaluate_total_us":26607,"hardware":"linux x86_64 (host)","iterations":100000}

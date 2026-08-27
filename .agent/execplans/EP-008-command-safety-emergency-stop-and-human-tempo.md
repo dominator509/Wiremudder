@@ -331,3 +331,14 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- 2026-08-27: EP-008 closed. `node verify EP-008: ok`; `expected files audit EP-008: ok paths=22`; `scope audit EP-008: ok changed=43`; `feature coverage: ok features=244`; `spec trace: ok`; `green/EP-008` created.
+- Changed vs expected: all 43 changed paths are within the static fence (execplan, contract, fences, verifier, LEDGER, source evidence, COMMANDS.lock, evidence/, LF-008, tests/wiremudder/ep008/, docs/wiremudder/command-safety/, src/wiremudder/command-safety/, wirecore/crates/wire-actions/, wirecore/crates/wire-policy/, schemas/wiremudder/actions/). Discovered amendment rows=0 — no inherited source edited.
+- Owned features: WM-FEAT-0174..0180, 0188 implemented and certified (required/core).
+- Owned requirements: WM-SPEC-004-R01/R02/R09/R11, WM-SPEC-009-R01/R03/R05/R06/R07/R08/R09/R10, WM-SPEC-015-R03/R05, WM-SPEC-017-R03/R08, WM-SPEC-022-R04/R10 all evidenced.
+- Commands and sentinels: cargo test 5/5 + 9/9; harness policy/gateway/estop/failures/bench all ok; e2e oracle ok (8 policy + 3 gate scenarios); e2e command-flow ok; LF-008 ok; M1-M5 verifier subcommands ok; performance gate p95 0us, estop propagation 14us vs 10ms budget.
+- Provider/platform certification: none claimed; optional providers remain disabled.
+- Assumptions changed: none.
+- Risks: none beyond documented Human-Tempo semantics (anti-spam only).
+- Rollback: clean revert of EP-008 commits; no inherited files affected.
+- Next scheduler output: `NEXT EP-009`.
