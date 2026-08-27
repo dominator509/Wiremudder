@@ -1,0 +1,12 @@
+[package]
+name = "wire-provider-adapters"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder AI provider adapters: one versioned interface for local and remote models, request redaction, cancellation, usage, health, and capability metadata (SPEC-013, EP-016)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+regex = "1.13.1"
+wire-privacy = { path = "../wire-privacy" }

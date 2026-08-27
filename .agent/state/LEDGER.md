@@ -192,3 +192,4 @@
 2026-08-27T22:53:51Z | ipman-hermes | EP-015 | NODE_DONE | node verify EP-015: ok; green/EP-015 tag created
 2026-08-27T22:54:24Z | ipman-hermes | EP-016 | LEASE | holder=ipman-hermes base=7b4f759c5ba00604acd7f670d8e3782e3b6acc54
 2026-08-27T22:55:50Z | ipman-hermes | EP-016 | MILESTONE_PASS | M1 EP-016 M1: ok; evidence=.agent/state/evidence/EP-016/M1
+2026-08-27T23:14:31Z | ipman-hermes | EP-016 | MILESTONE_PASS | M2 EP-016 M2: ok; evidence=.agent/state/evidence/EP-016/M2

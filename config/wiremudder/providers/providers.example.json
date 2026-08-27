@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "comment": "WireMudder AI provider registry. Remote adapters stay disabled (certified=false, configured=false) until real certification evidence exists (acceptance obligation 6). The local Ollama path is certified only after LF-016 live-fire.",
+  "providers": [
+    {
+      "provider_id": "ollama",
+      "kind": "local",
+      "host": "127.0.0.1",
+      "port": 11434,
+      "model": "tinyllama",
+      "context_window": 2048,
+      "max_output": 512,
+      "certified": false,
+      "configured": true,
+      "remote_egress": false
+    },
+    {
+      "provider_id": "remote-placeholder",
+      "kind": "remote",
+      "endpoint": "https://api.example.invalid",
+      "model": "unset",
+      "certified": false,
+      "configured": false,
+      "remote_egress": true,
+      "comment": "Uncertified remote adapters are disabled and unadvertised. No silent remote fallback exists (WM-SPEC-013-R08)."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://wiremudder.dev/schemas/ai/evaluation-report-v1.json",
+  "title": "WireMudder AI Provider Evaluation Report v1",
+  "description": "Provider certification evaluation fixture result (WM-SPEC-013-R10, WM-FEAT-0038).",
+  "type": "object",
+  "required": ["schema_version", "fixture_id", "route_id", "provider", "quality_ok", "privacy_ok", "latency_ok", "cancellation_ok", "cost_ok", "fallback_ok", "certified"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "fixture_id": { "type": "string" },
+    "route_id": { "type": "string" },
+    "provider": { "type": "string" },
+    "quality_ok": { "type": "boolean" },
+    "privacy_ok": { "type": "boolean" },
+    "latency_ok": { "type": "boolean" },
+    "cancellation_ok": { "type": "boolean" },
+    "cost_ok": { "type": "boolean" },
+    "fallback_ok": { "type": "boolean" },
+    "certified": { "type": "boolean" }
+  }
+}

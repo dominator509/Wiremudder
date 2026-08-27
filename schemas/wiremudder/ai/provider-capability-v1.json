@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://wiremudder.dev/schemas/ai/provider-capability-v1.json",
+  "title": "WireMudder AI Provider Capability v1",
+  "description": "Normalized provider capability metadata (WM-SPEC-013-R04, WM-FEAT-0037).",
+  "type": "object",
+  "required": ["schema_version", "provider_id", "kind", "model_family", "model", "streaming", "cancellation", "usage", "health", "context_window", "max_output", "locality", "certified", "remote_egress"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "provider_id": { "type": "string" },
+    "kind": { "enum": ["local", "remote"] },
+    "model_family": { "type": "string" },
+    "model": { "type": "string" },
+    "streaming": { "type": "boolean" },
+    "cancellation": { "type": "boolean" },
+    "usage": { "type": "boolean" },
+    "health": { "type": "boolean" },
+    "context_window": { "type": "integer", "minimum": 0 },
+    "max_output": { "type": "integer", "minimum": 0 },
+    "locality": { "type": "string" },
+    "certified": { "type": "boolean" },
+    "remote_egress": { "type": "boolean" }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "comment": "WireMudder AI routing policy (WM-SPEC-013-R05/R06/R08, WM-FEAT-0038). Routing is deterministic from declared inputs. Routes with certified=false are never selected.",
+  "routes": [
+    {
+      "route_id": "ollama-local",
+      "provider_id": "ollama",
+      "kind": "local",
+      "model": "tinyllama",
+      "certified": false,
+      "configured": true,
+      "remote_egress": false,
+      "context_window": 2048,
+      "cost_per_1k": 0.0,
+      "locality": "local",
+      "min_privacy_mode": null,
+      "est_latency_ms": 30
+    },
+    {
+      "route_id": "remote-disabled",
+      "provider_id": "remote-placeholder",
+      "kind": "remote",
+      "model": "unset",
+      "certified": false,
+      "configured": false,
+      "remote_egress": true,
+      "context_window": 0,
+      "cost_per_1k": 0.0,
+      "locality": "remote",
+      "min_privacy_mode": "remote-approved",
+      "est_latency_ms": 800
+    }
+  ]
+}
