@@ -98,3 +98,7 @@
 2026-08-27T12:08:55Z | ipman-hermes | EP-004 | MILESTONE_PASS | M3 EP-004 M3: ok; evidence=.agent/state/evidence/EP-004/M3
 2026-08-27T12:09:26Z | ipman-hermes | EP-004 | MILESTONE_PASS | M4 EP-004 M4: ok; evidence=.agent/state/evidence/EP-004/M4
 2026-08-27T12:09:49Z | ipman-hermes | EP-004 | MILESTONE_PASS | M5 EP-004 M5: ok; evidence=.agent/state/evidence/EP-004/M5
+2026-08-27T12:10:01Z | ipman-hermes | EP-004 | NODE_DONE | node verify EP-004: ok; green/EP-004 tag created
+2026-08-27T12:10:06Z | ipman-hermes | EP-004 | LEASE_RELEASE | holder=ipman-hermes
+2026-08-27T12:10:11Z | ipman-hermes | EP-005 | LEASE | holder=ipman-hermes base=8d1d470ad2045f82baa59d691c0d9801efe18802
+2026-08-27T12:16:10Z | ipman-hermes | EP-005 | MILESTONE_PASS | M1 EP-005 M1: ok; evidence=.agent/state/evidence/EP-005/M1

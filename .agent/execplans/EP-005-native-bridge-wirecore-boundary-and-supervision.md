@@ -316,7 +316,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -329,6 +329,8 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-27: EP-005 M1 recorded evidence for the native bridge: inherited Host (WM-SRC-000050), main.cpp (000049), TLuaInterpreter (000051), CMakeLists (000052). Rust toolchain verified (cargo 1.96.0 at /root/.cargo/bin). Bridge frame schema authored. Contract tests verify WireCore boundaries and namespacing since lease base. Evidence: M1 verifier sentinel. Alternative: none - SPEC-002 requires the Rust sidecar boundary. Consequence: bridge boundary locked before crate authoring. Reversal: git revert of M1 commit. Affects: WM-FEAT-0155..0158, WM-SPEC-002-R03/R04/R06. Security: no secrets. License: n/a. Compatibility: no inherited edits. Performance: n/a. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 

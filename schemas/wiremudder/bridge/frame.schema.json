@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/bridge/frame.schema.json",
+  "title": "WireMudder Bridge Frame",
+  "description": "Versioned local IPC frame between the Qt client and the Rust WireCore sidecar (SPEC-024).",
+  "type": "object",
+  "required": ["magic", "version", "frame_id", "kind", "payload"],
+  "properties": {
+    "magic": { "const": "WMC1" },
+    "version": { "const": 1 },
+    "frame_id": { "type": "string", "minLength": 8 },
+    "kind": {
+      "enum": [
+        "hello", "hello_ack", "ping", "pong", "snapshot", "request",
+        "response", "event", "cancel", "shutdown"
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "deadline_ms": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}
