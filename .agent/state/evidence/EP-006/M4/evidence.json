@@ -1,0 +1,16 @@
+{
+  "agent_id": "unknown-agent",
+  "command": [
+    "sh",
+    "scripts/node-verifiers/EP-006.sh",
+    "M4"
+  ],
+  "exit_code": 0,
+  "expected_sentinel": "EP-006 M4: ok",
+  "milestone": "M4",
+  "node": "EP-006",
+  "observed_at": "2026-08-27T15:42:14Z",
+  "output_sha256": "c76e2dacfba3af7d3b8026c945c7dc125fc0c0aafc3adac37ddf0b85fb81edf4",
+  "schema_version": 1,
+  "sentinel_observed": true
+}

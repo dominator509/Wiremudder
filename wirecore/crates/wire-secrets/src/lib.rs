@@ -180,6 +180,11 @@ impl<B: SecretBackend> SecretVault<B> {
         if id.len() < 4 || id.chars().any(|c| c.is_whitespace()) {
             return Err(SecretVaultError::InvalidId(id.into()));
         }
+        if value.is_empty() {
+            return Err(SecretVaultError::InvalidId(
+                "secret value must not be empty".into(),
+            ));
+        }
         self.backend.store(SecretEntry::new(id, class, value, now))
     }
 
@@ -265,5 +270,33 @@ mod tests {
         let json = serde_json::to_string(&e).unwrap();
         assert!(!json.contains("id_rsa"));
         assert!(!json.contains("value"));
+    }
+
+    #[test]
+    fn abuse_invalid_ids_rejected() {
+        let mut v = SecretVault::new(MemoryBackend::new());
+        assert!(v.store("ab", SecretClass::MudPassword, b"x", 1).is_err());  // too short
+        assert!(v.store("has space", SecretClass::MudPassword, b"x", 1).is_err());
+        assert!(v.store("valid-id", SecretClass::MudPassword, b"", 1).is_err());  // empty value
+    }
+
+    #[test]
+    fn abuse_missing_operations_error() {
+        let mut v = SecretVault::new(MemoryBackend::new());
+        assert!(matches!(v.retrieve("missing"), Err(SecretVaultError::NotFound(_))));
+        assert!(matches!(v.delete("missing"), Err(SecretVaultError::NotFound(_))));
+    }
+
+    #[test]
+    fn abuse_overlapping_values_redacted_deterministically() {
+        let mut v = SecretVault::new(MemoryBackend::new());
+        v.store("short-sec", SecretClass::MudPassword, b"abc", 1).unwrap();
+        v.store("long-sec", SecretClass::ProviderToken, b"abcdef", 1).unwrap();
+        // "abcdef" contains "abc": redaction must still remove both
+        // values and stay deterministic.
+        let a = v.redact_leak("send abc then abcdef now");
+        let b = v.redact_leak("send abc then abcdef now");
+        assert_eq!(a, b);
+        assert!(!a.contains("abc"));
     }
 }

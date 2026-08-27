@@ -1,0 +1,30 @@
+{
+  "node": "EP-006",
+  "milestone": "M4",
+  "fixture": "redaction-throughput",
+  "hardware": {
+    "uname": {
+      "system": "Linux",
+      "node": "vmi3357656",
+      "release": "6.8.0-106-generic",
+      "version": "#106-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar  6 07:58:08 UTC 2026",
+      "machine": "x86_64",
+      "processor": "x86_64"
+    },
+    "cpu_count": 6
+  },
+  "workload": {
+    "bytes": 17039360,
+    "patterns": 3,
+    "iterations": 5
+  },
+  "distributions_ms": {
+    "p50": 98.865,
+    "p95": 102.388
+  },
+  "throughput_mib_per_s": 164.4,
+  "thresholds": {
+    "min_throughput_mib_per_s": 5.0
+  },
+  "observed_at": "2026-08-27T15:42:14Z"
+}

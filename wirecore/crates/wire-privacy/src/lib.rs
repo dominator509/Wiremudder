@@ -466,4 +466,53 @@ mod tests {
         assert!(!out.contains("hunter2"));
         assert_eq!(out, "my password is [REDACTED:mud-password] and [REDACTED:mud-password] again");
     }
+
+    #[test]
+    fn abuse_malformed_receipt_rejected() {
+        let mut reg = ConsentRegistry::new();
+        // Receipt id too short.
+        let mut short = receipt("receipt-1");
+        assert!(reg.grant(short.clone()).is_err());
+        // Non-revocable receipts are invalid.
+        short.receipt_id = "receipt-0000000000000002".into();
+        short.revocable = false;
+        assert!(reg.grant(short.clone()).is_err());
+        // Granting an already-revoked receipt is invalid.
+        short.revocable = true;
+        short.status = "revoked".into();
+        assert!(reg.grant(short).is_err());
+    }
+
+    #[test]
+    fn abuse_override_denied_without_visibility() {
+        let mut p = EgressPolicy::new_denial_first();
+        p.allowed_destinations.push("https://api.example.com".into());
+        assert!(p
+            .add_override(OverrideEntry {
+                override_id: "ovr-123456".into(),
+                category: "ai".into(),
+                user_visible: false,
+                consent_receipt_id: "receipt-1234567890".into(),
+            })
+            .is_err());
+        assert!(p.can_egress("ai", "https://api.example.com").is_err());
+    }
+
+    #[test]
+    fn abuse_overlapping_redaction_is_deterministic() {
+        let mut eng = RedactionEngine::new(true);
+        eng.add_pattern(
+            RedactionPattern::new("a", "token", r"secret-a", "[X]").unwrap(),
+        );
+        eng.add_pattern(
+            RedactionPattern::new("b", "token", r"secret", "[Y]").unwrap(),
+        );
+        let text = "secret-a and secret-b";
+        let out = eng.redact(text);
+        // Deterministic: same input, same output every time.
+        assert_eq!(out, eng.redact(text));
+        // Nothing sensitive survives.
+        assert!(!out.contains("secret-a"));
+        assert!(!out.contains("secret-b"));
+    }
 }
