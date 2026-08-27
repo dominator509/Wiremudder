@@ -308,7 +308,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -326,3 +326,5 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- 2026-08-27: EP-002 completed. Changed vs expected files: all static expected paths present (governance docs, policies, verifier, tests, LF-002); 0 inherited paths modified. Source evidence: 38 records. Commands: git fetch upstream development; git switch -c sync/drill-*; git merge; node-verifiers/EP-002.sh M1-M5; classify_patch.py. Sentinels observed: EP-002 M1 through M5: ok; contract check ok; scope audit ok; LF-002: ok; feature coverage ok; spec trace ok. Features: WM-FEAT-0148 (sync drill + rollback), WM-FEAT-0149 (patch classification), WM-FEAT-0160 (no mass rename) implemented and certified by LF-002. Requirements: WM-SPEC-001-R04 and WM-SPEC-001-R07 closed by tests under tests/wiremudder/ep002/. Provider certification: none. Platform certification: linux git workflow proven. Assumptions: origin repo dominator509/WireMudder is private; upstream remains read-only. Risks: real upstream merge could conflict (drill uses controlled commit); sync promotes only through gates. Rollback: git revert per milestone; never cross green/EP-002. Green tag: green/EP-002. Next scheduler output: NEXT EP-003.

@@ -77,3 +77,7 @@
 2026-08-27T11:55:46Z | ipman-hermes | EP-002 | MILESTONE_PASS | M2 EP-002 M2: ok; evidence=.agent/state/evidence/EP-002/M2
 2026-08-27T11:56:34Z | ipman-hermes | EP-002 | MILESTONE_PASS | M3 EP-002 M3: ok; evidence=.agent/state/evidence/EP-002/M3
 2026-08-27T11:57:27Z | ipman-hermes | EP-002 | MILESTONE_PASS | M4 EP-002 M4: ok; evidence=.agent/state/evidence/EP-002/M4
+2026-08-27T11:57:56Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T11:58:07Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T11:58:14Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T11:58:14Z | ipman-hermes | EP-002 | MILESTONE_PASS | M5 EP-002 M5: ok; evidence=.agent/state/evidence/EP-002/M5
