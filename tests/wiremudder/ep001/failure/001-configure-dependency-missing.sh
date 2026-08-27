@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
-# Failure test: configure must fail cleanly when the Qt prefix is wrong
-# (dependency-unavailable proof), without corrupting the existing build.
+# Failure test: configure must fail cleanly when Qt 6.8.2 is unavailable
+# (dependency-unavailable proof), from a fresh build directory.
 set -eu
 . ./.env
 preset=$WIREMUDDER_CMAKE_PRESET
 tmpdir=$(mktemp -d)
 trap 'rm -rf "$tmpdir"' EXIT
 set +e
-cmake --preset "$preset" -DCMAKE_PREFIX_PATH="$tmpdir" >/tmp/wm-e1f-001.out 2>&1
+cmake --preset "$preset" -B "$tmpdir/fresh" -DCMAKE_PREFIX_PATH="$tmpdir/empty" >/tmp/wm-e1f-001.out 2>&1
 rc=$?
 set -e
 [ "$rc" -ne 0 ] || { echo "FAIL: configure succeeded with bogus Qt prefix" >&2; exit 1; }
