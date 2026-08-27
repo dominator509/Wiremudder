@@ -318,7 +318,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -331,6 +331,8 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-27: EP-003 M1 recorded evidence for the compatibility oracle: inherited fake MUD server (TelnetServerStub, WM-SRC-000039/000040), session test (000041), sequence recovery test (000042), mapper round-trip (000043), profile round-trip (000044). Contract tests verify inherited oracle fixtures and namespacing since lease base. Evidence: M1 verifier sentinel. Alternative: building the oracle from scratch rejected (must reuse inherited fixtures where possible). Consequence: the oracle is independent of implementation tests. Reversal: git revert of M1 commit. Affects: WM-FEAT-0126, WM-FEAT-0129, WM-FEAT-0130. Security: no secrets. License: inherited GPL fixtures preserved. Compatibility: oracle boundaries locked. Performance: n/a. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 
