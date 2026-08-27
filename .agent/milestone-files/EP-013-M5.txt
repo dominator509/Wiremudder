@@ -1,6 +1,8 @@
 # Exact path fence for EP-013 M5.
 tests/live-fire/LF-013-mapper-route-roundtrip.sh
-scripts/node-verifiers/EP-013.sh
+tests/wiremudder/ep013/feature-0165/
+tests/wiremudder/ep013/feature-0166/
+tests/wiremudder/ep013/feature-0167/
+tests/wiremudder/ep013/feature-0168/
 docs/wiremudder/mapper/
 .agent/state/evidence/EP-013/M5/
-.agent/state/LEDGER.md

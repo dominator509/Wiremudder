@@ -304,7 +304,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -312,11 +312,16 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-27: Inherited TAstar.h contains no `class TAstar`; it supplies boost graph A* primitives (`astar_search`, `distance_heuristic`, `astar_goal_visitor`) consumed at src/TMap.cpp:1011. Evidence WM-SRC-000097.
+- 2026-08-27: Inherited TRoom models exit locks, special exit locks, exit weights, doors, and exit stubs directly (WM-FEAT-0166 needs no new room model). Evidence WM-SRC-000095.
+- 2026-08-27: source_evidence.py still assigns len(existing)+1 (line 73); with 91 rows and max ID 000093 it would have collided. EP-013 M1 evidence recorded via explicit max+1 (000094..000100), checker green at rows=98.
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-27: Mapper integration boundary is namespaced `src/wiremudder/mapper/` plus `wirecore/crates/wire-world-graph/`; inherited mapper stays canonical and unedited unless a discovered-path amendment proves an exact edit is required. Evidence: WM-SRC-000094..000100; contract EP-013 authorized boundaries. Alternatives: patching TMap/TRoom directly. Consequence: no brownfield edit needed for M1; read-only integration. Reversal: add discovered amendment + revert boundary. Affects WM-FEAT-0165..0168, WM-SPEC-012-R04. Security/privacy/license/compatibility/performance: no new authority, no egress, GPL-consistent, no perf impact.
+- 2026-08-27: World-graph events and derived-fact provenance (WM-SPEC-012-R02/R03/R10) live in the wire-world-graph crate with versioned schemas under `schemas/wiremudder/world/`; the in-memory hot cache (R03) stays bounded with asynchronous durable writes. Alternatives: putting events in TMap. Consequence: inherited authority preserved. Reversal: move schema into crate. Affects WM-SPEC-012-R02/R03/R10.
+- 2026-08-27: Ambiguous room identity (WM-SPEC-012-R05) is preserved as uncertain state with a correction request path; no silent room merge. Alternatives: auto-merge on similarity. Consequence: matches contract. Reversal: none without spec change.
+- 2026-08-27: Evidence recorder ID bug handled by bypassing source_evidence.py for this batch: explicit max+1 IDs, same JSONL schema, checker green. Alternatives: run recorder then renumber. Consequence: no clobbered records. Reversal: none.
 
 # 14. Outcomes and Retrospective
 
