@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/privacy/redaction-policy.schema.json",
+  "title": "WireMudder Redaction Policy",
+  "description": "Deterministic redaction rules for sensitive material; secrets never enter AI context, logs, or transcripts (WM-SPEC-010-R05, WM-SPEC-010-R07).",
+  "type": "object",
+  "required": ["policy_version", "default_deny", "patterns", "secret_classes"],
+  "properties": {
+    "policy_version": { "const": 1 },
+    "default_deny": { "type": "boolean" },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "class", "regex", "replacement"],
+        "properties": {
+          "id": { "type": "string", "minLength": 4 },
+          "class": { "type": "string", "minLength": 1 },
+          "regex": { "type": "string", "minLength": 1 },
+          "replacement": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "secret_classes": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["mud-password", "provider-token", "routing-credential", "ssh-reference", "signing-metadata"] },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

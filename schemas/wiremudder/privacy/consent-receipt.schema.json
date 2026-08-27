@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/privacy/consent-receipt.schema.json",
+  "title": "WireMudder Consent Receipt",
+  "description": "Scoped, versioned, revocable consent tied to feature, provider, data class, profile, and time (WM-SPEC-010-R09).",
+  "type": "object",
+  "required": ["receipt_id", "schema_version", "consent_version", "profile", "feature", "provider", "data_class", "scope", "granted_at", "revocable", "status"],
+  "properties": {
+    "receipt_id": { "type": "string", "minLength": 16 },
+    "schema_version": { "const": 1 },
+    "consent_version": { "type": "integer", "minimum": 1 },
+    "profile": { "type": "string", "minLength": 1 },
+    "feature": { "type": "string", "minLength": 1 },
+    "provider": { "type": "string", "minLength": 1 },
+    "data_class": { "type": "string", "enum": ["profile", "transcript", "messages", "voice", "credentials", "telemetry"] },
+    "scope": { "type": "string", "minLength": 1 },
+    "granted_at": { "type": "string", "format": "date-time" },
+    "revoked_at": { "type": ["string", "null"], "format": "date-time" },
+    "revocable": { "const": true },
+    "status": { "type": "string", "enum": ["granted", "revoked"] }
+  },
+  "additionalProperties": false
+}

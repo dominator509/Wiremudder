@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/privacy/egress-policy.schema.json",
+  "title": "WireMudder Egress Policy",
+  "description": "Denial-first egress control: privacy modes and Local Only Lockdown (WM-SPEC-010-R03, WM-SPEC-010-R04).",
+  "type": "object",
+  "required": ["policy_version", "mode", "lockdown", "allowed_destinations", "denied_categories", "overrides"],
+  "properties": {
+    "policy_version": { "const": 1 },
+    "mode": {
+      "type": "string",
+      "enum": ["disabled", "local-only", "local-preferred", "remote-redacted", "remote-approved"]
+    },
+    "lockdown": { "type": "boolean" },
+    "allowed_destinations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "denied_categories": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["ai", "speech", "asset-generation", "telemetry", "package-download", "update-check"] },
+      "uniqueItems": true
+    },
+    "overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["override_id", "category", "user_visible", "consent_receipt_id"],
+        "properties": {
+          "override_id": { "type": "string", "minLength": 8 },
+          "category": { "type": "string" },
+          "user_visible": { "const": true },
+          "consent_receipt_id": { "type": "string", "minLength": 16 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
