@@ -329,3 +329,14 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- 2026-08-27: EP-007 closed. `node verify EP-007: ok`; `expected files audit EP-007: ok paths=22`; `scope audit EP-007: ok changed=49`; `feature coverage: ok features=244`; `spec trace: ok`; `green/EP-007` created.
+- Changed vs expected: all 49 changed paths are within the static fence (execplan, contract, fences, verifier, LEDGER, source evidence, COMMANDS.lock, evidence/, LF-007, tests/wiremudder/ep007/, docs/wiremudder/profiles-routing/, src/wiremudder/profiles/, src/wiremudder/routing/, wirecore/crates/wire-profiles/, wirecore/crates/wire-routing/). Discovered amendment rows=0 — no inherited source edited.
+- Owned features: WM-FEAT-0079, 0080, 0082, 0084-0087, 0091, 0092, 0169-0173 implemented and certified (required/full or core); WM-FEAT-0088, 0089, 0090 (research-decision-required/future) exposed as visibly disabled kinds per WM-SPEC-006-R05 — disposition recorded, not silently hidden.
+- Owned requirements: WM-SPEC-006-R04/R05/R06/R08/R09, WM-SPEC-010-R01, WM-SPEC-017-R01/R05/R07/R09, WM-SPEC-023-R01 all evidenced by unit/integration/e2e/live-fire tests.
+- Commands and sentinels: cargo test 5/5 + 7/7; harness profiles/routing/router/failures/bench all ok; e2e oracle ok (12 route entries + 10 profile domains + actor rules); e2e profile-connect-flow ok (real SOCKS5 relay traversal, block on relay death, preserved direct); LF-007 ok; M1-M5 verifier subcommands ok; performance decision p95 16us vs 10ms budget (SPEC-004).
+- Provider/platform certification: none claimed; optional providers remain disabled (preflight ok).
+- Assumptions changed: none.
+- Risks: SOCKS4a has no Qt proxy type; mapped to Socks5Proxy at the declared endpoint with kind preserved in records (documented in Decision Log).
+- Rollback: clean revert of EP-007 commits; no inherited files affected.
+- Next scheduler output: `NEXT EP-008`.

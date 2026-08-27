@@ -1,1 +1,1 @@
-{"budget_p95_us":10000,"decision_p95_us":16,"decision_total_us":1618781,"hardware":"linux x86_64 (host)","iterations":100000,"upsert_avg_us":3,"upsert_total_us":355269}
+{"budget_p95_us":10000,"decision_p95_us":16,"decision_total_us":1647775,"hardware":"linux x86_64 (host)","iterations":100000,"upsert_avg_us":3,"upsert_total_us":359032}
