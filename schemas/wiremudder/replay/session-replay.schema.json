@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/replay/session-replay.schema.json",
+  "title": "WireMudder Session Replay",
+  "description": "Deterministic sanitized session replay record (SPEC-019-R04).",
+  "type": "object",
+  "required": ["schema_version", "session_id", "client_version", "events"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "session_id": { "type": "string", "minLength": 8 },
+    "client_version": {
+      "type": "object",
+      "required": ["app", "git_sha"],
+      "properties": {
+        "app": { "type": "string" },
+        "git_sha": { "type": "string", "minLength": 40, "maxLength": 40 }
+      }
+    },
+    "profile": { "type": "string" },
+    "world": { "type": "string" },
+    "started_at": { "type": "string", "format": "date-time" },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/event" }
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "required": ["seq", "t", "kind"],
+      "properties": {
+        "seq": { "type": "integer", "minimum": 1 },
+        "t": { "type": "number", "description": "milliseconds since replay start" },
+        "kind": {
+          "enum": [
+            "line", "prompt", "command", "connection", "disconnect",
+            "trigger", "alias", "gag", "highlight", "mapper", "package"
+          ]
+        },
+        "line": { "type": "string", "description": "sanitized text line" },
+        "command": { "type": "string", "description": "sanitized manual command" },
+        "direction": { "enum": ["in", "out"] },
+        "details": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
