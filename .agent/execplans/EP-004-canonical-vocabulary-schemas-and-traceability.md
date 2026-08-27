@@ -305,7 +305,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
+- [x] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
@@ -319,6 +319,7 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 - 2026-08-27: EP-004 M1 recorded evidence for canonical vocabulary: replay schema established in EP-003 (WM-SRC-000045), SPEC-003 (000046), validation matrix (000047), feature catalog 244 features (000048). Contract tests verify traceability gates and schema namespace. Evidence: M1 verifier sentinel. Alternative: none - SPEC-003 requires canonical schemas. Consequence: schema namespace locked before authoring. Reversal: git revert of M1 commit. Affects: WM-FEAT-0151, WM-FEAT-0152, WM-FEAT-0153, WM-SPEC-003-R01/R02/R07. Security: no secrets. License: n/a. Compatibility: replay schema preserved. Performance: n/a. Upstream impact: none.
 - 2026-08-27: EP-004 M2 authored 5 canonical schemas (telemetry event, capability, error, privacy, profile) plus replay schema from EP-003 (6 total), and the schema-bindings generator producing bindings.manifest.json. Unit tests validate schema structure, telemetry enums, and domain enums. Evidence: M2 verifier sentinel; unit 001-003. Alternative: external schema tooling rejected (keep zero-dependency). Consequence: canonical vocabulary is machine-checkable. Reversal: git revert of M2 commit. Affects: WM-FEAT-0151, WM-FEAT-0152, WM-FEAT-0153, WM-SPEC-003-R01/R02/R07. Security: privacy schema encodes classification. License: n/a. Compatibility: no inherited edits. Performance: schema validation is O(schema size). Upstream impact: none.
 - 2026-08-27: EP-004 M3 integrated the schema contract pipeline: live traceability gates pass (244 features, spec trace), manifest regeneration is deterministic (sha256-stable), and the feature catalog -> capability schema -> manifest -> gate chain is consistent end to end. Evidence: M3 verifier sentinel; integration 001-002; e2e 001. Alternative: none - gates are the acceptance authority. Consequence: canonical vocabulary is enforced by the real gates. Reversal: git revert of M3 commit. Affects: WM-FEAT-0151, WM-FEAT-0152, WM-FEAT-0153. Security: no secrets. License: n/a. Compatibility: no inherited edits. Performance: gates bounded. Upstream impact: none.
+- 2026-08-27: EP-004 M4 added failure proofs (schema rejection of malformed docs, bindings generator fails closed on empty schema root), security proof (schema + manifest secret scan over 7 files), and performance budget (bindings generation 155ms/5x). Evidence: M4 verifier sentinel. Alternative: mocks rejected. Consequence: schema pipeline fails closed and stays clean. Reversal: git revert of M4 commit. Affects: WM-FEAT-0151, WM-FEAT-0152, WM-FEAT-0153. Security: schema tree scanned. License: n/a. Compatibility: no inherited edits. Performance: generation bounded. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 
