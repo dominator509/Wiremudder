@@ -307,7 +307,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
+- [x] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
@@ -325,6 +325,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - 2026-08-27: M2 core behavior implemented as dual implementations (Rust wire-world-graph crate + C++ WorldGraphQt boundary) with identical deterministic invariants; 17 Rust unit tests + 10 C++ invariant groups + schema contract tests green. Routing is deterministic Dijkstra with weights, one-way/hidden/locked/timed semantics. Alternatives: single implementation only. Consequence: cross-implementation parity oracle for M3. Reversal: revert M2 commit.
 - 2026-08-27: Derived-fact provenance and corrections (R02/R10) implemented in both cores: corrections supersede facts (superseded_by) while preserving history in a corrections list; ambiguous identity never merges rooms (R05).
 - 2026-08-27: M3 integration uses a cross-implementation parity oracle: Rust world_matrix example vs C++ mapper_parity harness produce 13 identical decisions (route, one-way, locked, hidden, timed, weighted, zones, round-trip, facts). E2E route round-trip persists a versioned snapshot through real file IO and asserts determinism across runs. Compatibility fixture `compatibility/maps/fixture-001-reference.map.json` added (SPEC-021).
+- 2026-08-27: M4 failure suite proves room/exit limits, malformed snapshot rejection, typed no-path/budget errors. Route budget is a per-graph field defaulting to MAX_ROUTE_NODES (backward-compatible via serde default) so bounded-work tests can set small budgets. Security suite proves secret-sensitivity survives round-trip, hidden-exit policy denial with opt-in, injection-shaped names/commands round-trip as data, tampered snapshots rejected. Performance: 10,000-room grid, p95 routing latency under 10 ms budget with JSON evidence.
 
 # 14. Outcomes and Retrospective
 

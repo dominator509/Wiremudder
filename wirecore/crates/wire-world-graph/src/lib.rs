@@ -14,7 +14,8 @@
 //! - Corrections supersede derived facts while preserving history (R10).
 
 use serde::{Deserialize, Serialize};
-use std::collections::{HashMap, HashSet, VecDeque};
+use std::cmp::Reverse;
+use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 
 pub const WORLD_SCHEMA_VERSION: u32 = 1;
 pub const MAX_ROOMS: usize = 1_000_000;
@@ -235,6 +236,13 @@ pub struct WorldGraph {
     pub next_event_seq: u64,
     pub next_fact_id: u64,
     pub cache: HotCache,
+    /// Per-graph route exploration budget (defaults to MAX_ROUTE_NODES).
+    #[serde(default = "default_route_budget")]
+    pub route_budget: usize,
+}
+
+fn default_route_budget() -> usize {
+    MAX_ROUTE_NODES
 }
 
 impl WorldGraph {
@@ -250,6 +258,7 @@ impl WorldGraph {
             next_event_seq: 1,
             next_fact_id: 1,
             cache: HotCache::new(),
+            route_budget: MAX_ROUTE_NODES,
         }
     }
 
@@ -482,27 +491,28 @@ impl WorldGraph {
         let mut dist: HashMap<u32, u64> = HashMap::new();
         let mut prev: HashMap<u32, (u32, String)> = HashMap::new();
         let mut visited: HashSet<u32> = HashSet::new();
-        // Simple deterministic Dijkstra (heap-free for determinism).
+        // Deterministic Dijkstra with a binary heap. Ties are broken by
+        // smaller room id (Reverse on both keys) to match the C++
+        // boundary exactly (SPEC-004, EP-013 parity oracle).
+        let mut queue: BinaryHeap<(Reverse<u64>, Reverse<u32>)> = BinaryHeap::new();
         dist.insert(from, 0);
+        queue.push((Reverse(0), Reverse(from)));
         let mut opened = 0usize;
-        loop {
-            let cur = dist
-                .iter()
-                .filter(|(id, _)| !visited.contains(id))
-                .min_by_key(|(_, d)| **d)
-                .map(|(id, _)| *id);
-            let Some(cur) = cur else {
-                break;
-            };
+        while let Some((Reverse(d_cur), Reverse(cur))) = queue.pop() {
+            if visited.contains(&cur) {
+                continue;
+            }
             if cur == to {
                 break;
             }
+            if dist.get(&cur).map_or(false, |d| d_cur > *d) {
+                continue; // stale entry
+            }
             visited.insert(cur);
             opened += 1;
-            if opened > MAX_ROUTE_NODES {
+            if opened > self.route_budget {
                 return Err(RouteError::BudgetExceeded);
             }
-            let d_cur = dist[&cur];
             let Some(room) = self.rooms.get(&cur) else {
                 continue;
             };
@@ -532,6 +542,7 @@ impl WorldGraph {
                 if better {
                     dist.insert(exit.to, nd);
                     prev.insert(exit.to, (cur, exit.command.clone()));
+                    queue.push((Reverse(nd), Reverse(exit.to)));
                 }
             }
         }
@@ -974,6 +985,33 @@ mod tests {
     fn missing_room_errors_are_typed() {
         let g = WorldGraph::new();
         assert_eq!(g.route(1, 2, None, false), Err(RouteError::MissingRoom(1)));
+    }
+
+    #[test]
+    fn route_budget_is_enforced() {
+        let mut g = WorldGraph::new();
+        g.route_budget = 5;
+        for i in 1..=20 {
+            g.add_room(room(i, 1)).unwrap();
+        }
+        for i in 1..20 {
+            g.add_exit(
+                i,
+                Exit {
+                    to: i + 1,
+                    command: format!("n{i}"),
+                    kind: ExitKind::Normal,
+                    weight: 1,
+                    door: DoorStatus::None,
+                    timed: None,
+                },
+            )
+            .unwrap();
+        }
+        assert_eq!(
+            g.route(1, 20, None, false),
+            Err(RouteError::BudgetExceeded)
+        );
     }
 
     #[test]

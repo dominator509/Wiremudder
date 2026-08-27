@@ -1,0 +1,27 @@
+{
+  "node": "EP-013",
+  "milestone": "M4",
+  "fixture": "mapper-route-bench",
+  "hardware": {
+    "uname": {
+      "system": "Linux",
+      "node": "vmi3357656",
+      "release": "6.8.0-106-generic",
+      "version": "#106-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar  6 07:58:08 UTC 2026",
+      "machine": "x86_64",
+      "processor": "x86_64"
+    },
+    "cpu_count": 6
+  },
+  "workload": {
+    "rooms": 10000,
+    "routes": 3
+  },
+  "distributions_ms": {
+    "p50": 6.92645,
+    "p95": 8.658554
+  },
+  "budget_ms": 10.0,
+  "ok": true,
+  "observed_at": "2026-08-27T21:27:56Z"
+}
