@@ -324,3 +324,14 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- Changed vs expected: all files within the static fence; no inherited paths edited; discovered amendment remains empty. Added privacy contract schemas (M1), Rust privacy/secrets cores (M2), C++ Qt adapters (M3), abuse/security/perf tests + ops docs (M4), LF-006 (M5).
+- Commands and sentinels (all observed): `node contract check EP-006: ok`; `EP-006 M1..M5: ok`; `scope audit EP-006: ok changed=41`; `feature coverage: ok`; `spec trace: ok`; `LF-006: local-only-lockdown ok` (observed_at=2026-08-27T15:42:30Z); `integration privacy-firewall: ok`; `integration secrets-vault: ok` (backend_available=0 headless); `e2e egress-lockdown: ok (6 decisions identical)`; `failure privacy-abuse: ok`; `failure secrets-abuse: ok`; `security secrets-never-leak: ok`; `security no-egress-adapter: ok`; `performance redaction-throughput: ok 157-164 MiB/s`.
+- Features: WM-FEAT-0093..0097, 0099..0101 (privacy/consent/secrets/local-only surfaces), 0190, 0220, 0222 implemented and live-fire evidenced.
+- Requirements: WM-SPEC-010-R02..R09, WM-SPEC-011-R01, WM-SPEC-015-R01/R02/R04/R06/R08/R09, WM-SPEC-018-R01/R03/R06, WM-SPEC-022-R03/R07, WM-SPEC-025-R01/R06 evidenced by M1-M5 verifiers, LF-006, and the failure/security/performance suites.
+- Provider/platform certification: none. OS secret backend (QtKeychain) probed honestly (backend_available=0 on this headless host); memory fallback is the declared posture until an OS backend is certified. No egress adapter exists in this node.
+- Assumptions: the in-memory secrets backend is the certified-fallback until QtKeychain is available in the target environment.
+- Risks: none open; cross-implementation oracle guards policy drift between Rust and C++.
+- Rollback: `git revert` of each milestone commit; runtime disable by not constructing the privacy modules.
+- Green tag: `green/EP-006`.
+- Next scheduler output: see `sh scripts/graph-next.sh`.
