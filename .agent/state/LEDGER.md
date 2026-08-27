@@ -120,3 +120,6 @@
 2026-08-27T15:42:52Z | ipman-hermes | EP-006 | MILESTONE_PASS | M5 EP-006 M5: ok; evidence=.agent/state/evidence/EP-006/M5
 2026-08-27T15:43:57Z | ipman-hermes | EP-006 | NODE_DONE | node verify EP-006: ok; green/EP-006 tag created
 2026-08-27T15:44:41Z | ipman-hermes | EP-006 | LEASE_RELEASE | holder=ipman-hermes
+2026-08-27T16:27:27Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T16:27:37Z | ipman-hermes | EP-007 | LEASE | holder=ipman-hermes base=591057b7e3381e13e492b61b735b7d17cd704b62
+2026-08-27T16:30:25Z | ipman-hermes | EP-007 | MILESTONE_PASS | M1 EP-007 M1: ok; evidence=.agent/state/evidence/EP-007/M1
