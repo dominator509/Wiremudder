@@ -8,7 +8,6 @@
 //! and state always produce the same decision.
 
 use serde::{Deserialize, Serialize};
-use std::collections::VecDeque;
 
 pub const POLICY_SCHEMA_VERSION: u32 = 1;
 

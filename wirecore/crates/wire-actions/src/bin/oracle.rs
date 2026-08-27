@@ -1,9 +1,7 @@
 //! Oracle CLI: emit the gate decision matrix for cross-implementation
 //! comparison with the C++ Qt layer (EP-008 M3 e2e oracle test).
 use serde_json::json;
-use wire_actions::{
-    ActionGateway, ActionSource, GateContext, GateDecision,
-};
+use wire_actions::{ActionGateway, ActionSource, GateContext};
 use wire_policy::{CommandDatabase, CommandRule, HumanTempo, RiskTier};
 
 fn main() {
@@ -14,19 +12,15 @@ fn main() {
     db.add_rule(CommandRule::new("quit", RiskTier::Destructive).deny());
     let mut g = ActionGateway::new(db, HumanTempo::new(0, 1000, 100000), 16);
 
-    let mut ctx = GateContext::ready();
+    let ctx = GateContext::ready();
     let matrix = json!([
         gate(&mut g, ActionSource::Ai, "say hello", &ctx),
         gate(&mut g, ActionSource::Macro, "kill orc", &ctx),
         gate(&mut g, ActionSource::Script, "quit", &ctx),
     ]);
-    // Denied contexts:
-    let mut disconnected = GateContext::ready();
-    disconnected.connected = false;
-    let mut injected = GateContext::ready();
-    injected.injection_flagged = true;
-    let mut noauto = GateContext::ready();
-    noauto.profile_automation_enabled = false;
+    let disconnected = GateContext { connected: false, ..ctx };
+    let injected = GateContext { injection_flagged: true, ..ctx };
+    let noauto = GateContext { profile_automation_enabled: false, ..ctx };
     let matrix2 = json!([
         gate(&mut g, ActionSource::Trigger, "say hi", &disconnected),
         gate(&mut g, ActionSource::Voice, "say hi", &injected),
