@@ -311,19 +311,57 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
 
+- 2026-08-27: The M2 SB parser hardcoded option 0 and never advanced on an
+  unterminated SB (infinite loop). M3 integration tests exposed both; fixed
+  with option-byte extraction and guaranteed forward progress.
+- 2026-08-27: Capability detector accumulated any WILL as negotiated; a
+  WONT after WILL never overrode. Telnet is stateful (last verb wins).
+  Fixed in M4 after the WONT-override failure test.
+- 2026-08-27: Shell per-argument cap (MAX_ARG_STRLEN 128KiB) bounds how
+  much hex a fixture can pass on argv; large streams must stay under it.
+
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
 
+- 2026-08-27: DECISION last-verb-wins negotiation state. Evidence:
+  tests/wiremudder/ep011/failure/001-malformed-and-resource.sh (WONT
+  override) and detectCapabilities in protocol_boundary.cpp. Alternative:
+  any-WILL accumulation (rejected: wrong Telnet semantics). Consequence:
+  refused protocols are never reported ready. Reversal: revert EP-011 M4
+  commit ead8d6c0. Affects WM-FEAT-0022..0036. Security: prevents
+  false-ready claims after refusal.
+- 2026-08-27: DECISION bounded SB at 4096 bytes with partial-event
+  emission on unterminated input. Evidence: M2/M3/M4 failure suites.
+  Alternative: unbounded accumulation (rejected: resource exhaustion).
+  Consequence: malformed streams cannot hang the parser.
+
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- Changed versus expected: all changes inside EP-011 fence; expected-file
+  audit ok; scope audit ok changed=38, discovered-path rows=0.
+- Source evidence: 85+ records in .agent/state/source-evidence.jsonl;
+  source-evidence-check ok.
+- Milestone evidence: .agent/state/evidence/EP-011/M1..M5/evidence.json,
+  exit_code 0, sentinel_observed true for all five.
+- Observed sentinels: "EP-011 M1: ok" ... "EP-011 M5: ok";
+  "node verify EP-011: ok".
+- Performance: capability-latency.json per-burst 1.5us, budget 10ms.
+- Feature coverage: ok features=244 source_features=145; spec trace ok.
+- Live-fire: LF-011 protocol-negotiation-matrix ok (real sockets).
+- Assumptions changed: none beyond documented parser/detector fixes.
+- Risks: fixture SIMULATION labeled; no inherited file modified.
+- Rollback: revert 1c10f6c5..57c062d2 or checkout lease base 0005a1b0.
+- Green tag: green/EP-011.
+- Next scheduler output: EP-012 (dispatched via graph-next.sh).
