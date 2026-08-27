@@ -129,3 +129,4 @@
 2026-08-27T16:38:20Z | ipman-hermes | EP-007 | MILESTONE_PASS | M3 EP-007 M3: ok; evidence=.agent/state/evidence/EP-007/M3
 2026-08-27T16:43:32Z | ipman-hermes | EP-007 | MILESTONE_PASS | M4 EP-007 M4: ok; evidence=.agent/state/evidence/EP-007/M4
 2026-08-27T16:44:48Z | ipman-hermes | EP-007 | MILESTONE_PASS | M5 EP-007 M5: ok; evidence=.agent/state/evidence/EP-007/M5
+2026-08-27T16:47:17Z | ipman-hermes | EP-007 | NODE_DONE | node verify EP-007: ok; green/EP-007 tag created
