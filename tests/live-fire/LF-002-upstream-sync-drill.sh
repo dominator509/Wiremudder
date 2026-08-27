@@ -54,6 +54,11 @@ sh scripts/preflight.sh >/dev/null || fail "preflight on drill branch"
 # 5. Rollback: return to base, delete the sync branch, green tags intact.
 git checkout -q "$base" 2>/dev/null || fail "rollback switch"
 git branch -D "$branch" >/dev/null 2>&1 || fail "rollback delete"
+# Re-attach to the real working branch if we are detached (a detached
+# HEAD after a drill would strand later commits off the branch).
+if [ "$(git rev-parse --abbrev-ref HEAD)" = "HEAD" ]; then
+  git checkout -q wire/development 2>/dev/null || true
+fi
 git rev-parse -q --verify "refs/tags/green/EP-000" >/dev/null || fail "green/EP-000 lost"
 git rev-parse -q --verify "refs/tags/green/EP-001" >/dev/null || fail "green/EP-001 lost"
 [ "$(git rev-parse HEAD)" = "$base" ] || fail "HEAD moved after rollback"

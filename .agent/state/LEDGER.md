@@ -104,3 +104,4 @@
 2026-08-27T12:16:10Z | ipman-hermes | EP-005 | MILESTONE_PASS | M1 EP-005 M1: ok; evidence=.agent/state/evidence/EP-005/M1
 2026-08-27T12:18:50Z | ipman-hermes | EP-005 | MILESTONE_PASS | M2 EP-005 M2: ok; evidence=.agent/state/evidence/EP-005/M2
 2026-08-27T12:26:03Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-27T12:27:56Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
