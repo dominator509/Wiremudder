@@ -18,7 +18,7 @@ the classification before merge.
 ## Remotes and Roles
 
 - `upstream` = https://github.com/Mudlet/Mudlet.git (official, read).
-- `origin` = https://github.com/dominator509/Wiremudder.git (fork, write).
+- `origin` = https://github.com/dominator509/WireMudder.git (fork, write).
 - No force-push or history rewrite across a completed green tag.
 
 ## Sync Drill

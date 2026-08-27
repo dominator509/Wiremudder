@@ -8,7 +8,7 @@ case "$up" in
   *) echo "FAIL: upstream=$up" >&2; exit 1 ;;
 esac
 case "$or" in
-  https://github.com/dominator509/Wiremudder.git|git@github.com:dominator509/Wiremudder.git|https://github.com/dominator509/WireMudder.git|git@github.com:dominator509/WireMudder.git) ;;
+  https://github.com/dominator509/WireMudder.git|git@github.com:dominator509/WireMudder.git) ;;
   *) echo "FAIL: origin=$or" >&2; exit 1 ;;
 esac
 [ "$up" != "$or" ] || { echo "FAIL: upstream and origin identical" >&2; exit 1; }

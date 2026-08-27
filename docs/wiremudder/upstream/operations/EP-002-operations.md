@@ -3,7 +3,7 @@
 ## Health
 
 - `sh scripts/validate-blueprint.sh` prints `blueprint validation: ok`.
-- `git remote -v` shows upstream=Mudlet and origin=dominator509/Wiremudder.
+- `git remote -v` shows upstream=Mudlet and origin=dominator509/WireMudder.
 - `sh scripts/graph-next.sh` prints a dispatch line.
 
 ## Readiness
@@ -32,7 +32,7 @@ runs (`tests/wiremudder/ep002/unit/classify_patch.py`), and
 
 ## Backup and Restore
 
-- Origin (github.com/dominator509/Wiremudder) mirrors the branch and
+- Origin (github.com/dominator509/WireMudder) mirrors the branch and
   green tags. Local state is in-git under `.agent/state/`.
 
 ## Incident Response

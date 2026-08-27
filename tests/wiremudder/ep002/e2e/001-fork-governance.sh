@@ -33,10 +33,6 @@ git checkout -q -b "$branch" "$base"
 git merge --no-edit "$base" >/dev/null 2>&1
 git checkout -q "$base"
 git branch -D "$branch" >/dev/null 2>&1 || true
-# Re-attach to the real working branch if detached (drill side effect).
-if [ "$(git rev-parse --abbrev-ref HEAD)" = "HEAD" ]; then
-  git checkout -q wire/development 2>/dev/null || true
-fi
 trap - EXIT
 git rev-parse -q --verify "refs/tags/green/EP-001" >/dev/null || { echo "FAIL: green/EP-001 lost" >&2; exit 1; }
 [ "$(git rev-parse HEAD)" = "$base" ] || { echo "FAIL: HEAD moved" >&2; exit 1; }
