@@ -84,8 +84,8 @@ case "${1:-}" in
   M5)
     check_pinned_commit
     check_cargo
-    [ -f tests/live-fire/LF-005-wirecore-bridge-supervision.sh ] || fail "missing LF-005"
-    sh tests/live-fire/LF-005-wirecore-bridge-supervision.sh || fail "LF-005 failed"
+    [ -f tests/live-fire/LF-005-sidecar-crash-isolation.sh ] || fail "missing LF-005"
+    sh tests/live-fire/LF-005-sidecar-crash-isolation.sh || fail "LF-005 failed"
     [ -d docs/wiremudder/bridge ] || fail "missing bridge docs"
     sh scripts/feature-coverage-check.sh >/dev/null || fail "feature coverage"
     sh scripts/spec-trace-check.sh >/dev/null || fail "spec trace"

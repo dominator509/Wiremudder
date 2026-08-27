@@ -320,7 +320,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -342,3 +342,14 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- Changed vs expected: all M3-M5 files were within the static fence plus `.agent/state/evidence/EP-005/{M3,M4,M5}/`. The M5 verifier's LF filename was corrected to the fence/contract path (`LF-005-sidecar-crash-isolation.sh`) — the verifier is in the M5 milestone fence and the name mismatch was a gate defect, not a weakening. No inherited paths were edited; the discovered amendment remains empty (rows=0).
+- Commands and sentinels (all observed): `node contract check EP-005: ok`; `EP-005 M1..M5: ok`; `scope audit EP-005: ok changed=39`; `feature coverage: ok features=244 source_features=145`; `spec trace: ok`; `LF-005: sidecar-crash-isolation ok` (observed_at=2026-08-27T15:23:45Z); `integration bridge-lifecycle: ok`; `integration bridge-crash-restart: ok`; `e2e optional-failure-preserves-gameplay: ok`; `failure hang-detection: ok`; `failure malformed-oversized: ok`; `failure queue-exhaustion: ok queue_len=256 dropped=44`; `failure duplicate-request: ok`; `failure permission-denied: ok`; `security secrets-redaction: ok`; `security injection-resistance: ok`; `security supply-chain: ok`; `performance queue-latency: ok p50=0.045ms p95=0.097ms p99=0.244ms tput=14697/s`.
+- Features: WM-FEAT-0155 (native bridge boundary) implemented; WM-FEAT-0156 (supervision) implemented; WM-FEAT-0157 (crash isolation) implemented; WM-FEAT-0158 (bounded queues) implemented. All live-fire evidenced.
+- Requirements: WM-SPEC-002-R03/R04/R06, WM-SPEC-003-R10, WM-SPEC-004-R03/R05/R06/R08/R10, WM-SPEC-024-R01/R06, WM-SPEC-025-R04/R05/R08/R10, WM-SPEC-026-R02/R03/R09 evidenced by M1-M5 verifiers, LF-005, and the performance/failure/security suites.
+- Provider/platform certification: none claimed. The bridge is local-only; external adapters remain disabled (fallback active: WireCore only on explicit user request).
+- Assumptions: local Unix domain socket with 0700 permissions is the peer-authentication boundary for this node (SPEC-024-R02).
+- Risks: EP-002 sync-drill detached-HEAD latent defect documented in Decision Log (scope-restored out of this lease); a maintenance path outside EP-005 is required.
+- Rollback: `git revert` of each milestone commit; runtime disable by not calling `start()`.
+- Green tag: `green/EP-005`.
+- Next scheduler output: see `sh scripts/graph-next.sh`.
