@@ -306,7 +306,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
+- [x] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
@@ -324,6 +324,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - 2026-08-27: Evidence recorder ID bug handled by bypassing source_evidence.py for this batch: explicit max+1 IDs, same JSONL schema, checker green. Alternatives: run recorder then renumber. Consequence: no clobbered records. Reversal: none.
 - 2026-08-27: M2 core behavior implemented as dual implementations (Rust wire-world-graph crate + C++ WorldGraphQt boundary) with identical deterministic invariants; 17 Rust unit tests + 10 C++ invariant groups + schema contract tests green. Routing is deterministic Dijkstra with weights, one-way/hidden/locked/timed semantics. Alternatives: single implementation only. Consequence: cross-implementation parity oracle for M3. Reversal: revert M2 commit.
 - 2026-08-27: Derived-fact provenance and corrections (R02/R10) implemented in both cores: corrections supersede facts (superseded_by) while preserving history in a corrections list; ambiguous identity never merges rooms (R05).
+- 2026-08-27: M3 integration uses a cross-implementation parity oracle: Rust world_matrix example vs C++ mapper_parity harness produce 13 identical decisions (route, one-way, locked, hidden, timed, weighted, zones, round-trip, facts). E2E route round-trip persists a versioned snapshot through real file IO and asserts determinism across runs. Compatibility fixture `compatibility/maps/fixture-001-reference.map.json` added (SPEC-021).
 
 # 14. Outcomes and Retrospective
 

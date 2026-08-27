@@ -86,7 +86,24 @@ Both implementations (Rust, C++) compute the same routes.
   groups.
 - Schemas: JSON validity + required-field contracts.
 
-### 10. Rollback
+### 10. Integration (M3)
 
-Revert M2 commit; M1 fences and verifier remain intact. No inherited
+- Cross-implementation parity oracle: Rust `world_matrix` example and
+  C++ `mapper_parity` harness print the same deterministic decision
+  matrix (routes, one-way, locked, hidden, timed, weighted, zones,
+  round-trip, facts); the integration test diffs them and requires
+  identical output.
+- E2E route round-trip: builds a world, exports a versioned JSON
+  snapshot through the Rust crate, verifies `schema_version: 1`, and
+  confirms deterministic output across repeated runs.
+- Compatibility fixtures: `compatibility/maps/fixture-001-reference.map.json`
+  is a versioned reference snapshot (SPEC-021) with one-way, weighted,
+  and ambiguous rooms for downstream import tests.
+- Degraded mode: manual gameplay state is independent of world-graph
+  availability; the hot cache remains bounded and snapshot import
+  rejects malformed payloads without crashing the boundary.
+
+### 11. Rollback
+
+Revert M3 commit; M1/M2 fences and verifier remain intact. No inherited
 paths were edited; no production surface changed.

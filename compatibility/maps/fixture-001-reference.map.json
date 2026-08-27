@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "rooms": [
+    { "id": 1, "area": 1, "name": "room-1", "x": 1, "y": 0, "z": 0, "identity": "confirmed", "exits": [ { "to": 2, "command": "n1", "kind": "normal", "weight": 1, "door": "none" } ] },
+    { "id": 2, "area": 1, "name": "room-2", "x": 2, "y": 0, "z": 0, "identity": "confirmed", "exits": [ { "to": 3, "command": "n2", "kind": "normal", "weight": 1, "door": "none" } ] },
+    { "id": 3, "area": 1, "name": "room-3", "x": 3, "y": 0, "z": 0, "identity": "confirmed", "exits": [ { "to": 4, "command": "n3", "kind": "one-way", "weight": 1, "door": "none" } ] },
+    { "id": 4, "area": 1, "name": "room-4", "x": 4, "y": 0, "z": 0, "identity": "confirmed", "exits": [ { "to": 5, "command": "n4", "kind": "normal", "weight": 2, "door": "none" } ] },
+    { "id": 5, "area": 1, "name": "room-5", "x": 5, "y": 0, "z": 0, "identity": "ambiguous", "exits": [] }
+  ],
+  "areas": [
+    { "id": 1, "name": "Reference Area", "zone": 1, "rooms": [1, 2, 3, 4, 5] }
+  ],
+  "zones": [
+    { "id": 1, "name": "Reference Zone", "areas": [1] }
+  ]
+}
