@@ -303,7 +303,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
+- [x] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
@@ -318,6 +318,7 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 
 - 2026-08-27: EP-001 M1 recorded source evidence for the Graphlock overlay and inherited baseline: AGENTS.md/CLAUDE.md prime blocks (WM-SRC-000021, 000022), preserved ai-instructions (000023), CMake Qt6/Lua requirements (000024), main entry (000025), Host save/read profile (000026), Lua startEmbedding (000027), trigger match (000028), mapper (000029), ctelnet connect (000030). Evidence: source-evidence.jsonl 30 records. Alternative: none - anti-hallucination rule requires path-level evidence before inherited claims. Consequence: every EP-001 inherited claim is evidence-backed. Reversal: remove records. Affects: WM-FEAT-0146, WM-FEAT-0154, WM-SPEC-005-R01. Security: n/a. License: GPL preserved. Compatibility: no inherited edits yet. Performance: n/a. Upstream impact: none.
 - 2026-08-27: EP-001 node verifier gates M3 on an actual configured+buildable inherited client (build-$preset/CMakeCache.txt and build-$preset/src/mudlet binary) plus integration/e2e tests; M5 gates on LF-001 live-fire. Alternative: a verifier that only checks scripts would weaken the reality gate; rejected. Consequence: EP-001 cannot close until the inherited client actually builds. Reversal: change verifier only through an accepted contract change. Affects: WM-SPEC-005-R01. Security: n/a. License: n/a. Compatibility: baseline build proven. Performance: build time bounded by wrapper. Upstream impact: none.
+- 2026-08-27: EP-001 M2 recorded the toolchain lock (cmake 3.28.3, ninja 1.11.1, g++ 13.3.0, lua 5.1.5, qt6 6.4.2, python 3.12.3, rust 1.96.0) at .agent/state/baseline/toolchain.lock.tsv and added baseline/unit tests proving inherited source untouched (hash-verified against pinned commit) and inventory stability (1393 paths). Evidence: M2 verifier sentinel; baseline tests 001-002; unit tests 001-003. Alternative: none - ENVIRONMENT.md requires exact observed versions. Consequence: build prerequisites are pinned and reproducible. Reversal: git revert of M2 commit. Affects: WM-FEAT-0146, WM-SPEC-002-R01. Security: n/a. License: n/a. Compatibility: inherited files byte-identical to upstream. Performance: n/a. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 

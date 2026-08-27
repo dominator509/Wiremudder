@@ -1,0 +1,9 @@
+# WireMudder Inherited Baseline — toolchain lock
+# Schema: tool<TAB>version<TAB>command<TAB>observed_at
+cmake	3.28.3	cmake --version	2026-08-27T10:55:00Z
+ninja	1.11.1	ninja --version	2026-08-27T10:55:00Z
+gcc	13.3.0	g++ --version	2026-08-27T10:55:00Z
+lua	5.1.5	lua5.1 -v	2026-08-27T10:55:00Z
+qt6	6.4.2	pkg-config --modversion Qt6Core	2026-08-27T10:55:00Z
+python	3.12.3	python3 --version	2026-08-27T10:55:00Z
+rust	1.96.0	rustc --version	2026-08-27T10:55:00Z
