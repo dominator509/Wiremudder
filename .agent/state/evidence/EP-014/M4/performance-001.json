@@ -1,0 +1,28 @@
+{
+  "node": "EP-014",
+  "milestone": "M4",
+  "fixture": "storage-append-search",
+  "hardware": {
+    "uname": {
+      "system": "Linux",
+      "node": "vmi3357656",
+      "release": "6.8.0-106-generic",
+      "version": "#106-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar  6 07:58:08 UTC 2026",
+      "machine": "x86_64",
+      "processor": "x86_64"
+    },
+    "cpu_count": 6
+  },
+  "workload": {
+    "lines": 10000,
+    "queries": 10
+  },
+  "append_per_line_ms": 0.0999238598,
+  "search_per_query_ms": 0.0429599,
+  "budgets_ms": {
+    "append_per_line": 0.1,
+    "search_per_query": 10.0
+  },
+  "ok": true,
+  "observed_at": "2026-08-27T22:39:00Z"
+}

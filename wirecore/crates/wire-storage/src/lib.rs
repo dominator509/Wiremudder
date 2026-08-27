@@ -239,6 +239,12 @@ impl Storage {
             return Err(StorageError::Open(msg));
         }
         let mut s = Self { db };
+        // SQLite opens garbage files lazily and only fails on first read.
+        // Probe the header immediately so corruption surfaces as a typed
+        // Corrupt error at open time (SPEC-025), never as a later surprise.
+        if s.query_int("PRAGMA schema_version;").is_err() {
+            return Err(StorageError::Corrupt(err_str(db)));
+        }
         s.exec_batch(
             "PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL;",
         )?;
@@ -342,6 +348,16 @@ impl Storage {
                 profile, direction, text, content='transcripts', content_rowid='seq'
             );
             CREATE TRIGGER IF NOT EXISTS transcripts_ai AFTER INSERT ON transcripts BEGIN
+                INSERT INTO transcripts_fts(rowid, profile, direction, text)
+                VALUES (new.seq, new.profile, new.direction, new.text);
+            END;
+            CREATE TRIGGER IF NOT EXISTS transcripts_ad AFTER DELETE ON transcripts BEGIN
+                INSERT INTO transcripts_fts(transcripts_fts, rowid, profile, direction, text)
+                VALUES ('delete', old.seq, old.profile, old.direction, old.text);
+            END;
+            CREATE TRIGGER IF NOT EXISTS transcripts_au AFTER UPDATE ON transcripts BEGIN
+                INSERT INTO transcripts_fts(transcripts_fts, rowid, profile, direction, text)
+                VALUES ('delete', old.seq, old.profile, old.direction, old.text);
                 INSERT INTO transcripts_fts(rowid, profile, direction, text)
                 VALUES (new.seq, new.profile, new.direction, new.text);
             END;",
@@ -627,6 +643,20 @@ mod tests {
         assert_eq!(s.delete_profile("dom").unwrap(), 2);
         assert_eq!(s.count("transcripts").unwrap(), 0);
         assert_eq!(s.delete_profile("ghost").unwrap(), 0);
+    }
+
+    #[test]
+    fn delete_keeps_fts_consistent() {
+        let mut s = tmp_db("del-fts");
+        s.append_transcript("alice", "in", "alice secret", 1000)
+            .unwrap();
+        s.append_transcript("bob", "in", "bob note", 1001).unwrap();
+        assert_eq!(s.delete_profile("alice").unwrap(), 1);
+        // The FTS index must drop the deleted row instead of reporting
+        // "database disk image is malformed" (external-content trigger gap).
+        assert_eq!(s.search("alice", 10).unwrap().len(), 0);
+        assert_eq!(s.search("bob", 10).unwrap().len(), 1);
+        assert_eq!(s.integrity_check().unwrap(), "ok");
     }
 
     #[test]
