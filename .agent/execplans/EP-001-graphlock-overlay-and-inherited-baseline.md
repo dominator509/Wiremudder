@@ -306,7 +306,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -326,3 +326,5 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- 2026-08-27: EP-001 completed. Changed vs expected files: all static expected paths present (Graphlock adapters, node contract, verifier, tests, docs, baseline state); 0 inherited paths modified (discovered amendment rows=0). Source evidence: 32 records. Commands: cmake --preset linux-debug-nosan -DCMAKE_PREFIX_PATH=/opt/qt/6.8.2/gcc_64; cmake --build --preset linux-debug-nosan; ctest --preset linux-debug-nosan; node-verifiers/EP-001.sh M1-M5. Sentinels observed: EP-001 M1 through M5: ok; node contract check ok; scope audit ok; LF-001: ok; feature coverage ok; spec trace ok. Features: WM-FEAT-0146 (fork with preserved history) and WM-FEAT-0154 (Graphlock governance) implemented and certified by LF-001. Requirements: WM-SPEC-000-R03, WM-SPEC-002-R01/R02/R05/R08/R10, WM-SPEC-005-R01/R03/R04/R05/R09 closed by tests under tests/wiremudder/ep001/ and tests/wiremudder/baseline/. Provider certification: none (no providers in scope). Platform certification: linux (Ubuntu 24.04) baseline build proven; other platforms deferred. Assumptions: Qt 6.8.2 provisioned via aqtinstall at /opt/qt (system 6.4.2 insufficient); origin repo created private at github.com/dominator509/WireMudder. Risks: Qt prefix must be set on fresh hosts; upstream sync re-runs gates. Rollback: git revert per milestone; never cross green/EP-001. Green tag: green/EP-001. Next scheduler output: NEXT EP-002.

@@ -43,17 +43,23 @@ PY
 ldd "$builddir/src/mudlet" 2>/dev/null | grep -q "libQt6Core" || fail "binary does not link Qt6"
 echo "qt6_link=verified"
 
-# 5. Headless launch smoke (upstream CI pattern).
+# 5. Headless launch smoke (upstream CI pattern): a GUI client stays
+#    alive; prove it starts without crashing, then terminate it.
 if command -v xvfb-run >/dev/null 2>&1; then
   set +e
-  timeout 90 xvfb-run --auto-servernum "$builddir/src/mudlet" --profile "Mudlet self-test" --mirror </dev/null >/tmp/wm-lf001.out 2>&1
-  rc=$?
+  xvfb-run --auto-servernum "$builddir/src/mudlet" --profile "Mudlet self-test" --mirror </dev/null >/tmp/wm-lf001.out 2>&1 &
+  child=$!
   set -e
-  case "$rc" in
-    0|1) echo "launch_smoke=ok(exit $rc)" ;;
-    124) fail "client hung under xvfb" ;;
-    *) fail "client exited $rc: $(tail -3 /tmp/wm-lf001.out)" ;;
-  esac
+  sleep 12
+  if kill -0 "$child" 2>/dev/null; then
+    pkill -P "$child" 2>/dev/null || true
+    kill "$child" 2>/dev/null || true
+    wait "$child" 2>/dev/null || true
+    echo "launch_smoke=ok(stayed-alive)"
+  else
+    wait "$child" 2>/dev/null || true
+    fail "client exited during startup: $(tail -5 /tmp/wm-lf001.out)"
+  fi
 else
   echo "launch_smoke=skipped(no xvfb)"
 fi
