@@ -216,7 +216,10 @@ impl AiRouter {
         }
 
         // 1. Candidates: certified, configured, fits context, fits cost.
-        //    cost_budget <= 0.0 means no cost constraint.
+        //    cost_budget <= 0.0 means no cost constraint. Remote routes are
+        //    eligible only when no remote route was blocked by the gate
+        //    above (fail-closed: one blocked remote disables remote
+        //    selection rather than silently routing around it).
         let mut candidates: Vec<&RouteConfig> = self
             .routes
             .iter()
@@ -224,6 +227,9 @@ impl AiRouter {
             .filter(|r| r.configured)
             .filter(|r| inputs.context_size <= r.context_window)
             .filter(|r| inputs.cost_budget <= 0.0 || r.cost_per_1k <= inputs.cost_budget)
+            .filter(|r| {
+                !(r.remote_egress || r.kind == "remote") || remote_denied_reason.is_none()
+            })
             .collect();
 
         // 2. Availability hint filters candidates.
