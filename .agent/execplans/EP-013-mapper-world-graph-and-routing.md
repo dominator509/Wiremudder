@@ -305,7 +305,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
+- [x] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
@@ -322,6 +322,8 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - 2026-08-27: World-graph events and derived-fact provenance (WM-SPEC-012-R02/R03/R10) live in the wire-world-graph crate with versioned schemas under `schemas/wiremudder/world/`; the in-memory hot cache (R03) stays bounded with asynchronous durable writes. Alternatives: putting events in TMap. Consequence: inherited authority preserved. Reversal: move schema into crate. Affects WM-SPEC-012-R02/R03/R10.
 - 2026-08-27: Ambiguous room identity (WM-SPEC-012-R05) is preserved as uncertain state with a correction request path; no silent room merge. Alternatives: auto-merge on similarity. Consequence: matches contract. Reversal: none without spec change.
 - 2026-08-27: Evidence recorder ID bug handled by bypassing source_evidence.py for this batch: explicit max+1 IDs, same JSONL schema, checker green. Alternatives: run recorder then renumber. Consequence: no clobbered records. Reversal: none.
+- 2026-08-27: M2 core behavior implemented as dual implementations (Rust wire-world-graph crate + C++ WorldGraphQt boundary) with identical deterministic invariants; 17 Rust unit tests + 10 C++ invariant groups + schema contract tests green. Routing is deterministic Dijkstra with weights, one-way/hidden/locked/timed semantics. Alternatives: single implementation only. Consequence: cross-implementation parity oracle for M3. Reversal: revert M2 commit.
+- 2026-08-27: Derived-fact provenance and corrections (R02/R10) implemented in both cores: corrections supersede facts (superseded_by) while preserving history in a corrections list; ambiguous identity never merges rooms (R05).
 
 # 14. Outcomes and Retrospective
 

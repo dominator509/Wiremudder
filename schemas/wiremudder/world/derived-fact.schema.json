@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wiremudder/world/derived-fact.schema.json",
+  "title": "WireMudder Derived Fact",
+  "description": "Derived fact with full provenance and supersession state (SPEC-012-R02/R10, EP-013). Schema version 1.",
+  "type": "object",
+  "required": ["id", "source_event", "time", "scope", "confidence", "sensitivity", "model_version"],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "source_event": { "type": "string", "minLength": 1 },
+    "time": { "type": "integer", "minimum": 0 },
+    "scope": { "type": "string", "minLength": 1 },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "sensitivity": { "enum": ["public", "private", "secret"] },
+    "model_version": { "type": "string", "minLength": 1 },
+    "superseded_by": { "type": "integer", "minimum": 1 },
+    "payload": { "type": "object" }
+  }
+}

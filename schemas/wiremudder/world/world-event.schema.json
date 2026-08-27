@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wiremudder/world/world-event.schema.json",
+  "title": "WireMudder World Event",
+  "description": "Bounded typed world-graph event (SPEC-012-R02/R03, EP-013). Schema version 1.",
+  "type": "object",
+  "required": ["seq", "kind", "room", "time"],
+  "properties": {
+    "seq": { "type": "integer", "minimum": 1 },
+    "kind": { "type": "string", "minLength": 1 },
+    "room": { "type": "integer", "minimum": 0 },
+    "time": { "type": "integer", "minimum": 0 },
+    "payload": { "type": "object" }
+  }
+}

@@ -1,0 +1,10 @@
+[package]
+name = "wire-world-graph"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder world graph: rooms, areas, zones, typed exits, weighted and timed A-star routing, derived-fact provenance, hot cache, corrections (SPEC-012, EP-013)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

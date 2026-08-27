@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wiremudder/world/world-graph.schema.json",
+  "title": "WireMudder World Graph Snapshot",
+  "description": "Versioned snapshot of the WireMudder world graph (SPEC-012, EP-013). Schema version 1.",
+  "type": "object",
+  "required": ["schema_version", "rooms"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "rooms": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/room" }
+    },
+    "areas": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/area" }
+    },
+    "zones": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/zone" }
+    }
+  },
+  "$defs": {
+    "room": {
+      "type": "object",
+      "required": ["id", "area", "name", "x", "y", "z"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 0 },
+        "area": { "type": "integer", "minimum": 0 },
+        "name": { "type": "string" },
+        "x": { "type": "integer" },
+        "y": { "type": "integer" },
+        "z": { "type": "integer" },
+        "identity": {
+          "enum": ["confirmed", "ambiguous", "corrected"],
+          "default": "confirmed"
+        },
+        "exits": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/exit" }
+        }
+      }
+    },
+    "exit": {
+      "type": "object",
+      "required": ["to", "command"],
+      "properties": {
+        "to": { "type": "integer", "minimum": 0 },
+        "command": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": ["normal", "hidden", "locked", "one-way", "portal"],
+          "default": "normal"
+        },
+        "weight": { "type": "integer", "minimum": 1, "default": 1 },
+        "door": {
+          "enum": ["none", "open", "closed", "locked"],
+          "default": "none"
+        },
+        "timed": { "$ref": "#/$defs/timed-window" }
+      }
+    },
+    "timed-window": {
+      "type": "object",
+      "required": ["start_minute", "end_minute"],
+      "properties": {
+        "start_minute": { "type": "integer", "minimum": 0, "maximum": 1439 },
+        "end_minute": { "type": "integer", "minimum": 0, "maximum": 1439 }
+      }
+    },
+    "area": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 0 },
+        "name": { "type": "string" },
+        "zone": { "type": "integer", "minimum": 0 },
+        "rooms": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "zone": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 0 },
+        "name": { "type": "string" },
+        "areas": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}
