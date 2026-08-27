@@ -304,7 +304,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -317,6 +317,8 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-27: EP-002 M1 recorded evidence for fork governance: remotes (upstream=Mudlet, origin=dominator509/WireMudder, WM-SRC-000033), sync policy (000034), branding policy (000035), license strategy (000036), upstream contribution policy (000037), and lock policy (000038). Contract tests verify remotes, governance policies, and history preservation. Evidence: M1 verifier sentinel; contract 001-003. Alternative: none - anti-hallucination requires evidence. Consequence: governance boundaries locked before sync drill. Reversal: git revert of M1 commit. Affects: WM-FEAT-0148, WM-FEAT-0149, WM-FEAT-0160, WM-SPEC-001-R04, WM-SPEC-001-R07. Security: no secrets. License: strategy reviewed (open-source compatible). Compatibility: history preserved. Performance: n/a. Upstream impact: origin repo created.
 
 # 14. Outcomes and Retrospective
 
