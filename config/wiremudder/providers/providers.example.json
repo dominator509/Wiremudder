@@ -10,9 +10,10 @@
       "model": "tinyllama",
       "context_window": 2048,
       "max_output": 512,
-      "certified": false,
+      "certified": true,
       "configured": true,
-      "remote_egress": false
+      "remote_egress": false,
+      "certification_evidence": ".agent/state/evidence/EP-016/M5/lf016-certification.json"
     },
     {
       "provider_id": "remote-placeholder",

@@ -5,9 +5,11 @@ Provider registry and routing policy live here (EP-016, SPEC-013).
 ## Files
 
 - `providers.example.json` - adapter registry. The local Ollama path is real
-  on this host (`127.0.0.1:11434`, Ollama 0.32.4, tinyllama). Remote adapters
-  are **disabled by default**: `certified=false`, `configured=false`. No
-  silent remote fallback exists (WM-SPEC-013-R08).
+  on this host (`127.0.0.1:11434`, Ollama 0.32.4, tinyllama) and is
+  **certified** by LF-016 live-fire evidence
+  (`.agent/state/evidence/EP-016/M5/lf016-certification.json`). Remote
+  adapters are **disabled by default**: `certified=false`,
+  `configured=false`. No silent remote fallback exists (WM-SPEC-013-R08).
 - `routing-policy.example.json` - route table consumed by `wire-ai-router`.
   Routing is deterministic from declared inputs (task, complexity, privacy
   mode, risk, latency, cost, locality, availability, context size, user

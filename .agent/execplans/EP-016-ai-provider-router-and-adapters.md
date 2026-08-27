@@ -310,20 +310,73 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M1: Evidence, contracts, and exact path lock
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-27 (M4): the first router implementation full-sorted the candidate
+  route table (O(n log n)) per decision; the 10k-route perf fixture measured
+  1951us p95. Only the best route is needed, so the selection was replaced
+  with a deterministic O(n) min-scan; the same fixture then measured 136us
+  p95 (14x). Routing must never add P0 work (SPEC-004).
+- 2026-08-27 (M4): read/write timeouts on the std TcpStream client were
+  initially mapped to Unavailable; they are now mapped to the distinct typed
+  Timeout error so timeout and cancellation remain separately observable
+  (SPEC-025).
+- 2026-08-27 (M3): the real Ollama /api/chat response shape matched the
+  parser assumptions exactly (message.content, prompt_eval_count, eval_count,
+  total_duration); live streaming delivered 18-22 NDJSON chunks per request.
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-27 (M1): Provider adapters live in two standalone crates
+  (wire-provider-adapters, wire-ai-router) using path deps on the existing
+  wire-privacy crate; serde/serde_json/regex are the only external deps
+  (regex already pinned by wire-privacy). Alternative: rusqlite-style new
+  supply chain rejected; no ADR needed. Consequence: zero new supply chain.
+- 2026-08-27 (M1): remote adapters ship as a policy-denying disabled adapter
+  (certified=false, configured=false); the router never selects them.
+  Consequence: acceptance obligation 6 (uncertified adapters stay disabled
+  and unadvertised) is structurally enforced.
+- 2026-08-27 (M2): routing is a pure deterministic function over declared
+  inputs; user policy is honored only when the route passes the privacy and
+  configuration gates. Any remote block makes remote selection fail closed
+  and local selection is marked degraded explicitly (never silent).
+- 2026-08-27 (M3): local HTTP client is std TcpStream only (no TLS on
+  loopback); cancellation uses a shared atomic flag with a public CancelHandle
+  so cancel can originate from any thread.
+- 2026-08-27 (M5): certification is evidence-gated; the local route became
+  certified=true only after LF-016 live-fire recorded real measured values
+  in .agent/state/evidence/EP-016/M5/lf016-certification.json.
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+- Changed versus expected: 49 paths (two new crates, ai schemas, provider
+  config, unit/integration/e2e/failure/security/performance suites, feature
+  and requirement tests, design + operations docs, LF-016, verifier, ledger,
+  evidence). No inherited source edited; discovered amendment rows=0.
+- Source evidence: 111 records (M1 record 108-111 checkpoints; checker ok).
+- Commands and sentinels: `EP-016 M1..M5: ok`, `node verify EP-016: ok`,
+  `LF-016: ok`, `feature WM-FEAT-0037/0038: ok`, all 6 requirement tests ok.
+- Performance (release, 20k samples): redact p95=2.7us; route-10k p95=136us;
+  parse p95=0.9us; payload p95=0.5us.
+- Feature disposition: WM-FEAT-0037 certified (local adapter, LF-016);
+  WM-FEAT-0038 certified (router, LF-016). Remote adapters remain disabled
+  and uncertified by policy.
+- Requirement disposition: R03/R04/R08/R10 (SPEC-013) and R07/R09 (SPEC-025)
+  all proven by automated tests + live-fire.
+- Provider certification: ollama/tinyllama local path certified via LF-016
+  (evidence file with real measured values). No remote provider certified.
+- Assumptions changed: none.
+- Risks: local provider is a controlled dependency; LF-016 fails loudly if
+  Ollama is down. Redaction is pattern-based (regex) and should be extended
+  with vault-fed secret redaction (wire-privacy redact_secrets) before
+  release.
+- Rollback: restore config/wiremudder/providers/*.json from git to disable
+  AI routing; crate rollback by commit, never crossing a green tag.
+- Green tag: green/EP-016.
+- Next scheduler output: see graph-next.sh (EP-017).

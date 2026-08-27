@@ -7,14 +7,15 @@
       "provider_id": "ollama",
       "kind": "local",
       "model": "tinyllama",
-      "certified": false,
+      "certified": true,
       "configured": true,
       "remote_egress": false,
       "context_window": 2048,
       "cost_per_1k": 0.0,
       "locality": "local",
       "min_privacy_mode": null,
-      "est_latency_ms": 30
+      "est_latency_ms": 30,
+      "certification_evidence": ".agent/state/evidence/EP-016/M5/lf016-certification.json"
     },
     {
       "route_id": "remote-disabled",

@@ -56,7 +56,7 @@ fn main() {
         other => panic!("expected policy denial, got {other:?}"),
     }
 
-    // -- router: default config means AI disabled (uncertified) -------------
+    // -- router: shipped config certifies local, keeps remote disabled ------
     let cfg = std::fs::read_to_string("config/wiremudder/providers/routing-policy.example.json")
         .expect("routing policy");
     let v: serde_json::Value = serde_json::from_str(&cfg).expect("policy json");
@@ -80,8 +80,11 @@ fn main() {
     let router = AiRouter::new(routes);
     let inputs = RoutingInputs::new("suggest", 2, PrivacyMode::LocalPreferred, 2_000, 0.1, 512);
     let d = router.route(&inputs);
-    assert!(d.route_id().is_none(), "uncertified route must not be selected");
-    println!("STATE disabled-route: ok ({})", d.reason());
+    // The certified local route is selected; the remote placeholder is
+    // never selected (acceptance #6, no silent remote fallback).
+    assert_eq!(d.route_id(), Some("ollama-local"));
+    assert!(d.route_id().unwrap() != "remote-disabled");
+    println!("STATE disabled-route: ok (remote placeholder disabled: {})", d.reason());
 
     // -- denied (R08): privacy blocks remote, route exists ------------------
     let mut remote_route = RouteConfig::remote("remote-x", "openai", "gpt-x", 8192, 0.01, 800);
