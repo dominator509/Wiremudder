@@ -73,7 +73,18 @@ WM-SRC-000101..000103.
 - Migrations/schemas: file presence + JSON contract.
 - Backup tool: real DB create -> backup -> restore -> export -> verify.
 
-### 9. Rollback
+### 9. Integration (M3)
 
-Revert M2 commit; M1 fences and verifier remain intact. No inherited
+- Full lifecycle oracle: `storage_lifecycle` example runs the real
+  crate through queue -> drain -> search -> export -> delete and prints
+  deterministic outcomes; the integration test asserts each sentinel.
+- E2E export/restore: seed a real DB through the migration, export JSON,
+  take a `VACUUM INTO` snapshot, verify integrity, restore and confirm
+  both row count and the FTS index survive.
+- Degraded mode: a missing DB fails the backup tool cleanly (typed,
+  non-zero, no crash); manual gameplay state is independent of storage.
+
+### 10. Rollback
+
+Revert M3 commit; M1/M2 fences and verifier remain intact. No inherited
 paths were edited.

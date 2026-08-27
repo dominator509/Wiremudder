@@ -312,7 +312,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
+- [x] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
@@ -326,6 +326,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - 2026-08-27: Storage core is a standalone Rust crate `wirecore/crates/wire-storage/` using the SQLite C API via rusqlite-style bindings, with versioned SQL migrations under `wirecore/migrations/` and JSON schemas under `schemas/wiremudder/storage/`. Inherited TLuaInterpreter remains unedited. Evidence: WM-SRC-000101..000103; contract EP-014 authorized boundaries. Alternatives: wrapping QSqlDatabase. Consequence: no inherited edit; cross-platform pure Rust core. Reversal: none without ADR.
 - 2026-08-27: All gameplay storage writes are bounded asynchronous queue operations (WM-SPEC-011-R06); migrations are versioned, backup-aware, resumable, and idempotent (WM-SPEC-011-R07, WM-SPEC-023-R08). Backup/export/restore live-fire proof is LF-014 (WM-SPEC-011-R08).
 - 2026-08-27: M2 core: wire-storage crate links host SQLite 3.45.1 directly via a small FFI subset (zero new crates, no ADR required). 8 unit tests cover append-only transcripts, FTS5 search with snippets, idempotent migrations, bounded async write queue, export/delete, integrity. Backup tool uses VACUUM INTO snapshots. Discovered: sqlite3 -json output has no space after colon; FTS5 snippet column index is 0-based over the declared columns; sqlite3_step returns 100 (SQLITE_ROW) not 1.
+- 2026-08-27: M3 integration proves the full transcript lifecycle (queue 3 -> drain 3 -> stored 3 -> search 1 hit -> export -> delete 3 -> integrity ok) through the real crate, and E2E export/backup/restore with real file IO where both row count and the FTS index survive the snapshot restore. Degraded mode: missing DB fails typed.
 
 # 14. Outcomes and Retrospective
 
