@@ -304,7 +304,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -317,6 +317,8 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-27: M1 evidence and boundary lock. Recorded source evidence WM-SRC-000058..000060 for the inherited command surfaces: TCommandLine::commandSubmitted (manual input emit path), cTelnet::sendData with isGameCommand flag (socket send boundary), and TConsole commandSubmitted wiring (manual input handling). Decision: implement EP-008 entirely in the four authorized new boundaries (src/wiremudder/command-safety/, wirecore/crates/wire-actions/, wirecore/crates/wire-policy/, schemas/wiremudder/actions/); the discovered amendment stays empty because no inherited source edit is required. The gateway exposes a deterministic ActionProposal path that non-manual sources must enter (WM-SPEC-009-R02) and a manual-input passthrough that stays direct (WM-SPEC-009-R01). Decision: risk tiers and confirmation policy are pure-local deterministic functions (WM-SPEC-009-R03/R04/R05); the visible queue is bounded; emergency stop is a global atomic state propagated under 10ms (WM-SPEC-004-R11, WM-SPEC-009-R06); Human-Tempo is a rate/anti-spam control only (WM-SPEC-009-R07); every approved action writes a replayable audit record (WM-SPEC-009-R08/R09). Evidence: node verifier M1 green, contract tests 001/002 green, scope audit EP-008 ok. Alternatives: patching TCommandLine/cTelnet to route manual input through the gate (rejected — manual input must remain direct per R01; the gateway wraps non-manual sources instead, keeping inherited code untouched). Consequence: command safety is enforced at the gateway boundary without inherited edits. Reversal: none; all new code is namespaced and reversible. Affects: WM-FEAT-0174..0180, 0188; WM-SPEC-004-R01/R02/R09/R11, WM-SPEC-009-R01/R03/R05/R06/R07/R08/R09/R10, WM-SPEC-015-R03/R05, WM-SPEC-017-R03/R08, WM-SPEC-022-R04/R10. Security: prompt injection cannot override the gate (WM-SPEC-022-R04); audit records redact credentials. Privacy: proposals and audit stay local. License: GPL-3.0-or-later crates, serde/serde_json only. Compatibility: no inherited source edited. Performance: gate is pure-local; e-stop propagation bounded by SPEC-004-R11. Upstream impact: none.
 
 # 14. Outcomes and Retrospective
 
