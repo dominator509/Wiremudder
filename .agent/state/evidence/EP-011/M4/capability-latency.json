@@ -1,0 +1,10 @@
+{
+  "path": "C++ protocol_boundary parseIac+detectCapabilities in-process (O2)",
+  "hardware": "x86_64",
+  "workload": "40-byte negotiation burst (WILL GMCP/MSDP/ATCP/MXP, WONT MSP, SB GMCP payload)",
+  "per_burst_us": 1.5384,
+  "per_burst_ms": 0.001538,
+  "budget_ms": 10.0,
+  "samples": 200,
+  "note": "single hot-loop measurement; distribution is uniform at this cost"
+}

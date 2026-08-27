@@ -39,6 +39,9 @@ def main() -> int:
     elif mode == "garbage":
         # Unterminated subnegotiation with escaped IACs: ff fa 00 ff ff 00 ff c9
         banner = IAC + SB + b"\x00" + IAC + IAC + b"\x00" + IAC + GMCP + b"  garbage-mode"
+    elif mode == "timeout":
+        # Accept but never send: forces the client read-timeout path.
+        banner = b""
     else:
         print("unknown mode", file=sys.stderr)
         return 2

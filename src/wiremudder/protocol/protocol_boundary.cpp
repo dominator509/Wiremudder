@@ -98,13 +98,17 @@ QList<Capability> detectCapabilities(const QList<NegotiationEvent>& events) {
     };
     const QList<quint8> options = protocolByOption.keys();
     for (quint8 option : options) {
-        bool negotiated = false;
-        bool declined = false;
+        // Telnet negotiation is stateful: the last verb observed for an
+        // option wins (WONT after WILL means the peer changed its mind).
+        quint8 lastVerb = 0;
         for (const NegotiationEvent& e : events) {
             if (e.option != option) continue;
-            if (e.verb == cmd::WILL || e.verb == cmd::DO) negotiated = true;
-            if (e.verb == cmd::WONT || e.verb == cmd::DONT) declined = true;
+            lastVerb = e.verb;
         }
+        const bool negotiated =
+            (lastVerb == cmd::WILL || lastVerb == cmd::DO);
+        const bool declined =
+            (lastVerb == cmd::WONT || lastVerb == cmd::DONT);
         Capability c;
         c.protocol = protocolByOption.value(option);
         c.negotiated = negotiated;
