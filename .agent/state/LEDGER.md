@@ -175,3 +175,4 @@
 2026-08-27T21:19:58Z | ipman-hermes | EP-013 | MILESTONE_PASS | M3 EP-013 M3: ok; evidence=.agent/state/evidence/EP-013/M3
 2026-08-27T21:27:59Z | ipman-hermes | EP-013 | MILESTONE_PASS | M4 EP-013 M4: ok; evidence=.agent/state/evidence/EP-013/M4
 2026-08-27T21:28:57Z | ipman-hermes | EP-013 | MILESTONE_PASS | M5 EP-013 M5: ok; evidence=.agent/state/evidence/EP-013/M5
+2026-08-27T21:29:10Z | ipman-hermes | EP-013 | NODE_DONE | node verify EP-013: ok; green/EP-013 tag created
