@@ -196,3 +196,4 @@
 2026-08-27T23:20:22Z | ipman-hermes | EP-016 | MILESTONE_PASS | M3 EP-016 M3: ok; evidence=.agent/state/evidence/EP-016/M3
 2026-08-27T23:25:57Z | ipman-hermes | EP-016 | MILESTONE_PASS | M4 EP-016 M4: ok; evidence=.agent/state/evidence/EP-016/M4
 2026-08-27T23:28:06Z | ipman-hermes | EP-016 | MILESTONE_PASS | M5 EP-016 M5: ok; evidence=.agent/state/evidence/EP-016/M5
+2026-08-27T23:28:29Z | ipman-hermes | EP-016 | NODE_DONE | EP-016 complete: node verify EP-016: ok; green/EP-016
