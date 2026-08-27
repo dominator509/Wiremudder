@@ -1,0 +1,8 @@
+{
+  "path": "C++ PermissionFirewall in-process (O2)",
+  "per_decision_us": 0.2173,
+  "per_decision_ms": 0.000217,
+  "budget_ms": 10,
+  "samples": 6500,
+  "note": "single hot-loop measurement; distribution is uniform at this cost"
+}
