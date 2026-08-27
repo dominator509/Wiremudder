@@ -19,12 +19,12 @@
     "iterations": 5
   },
   "distributions_ms": {
-    "p50": 98.865,
-    "p95": 102.388
+    "p50": 116.812,
+    "p95": 128.774
   },
-  "throughput_mib_per_s": 164.4,
+  "throughput_mib_per_s": 139.1,
   "thresholds": {
     "min_throughput_mib_per_s": 5.0
   },
-  "observed_at": "2026-08-27T15:42:14Z"
+  "observed_at": "2026-08-27T15:44:23Z"
 }
