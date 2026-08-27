@@ -322,7 +322,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -340,3 +340,5 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- 2026-08-27: EP-003 completed. Changed vs expected files: all static expected paths present (compatibility/framework, replay, protocol-museum, tools, schemas, oracle tests, docs); 0 inherited paths modified. Source evidence: 44 records. Commands: python3 tools/protocol-museum/oracle_record.py <scenario> <out>; python3 compatibility/replay/replay_validate.py; node-verifiers/EP-003.sh M1-M5. Sentinels observed: EP-003 M1 through M5: ok; contract check ok; scope audit ok; LF-003: ok; feature coverage ok; spec trace ok. Features: WM-FEAT-0126 (Session Replay), WM-FEAT-0129 (Compatibility Lab), WM-FEAT-0130 (Protocol Museum fake MUD servers) implemented and certified by LF-003. Requirements: SPEC-019-R04/R05/R07/R08 closed by tests under tests/wiremudder/ep003/ and tests/wiremudder/oracle/. Provider certification: none. Platform certification: linux local TCP proven. Assumptions: fake servers bind loopback; captures deterministic. Risks: museum scenarios are minimal protocol fixtures, not full MUD servers; expansion deferred to later nodes. Rollback: git revert per milestone; never cross green/EP-003. Green tag: green/EP-003. Next scheduler output: NEXT EP-004.
