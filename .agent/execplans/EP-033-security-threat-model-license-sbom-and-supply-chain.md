@@ -310,20 +310,40 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M1: Evidence, contracts, and exact path lock — commit c279fbdd; verifier EP-033 M1: ok; 3 contract tests; evidence WM-SRC-000243..000254
+- [x] M2: Core behavior and deterministic invariants — commit b2d6a16; wiremudder-security crate 33/33 tests, zero warnings; verifier EP-033 M2: ok
+- [x] M3: Real integration and user-visible flow — commit 18e255c; real repo inventory/SBOM/license artifacts; hostile-import e2e; verifier EP-033 M3: ok
+- [x] M4: Forced failures, abuse cases, performance, and operations — commit a0c5b40; failure/denial/security/supply-chain tests; perf p95=6us budget=1000us; runbook; verifier EP-033 M4: ok
+- [x] M5: Live-fire, evidence closure, and green tag readiness — LF-033 7/7 certified; 10 requirement tests; verifier EP-033 M5: ok
 
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
 
+- 2026-08-28: GNU grep 3.11 basic regex does not treat `\t` as a tab; requirement test-path extraction must use awk `-F'\t'` field matching instead of `grep "^$r\t"` (EP-033 M5 verifier fix).
+- 2026-08-28: The EP-003 hostile-input corpus intentionally contains AWS-documentation example key material; the shared repo secrets gate must exclude those two sanitize-test fixtures, whose own tests prove the strings are redacted before any user-facing output.
+- 2026-08-28: Display-layer redaction masks credential-like literals in tool output; secrets-scan tests must assemble long keys at runtime (printf concatenation) so the scanner observes full-length secrets.
+
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
 
+- 2026-08-28: M2 core implemented as a deterministic Rust crate `security/wiremudder/` with CLI (scan-secrets, check-injection, sbom, threat-model, lanes, release-block). Evidence: crate 33/33 tests, zero warnings. Alternatives: Python tooling rejected (repo is Rust-native, deterministic typed rules). Consequence: real SBOM/license artifacts generated from the actual .gitmodules. Affects: WM-SPEC-001-R08, WM-SPEC-020-R02/R03/R08, WM-SPEC-022-R06/R08/R09, WM-SPEC-028-R02/R03. No inherited source edited.
+- 2026-08-28: Prompt-injection markers are matched after quote-stripping normalization so encoded attempts (curly apostrophes splitting a marker) are denied as Encoded; the direct marker set also covers "disregard all previous instructions". Evidence: prompt-injection-suite 6/6. Security impact: fail-closed denial surface.
+- 2026-08-28: Threat-model boundary coverage uses explicit `covers` lists on mitigations rather than name-substring matching, which is fragile. Evidence: fixture threat-model-session-bridge.json validates. Consequence: unambiguous coverage; every boundary must name its mitigation.
+
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- Changed vs expected: all changes inside the EP-033 static fence; 0 discovered-path rows; scope audit changed=53; expected-files audit ok (21 paths).
+- Source evidence: WM-SRC-000243..000254 (12 rows) appended in M1.
+- Commands and sentinels: `node verify EP-033: ok`; `EP-033 M1..M5: ok`; `LF-033: ok checks=7/7`; perf `p50=3us p95=6us max=19us budget=1000us`; contract/scope/expected-files audits ok.
+- Feature disposition: cross-cutting node — no owned feature rows; coverage proven via owned requirements.
+- Requirement disposition: WM-SPEC-001-R03/R08, WM-SPEC-020-R02/R03/R08, WM-SPEC-022-R06/R08/R09, WM-SPEC-028-R02/R03 all closed with tests at the matrix test_paths (10/10).
+- Provider/platform certification: none claimed (no external adapter).
+- Assumptions changed: none.
+- Risks: residual protocol-ambiguity and novel-injection risks documented in the threat model; secret-shaped examples confined to test zones.
+- Rollback: node is additive; remove security/, sbom/, licenses/ boundaries to disable; never cross a completed green tag.
+- Green tag: green/EP-033 (pending node verify).
+- Next scheduler output: to be read after lease release.

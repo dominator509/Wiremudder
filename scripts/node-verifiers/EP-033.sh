@@ -92,7 +92,7 @@ case "${1:-}" in
     for r in WM-SPEC-001-R03 WM-SPEC-001-R08 WM-SPEC-020-R02 WM-SPEC-020-R03 \
              WM-SPEC-020-R08 WM-SPEC-022-R06 WM-SPEC-022-R08 WM-SPEC-022-R09 \
              WM-SPEC-028-R02 WM-SPEC-028-R03; do
-      p=$(grep -m1 "^$r\t" .agent/requirements/VALIDATION_MATRIX.tsv | awk -F'\t' '{print $6}')
+      p=$(awk -F'\t' -v r="$r" '$1==r {print $6; exit}' .agent/requirements/VALIDATION_MATRIX.tsv)
       [ -n "$p" ] || fail "no test path for $r"
       for t in "$p"/*.sh; do
         [ -f "$t" ] || fail "no requirement tests in $p"
