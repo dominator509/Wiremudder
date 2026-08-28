@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/headless/supervisor-snapshot-v1.json",
+  "title": "WireMudder Supervisor Session Snapshot",
+  "description": "Accurate per-session view: state, room, last command, AI/autopilot state, risk queue, route label, token spend, health, queue length (SPEC-017-R06, EP-023).",
+  "type": "object",
+  "required": ["schema_version", "session_id", "state", "room", "last_command", "ai_state", "autopilot_state", "risk_queue_len", "route_label", "token_spend", "health", "queue_len"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "session_id": { "type": "string", "minLength": 1 },
+    "state": { "enum": ["loading", "ready", "disabled", "denied", "degraded", "canceled", "unavailable", "error"] },
+    "room": { "type": "string" },
+    "last_command": { "type": "string" },
+    "ai_state": { "type": "string" },
+    "autopilot_state": { "type": "string" },
+    "risk_queue_len": { "type": "integer", "minimum": 0 },
+    "route_label": { "type": "string" },
+    "token_spend": { "type": "integer", "minimum": 0 },
+    "health": { "type": "string" },
+    "queue_len": { "type": "integer", "minimum": 0 }
+  }
+}

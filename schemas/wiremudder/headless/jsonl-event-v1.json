@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/headless/jsonl-event-v1.json",
+  "title": "WireMudder Headless JSONL Event",
+  "description": "Versioned structured JSONL output with the full SPEC-026-R01 field set (time, severity, subsystem, priority, app version, platform, session, correlation, event, error, latency, queue, drop, coalesce, feature, privacy, redaction).",
+  "type": "object",
+  "required": ["schema_version", "time_ms", "severity", "subsystem", "priority", "app_version", "platform", "session", "correlation", "event", "feature", "privacy", "redacted"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "time_ms": { "type": "integer", "minimum": 0 },
+    "severity": { "type": "string" },
+    "subsystem": { "type": "string" },
+    "priority": { "type": "string" },
+    "app_version": { "type": "string" },
+    "platform": { "type": "string" },
+    "session": { "type": "string" },
+    "correlation": { "type": "string" },
+    "event": { "type": "string" },
+    "error": { "type": ["string", "null"] },
+    "latency_ms": { "type": ["integer", "null"], "minimum": 0 },
+    "queue": { "type": ["integer", "null"], "minimum": 0 },
+    "drop": { "type": ["integer", "null"], "minimum": 0 },
+    "coalesce": { "type": ["integer", "null"], "minimum": 0 },
+    "feature": { "type": "string" },
+    "privacy": { "type": "string" },
+    "redacted": { "type": "boolean" }
+  }
+}

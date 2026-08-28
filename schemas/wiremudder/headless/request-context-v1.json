@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/headless/request-context-v1.json",
+  "title": "WireMudder Request Context",
+  "description": "Request context carrying request, correlation, causation, session, profile, deadline, cancellation, sensitivity, and capability (SPEC-024-R04, EP-023).",
+  "type": "object",
+  "required": ["schema_version", "request", "correlation", "causation", "session", "profile", "cancellation", "sensitivity", "capability"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "request": { "type": "string", "minLength": 1 },
+    "correlation": { "type": "string", "minLength": 1 },
+    "causation": { "type": "string" },
+    "session": { "type": "string", "minLength": 1 },
+    "profile": { "type": "string" },
+    "deadline_ms": { "type": ["integer", "null"], "minimum": 0 },
+    "cancellation": { "type": "boolean" },
+    "sensitivity": { "type": "string" },
+    "capability": { "type": "string" }
+  }
+}
