@@ -306,7 +306,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
+- [x] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
@@ -337,3 +337,11 @@ At completion record changed versus expected files, source evidence, commands, e
 - Help schemas schemas/wiremudder/help/ (index-entry/field-help/ask-context/coach-step/source-index-state v1).
 - tools/help-indexer: real Rust CLI ingesting docs/, COMMANDS.md, schemas/wiremudder/, ADRs, sanitized source refs; reproducible output (identical runs, identical hash) — 174 entries across all 6 kinds.
 - M2 unit test scripts (help-schemas, wire-help, help-indexer). `EP-027 M2: ok`; `scope audit EP-027: ok changed=25`.
+
+## 17. M3 Progress
+
+- 2026-08-28: Help UI boundary src/wiremudder/ui/help/help_boundary.{h,cpp} (passive Qt6 model-side pane, bubbles, coach steps propose-only, help modes, ask-context, capability probes, source-index state, no command/mutation path). Wired into src/CMakeLists.txt mudlet_SRCS + UI headers (discovered amendment WM-SRC-000183). Compiles clean vs real Qt6 with -Wall -Wextra zero warnings.
+- Rust e2e example e2e_help.rs proves all 6 acceptance obligations with real output lines (accepted sources, sanitized AI context, coach no-mutation, opt-in/local/idle/removable source index, evidence-based capabilities, CLI parity).
+- Integration test help-boundary-qt6 (compile proof + passive/no-settings/no-apply invariants); e2e test help-flow (6 obligation greps).
+- Design docs docs/wiremudder/help/design/architecture.md (data scope, privacy, authority, audit, health, restart, fallback, rollback).
+- `EP-027 M3: ok`; `scope audit EP-027: ok changed=33`.

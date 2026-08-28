@@ -292,3 +292,4 @@
 2026-08-28T06:04:18Z | unknown-agent | EP-027 | HEARTBEAT | discovered_path=src/CMakeLists.txt evidence=WM-SRC-000183
 2026-08-28T06:04:44Z | ipman-hermes | EP-027 | MILESTONE_PASS | M1 EP-027 M1: ok; evidence=.agent/state/evidence/EP-027/M1
 2026-08-28T06:09:37Z | ipman-hermes | EP-027 | MILESTONE_PASS | M2 EP-027 M2: ok; evidence=.agent/state/evidence/EP-027/M2
+2026-08-28T06:10:58Z | ipman-hermes | EP-027 | MILESTONE_PASS | M3 EP-027 M3: ok; evidence=.agent/state/evidence/EP-027/M3
