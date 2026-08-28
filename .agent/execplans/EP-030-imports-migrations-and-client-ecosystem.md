@@ -314,16 +314,46 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: MUSHclient and zMUD/CMUD XML fixtures were initially
+  classified as Mudlet because the generic `<?xml` detection branch fired
+  before the specific roots; detection now checks specific roots first
+  (unit test xml_roots_are_not_misclassified, commit 772cf473).
+- 2026-08-28: unsupported-element reports used the lowercased match key;
+  the report now preserves the element name as written in the source
+  (commit 3c29f2f3).
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28: verified vs research format split (WM-FEAT-0120): Mudlet is
+  the only verified import path; MUSHclient, TinTin++, zMUD/CMUD, and
+  generic formats are read-only research paths until certified. Evidence:
+  SourceFormat::is_verified + corpus harness. Consequence: no undocumented
+  proprietary-format parity claims.
+- 2026-08-28: automation disabled by default at normalization time, not at
+  apply time, so even an un-applied plan carries disabled items
+  (WM-SPEC-021-R04). Evidence: plan_import + unit tests.
+- 2026-08-28: session deferral is a hard gate (WM-SPEC-020-R07):
+  assert_migration_allowed refuses during active sessions without explicit
+  approval. Evidence: unit test.
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+- Changed versus expected: static fence paths + the discovered amendment
+  for src/CMakeLists.txt (rows=1); no other inherited path edited.
+- Source evidence: WM-SRC-000208..000221 (EP-030 M1).
+- Commands and sentinels: `EP-030 M1: ok` through `EP-030 M5: ok`,
+  `LF-030: ok` (6/6 obligations), `node verify EP-030: ok` pending at write.
+- Evidence hashes: recorded per milestone in `.agent/state/evidence/EP-030/`.
+- Feature disposition: WM-FEAT-0120 (future, research paths; Mudlet
+  verified, others read-only).
+- Requirement disposition: WM-SPEC-020-R07 certified by automated test.
+- Provider/platform certification: none (no external adapter in scope).
+- Risks: proprietary-format parity is deliberately not claimed; the
+  research paths remain read-only until certified.
+- Rollback: revert EP-030 commits + `git checkout -- src/CMakeLists.txt`.
+- Green tag: `green/EP-030` (after node verify).
+- Next scheduler output: (after release).
