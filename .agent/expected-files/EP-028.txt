@@ -3,6 +3,7 @@
 .agent/node-contracts/EP-028.md
 .agent/expected-files/EP-028.txt
 .agent/expected-files/EP-028.discovered.txt
+.agent/AUTHORITY_FILES.tsv
 .agent/milestone-files/EP-028-M1.txt
 .agent/milestone-files/EP-028-M2.txt
 .agent/milestone-files/EP-028-M3.txt
