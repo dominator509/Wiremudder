@@ -4,26 +4,127 @@
   "title": "WireMudder Telemetry Event",
   "description": "Canonical local telemetry event (SPEC-019-R02).",
   "type": "object",
-  "required": ["schema_version", "event_id", "t", "subsystem", "severity", "fingerprint"],
+  "required": [
+    "schema_version",
+    "event_id",
+    "t",
+    "subsystem",
+    "severity",
+    "fingerprint"
+  ],
   "properties": {
-    "schema_version": { "const": 1 },
-    "event_id": { "type": "string", "minLength": 8 },
-    "t": { "type": "number", "description": "epoch millis" },
-    "subsystem": {
-      "enum": ["core", "network", "lua", "mapper", "voice", "renderer", "headless", "provider", "update", "package", "security", "telemetry"]
+    "schema_version": {
+      "const": 1
     },
-    "severity": { "enum": ["debug", "info", "warn", "error", "critical"] },
-    "fingerprint": { "type": "string", "minLength": 4 },
-    "correlation_id": { "type": "string" },
-    "scope": { "type": "string" },
-    "feature": { "type": "string", "pattern": "^WM-FEAT-[0-9]{4}$" },
-    "priority": { "enum": ["P0", "P1", "P2", "P3", "P4"] },
-    "latency_ms": { "type": "number", "minimum": 0 },
-    "queue_depth": { "type": "integer", "minimum": 0 },
-    "dropped": { "type": "integer", "minimum": 0 },
-    "coalesced": { "type": "integer", "minimum": 0 },
-    "provider": { "type": "string" },
-    "details": { "type": "object", "additionalProperties": true }
+    "event_id": {
+      "type": "string",
+      "minLength": 8
+    },
+    "t": {
+      "type": "number",
+      "description": "epoch millis"
+    },
+    "subsystem": {
+      "enum": [
+        "core",
+        "network",
+        "lua",
+        "mapper",
+        "voice",
+        "renderer",
+        "headless",
+        "provider",
+        "update",
+        "package",
+        "security",
+        "telemetry"
+      ]
+    },
+    "severity": {
+      "enum": [
+        "debug",
+        "info",
+        "warn",
+        "error",
+        "critical"
+      ]
+    },
+    "fingerprint": {
+      "type": "string",
+      "minLength": 4
+    },
+    "correlation_id": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "feature": {
+      "type": "string",
+      "pattern": "^WM-FEAT-[0-9]{4}$"
+    },
+    "priority": {
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ]
+    },
+    "latency_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "queue_depth": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "dropped": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "coalesced": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "provider": {
+      "type": "string"
+    },
+    "details": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "app": {
+      "type": "string",
+      "description": "application identity (wiremudder)"
+    },
+    "platform": {
+      "type": "string",
+      "description": "platform identifier (linux/windows/macos)"
+    },
+    "privacy": {
+      "enum": [
+        "disabled",
+        "local_only",
+        "local_preferred",
+        "remote_redacted",
+        "remote_approved"
+      ],
+      "description": "privacy mode at event time"
+    },
+    "voice": {
+      "type": "boolean",
+      "description": "voice subsystem involved"
+    },
+    "renderer": {
+      "type": "boolean",
+      "description": "renderer subsystem involved"
+    },
+    "redaction": {
+      "type": "boolean",
+      "description": "event payload was redacted before persistence"
+    }
   },
   "additionalProperties": false
 }
