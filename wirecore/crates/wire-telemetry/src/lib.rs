@@ -371,16 +371,18 @@ impl Redactor {
                 Some((m_idx, m_len)) => {
                     out.push_str(&text[pos..m_idx]);
                     // Consume separators (key=, key:, key ) then the
-                    // value token up to a delimiter.
+                    // value span up to a sentence boundary. The value is
+                    // consumed generously: a secret can contain spaces
+                    // and punctuation ("token is hunter2-f00", "token
+                    // = abc,def"), so only sentence-final punctuation
+                    // terminates the span. This over-redacts prose
+                    // conservatively rather than leaking a secret.
                     let mut end = m_idx + m_len;
                     while end < bytes.len() && matches!(bytes[end], b'=' | b':' | b' ') {
                         end += 1;
                     }
                     while end < bytes.len()
-                        && !matches!(
-                            bytes[end],
-                            b' ' | b'\t' | b'\n' | b'\r' | b',' | b'&' | b';' | b'"' | b'\''
-                        )
+                        && !matches!(bytes[end], b'.' | b'!' | b'?' | b'\n' | b'\r')
                     {
                         end += 1;
                     }
@@ -850,12 +852,15 @@ mod tests {
     #[test]
     fn redactor_strips_inline_secrets() {
         let r = Redactor::default();
-        // The whole key=value token is consumed — the marker itself is
-        // never preserved, so the replacement cannot be re-matched.
+        // The whole key=value span is consumed — the marker itself is
+        // never preserved, so the replacement cannot be re-matched. The
+        // value span runs to the sentence boundary so "token is
+        // hunter2" style secrets cannot leak.
         assert_eq!(r.redact_text("token=abc123"), "[REDACTED]");
+        assert_eq!(r.redact_text("say password=hunter2 now"), "say [REDACTED]");
         assert_eq!(
-            r.redact_text("say password=hunter2 now"),
-            "say [REDACTED] now"
+            r.redact_text("Your token is hunter2-f00."),
+            "Your [REDACTED]."
         );
         assert!(r.contains_marker("api_key"));
         assert!(!r.contains_marker("plain message"));

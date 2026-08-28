@@ -18,8 +18,8 @@
 //!   required for core operation (WM-SPEC-026-R08).
 //!
 //! Security: replay and fixtures are deterministic and sanitized; bundles
-//! require explicit user approval before any submission; no remote
-//! egress, no new authority, and no secret access is implied.
+//! require explicit user approval before any submission; no remote egress,
+//! no new authority, and no secret access is implied.
 
 use std::collections::BTreeMap;
 
@@ -358,10 +358,7 @@ impl Redactor {
                         end += 1;
                     }
                     while end < bytes.len()
-                        && !matches!(
-                            bytes[end],
-                            b' ' | b'\t' | b'\n' | b'\r' | b',' | b'&' | b';' | b'"' | b'\''
-                        )
+                        && !matches!(bytes[end], b'.' | b'!' | b'?' | b'\n' | b'\r')
                     {
                         end += 1;
                     }

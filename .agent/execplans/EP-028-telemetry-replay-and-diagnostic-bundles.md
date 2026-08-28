@@ -305,14 +305,19 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
+
+- 2026-08-28: The first redactor implementation used a while-loop that re-matched its own replacement (`password=[REDACTED]` still contains `password=`), causing an infinite loop during tests. Replaced with a single-pass scanner that consumes the marker itself (evidence: wire-telemetry tests, M2).
+- 2026-08-28: `serde_json::Map::len()` counts entries, not bytes — the detail-payload size bound was never enforced until the M4 failure matrix exposed it. Fixed by measuring serialized byte length (evidence: failure_matrix, M4).
+- 2026-08-28: The corpus stripped the word "player" but not actual player names. SPEC-019-R05 requires stripping player names; the honest mechanism is `FixtureGenerator::with_player_names` — the caller supplies known names from profile/world scope (evidence: security_matrix, M4).
+- 2026-08-28: Live-fire LF-028 found a real leak: "Your token is hunter2-f00" — the redactor consumed only the adjacent token after the marker (`is`), leaving the secret value exposed. The value span now runs to the sentence boundary; over-redaction is accepted over secret leakage (evidence: LF-028, M5).
 
 # 13. Decision Log
 
@@ -324,3 +329,15 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- Milestones: M1..M5 all pass `EP-028 Mk: ok`; `node verify EP-028: ok`.
+- Changed vs expected: static fence 23 paths; discovered amendment `src/CMakeLists.txt` (WM-SRC-000186); scope audit ok.
+- Source evidence: WM-SRC-000186..192 (CMake anchor, telemetry schema, replay schema, SPEC-019/023/026 anchors, UI boundary pattern).
+- Commands: `sh scripts/node-verifiers/EP-028.sh M1..M5,verify`; `cargo test` wire-telemetry 11/11, wire-replay 8/8; `cargo run --example e2e_diagnostics|failure_matrix|security_matrix|perf_fixture|lf028_live`.
+- Sentinels: `EP-028 M1: ok` .. `EP-028 M5: ok`, `node verify EP-028: ok`, `LF-028 diagnostic-bundle-redaction: ok`.
+- Performance (release, this host): ring-record p50=1µs p95=2µs worst=231µs; ring-raw worst=109µs; redaction worst=60µs; replay-hash worst=640µs; bundle-build worst=269µs; budget 5000µs (SPEC-004) — all green.
+- Features: WM-FEAT-0128, WM-FEAT-0132, WM-FEAT-0221, WM-FEAT-0223, WM-FEAT-0224, WM-FEAT-0225, WM-FEAT-0227 all implemented and certified by feature tests + LF-028.
+- Requirements: WM-SPEC-011-R03, WM-SPEC-011-R10, WM-SPEC-019-R01, WM-SPEC-019-R03, WM-SPEC-023-R05, WM-SPEC-024-R09, WM-SPEC-025-R02, WM-SPEC-026-R07, WM-SPEC-026-R08 all green.
+- Real findings fixed in code (never weakened): redactor infinite loop; detail byte bound; player-name stripping; sentence-boundary redaction.
+- Green tag: `green/EP-028`.
+- Scheduler next: EP-029 (deps EP-022, EP-028).
