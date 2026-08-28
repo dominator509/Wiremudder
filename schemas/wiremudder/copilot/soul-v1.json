@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/copilot/soul-v1.json",
+  "title": "WireMudder Soul Document",
+  "description": "Soul document defining tone, roleplay, boundaries, risk tolerance, preferred and forbidden behaviors; cannot override security, privacy, routing, package, updater, or emergency-stop policy (WM-SPEC-014-R03, EP-017).",
+  "type": "object",
+  "required": ["schema_version", "name", "tone", "roleplay", "risk_tolerance", "preferred_behaviors", "forbidden_behaviors", "examples"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "tone": { "type": "string", "minLength": 1 },
+    "roleplay": { "type": "string", "minLength": 1 },
+    "risk_tolerance": { "type": "string", "minLength": 1 },
+    "preferred_behaviors": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "forbidden_behaviors": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Entries that attempt to ignore/bypass/override/disable/weaken/violate/circumvent/skip/relax/exempt an immutable policy domain (security, privacy, routing, package, updater, emergency-stop) are rejected by policy precedence."
+    },
+    "examples": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

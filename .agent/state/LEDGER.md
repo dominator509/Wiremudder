@@ -199,3 +199,6 @@
 2026-08-27T23:28:29Z | ipman-hermes | EP-016 | NODE_DONE | EP-016 complete: node verify EP-016: ok; green/EP-016
 2026-08-27T23:29:34Z | ipman-hermes | EP-017 | LEASE | holder=ipman-hermes base=a101d1c9286fd27c09262b3b66212903625d7ca9
 2026-08-27T23:34:31Z | ipman-hermes | EP-017 | MILESTONE_PASS | M1 EP-017 M1: ok; evidence=.agent/state/evidence/EP-017/M1
+2026-08-27T23:44:18Z | unknown-agent | EP-017 | HEARTBEAT | discovered_path=src/CMakeLists.txt evidence=WM-SRC-000118
+2026-08-28T01:12:49Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T01:17:31Z | ipman-hermes | EP-017 | LEASE_TAKEOVER | holder=ipman-hermes base=ee57f8cd4591cc5739df8c38e64accd502012165 gatefix=boot ellipsis repair ee57f8cd

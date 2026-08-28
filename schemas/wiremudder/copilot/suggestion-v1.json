@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/copilot/suggestion-v1.json",
+  "title": "WireMudder Copilot Suggestion",
+  "description": "Suggestion-only Player Copilot output with citations, Why explanation, calibrated confidence, disclosures, and optional SPEC-009-gated Action Proposal (WM-SPEC-014-R01, EP-017).",
+  "type": "object",
+  "required": ["schema_version", "suggestion", "citations", "confidence", "uncertainty", "why", "disclosure"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "suggestion": { "type": "string", "minLength": 1, "maxLength": 1024 },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "text"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["observation", "memory", "policy", "rejected-alternative"] },
+          "text": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1, "exclusiveMaximum": 1 },
+    "uncertainty": { "type": "string", "minLength": 1 },
+    "why": {
+      "type": "object",
+      "required": ["evidence", "uncertainty", "rejected_alternatives", "degraded"],
+      "properties": {
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["kind", "text"],
+            "properties": {
+              "kind": { "type": "string", "enum": ["observation", "memory", "policy", "rejected-alternative"] },
+              "text": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "uncertainty": { "type": "string", "minLength": 1 },
+        "rejected_alternatives": { "type": "array", "items": { "type": "string" } },
+        "degraded": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "disclosure": {
+      "type": "object",
+      "required": ["provider_id", "route_id", "privacy_mode", "redaction_patterns", "context_bytes", "prompt_tokens", "completion_tokens", "estimated_cost_usd_micros", "latency_ms", "degraded"],
+      "properties": {
+        "provider_id": { "type": "string", "minLength": 1 },
+        "route_id": { "type": "string", "minLength": 1 },
+        "privacy_mode": { "type": "string", "enum": ["disabled", "local-only", "local-preferred", "remote-redacted", "remote-approved"] },
+        "redaction_patterns": { "type": "integer", "minimum": 0 },
+        "context_bytes": { "type": "integer", "minimum": 0 },
+        "prompt_tokens": { "type": "integer", "minimum": 0 },
+        "completion_tokens": { "type": "integer", "minimum": 0 },
+        "estimated_cost_usd_micros": { "type": "integer", "minimum": 0 },
+        "latency_ms": { "type": "integer", "minimum": 0 },
+        "degraded": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "action_proposal": {
+      "type": ["object", "null"],
+      "properties": {
+        "proposal_id": { "type": "string", "minLength": 4 },
+        "command": { "type": "string", "minLength": 1 },
+        "risk_tier": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "requires_confirmation": { "const": true },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "required": ["proposal_id", "command", "risk_tier", "requires_confirmation", "reason"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

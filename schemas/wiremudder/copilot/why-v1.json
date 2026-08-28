@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/copilot/why-v1.json",
+  "title": "WireMudder Why Explanation",
+  "description": "Cited Why explanation with evidence, uncertainty, and rejected alternatives; never exposes chain-of-thought or secrets (WM-SPEC-014-R09, EP-017).",
+  "type": "object",
+  "required": ["schema_version", "evidence", "uncertainty", "rejected_alternatives", "degraded"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "text"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["observation", "memory", "policy", "rejected-alternative"] },
+          "text": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "uncertainty": { "type": "string", "minLength": 1 },
+    "rejected_alternatives": { "type": "array", "items": { "type": "string" } },
+    "degraded": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
