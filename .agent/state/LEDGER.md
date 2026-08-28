@@ -233,3 +233,4 @@
 2026-08-28T03:25:06Z | ipman-hermes | EP-020 | MILESTONE_PASS | M2 EP-020 M2: ok; evidence=.agent/state/evidence/EP-020/M2
 2026-08-28T03:27:11Z | ipman-hermes | EP-020 | MILESTONE_PASS | M3 EP-020 M3: ok; evidence=.agent/state/evidence/EP-020/M3
 2026-08-28T03:28:32Z | ipman-hermes | EP-020 | MILESTONE_PASS | M4 EP-020 M4: ok; evidence=.agent/state/evidence/EP-020/M4
+2026-08-28T03:30:20Z | ipman-hermes | EP-020 | MILESTONE_PASS | M5 EP-020 M5: ok; LF-020 green; evidence=.agent/state/evidence/EP-020/M5

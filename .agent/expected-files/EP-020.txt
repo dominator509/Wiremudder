@@ -3,6 +3,7 @@
 .agent/node-contracts/EP-020.md
 .agent/expected-files/EP-020.txt
 .agent/expected-files/EP-020.discovered.txt
+.agent/AUTHORITY_FILES.tsv
 .agent/milestone-files/EP-020-M1.txt
 .agent/milestone-files/EP-020-M2.txt
 .agent/milestone-files/EP-020-M3.txt

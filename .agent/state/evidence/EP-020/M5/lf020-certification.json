@@ -1,0 +1,13 @@
+{
+  "bounded_snapshot": true,
+  "cites_clues": true,
+  "hud_no_command": true,
+  "load_shedding": true,
+  "oversized_rejected": true,
+  "pane_no_command_path": true,
+  "pane_passive": true,
+  "secrets_redacted": true,
+  "source_disclosed": true,
+  "uncertainty_visible": true,
+  "user_correction_visible": true
+}
