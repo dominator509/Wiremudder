@@ -228,6 +228,7 @@ set(mudlet_SRCS
     wiremudder/ui/diagnostics/diagnostics_boundary.cpp
     wiremudder/ui/help/help_boundary.cpp
     wiremudder/ui/import/import_boundary.cpp
+    wiremudder/accessibility/accessibility_boundary.cpp
     XMLexport.cpp
     XMLimport.cpp)
 
@@ -478,6 +479,7 @@ set(mudlet_HDRS
     wiremudder/ui/diagnostics/diagnostics_boundary.h
     wiremudder/ui/help/help_boundary.h
     wiremudder/ui/import/import_boundary.h
+    wiremudder/accessibility/accessibility_boundary.h
     XMLexport.h
     XMLimport.h)
 
