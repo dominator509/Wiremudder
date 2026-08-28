@@ -1,0 +1,23 @@
+{
+  "$schema": "https://wiremudder.dev/schemas/packages/manifest.schema.json",
+  "name": "example-status-panel",
+  "version": "1.0.0",
+  "provenance": {
+    "kind": "user_local",
+    "author": "Example Author",
+    "added_at": "2026-08-28T00:00:00Z"
+  },
+  "license": "MIT",
+  "content_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "requested_permissions": [
+    "ui",
+    "command_send"
+  ],
+  "update_policy": {
+    "kind": "manual"
+  },
+  "compatibility": {
+    "wiremudder": ">=0.9.0",
+    "mudlet": ">=4.17.0"
+  }
+}

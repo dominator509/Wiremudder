@@ -317,7 +317,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
+- [x] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
@@ -325,6 +325,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 12. Surprises and Discoveries
 
 - 2026-08-28: EP-037 lease base corrected to f56c838 (HEAD at lease time); initial row copied EP-036 base by mistake — scope audit caught it immediately (correct base is a hard gate).
+- 2026-08-28: M2 unit tests must be POSIX sh — process substitution `< <(...)` failed under the verifier's `sh`; rewrote with a pipe loop. Documentation surfaces verified real: all 237 required features indexed, manifest example validates against the real schema, all 13 permission names + 3 update policies documented.
 
 # 13. Decision Log
 
