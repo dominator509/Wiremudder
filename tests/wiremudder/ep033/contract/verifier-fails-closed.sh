@@ -1,8 +1,9 @@
 #!/usr/bin/env sh
 # EP-033 M1 contract test: the node verifier exists, is executable, and fails
-# closed on unknown subcommands and on missing milestone boundaries instead of
-# printing a false success sentinel. (Do not invoke the full verify subcommand
-# here: it re-runs M1, which re-runs this test, causing recursion.)
+# closed on unknown subcommands and nonexistent milestones instead of
+# printing a false success sentinel. (Do not assert that M2..M5 fail: once
+# the node is implemented their boundaries exist and they legitimately pass.
+# The invariant fail-closed surface is unknown input and absent artifacts.)
 set -eu
 cd "$(dirname "$0")/../../../.."
 
@@ -16,11 +17,9 @@ if scripts/node-verifiers/EP-033.sh NO_SUCH_SUBCOMMAND >/dev/null 2>&1; then
   fail "verifier accepted unknown subcommand"
 fi
 
-# M2..M5 subcommands must fail closed while their boundaries are absent.
-for m in M2 M3 M4 M5; do
-  if scripts/node-verifiers/EP-033.sh "$m" >/dev/null 2>&1; then
-    fail "subcommand $m passed before its boundary existed"
-  fi
-done
+# Nonexistent milestone subcommands must fail closed.
+if scripts/node-verifiers/EP-033.sh M99 >/dev/null 2>&1; then
+  fail "verifier accepted nonexistent milestone M99"
+fi
 
 echo "contract EP-033 verifier-fails-closed: ok"
