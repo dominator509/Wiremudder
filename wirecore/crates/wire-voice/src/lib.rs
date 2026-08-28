@@ -150,7 +150,10 @@ impl VoiceMacro {
             return Err(VoiceDenial::MalformedInput);
         }
         match self.risk_tier.as_str() {
-            "manual" | "low" | "medium" | "high" | "critical" => {}
+            // "manual" is rejected outright: a voice macro is an
+            // automated source and cannot claim the manual (direct
+            // user-typed) tier (WM-SPEC-009-R02 fail-closed).
+            "low" | "medium" | "high" | "critical" => {}
             _ => return Err(VoiceDenial::DeniedPolicy),
         }
         // Destructive, social, trade, PvP, account, privacy, and
