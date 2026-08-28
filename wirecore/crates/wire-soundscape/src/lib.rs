@@ -493,6 +493,14 @@ impl SoundscapeEngine {
             self.coalesced += coalesced_now;
             self.push_audit("coalesced");
         }
+        // Promote the next queued job to the current loop when no
+        // transition is in flight and nothing is currently playing.
+        if self.transition.is_none() && self.current.is_none() {
+            if let Some(job) = self.queue.pop_front() {
+                self.current = Some(job.kind);
+                self.push_audit("play-started");
+            }
+        }
     }
 
     /// Start a bounded, cancelable transition to another soundscape.
@@ -841,14 +849,22 @@ mod tests {
     #[test]
     fn coalesce_duplicate_targets_on_tick() {
         let mut e = engine_with_room_binding();
+        e.register_binding(SoundscapeKind::Area, "amb-room", None)
+            .unwrap();
+        // Room queued, Area queued, then Room again: the later Room
+        // coalesces over the earlier Room before promotion.
         e.request_play("default", SoundscapeKind::Room, "amb-room", false)
             .unwrap();
-        e.tick(1);
-        // second identical request coalesces into one queued job
+        e.request_play("default", SoundscapeKind::Area, "amb-room", false)
+            .unwrap();
         e.request_play("default", SoundscapeKind::Room, "amb-room", false)
             .unwrap();
+        assert_eq!(e.queue_len(), 3);
         e.tick(1);
-        assert!(e.metrics().coalesced >= 1);
+        assert_eq!(e.metrics().coalesced, 1);
+        // promotion: Room becomes current; Area remains queued
+        assert_eq!(e.current(), Some(SoundscapeKind::Room));
+        assert_eq!(e.queue_len(), 1);
     }
 
     #[test]

@@ -307,7 +307,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
+- [x] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
@@ -345,3 +345,11 @@ At completion record changed versus expected files, source evidence, commands, e
 - Integration test soundscape-boundary-qt6 (compile proof + passive invariants); e2e test soundscape-flow (6 obligation greps).
 - Design docs docs/wiremudder/soundscape/design/architecture.md (data scope, privacy, authority, audit, health, restart, fallback, rollback).
 - `EP-026 M3: ok`; `scope audit EP-026: ok changed=31`.
+
+## 18. M4 Progress
+
+- 2026-08-28: failure_matrix (8/8 proofs), security_matrix (5/5 proofs), perf_fixture (6 measured paths).
+- Real finding: tick() did not promote the queued job to current loop; the duplicate-replay failure proof exposed it. Fixed tick() to promote front-of-queue when no transition in flight and nothing playing; coalescing test rewritten to queue Room/Area/Room and assert coalesce=1 + promotion. 21/21 still pass.
+- Perf (release, real hardware): request-play 3.04us, tick-coalesce 14.34us, transition-start 3.32us, studio-control 0.27us, asset-provenance 0.55us, emergency-stop 2.97us. worst 14.34us vs P3 5000us budget; e-stop 2.97us vs P0 10000us budget.
+- Operations runbook docs/wiremudder/soundscape/operations/runbook.md (health, readiness, disable, recovery, backup/restore, upgrade, rollback).
+- `EP-026 M4: ok`; `scope audit EP-026: ok changed=39`.
