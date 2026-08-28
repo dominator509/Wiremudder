@@ -1,16 +1,14 @@
 {
   "agent_id": "unknown-agent",
   "command": [
-    "sh",
-    "scripts/node-verifiers/EP-039.sh",
-    "M1"
+    "build-linux-debug-nosan/test/functional_tests/ScriptEventHandlerLifetimeTest"
   ],
-  "exit_code": 0,
-  "expected_sentinel": "EP-039 M1: ok",
+  "exit_code": 2,
+  "expected_sentinel": "Totals: 7 passed, 2 failed",
   "milestone": "M1",
   "node": "EP-039",
-  "observed_at": "2026-08-28T20:48:16Z",
-  "output_sha256": "dcc2394bd5d377559acb75ad40e02849032c329182d2e6f9b28ec3eebf0254c9",
+  "observed_at": "2026-08-28T22:11:34Z",
+  "output_sha256": "331c41bbb845619fbf38f6a030469544b8e1439462db80576b940b06c5aa3603",
   "schema_version": 1,
   "sentinel_observed": true
 }
