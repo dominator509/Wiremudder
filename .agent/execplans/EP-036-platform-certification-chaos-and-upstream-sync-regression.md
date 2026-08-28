@@ -322,6 +322,10 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock — commit 20e7685; verifier EP-036 M1: ok; 3 contract tests; evidence WM-SRC-000290..000301
+- [x] M2: Core behavior and deterministic invariants — commit f2d2938; platform certification + chaos fault injection; compatibility matrix; verifier EP-036 M2: ok
+- [x] M3: Real integration and user-visible flow — commit cdc484c; certification harness integration; e2e outcome; design doc; verifier EP-036 M3: ok
+- [x] M4: Forced failures, abuse cases, performance, and operations — commit f2a191a; 7 forced failures; security surface; perf updater p95=67us release p95=177us budget=1000us; runbook; verifier EP-036 M4: ok
+- [x] M5: Live-fire, evidence closure, and green tag readiness — LF-036 8/8 certified; 2 requirement tests; event schema extended for WM-SPEC-019-R02 (sanctioned fence amendment); verifier EP-036 M5: ok
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -330,6 +334,9 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
+
+- 2026-08-28: The canonical event schema (EP-028) omitted app/platform/privacy/voice/renderer/redaction fields required by owned requirement WM-SPEC-019-R02; the schema was extended and the path added to the EP-036 static fence with a same-commit authority hash refresh (sanctioned amendment, EP-028 precedent).
+- 2026-08-28: Platform certification is honest: Linux is certified with real evidence; Windows/macOS remain development-only until matching evidence exists (SPEC-027-R08 fallback).
 
 # 13. Decision Log
 
