@@ -35,4 +35,19 @@ grep -q "SESSION_QUEUE_CAPACITY" "$LIB" || fail "session queues not bounded"
 grep -q "MAX_SESSIONS" "$LIB" || fail "session count not bounded"
 grep -q "emergency_stop" "$LIB" || fail "global emergency stop missing"
 
+# 5. Desktop headless adapter boundary compiles with real Qt6 and is
+#    passive (no command path, no emergency-stop authority).
+ADAPTER=src/wiremudder/headless/headless_adapter_boundary
+[ -f "$ADAPTER.h" ] || fail "headless adapter header missing"
+QT=/opt/qt/6.8.2/gcc_64
+if [ -d "$QT" ] && command -v c++ >/dev/null 2>&1; then
+  c++ -std=c++20 -fPIC -I/root/wiremudder-repo \
+    -I"$QT/include" -I"$QT/include/QtCore" \
+    -c "$ADAPTER.cpp" -o /tmp/headless_adapter.o 2>&1 | head -10 \
+    || fail "headless adapter compile"
+  [ -f /tmp/headless_adapter.o ] || fail "headless adapter object missing"
+fi
+grep -q "canSendCommand() const { return false; }" "$ADAPTER.h" || fail "adapter has command path"
+grep -q "canEmergencyStop() const { return false; }" "$ADAPTER.h" || fail "adapter can emergency stop"
+
 echo "integration EP-023 M3 headless-flow: ok"
