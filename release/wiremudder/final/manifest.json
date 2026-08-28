@@ -1,0 +1,33 @@
+{
+ "schema_version": 1,
+ "channel": "canary",
+ "version": "0.9.0-canary",
+ "upstream_commit": "77086c295f4adf59197e586e689d19bdde8e1008",
+ "source_commit": "cb31f98b0427c9b356bc1819fdd4e8c96e3bf9ad",
+ "artifacts": [
+  {
+   "name": "source.tar.gz",
+   "sha256": "9796096dfcc0d83c5d15a922034f4dab5f95ff54b87890f8589f8f269ea33be9",
+   "size": 51370042
+  },
+  {
+   "name": "wiremudder-bin",
+   "sha256": "f50f151cb5154f4683a0959babf20f00de9b052b50144b4815c1c3339154e7e7",
+   "size": 247337512
+  }
+ ],
+ "has_source_archive": true,
+ "has_binary": true,
+ "has_checksums": true,
+ "has_signature": false,
+ "has_sbom": true,
+ "has_provenance": true,
+ "has_license_notices": true,
+ "has_release_notes": true,
+ "has_compat_matrix": true,
+ "has_known_risks": true,
+ "has_support_instructions": true,
+ "auto_deploy": false,
+ "prepared_by_agent": true,
+ "signed_by_maintainer": false
+}

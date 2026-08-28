@@ -94,7 +94,7 @@ path	mode	sha256
 .agent/expected-files/EP-036.txt	full	f2be032db9e8da2180bd73f8e77f8208122c74ca3592f37f4438f4a5ec17e4b5
 .agent/expected-files/EP-037.txt	full	4eba8c60a0f86ffc12558d47de78b8623f4cecc1a59b0787110cbefa8e6f3515
 .agent/expected-files/EP-038.txt	full	08f4a5204990235087685576bf564fb06545c4716b96c0b4b21b648b7db1c0a8
-.agent/expected-files/EP-039.txt	full	3ad4d316337234b175f00877cf53fcfa17e5d9e1e5c720f624949cd4aa77e4b0
+.agent/expected-files/EP-039.txt	full	35821ef2e9f3bebfd9cc7a7cbe6a80dff1729ccce6760f5df4279afcc3917ca5
 .agent/features/FEATURES.tsv	full	dc36ef54a9da2c5026d00484bf6272c2fb8624c1292e6d0e4dcbb98eec9fb6d4
 .agent/features/README.md	full	c59e7eb55372ddf174c9cfbaf9b8116f96b92bb0ca32dfde22bce79ed5c6ac28
 .agent/live-fire/PROOFS.tsv	full	bc9bd0153b17143ffd55c34674179daf08271a4eedabd34c62852036e2ab35fb

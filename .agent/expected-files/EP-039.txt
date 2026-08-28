@@ -9,6 +9,7 @@
 .agent/milestone-files/EP-039-M4.txt
 .agent/milestone-files/EP-039-M5.txt
 .agent/state/LEDGER.md
+.agent/AUTHORITY_FILES.tsv
 .agent/state/source-evidence.jsonl
 .agent/state/source-evidence/
 .agent/state/COMMANDS.lock.tsv
