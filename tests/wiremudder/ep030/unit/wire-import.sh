@@ -17,6 +17,6 @@ CARGO_TARGET_DIR="$PWD/wirecore/target" "$cargo_bin" test \
   cat "$log" >&2
   fail "wire-import tests failed"
 }
-grep -q "14 passed" "$log" || fail "expected 14 passing tests in wire-import"
+grep -q "15 passed" "$log" || fail "expected 15 passing tests in wire-import"
 
 echo "unit wire-import: ok"

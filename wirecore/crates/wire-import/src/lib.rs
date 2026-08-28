@@ -279,14 +279,18 @@ pub fn enforce_limits(
 /// detected structurally for research paths.
 pub fn detect_format(content: &str) -> SourceFormat {
     let trimmed = content.trim_start();
-    if trimmed.starts_with("<?xml") || trimmed.starts_with("<Mudlet") || trimmed.starts_with("<mudlet") {
-        return SourceFormat::Mudlet;
+    if trimmed.starts_with("<MUSHclient")
+        || (trimmed.starts_with("<?xml") && trimmed.contains("<MUSHclient"))
+    {
+        return SourceFormat::Mushclient;
     }
-    if trimmed.starts_with('<') && trimmed.contains("World") && trimmed.contains("Class") {
+    if (trimmed.starts_with("<World") || (trimmed.starts_with("<?xml") && trimmed.contains("<World")))
+        && trimmed.contains("Class")
+    {
         return SourceFormat::ZmudCmud;
     }
-    if trimmed.starts_with("<?xml") && trimmed.contains("<MUSHclient") {
-        return SourceFormat::Mushclient;
+    if trimmed.starts_with("<?xml") || trimmed.starts_with("<Mudlet") || trimmed.starts_with("<mudlet") {
+        return SourceFormat::Mudlet;
     }
     if trimmed.starts_with('#') && trimmed.contains("tintin") {
         return SourceFormat::Tintin;
@@ -544,6 +548,24 @@ mod tests {
         assert!(!SourceFormat::GenericJson.is_verified());
         assert_eq!(detect_format("{\"a\":1}"), SourceFormat::GenericJson);
         assert_eq!(detect_format("a,b\n1,2\n"), SourceFormat::GenericCsv);
+    }
+
+    #[test]
+    fn xml_roots_are_not_misclassified() {
+        // MUSHclient and zMUD/CMUD documents must never be classified as
+        // Mudlet even though they start with an XML declaration.
+        assert_eq!(
+            detect_format("<?xml version=\"1.0\"?>\n<MUSHclient world=\"w\">"),
+            SourceFormat::Mushclient
+        );
+        assert_eq!(
+            detect_format("<?xml version=\"1.0\"?>\n<World id=\"z\"><Class name=\"main\"/></World>"),
+            SourceFormat::ZmudCmud
+        );
+        assert_eq!(
+            detect_format("<?xml version=\"1.0\"?>\n<MudletPackage><trigger/></MudletPackage>"),
+            SourceFormat::Mudlet
+        );
     }
 
     #[test]
