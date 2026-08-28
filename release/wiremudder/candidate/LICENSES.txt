@@ -1,0 +1,12 @@
+WireMudder release candidate license notices
+Generated from licenses/wiremudder/licenses.json (EP-033).
+
+Component | License | Source obligation | Notice path
+
+mudlet-core | GPL-2.0-or-later | True | COPYING
+3rdparty/edbee-lib | MIT | False | 3rdparty/edbee-lib/LICENSE
+3rdparty/lcf | MIT | False | 3rdparty/lcf/LICENSE
+3rdparty/qt-tags-widget | MIT | False | 3rdparty/qt-tags-widget/LICENSE
+3rdparty/qtkeychain | BSD-3-Clause | False | 3rdparty/qtkeychain/COPYING
+3rdparty/sentry-native | MIT | False | 3rdparty/sentry-native/LICENSE
+wirecore-crates | GPL-3.0-or-later | True | COPYING

@@ -1,0 +1,42 @@
+{
+  "node": "EP-038",
+  "milestone": "M2",
+  "event": "release-candidate-freeze",
+  "channel": "canary",
+  "version": "0.9.0-rc1",
+  "upstream_commit": "77086c295f4adf59197e586e689d19bdde8e1008",
+  "source_commit": "cb31f98b0427c9b356bc1819fdd4e8c96e3bf9ad",
+  "candidate_dir": "release/wiremudder/candidate",
+  "artifacts": [
+    "source.tar.gz",
+    "wiremudder-bin",
+    "SHA256SUMS",
+    "sbom.json",
+    "provenance.json",
+    "LICENSES.txt",
+    "RELEASE_NOTES.md",
+    "COMPATIBILITY.md",
+    "KNOWN_RISKS.md",
+    "SUPPORT.md"
+  ],
+  "binary": {
+    "name": "wiremudder-bin",
+    "sha256": "f50f151cb5154f4683a0959babf20f00de9b052b50144b4815c1c3339154e7e7",
+    "size": 247337512,
+    "source": "build-linux-debug-nosan/src/mudlet (real Qt6 build)"
+  },
+  "source_archive": {
+    "name": "source.tar.gz",
+    "sha256": "9796096dfcc0d83c5d15a922034f4dab5f95ff54b87890f8589f8f269ea33be9",
+    "size": 51370042,
+    "command": "git archive --format=tar.gz cb31f98b0427c9b356bc1819fdd4e8c96e3bf9ad (reproduced deterministically)"
+  },
+  "oracle": {
+    "command": "wirecore/target/release/wire-release-oracle",
+    "candidate_check": "candidate-complete",
+    "dir_check_no_sig": "dir-ok 10",
+    "stable_check": "stable-incomplete:stable release incomplete; missing: signature"
+  },
+  "recorded_at": "2026-08-28T18:40:00Z",
+  "agent_id": "ipman-hermes"
+}

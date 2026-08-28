@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T16:38:22Z","agent_id":"ipman-hermes","node":"EP-038","path":".gitignore","rationale":"release candidate binaries (247MB) must stay out of git; repository precedent already ignores generated/runtime artifacts; manifest records hashes instead","repository_commit":"cb31f98b0427c9b356bc1819fdd4e8c96e3bf9ad","rollback":"git checkout -- .gitignore","source_evidence_id":"WM-SRC-000328","test":"tests/wiremudder/ep001/contract/003-namespacing.sh"}

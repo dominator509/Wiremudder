@@ -1,0 +1,8 @@
+{
+  "upstream_repository": "https://github.com/Mudlet/Mudlet.git",
+  "upstream_commit": "77086c295f4adf59197e586e689d19bdde8e1008",
+  "source_commit": "cb31f98b0427c9b356bc1819fdd4e8c96e3bf9ad",
+  "build_host": "wiremudder-rc-build",
+  "prepared_by_agent": true,
+  "signed_by_maintainer": false
+}

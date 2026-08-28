@@ -75,3 +75,8 @@ backups/local/
 .agent/state/runtime/
 !.agent/state/LEDGER.md
 !.agent/state/README.md
+
+# Large release candidate binaries are tracked by hash in the manifest,
+# not committed to git (reproducible from source).
+release/wiremudder/candidate/wiremudder-bin
+release/wiremudder/candidate/source.tar.gz
