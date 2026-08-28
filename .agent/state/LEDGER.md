@@ -355,3 +355,4 @@
 2026-08-28T14:52:42Z | ipman-hermes | EP-034 | MILESTONE_PASS | M3 EP-034 M3: ok; evidence=.agent/state/evidence/EP-034/M3
 2026-08-28T14:54:58Z | ipman-hermes | EP-034 | MILESTONE_PASS | M4 EP-034 M4: ok; evidence=.agent/state/evidence/EP-034/M4
 2026-08-28T14:56:51Z | ipman-hermes | EP-034 | MILESTONE_PASS | M5 EP-034 M5: ok; evidence=.agent/state/evidence/EP-034/M5
+2026-08-28T14:57:06Z | ipman-hermes | EP-034 | NODE_DONE | node verify EP-034 pending; green/EP-034 tag creation
