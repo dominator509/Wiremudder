@@ -308,7 +308,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -353,3 +353,29 @@ At completion record changed versus expected files, source evidence, commands, e
 - Perf (release, real hardware): request-play 3.04us, tick-coalesce 14.34us, transition-start 3.32us, studio-control 0.27us, asset-provenance 0.55us, emergency-stop 2.97us. worst 14.34us vs P3 5000us budget; e-stop 2.97us vs P0 10000us budget.
 - Operations runbook docs/wiremudder/soundscape/operations/runbook.md (health, readiness, disable, recovery, backup/restore, upgrade, rollback).
 - `EP-026 M4: ok`; `scope audit EP-026: ok changed=39`.
+
+## 19. M5 Progress
+
+- 2026-08-28: LF-026 soundscape-degradation live-fire: real production crate flow (e2e_soundscape), 6/6 certification obligations true; commit a0897210. Feature tests feature-0075 (studio) + feature-0076 (bindings) ok. `EP-026 M5: ok`; `scope audit EP-026: ok changed=43`.
+
+## 20. Surprises and Discoveries
+
+- 2026-08-28: The failure matrix exposed that tick() never promoted a queued job to the current loop, so duplicate-replay detection was unreachable in real flow. Fixed promotion in tick() (front-of-queue when no transition in flight and nothing playing); coalescing test rewritten (Room/Area/Room → coalesce=1, Room promoted). 21/21 deterministic tests still pass; all three matrices green after the fix.
+- 2026-08-28: Injected provenance strings (e.g. `original:wiremudder:procedural; rm -rf /`) are stored as inert data and never executed; the security matrix proves readback is literal and the engine has no evaluation surface.
+
+## 21. Decision Log
+
+- 2026-08-28 | tick() promotes queued job to current when idle | evidence: failure_matrix duplicate-replay proof failed before fix, passed after (tests/wiremudder/ep026/failure/) | alternatives: manual current set in tests (rejected: hid the bug) | consequence: real flow has reachable duplicate-replay detection and correct current-loop promotion | reversal: revert tick promotion and re-run matrices | affected: WM-FEAT-0075, WM-FEAT-0076, WM-SPEC-016-R08 | security: none (fail-closed unchanged) | privacy: none | license: none | compatibility: crate-internal only | performance: tick 14.3us mean within P3 budget | upstream: none | 
+- 2026-08-28 | Remote unsigned asset packs rejected; user-local source is the trusted fallback | evidence: security_matrix proof 2 | alternatives: accept remote unsigned (rejected: violates fail-closed/no-egress) | consequence: no remote egress implied by this node | reversal: none planned | affected: WM-SPEC-016-R09 | security: strictest default | privacy: no data egress | license: CC0 original assets only | compatibility: user-local loop path documented | performance: unchanged | upstream: none |
+
+## 22. Outcomes and Retrospective
+
+- Changed vs expected files: static fence paths all present; discovered amendment 1 row (src/CMakeLists.txt, WM-SRC-000178). Source evidence WM-SRC-000176..000179.
+- Commands and sentinels: `node contract check EP-026: ok`; `EP-026 M1..M5: ok`; `scope audit EP-026: ok` (43 changed at M5); `LF-026 soundscape-degradation: ok` (6/6 obligations); `node verify EP-026: ok` (after gates).
+- Evidence hashes: .agent/state/evidence/EP-026/M1..M5/evidence.json.
+- Feature disposition: WM-FEAT-0075 implemented + certified (LF-026); WM-FEAT-0076 implemented + certified (LF-026). Requirement WM-SPEC-016-R08 implemented + certified.
+- Provider/platform: no external provider; Qt6 UI boundary compiled (integration test). No remote asset certification (remote unsigned rejected by design).
+- Assumptions changed: none beyond discovery log.
+- Risks: audio backend playback is P3 optional; engine is deterministic core, actual PCM rendering remains adapter/worker territory (not claimed).
+- Rollback: git checkout -- src/CMakeLists.txt; deletion of crate/schemas/assets (additive).
+- Green tag: green/EP-026. Next scheduler output after release.
