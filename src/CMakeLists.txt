@@ -219,6 +219,7 @@ set(mudlet_SRCS
     WideComboBox.cpp
     wiremudder/ui/copilot/copilot_boundary.cpp
     wiremudder/ui/soul/soul_boundary.cpp
+    wiremudder/ui/autopilot/autopilot_boundary.cpp
     XMLexport.cpp
     XMLimport.cpp)
 
@@ -460,6 +461,7 @@ set(mudlet_HDRS
     WideComboBox.h
     wiremudder/ui/copilot/copilot_boundary.h
     wiremudder/ui/soul/soul_boundary.h
+    wiremudder/ui/autopilot/autopilot_boundary.h
     XMLexport.h
     XMLimport.h)
 
