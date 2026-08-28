@@ -304,6 +304,10 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock — commit ef4be3f; verifier EP-035 M1: ok; 3 contract tests; evidence WM-SRC-000276..000289
+- [x] M2: Core behavior and deterministic invariants — commit ae177e0; wire-release crate 9/9 tests zero warnings; oracle CLI; CI workflow; installer smoke; verifier EP-035 M2: ok
+- [x] M3: Real integration and user-visible flow — commit e6eddfb; real artifact set from repo (source/bin/checksums/SBOM/provenance); e2e channel flow; design doc; verifier EP-035 M3: ok
+- [x] M4: Forced failures, abuse cases, performance, and operations — commit 3d480fc; 7 forced failures; security surface; perf p50=140us p95=178us budget=1000us; runbook; verifier EP-035 M4: ok
+- [x] M5: Live-fire, evidence closure, and green tag readiness — LF-035 8/8 certified; 7 requirement tests; verifier EP-035 M5: ok
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -312,6 +316,10 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
+
+- 2026-08-28: The artifact completeness check requires the SHA256SUMS file itself; artifact sets built by shell loops must compute checksums over the full set and then append the checksum file, or the set is incomplete (dir-ok counts include SHA256SUMS).
+- 2026-08-28: The auto-deploy flag is `WIREMUDDER_AUTO_DEPLOY=false` in .env, not `AUTO_DEPLOY`; the security gate checks the real variable.
+- 2026-08-28: Release-candidate checksums computed inside a subshell need an absolute oracle path or a `cd "$OLDPWD"` hop; cargo run resolves manifests from the current directory.
 
 # 13. Decision Log
 
