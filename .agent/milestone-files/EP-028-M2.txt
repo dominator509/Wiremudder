@@ -1,7 +1,7 @@
 # Exact path fence for EP-028 M2.
+src/wiremudder/ui/diagnostics/
 wirecore/crates/wire-telemetry/
 wirecore/crates/wire-replay/
-src/wiremudder/ui/diagnostics/
 schemas/wiremudder/telemetry/
 tests/wiremudder/ep028/unit/
 .agent/state/evidence/EP-028/M2/

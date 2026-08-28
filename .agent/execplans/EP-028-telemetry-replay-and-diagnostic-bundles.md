@@ -304,7 +304,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -317,6 +317,9 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-28: Architecture — telemetry/replay implemented as two isolated WireCore crates (`wire-telemetry`, `wire-replay`) with canonical schemas under `schemas/wiremudder/telemetry/`, a passive Qt6 diagnostics UI boundary, and LF-028 live-fire. Evidence: WM-SRC-000186..192; node contract EP-028. Alternative: single combined crate — rejected to keep ring-buffer capture separate from deterministic replay and bundles. Consequence: narrow, testable boundaries. Reversal: delete crates and revert CMakeLists. Affects WM-FEAT-0128/0132/0221/0223/0224/0225/0227. Privacy: telemetry off by default, redaction corpus, no hosted endpoint. Compatibility: schemas versioned const 1; replay deterministic. Performance: SPEC-004 budgets measured in M4.
+- 2026-08-28: Inherited integration — `src/CMakeLists.txt` is the only inherited edit, via discovered amendment WM-SRC-000186, wiring `src/wiremudder/ui/diagnostics/` into `mudlet_SRCS` exactly beside the soundscape/help panes. Alternative: separate shared library — rejected (inherited client compiles all UI sources in one list). Rollback: `git checkout -- src/CMakeLists.txt`.
 
 # 14. Outcomes and Retrospective
 
