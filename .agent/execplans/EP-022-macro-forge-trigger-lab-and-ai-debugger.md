@@ -299,20 +299,49 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 - 2026-08-28: EP-022 M1. The client build list `src/CMakeLists.txt` enumerates pane sources at lines 220-223 (.cpp) and 463-466 (.h); the power-tools pane must be wired into that exact list following the copilot/soul/autopilot/assistance pattern (WM-SRC-000146). Discovered-path amendment recorded for `src/CMakeLists.txt` (discovered path check: ok rows=1).
 - 2026-08-28: EP-022 owns WM-FEAT-0106/0107/0108/0127/0161/0162 and WM-SPEC-008-R02/R07/R08 plus WM-SPEC-019-R06; AI Debugger is explicitly barred from self-certifying success and from editing gates (contract test ai-debugger-authority).
+- 2026-08-28: EP-022 M4. A zero-budget replay completes before 1ms elapses, so the timeout/cancellation failure proof must use a slow script handler (2ms sleep) to genuinely overrun the 1ms budget; the crate aborts the replay with `BudgetExhausted` and records no partial run. A perf fixture that creates 2000 distinct variables trips its own 512-cap; the variable hot-path fixture reuses one key so it measures the real path without self-limiting.
+- 2026-08-28: EP-022 M4. The M4 examples initially lived in a separate `wire-debugger-m4` harness crate; the scope audit rejected it as an unauthorized path. Moved the three examples into `wirecore/crates/wire-debugger/examples/` (the EP-020/EP-021 precedent) and deleted the harness crate; scope audit green.
 
 # 13. Decision Log
 
 - 2026-08-28 | M1 | Authorized new boundaries locked: `src/wiremudder/ui/power-tools/`, `wirecore/crates/wire-debugger/`, `compatibility/automation/`, `schemas/wiremudder/debug/`. | Node contract EP-022 authorized boundaries; static fence `.agent/expected-files/EP-022.txt`. | None considered; contract mandates these exact names. | Consequence: M2-M5 product work confined to these namespaced paths. | Reversal: contract amendment. | Affects WM-FEAT-0106/0107/0108/0127/0161/0162, WM-SPEC-008-R02/R07/R08, WM-SPEC-019-R06. | Security/privacy: SPEC-010/SPEC-022 apply; no new authority, secret access, or egress. | License/compat/perf: no new dependency; SPEC-004 budgets apply.
+- 2026-08-28 | M4 | M4 examples live inside `wirecore/crates/wire-debugger/examples/`, not a separate harness crate. | Scope audit rejected `wirecore/crates/wire-debugger-m4/` as unauthorized; EP-020/EP-021 precedent places failure/security/perf examples in the owned crate. | Harness crate with its own manifest. | Consequence: M4 examples are fenced under the authorized crate boundary and compiled by the same cargo test. | Reversal: none. | Affects WM-FEAT-0106/0107/0108/0127/0161/0162. | Security/privacy: unchanged. | License/compat/perf: no new dependency.
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+- Changed vs expected: all changes inside the static fence plus the
+  discovered-path amendment `src/CMakeLists.txt` (WM-SRC-000146,
+  power-tools pane wiring).
+- Source evidence: WM-SRC-000146..000149 (M1: CMakeLists pane list,
+  SPEC-008 R02/R07/R08, SPEC-019 R06, wire-policy surface).
+- Commands and sentinels:
+  - `sh scripts/node-verifiers/EP-022.sh M1` -> `EP-022 M1: ok`
+  - `sh scripts/node-verifiers/EP-022.sh M2` -> `EP-022 M2: ok` (crate 10/10 unit tests)
+  - `sh scripts/node-verifiers/EP-022.sh M3` -> `EP-022 M3: ok` (real Qt6 pane harness + Rust e2e flow)
+  - `sh scripts/node-verifiers/EP-022.sh M4` -> `EP-022 M4: ok` (failure 8/8, security 5/5, perf p95<=11us)
+  - `sh scripts/node-verifiers/EP-022.sh M5` -> `EP-022 M5: ok` (LF-022 9 obligations true; 6 feature tests; 4 requirement tests)
+  - `sh scripts/node-verify.sh EP-022` -> `node verify EP-022: ok`
+- Evidence hashes: recorded in `.agent/state/evidence/EP-022/M{1..5}/`.
+- Feature disposition: WM-FEAT-0106/0107/0108/0127 (required/full) and
+  WM-FEAT-0161/0162 (required/ai) implemented and certified by LF-022.
+- Requirement disposition: WM-SPEC-008-R02/R07/R08, WM-SPEC-019-R06 all
+  automated-test green.
+- Provider/platform certification: none (no provider or platform in this
+  node).
+- Assumptions changed: none.
+- Risks: debugger state is in-memory; restart re-creates drafts/fixtures
+  through normal approval flows (documented in operations runbook).
+- Rollback: remove power-tools entries from `src/CMakeLists.txt`, delete
+  `src/wiremudder/ui/power-tools/`, revert `wirecore/crates/wire-debugger/`
+  and `schemas/wiremudder/debug/`.
+- Green tag: `green/EP-022`.
+- Next scheduler output: per `scripts/graph-next.sh`.

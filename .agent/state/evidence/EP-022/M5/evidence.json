@@ -1,0 +1,16 @@
+{
+  "agent_id": "unknown-agent",
+  "command": [
+    "sh",
+    "scripts/node-verifiers/EP-022.sh",
+    "M5"
+  ],
+  "exit_code": 0,
+  "expected_sentinel": "EP-022 M5: ok",
+  "milestone": "M5",
+  "node": "EP-022",
+  "observed_at": "2026-08-28T04:01:10Z",
+  "output_sha256": "9096331a4692e5cbf2b45aae54b242588ff5c9ad3d9409d207dfa70f56f0aa43",
+  "schema_version": 1,
+  "sentinel_observed": true
+}
