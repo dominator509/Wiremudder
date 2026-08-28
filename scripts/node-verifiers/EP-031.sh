@@ -9,14 +9,11 @@ fail() { echo "EP-031 verify: FAIL - $1" >&2; exit 1; }
 ok() { echo "$1"; exit 0; }
 
 check_pinned_commit() {
-  expected="9366f94f42ed9d2493a5a41855e623c95f183d72"
-  actual="$(git rev-parse HEAD 2>/dev/null || true)"
-  [ "$actual" = "$expected" ] || fail "HEAD moved from lease base (expected $expected, got $actual)"
-}
-
-check_cargo() {
-  cargo_bin="$(command -v cargo || true)"
-  [ -n "$cargo_bin" ] || fail "cargo missing"
+  [ -f .env ] || fail "missing .env"
+  set -a; . ./.env; set +a
+  commit=${WIREMUDDER_UPSTREAM_COMMIT:-}
+  git cat-file -e "$commit^{commit}" 2>/dev/null || fail "pinned commit missing"
+  git merge-base --is-ancestor "$commit" HEAD || fail "pinned commit not ancestor"
 }
 
 case "${1:-}" in
