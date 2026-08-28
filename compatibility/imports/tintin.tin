@@ -1,0 +1,5 @@
+# tintin-style research fixture (WM-FEAT-0120 research path)
+#class example
+#alias {go %1} {#send %1}
+#action {^hello$} {#say hi}
+#var {role} {warrior}

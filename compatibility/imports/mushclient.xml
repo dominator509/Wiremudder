@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<MUSHclient world="example" id="mush-example">
+  <triggers>
+    <trigger name="greet" match="^hello$" send="say hi" enabled="1"/>
+  </triggers>
+  <aliases>
+    <alias name="go" match="^go (.*)$" send="%1" enabled="1"/>
+  </aliases>
+</MUSHclient>

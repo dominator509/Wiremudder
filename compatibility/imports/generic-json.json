@@ -1,0 +1,10 @@
+{
+  "world": "example",
+  "triggers": [
+    {"name": "t1", "pattern": "^hi$", "action": "say hello"},
+    {"name": "t2", "pattern": "^bye$", "action": "say goodbye"}
+  ],
+  "aliases": [
+    {"name": "a1", "command": "attack", "expansion": "kill %1"}
+  ]
+}

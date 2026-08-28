@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<World id="zmud-example">
+  <Class name="main">
+    <Trigger name="greet" match="^hello$" value="say hi"/>
+    <Alias name="go" match="^go (.*)$" value="%1"/>
+  </Class>
+</World>

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/import/report.schema.json",
+  "title": "WireMudder Migration Report",
+  "description": "Canonical migration report produced by an import run (SPEC-021-R03, EP-030).",
+  "type": "object",
+  "required": ["schema_version", "source_format", "source_hash", "imported_count", "warning_count", "unsupported_count", "conflict_count", "automation_disabled", "backup_path", "rollback_path"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "source_format": { "type": "string" },
+    "source_hash": { "type": "string", "minLength": 64, "maxLength": 64 },
+    "imported_count": { "type": "integer", "minimum": 0 },
+    "warning_count": { "type": "integer", "minimum": 0 },
+    "unsupported_count": { "type": "integer", "minimum": 0 },
+    "conflict_count": { "type": "integer", "minimum": 0 },
+    "automation_disabled": { "const": true },
+    "backup_path": { "type": "string" },
+    "rollback_path": { "type": "string" },
+    "diagnostics_path": { "type": ["string", "null"] },
+    "items": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "detail", "severity"],
+        "properties": {
+          "kind": { "type": "string" },
+          "path": { "type": "string" },
+          "detail": { "type": "string" },
+          "severity": { "enum": ["warning", "unsupported", "error"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MudletPackage version="1.0">
+  <trigger>
+    <name>broken
+    <regex>^Hello</regex>
+  </alias>
+  <mysteryElement>
+    <name>unknown</name>
+    <value>should be reported, not dropped</value>
+  </mysteryElement>
+</MudletPackage>

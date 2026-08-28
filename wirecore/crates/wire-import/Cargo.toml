@@ -1,0 +1,11 @@
+[package]
+name = "wire-import"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder safe imports and migrations: source hash, provenance, backup, disabled automation, size bounds, conflict policy, rollback (SPEC-005, SPEC-008, SPEC-011, SPEC-021, SPEC-022, EP-030)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"

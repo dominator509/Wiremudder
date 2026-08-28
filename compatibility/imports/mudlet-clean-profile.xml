@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+  <trigger>
+    <name>on login</name>
+    <regex>^Welcome</regex>
+    <command>echo("login ok")</command>
+    <isActive>yes</isActive>
+  </trigger>
+  <alias>
+    <name>go north</name>
+    <command>go north</command>
+  </alias>
+  <timer>
+    <name>heartbeat</name>
+    <time>5.0</time>
+    <command>send("ping")</command>
+  </timer>
+  <variable>
+    <name>role</name>
+    <value>warrior</value>
+  </variable>
+  <script>
+    <name>helpers</name>
+    <script>function heal() return "cure light" end</script>
+  </script>
+</MudletPackage>

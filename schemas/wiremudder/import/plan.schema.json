@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/import/plan.schema.json",
+  "title": "WireMudder Import Plan",
+  "description": "Canonical import plan with hash, provenance, backup, disabled automation, conflicts, and rollback (SPEC-021-R03, EP-030).",
+  "type": "object",
+  "required": ["schema_version", "source_format", "source_path", "source_hash", "normalized_items", "warnings", "unsupported", "conflicts", "automation_disabled", "backup_path", "rollback_path"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "source_format": {
+      "enum": ["mudlet", "mushclient", "tintin", "zmud_cmud", "generic_json", "generic_csv", "generic_yaml"]
+    },
+    "source_path": { "type": "string" },
+    "source_hash": { "type": "string", "minLength": 64, "maxLength": 64 },
+    "normalized_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "name", "payload", "enabled"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "type": "string" },
+          "name": { "type": "string" },
+          "payload": { "type": "string" },
+          "enabled": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "warnings": { "$ref": "#/$defs/issue" },
+    "unsupported": { "$ref": "#/$defs/issue" },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "policy"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "type": "string" },
+          "policy": { "enum": ["import_wins", "destination_wins", "keep_both"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "automation_disabled": { "const": true },
+    "backup_path": { "type": "string" },
+    "rollback_path": { "type": "string" }
+  },
+  "$defs": {
+    "issue": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "detail", "severity"],
+        "properties": {
+          "kind": { "type": "string" },
+          "path": { "type": "string" },
+          "detail": { "type": "string" },
+          "severity": { "enum": ["warning", "unsupported", "error"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
