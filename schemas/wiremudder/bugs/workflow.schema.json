@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/bugs/workflow.schema.json",
+  "title": "WireMudder Bug Remediation Workflow",
+  "description": "Canonical bounded remediation workflow state (SPEC-019-R09, WM-SPEC-025-R03/R04/R05, EP-029).",
+  "type": "object",
+  "required": ["report", "stage", "audit", "retries"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "report": { "$ref": "report.schema.json" },
+    "stage": {
+      "enum": ["intake", "reproduction", "diagnosis", "patch", "validation", "review", "canary", "rollback", "done", "blocked"]
+    },
+    "reproduction": {
+      "type": "object",
+      "required": ["reproduced", "explanation", "steps_or_evidence"],
+      "properties": {
+        "reproduced": { "type": "boolean" },
+        "explanation": { "type": "string" },
+        "steps_or_evidence": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "diagnosis": {
+      "type": "object",
+      "required": ["root_cause", "confidence"],
+      "properties": {
+        "root_cause": { "type": "string" },
+        "confidence": { "type": "integer", "minimum": 0, "maximum": 100 }
+      },
+      "additionalProperties": false
+    },
+    "patch_plan": {
+      "type": "object",
+      "required": ["subsystem", "touched_paths", "summary", "validation_command"],
+      "properties": {
+        "subsystem": { "type": "string" },
+        "touched_paths": { "type": "array", "items": { "type": "string" } },
+        "summary": { "type": "string" },
+        "validation_command": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "validation_result": { "type": "string" },
+    "review": {
+      "type": "object",
+      "required": ["reviewer_id", "planner_id", "approved", "notes"],
+      "properties": {
+        "reviewer_id": { "type": "string" },
+        "planner_id": { "type": "string" },
+        "approved": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "canary": {
+      "type": "object",
+      "required": ["scope", "duration_secs", "rollback_plan"],
+      "properties": {
+        "scope": { "type": "string" },
+        "duration_secs": { "type": "integer", "minimum": 1 },
+        "rollback_plan": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "rollback": {
+      "type": "object",
+      "required": ["steps", "restores_last_known_good"],
+      "properties": {
+        "steps": { "type": "array", "items": { "type": "string" } },
+        "restores_last_known_good": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "blocked": {
+      "type": "object",
+      "required": ["bug_id", "stage", "reason", "retry_signatures", "evidence_refs", "human_next_steps"],
+      "properties": {
+        "bug_id": { "type": "string" },
+        "stage": { "type": "string" },
+        "reason": { "type": "string" },
+        "retry_signatures": { "type": "array", "items": { "type": "string" } },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } },
+        "human_next_steps": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "audit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t_epoch_ms", "bug_id", "stage", "action", "detail"],
+        "properties": {
+          "t_epoch_ms": { "type": "integer", "minimum": 0 },
+          "bug_id": { "type": "string" },
+          "stage": { "type": "string" },
+          "action": { "type": "string" },
+          "detail": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "retries": {
+      "type": "object",
+      "required": ["max_attempts", "base_delay_ms", "jitter_ms", "require_idempotency_key_for_destructive", "signatures"],
+      "properties": {
+        "max_attempts": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "base_delay_ms": { "type": "integer", "minimum": 0 },
+        "jitter_ms": { "type": "integer", "minimum": 0 },
+        "require_idempotency_key_for_destructive": { "type": "boolean" },
+        "signatures": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

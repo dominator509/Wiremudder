@@ -1,0 +1,11 @@
+[package]
+name = "wiremudder-bug-lab"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder Bug Lab CLI: bounded bug automation intake, reproduction, diagnosis, patch planning, review, canary, and BLOCKED reporting (SPEC-019, SPEC-022, SPEC-025, EP-029)"
+
+[dependencies]
+wire-bug-automation = { path = "../../wirecore/crates/wire-bug-automation" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

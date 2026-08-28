@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/bugs/report.schema.json",
+  "title": "WireMudder Bug Report",
+  "description": "Canonical redacted bug intake record (SPEC-019-R09, EP-029).",
+  "type": "object",
+  "required": ["schema_version", "id", "fingerprint", "subsystem", "priority", "description", "correlation_id", "evidence_refs"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 8 },
+    "fingerprint": { "type": "string", "minLength": 8 },
+    "subsystem": {
+      "enum": ["core", "network", "lua", "mapper", "voice", "renderer", "headless", "provider", "update", "package", "security", "telemetry", "bug_automation"]
+    },
+    "priority": { "enum": ["P0", "P1", "P2", "P3", "P4"] },
+    "description": { "type": "string", "minLength": 1 },
+    "correlation_id": { "type": "string" },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "created_epoch_ms": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

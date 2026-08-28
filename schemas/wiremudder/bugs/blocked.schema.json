@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/bugs/blocked.schema.json",
+  "title": "WireMudder BLOCKED Report",
+  "description": "Complete terminal BLOCKED report for a bug remediation (SPEC-019-R09 obligation 6, EP-029).",
+  "type": "object",
+  "required": ["schema_version", "bug_id", "stage", "reason", "retry_signatures", "evidence_refs", "human_next_steps"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "bug_id": { "type": "string", "minLength": 8 },
+    "stage": { "type": "string" },
+    "reason": { "type": "string", "minLength": 1 },
+    "retry_signatures": { "type": "array", "items": { "type": "string" } },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "human_next_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}
