@@ -305,7 +305,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
+- [x] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
@@ -330,3 +330,10 @@ At completion record changed versus expected files, source evidence, commands, e
 - Contract tests: help-authority, help-boundaries, help-build-integration, help-obligations — all ok.
 - Node verifier scripts/node-verifiers/EP-027.sh (M1-M5 + verify, 11 features + 4 requirements).
 - `node contract check EP-027: ok`; `EP-027 M1: ok`; `scope audit EP-027: ok changed=9`.
+
+## 16. M2 Progress
+
+- 2026-08-28: wire-help crate (wirecore/crates/wire-help) — Help Knowledge Index (reproducible via stable_hash; 6 source kinds; stale/unavailable source reporting), field help bubbles (safe default/validation hint/privacy note/doc link), scoped sanitized Ask context (secret redaction, approved-ref filtering), help modes (local-only/remote-redacted/disabled), Setup Coach (propose-only, apply_step hard-denied, side-effect-free), source index (opt-in/local/idle/secret-aware/ignore-aware/resumable/removable), evidence-based capability onboarding (no guessing), CLI/UI help parity, app versioning. 27/27 deterministic tests.
+- Help schemas schemas/wiremudder/help/ (index-entry/field-help/ask-context/coach-step/source-index-state v1).
+- tools/help-indexer: real Rust CLI ingesting docs/, COMMANDS.md, schemas/wiremudder/, ADRs, sanitized source refs; reproducible output (identical runs, identical hash) — 174 entries across all 6 kinds.
+- M2 unit test scripts (help-schemas, wire-help, help-indexer). `EP-027 M2: ok`; `scope audit EP-027: ok changed=25`.

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/help/ask-context-v1.json",
+  "title": "WireMudder Ask Context v1",
+  "description": "Scoped, sanitized context for the Ask WireMudder AI handoff (WM-SPEC-018-R02).",
+  "type": "object",
+  "properties": {
+    "field_id": { "type": "string", "minLength": 1 },
+    "sanitized_ui_state": { "type": "string" },
+    "validation_error": { "type": "string" },
+    "approved_docs": { "type": "array", "items": { "type": "string" } },
+    "command_catalog_refs": { "type": "array", "items": { "type": "string" } },
+    "adr_refs": { "type": "array", "items": { "type": "string" } },
+    "source_refs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["field_id", "sanitized_ui_state", "validation_error", "approved_docs", "command_catalog_refs", "adr_refs", "source_refs"],
+  "additionalProperties": false
+}

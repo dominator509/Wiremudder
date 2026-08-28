@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/help/field-help-v1.json",
+  "title": "WireMudder Field Help v1",
+  "description": "A help bubble beside a field, feature card, wizard step, or advanced control (WM-SPEC-018-R01).",
+  "type": "object",
+  "properties": {
+    "field_id": { "type": "string", "minLength": 1 },
+    "label": { "type": "string", "minLength": 1 },
+    "safe_default": { "type": "string" },
+    "validation_hint": { "type": "string" },
+    "privacy_note": { "type": "string" },
+    "doc_link": { "type": "string", "minLength": 1 }
+  },
+  "required": ["field_id", "label", "safe_default", "validation_hint", "privacy_note", "doc_link"],
+  "additionalProperties": false
+}

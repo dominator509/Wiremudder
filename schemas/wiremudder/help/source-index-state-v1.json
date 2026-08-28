@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/help/source-index-state-v1.json",
+  "title": "WireMudder Source Index State v1",
+  "description": "Optional local source checkout indexing state: opt-in, local-first, idle-only, secret-aware, ignore-file-aware, resumable, removable (WM-SPEC-018-R05).",
+  "type": "object",
+  "properties": {
+    "enabled": { "type": "boolean" },
+    "local_only": { "type": "boolean" },
+    "idle_only": { "type": "boolean" },
+    "indexed_entries": { "type": "integer", "minimum": 0 },
+    "secret_entries_skipped": { "type": "integer", "minimum": 0 },
+    "ignored_entries_skipped": { "type": "integer", "minimum": 0 },
+    "resumable": { "type": "boolean" },
+    "removed": { "type": "boolean" }
+  },
+  "required": ["enabled", "local_only", "idle_only", "indexed_entries", "secret_entries_skipped", "ignored_entries_skipped", "resumable", "removed"],
+  "additionalProperties": false
+}

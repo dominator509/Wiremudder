@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/help/coach-step-v1.json",
+  "title": "WireMudder Coach Step v1",
+  "description": "A Setup Coach step: explains and proposes only; never applies (WM-SPEC-018-R06).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "explanation": { "type": "string", "minLength": 1 },
+    "proposal": { "type": "string" },
+    "safe_default": { "type": "string" }
+  },
+  "required": ["id", "title", "explanation", "proposal", "safe_default"],
+  "additionalProperties": false
+}

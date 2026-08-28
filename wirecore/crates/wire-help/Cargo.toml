@@ -1,0 +1,10 @@
+[package]
+name = "wire-help"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder Contextual Help, Setup Coach, and Source Index (SPEC-018, SPEC-007, SPEC-010, SPEC-022, EP-027)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/help/index-entry-v1.json",
+  "title": "WireMudder Help Knowledge Index Entry v1",
+  "description": "One Help Knowledge Index entry generated reproducibly from accepted sources (WM-SPEC-018-R04).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["docs", "ui-schema", "command-catalog", "config-schema", "adr", "source-ref"] },
+    "content_hash": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+    "body": { "type": "string" },
+    "source_version": { "type": "string", "minLength": 1 }
+  },
+  "required": ["id", "title", "kind", "content_hash", "body", "source_version"],
+  "additionalProperties": false
+}
