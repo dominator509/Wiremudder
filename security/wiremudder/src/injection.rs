@@ -45,6 +45,10 @@ impl PromptInjectionGuard {
             ("ignore previous instructions", InjectionClass::Direct),
             ("ignore all previous instructions", InjectionClass::Direct),
             ("disregard previous instructions", InjectionClass::Direct),
+            (
+                "disregard all previous instructions",
+                InjectionClass::Direct,
+            ),
             ("forget everything above", InjectionClass::Direct),
             ("you are now", InjectionClass::Roleplay),
             ("act as if you are", InjectionClass::Roleplay),
