@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T02:26:42Z","agent_id":"ipman-hermes","node":"EP-019","path":"src/CMakeLists.txt","rationale":"Autopilot UI sources must compile into the actual Mudlet-derived client; src/CMakeLists.txt set(mudlet_SRCS) is the explicit build list and the smallest evidence-backed inherited integration patch (EP-018 precedent WM-SRC-000120).","repository_commit":"6c4c233112d8418b8dd24bed41b22ba789eabf25","rollback":"Remove autopilot .cpp entries from mudlet_SRCS and delete the autopilot UI sources; client build returns to pre-EP-019 state.","source_evidence_id":"WM-SRC-000127","test":"tests/wiremudder/ep019/contract/autopilot-build-integration.sh"}

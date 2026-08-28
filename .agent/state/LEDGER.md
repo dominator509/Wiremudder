@@ -217,3 +217,7 @@
 2026-08-28T02:16:09Z | ipman-hermes | EP-018 | MILESTONE_PASS | M5 EP-018 M5: ok; LF-018 green; evidence=.agent/state/evidence/EP-018/M5
 2026-08-28T02:16:09Z | ipman-hermes | EP-018 | HEARTBEAT | holder=ipman-hermes
 2026-08-28T02:16:22Z | ipman-hermes | EP-018 | NODE_DONE | node verify EP-018: ok; green/EP-018 tag created
+2026-08-28T02:16:39Z | ipman-hermes | EP-018 | LEASE_RELEASE | holder=ipman-hermes
+2026-08-28T02:16:42Z | ipman-hermes | EP-019 | LEASE | holder=ipman-hermes base=6c4c233112d8418b8dd24bed41b22ba789eabf25
+2026-08-28T02:26:42Z | ipman-hermes | EP-019 | HEARTBEAT | discovered_path=src/CMakeLists.txt evidence=WM-SRC-000127
+2026-08-28T02:27:01Z | ipman-hermes | EP-019 | MILESTONE_PASS | M1 EP-019 M1: ok; evidence=.agent/state/evidence/EP-019/M1
