@@ -73,7 +73,8 @@ verifies the hash before extraction (case-insensitive). A modified archive
 is rejected. The hash verification is a real, tested path:
 
 ```
-wire-packages-oracle hash <expected> <actual>   # -> verified | mismatch
+wire-packages-oracle hash <expected> <actual>
+# -> {"hash":"verified"} on match, {"hash":"mismatch"} otherwise
 ```
 
 ## Imported Automation
