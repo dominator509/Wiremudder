@@ -1,0 +1,11 @@
+[package]
+name = "wiremudder-supervisor"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder Headless Supervisor CLI (SPEC-017, EP-023)"
+
+[dependencies]
+wire-headless = { path = "../../wirecore/crates/wire-headless" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
