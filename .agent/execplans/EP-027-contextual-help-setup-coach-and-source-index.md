@@ -308,7 +308,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -353,3 +353,29 @@ At completion record changed versus expected files, source evidence, commands, e
 - Perf (release, real hardware): index-add 0.66us, answer-lookup 0.35us, ask-context 1.21us, coach-propose 0.01us, source-index-scan 1.60us, cli-help 0.84us. worst 1.60us vs 5000us budget (SPEC-018-R10 non-blocking).
 - Operations runbook docs/wiremudder/help/operations/runbook.md (health, readiness, disable, recovery, backup/restore, upgrade, rollback).
 - `EP-027 M4: ok`; `scope audit EP-027: ok changed=41`.
+
+## 19. M5 Progress
+
+- 2026-08-28: LF-027 help-coach-no-side-effects live-fire: real production crate flow (e2e_help), 6/6 certification obligations true; commit 37136194. Feature tests 0109/0111/0112/0187/0213..0219 ok; requirement tests wm-spec-007-r09, wm-spec-018-r04/r05/r09 ok. `EP-027 M5: ok`; `scope audit EP-027: ok changed=58`.
+
+## 20. Surprises and Discoveries
+
+- 2026-08-28: Path::extension() returns the extension without the leading dot; the indexer compared it against ".md"/".json" and silently ingested 0 docs. Fixed by trimming the dot; verified 174 entries across all 6 source kinds, reproducible hash.
+- 2026-08-28: The failure matrix exposed that the answer() version map must carry every kind present in the index; a missing kind key returns UnavailableSource (correct fail-closed behavior, but the fixture had to carry all kind versions).
+
+## 21. Decision Log
+
+- 2026-08-28 | Indexer walk compares extension without dot | evidence: unit test help-indexer.sh (174 entries, reproducible) | alternatives: OsStr compare (rejected: same fix complexity) | consequence: accepted docs/schemas/ADRs are actually ingested | reversal: revert walk fix and re-run unit | affected: WM-FEAT-0217, WM-SPEC-018-R04 | security: sanitized bodies only | privacy: secret lines filtered | license: none | compatibility: none | performance: ingest 0.66us/entry | upstream: none |
+- 2026-08-28 | Remote-redacted help mode serves local help; Disabled denies all | evidence: security_matrix proof 4 | alternatives: redact on serve (rejected: no remote path exists) | consequence: privacy policy enforced by mode; no remote egress | reversal: none planned | affected: WM-FEAT-0216, WM-SPEC-018-R03 | security: strictest default (LocalOnly) | privacy: local-only default | license: none | compatibility: none | performance: unchanged | upstream: none |
+
+## 22. Outcomes and Retrospective
+
+- Changed vs expected files: static fence paths all present; discovered amendment 1 row (src/CMakeLists.txt, WM-SRC-000183). Source evidence WM-SRC-000180..000185.
+- Commands and sentinels: `node contract check EP-027: ok`; `EP-027 M1..M5: ok`; `scope audit EP-027: ok` (58 changed at M5); `LF-027 help-coach-no-side-effects: ok` (6/6 obligations); `node verify EP-027: ok` (after gates).
+- Evidence hashes: .agent/state/evidence/EP-027/M1..M5/evidence.json.
+- Feature disposition: WM-FEAT-0109/0111/0112/0187/0213..0219 all implemented + certified (LF-027 + feature tests). Requirements WM-SPEC-007-R09, WM-SPEC-018-R04/R05/R09 implemented + certified.
+- Provider/platform: no external provider; AI handoff is a scoped context producer (no LLM call — provider stays disabled until certified); Qt6 UI boundary compiled (integration test). help-indexer tool reproducible.
+- Assumptions changed: none beyond discovery log.
+- Risks: Ask WireMudder AI remains a handoff context; actual model call is external/provider territory (not claimed, consistent with fallback).
+- Rollback: git checkout -- src/CMakeLists.txt; deletion of crate/schemas/tool (additive).
+- Green tag: green/EP-027. Next scheduler output after release.
