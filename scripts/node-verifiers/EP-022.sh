@@ -110,7 +110,7 @@ case "${1:-}" in
     sh scripts/scope-audit.sh EP-022 >/dev/null || fail "scope audit"
     grep -q 'NODE_DONE' .agent/state/LEDGER.md || fail "NODE_DONE not in ledger"
     git rev-parse -q --verify "refs/tags/green/EP-022" >/dev/null || fail "green/EP-022 tag missing"
-    ok "node verify EP-022: ok"
+    ok "EP-022 verify: ok"
     ;;
   *)
     echo "usage: $0 M1|M2|M3|M4|M5|verify" >&2; exit 2

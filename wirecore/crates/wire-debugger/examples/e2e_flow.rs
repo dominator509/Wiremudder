@@ -15,8 +15,8 @@
 //! not a mock: it drives the same crate surface the client uses.
 
 use wire_debugger::{
-    DebugDenial, DraftKind, FixtureEvent, MacroForge, PerformanceStats, ReplayFixture,
-    ScriptDebugger, TriggerLab, AiDebugger, PatchProposal,
+    DebugDenial, DraftKind, MacroForge, PerformanceStats, ReplayFixture, ScriptDebugger,
+    TriggerLab, AiDebugger, PatchProposal,
 };
 
 fn main() {
@@ -36,15 +36,14 @@ fn main() {
     assert!(forge.get("macro-heal").expect("macro").is_runnable());
 
     // 3. Trigger Test Lab: deterministic replay without a live world.
+    //    The fixture is loaded from the compatibility/automation fixture
+    //    store (real file consumed by the real lab).
+    let fixture_path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("../../../compatibility/automation/fixture-crossroads-v1.json");
+    let fixture_json = std::fs::read_to_string(&fixture_path)
+        .unwrap_or_else(|e| panic!("cannot read fixture {}: {e}", fixture_path.display()));
+    let fixture: ReplayFixture = serde_json::from_str(&fixture_json).expect("valid fixture");
     let mut lab = TriggerLab::new();
-    let fixture = ReplayFixture {
-        id: "fixture-crossroads".into(),
-        name: "crossroads guard".into(),
-        events: vec![
-            FixtureEvent { at_step: 1, line: "You stand at a crossroads.".into(), matches: "crossroads".into(), expect: None },
-            FixtureEvent { at_step: 2, line: "A guard bars the north exit.".into(), matches: "guard".into(), expect: Some("blocked north".into()) },
-        ],
-    };
     lab.add_fixture(fixture).expect("add fixture");
     let run = lab
         .replay("fixture-crossroads", |ev| {
