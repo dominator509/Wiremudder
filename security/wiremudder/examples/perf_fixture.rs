@@ -15,8 +15,8 @@ const BUDGET_US: u64 = 1000;
 const ITERS: u32 = 2000;
 
 fn main() {
-    let mut p50 = 0u64;
-    let mut p95 = 0u64;
+    let p50: u64;
+    let p95: u64;
     let mut max = 0u64;
 
     // Real workload: a mixed stream of hostile and benign lines, as seen at
