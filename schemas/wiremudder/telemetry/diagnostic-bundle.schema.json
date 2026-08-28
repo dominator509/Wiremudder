@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/telemetry/diagnostic-bundle.schema.json",
+  "title": "WireMudder Diagnostic Bundle",
+  "description": "Canonical local diagnostic bundle manifest (SPEC-019-R03, SPEC-026-R07).",
+  "type": "object",
+  "required": [
+    "schema_version", "bundle_id", "content_sha256", "created_at",
+    "event_count", "bytes", "preview", "approved_for_submission"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "bundle_id": { "type": "string", "minLength": 8 },
+    "content_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "event_count": { "type": "integer", "minimum": 0 },
+    "bytes": { "type": "integer", "minimum": 0 },
+    "preview": { "type": "string", "description": "redacted preview; matches exported content" },
+    "approved_for_submission": { "type": "boolean", "const": false },
+    "files": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
