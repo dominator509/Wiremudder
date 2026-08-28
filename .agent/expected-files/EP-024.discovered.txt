@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T04:37:37Z","agent_id":"unknown-agent","node":"EP-024","path":"src/CMakeLists.txt","rationale":"Voice boundary source list wiring: add wiremudder/ui/voice/voice_boundary.cpp to mudlet_SRCS and voice_boundary.h to the UI headers, exactly beside the existing owned panes (copilot, soul, autopilot, assistance, power-tools), following the same model-side Qt boundary pattern (WM-SRC-000155/000156).","repository_commit":"88f77f5a57c7a86bb175575a9b22c30b38fec115","rollback":"git checkout -- src/CMakeLists.txt","source_evidence_id":"WM-SRC-000155","test":"tests/wiremudder/ep024/contract/voice-build-integration.sh"}

@@ -310,7 +310,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -323,6 +323,15 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+2026-08-28: M1 decisions recorded.
+- Architecture: voice core lives in `wirecore/crates/wire-voice/` (namespaced new code); the desktop surface is a model-side Qt boundary in `src/wiremudder/ui/voice/` following the EP-020/EP-022 pane pattern; schemas under `schemas/wiremudder/voice/`; provider registry under `config/wiremudder/voice/`. Evidence: WM-SRC-000155..167.
+- Privacy: microphone state always visible; voice transcripts redacted by default; remote speech requires consent, privacy policy, and redaction (SPEC-015-R04, SPEC-010-R08); Local Only Lockdown blocks remote speech. Evidence: WM-SRC-000159, WM-SRC-000162.
+- Security: voice has no new authority; voice commands pass the same Action Proposal command-safety path as all automation (SPEC-009-R02); no voice bypass of command safety; prompt injection cannot override voice policy (SPEC-022-R04). Evidence: WM-SRC-000158, WM-SRC-000162, WM-SRC-000165.
+- Performance: voice is P3; queues bounded and cancelable; may shed P3 work; no voice job synchronous with input; emergency stop under 10 ms. Evidence: WM-SRC-000161.
+- Compatibility: voice integrates through the inherited `src/CMakeLists.txt` source list exactly beside prior owned panes; discovered-path amendment WM-SRC-000155 authorizes that single inherited edit; rollback is `git checkout -- src/CMakeLists.txt`.
+- Dependency: remote voice providers stay certified=false until live-fire; no new dependency added; crate uses serde/serde_json only (same as wire-headless).
+- Fallback: ship voice disabled or with one certified local push-to-talk provider; omit wake phrase and remote speech until separately certified.
 
 # 14. Outcomes and Retrospective
 
