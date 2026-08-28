@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T14:28:59Z","agent_id":"ipman-hermes","node":"EP-034","path":"src/CMakeLists.txt","rationale":"Updater boundary source list wiring: add wiremudder/updater/ boundary sources to mudlet_SRCS and headers exactly beside the owned accessibility/import/help panes, following the same model-side Qt boundary pattern (WM-SRC-000262, EP-030/031 precedent).","repository_commit":"f5d8e19920959042e49174bd8780810244295e4b","rollback":"git checkout -- src/CMakeLists.txt","source_evidence_id":"WM-SRC-000262","test":"tests/wiremudder/ep034/contract/updater-build-integration.sh"}
