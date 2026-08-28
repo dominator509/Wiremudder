@@ -320,7 +320,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -335,3 +335,17 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+- **Changed vs expected**: all changes under EP-037 static fence (docs/wiremudder/user/, developer/, package-author/, design/, operations/, examples/wiremudder/, tests/wiremudder/ep037/, tests/live-fire/LF-037, scripts/node-verifiers/EP-037.sh); scope audit `ok`.
+- **Source evidence**: WM-SRC-000303..315 (13 rows) recorded in M1; source-evidence-check `ok`.
+- **Commands**: `sh scripts/node-verifiers/EP-037.sh M1..M5` all print their exact sentinel; `sh scripts/node-verify.sh EP-037` expected `node verify EP-037: ok`.
+- **Observed sentinels**: `EP-037 M1: ok` … `EP-037 M5: ok`; `LF-037: ok - package-developer-workflow certified` (8 pass lines).
+- **Evidence hashes**: `.agent/state/evidence/EP-037/M{1..5}/evidence.json` recorded by record-evidence.sh (exit_code 0, sentinel_observed true).
+- **Feature disposition**: WM-FEAT-0164 builder-tools documented+tested (feature-0164), WM-FEAT-0243 runbooks documented+tested (feature-0243); both required.
+- **Requirement disposition**: cross-node requirements closed through owning specs (SPEC-000-R08, SPEC-008-R03/04/05, SPEC-018-R04/06, SPEC-021-R03/04/09, SPEC-026-R06/07/08, SPEC-028-R04/05) — documented in user/package-author/operations docs and asserted by contract tests.
+- **Provider/platform**: none certified by this node; docs label optional providers honestly (no claim exceeds evidence).
+- **Assumptions changed**: package-check perf budget is the 5ms P0 goal (SPEC-004) not 1ms, because package checks are P4 (SPEC-008).
+- **Risks**: docs can drift from code; mitigated by unit/integration/feature tests asserting docs match real schemas, commands, and outputs.
+- **Rollback**: every milestone commit is revertible; docs/examples are additive under authorized boundaries; no inherited source edited (`git diff --quiet -- src/` proved in LF-037).
+- **Green tag**: `green/EP-037` created after `node verify EP-037: ok`.
+- **Next scheduler output**: per `sh scripts/graph-next.sh`.

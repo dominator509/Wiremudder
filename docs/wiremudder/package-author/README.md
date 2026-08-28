@@ -66,6 +66,14 @@ reported to the user at install.
 permission the user has not approved, the update stops and asks for renewed
 approval, showing exactly which permissions are new (WM-SPEC-008-R05).
 
+## Rollback
+
+If a package update causes a problem, the user can roll back to the
+previous approved version. Rollback restores the previous manifest and
+content, preserves profile data, and never expands permissions. Package
+rollback follows the same documented procedure as client rollback
+(WM-SPEC-028-R04, WM-FEAT-0243) — see the operations runbook.
+
 ## Content Hash
 
 The `content_sha256` must match the actual packaged content. The client
