@@ -344,7 +344,7 @@ At completion record changed versus expected files, source evidence, commands, e
 - Source evidence: 91 records; source-evidence-check ok rows=91.
 - Milestone evidence: .agent/state/evidence/EP-012/M1..M5/evidence.json,
   exit_code 0, sentinel_observed true for all five.
-- Observed sentinels: "EP-012 M1: ok" ... "EP-012 M5: ok";
+- Observed sentinels: "EP-012 M1: ok" through "EP-012 M5: ok";
   "node verify EP-012: ok".
 - Performance: ui-latency.json append 0.11us, history 0.11us, spellcheck
   7.1us; budget 10ms.

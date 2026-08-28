@@ -355,7 +355,7 @@ At completion record changed versus expected files, source evidence, commands, e
   source-evidence-check ok.
 - Milestone evidence: .agent/state/evidence/EP-011/M1..M5/evidence.json,
   exit_code 0, sentinel_observed true for all five.
-- Observed sentinels: "EP-011 M1: ok" ... "EP-011 M5: ok";
+- Observed sentinels: "EP-011 M1: ok" through "EP-011 M5: ok";
   "node verify EP-011: ok".
 - Performance: capability-latency.json per-burst 1.5us, budget 10ms.
 - Feature coverage: ok features=244 source_features=145; spec trace ok.
