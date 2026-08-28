@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/assistance/narrator-summary-v1.json",
+  "title": "WireMudder Personal Narrator Summary",
+  "description": "Spoken/text summary that discloses source, cites, respects privacy via redaction, and never sends commands (SPEC-015-R06, EP-020).",
+  "type": "object",
+  "required": ["schema_version", "text", "source", "cites", "redacted", "at_ms"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "text": { "type": "string", "minLength": 1 },
+    "source": { "type": "string", "minLength": 1 },
+    "cites": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "redacted": { "type": "boolean" },
+    "at_ms": { "type": "integer", "minimum": 0 }
+  }
+}

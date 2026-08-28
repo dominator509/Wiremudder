@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/assistance/tactical-snapshot-v1.json",
+  "title": "WireMudder Tactical HUD Snapshot",
+  "description": "Bounded current-state snapshot consumed by the Tactical HUD; the HUD never sends commands (SPEC-012-R07, EP-020).",
+  "type": "object",
+  "required": ["schema_version", "room", "health_pct", "energy_pct", "nearby_entities", "threat_level", "at_ms"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "room": { "type": "string", "minLength": 1 },
+    "health_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "energy_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "nearby_entities": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "threat_level": {
+      "type": "string",
+      "enum": ["none", "low", "medium", "high", "critical"]
+    },
+    "at_ms": { "type": "integer", "minimum": 0 }
+  }
+}

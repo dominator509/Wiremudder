@@ -20,4 +20,5 @@ docs/wiremudder/assistance/
 wirecore/crates/wire-quest/
 wirecore/crates/wire-tactical/
 wirecore/crates/wire-narrator/
+schemas/wiremudder/assistance/
 src/wiremudder/ui/assistance/

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/assistance/quest-log-v1.json",
+  "title": "WireMudder Quest Compass Log",
+  "description": "Cited quest tracking: clues with citations and observed/inferred/completed/failed/user-corrected state (SPEC-012-R06, EP-020).",
+  "type": "object",
+  "required": ["schema_version", "quests"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "quests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "state", "clues", "corrections", "updated_at_ms"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "state": {
+            "type": "string",
+            "enum": ["observed", "inferred", "completed", "failed", "user-corrected"]
+          },
+          "clues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["text", "cited_from", "at_ms"],
+              "properties": {
+                "text": { "type": "string", "minLength": 1 },
+                "cited_from": { "type": "string", "minLength": 1 },
+                "at_ms": { "type": "integer", "minimum": 0 }
+              }
+            }
+          },
+          "corrections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["note", "at_ms"],
+              "properties": {
+                "note": { "type": "string", "minLength": 1 },
+                "at_ms": { "type": "integer", "minimum": 0 }
+              }
+            }
+          },
+          "updated_at_ms": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

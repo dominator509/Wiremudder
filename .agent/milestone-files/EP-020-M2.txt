@@ -2,6 +2,7 @@
 wirecore/crates/wire-quest/
 wirecore/crates/wire-tactical/
 wirecore/crates/wire-narrator/
+schemas/wiremudder/assistance/
 src/wiremudder/ui/assistance/
 tests/wiremudder/ep020/unit/
 .agent/state/evidence/EP-020/M2/
