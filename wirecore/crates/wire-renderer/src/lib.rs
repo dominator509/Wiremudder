@@ -529,12 +529,13 @@ impl RetroRenderer {
     }
 
     /// Provenance tracking (WM-FEAT-0210): every applied asset and
-    /// emit records its origin.
+    /// emit records its origin. Also audited for observability.
     pub fn track_provenance(&mut self, origin: &str) {
         self.provenance.push_back(origin.to_string());
         if self.provenance.len() > MAX_PROVENANCE {
             self.provenance.pop_front();
         }
+        self.audit_push(format!("provenance {origin}"));
     }
 
     pub fn provenance(&self) -> Vec<&str> {
