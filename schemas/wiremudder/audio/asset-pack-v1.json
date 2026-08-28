@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/audio/asset-pack-v1.json",
+  "title": "WireMudder Audio Asset Pack Entry v1",
+  "description": "An audio asset pack entry carrying license, provenance, hash, signature or user-local source, and permissions (WM-SPEC-016-R09).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "license": { "type": "string", "minLength": 1 },
+    "provenance": { "type": "string", "minLength": 1 },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "signature": { "type": ["string", "null"] },
+    "user_local": { "type": "boolean" },
+    "permissions": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["id", "license", "provenance", "sha256", "user_local", "permissions"],
+  "additionalProperties": false
+}

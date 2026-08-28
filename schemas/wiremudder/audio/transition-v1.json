@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/audio/transition-v1.json",
+  "title": "WireMudder Soundscape Transition v1",
+  "description": "A bounded, cancelable soundscape transition (EP-026 acceptance obligation 4).",
+  "type": "object",
+  "properties": {
+    "from": { "type": ["string", "null"] },
+    "to": { "type": "string" },
+    "total_ms": { "type": "integer", "minimum": 1, "maximum": 5000 },
+    "remaining_ms": { "type": "integer", "minimum": 0 }
+  },
+  "required": ["from", "to", "total_ms", "remaining_ms"],
+  "additionalProperties": false
+}

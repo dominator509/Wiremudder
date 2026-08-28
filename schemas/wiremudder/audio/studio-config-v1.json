@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/audio/studio-config-v1.json",
+  "title": "WireMudder Audio Studio Config v1",
+  "description": "Profile-scoped studio controls: volume and disable per profile (EP-026 acceptance obligation 3).",
+  "type": "object",
+  "properties": {
+    "schema_version": { "const": 1 },
+    "profiles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "volume": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "disabled": { "type": "boolean" }
+        },
+        "required": ["volume", "disabled"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["schema_version", "profiles"],
+  "additionalProperties": false
+}

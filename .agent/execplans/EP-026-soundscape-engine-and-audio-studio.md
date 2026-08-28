@@ -305,7 +305,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
+- [x] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
@@ -330,3 +330,10 @@ At completion record changed versus expected files, source evidence, commands, e
 - Contract tests: soundscape-authority, soundscape-boundaries, soundscape-build-integration, soundscape-obligations — all ok.
 - Node verifier scripts/node-verifiers/EP-026.sh (M1-M5 + verify).
 - `node contract check EP-026: ok`; `EP-026 M1: ok`; `scope audit EP-026: ok changed=9`.
+
+## 16. M2 Progress
+
+- 2026-08-28: wire-soundscape crate (wirecore/crates/wire-soundscape) — 9 binding classes (room/area/combat/boss/weather/death/victory/ambience/user-authored), profile-scoped volume+disable, independent per-binding volume/enable, bounded+coalescing queue (MAX_AUDIO_QUEUE=64), bounded+cancelable transitions (MAX_TRANSITION_MS=5000), provenance gate (protected/unlicensed/remote-unsigned rejected, user-local fallback), emergency stop, audio-failure degrade preserving text (no text path), can_send_command=false. 21/21 deterministic tests.
+- Audio schemas schemas/wiremudder/audio/ (binding/asset-pack/soundscape-state/studio-config/transition v1).
+- Original CC0 procedural audio manifest assets/wiremudder/audio/manifest.json + README (SPEC-016-R01/R09).
+- M2 unit test scripts (audio-schemas, wire-soundscape). `EP-026 M2: ok`; `scope audit EP-026: ok changed=23`.

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.local/schemas/wiremudder/audio/binding-v1.json",
+  "title": "WireMudder Soundscape Binding v1",
+  "description": "A registered soundscape binding with independent volume and disable controls (WM-SPEC-016-R08).",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "enum": ["room", "area", "combat", "boss", "weather", "death", "victory", "ambience", "user-authored"]
+    },
+    "asset_id": { "type": "string", "minLength": 1 },
+    "volume": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "enabled": { "type": "boolean" },
+    "user_author": { "type": ["string", "null"] }
+  },
+  "required": ["kind", "asset_id", "volume", "enabled"],
+  "additionalProperties": false
+}
