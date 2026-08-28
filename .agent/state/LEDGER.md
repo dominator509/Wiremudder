@@ -412,3 +412,5 @@
 2026-08-28T20:48:19Z | ipman-hermes | EP-039 | MILESTONE_PASS | M1 EP-039 M1: ok; evidence=.agent/state/evidence/EP-039/M1
 2026-08-28T22:06:16Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-29T00:12:00Z | ipman-hermes | EP-039 | ADR | ADR-0016 inherited functional-test isolation defects (ScriptEventHandlerLifetimeTest x2 order-dependent, TOscTest mpkg-notification race); replacement evidence in .agent/state/evidence/EP-039/M1/adr0016-*; docs/wiremudder/ship/ADR-0016-inherited-functional-test-isolation-defects.md
+2026-08-28T22:11:55Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T22:21:50Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
