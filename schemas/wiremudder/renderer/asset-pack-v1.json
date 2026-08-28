@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/renderer/asset-pack-v1.json",
+  "title": "WireMudder Renderer Asset Pack",
+  "description": "Visual/audio pack manifest entry: license, provenance, hash, signature or user-local source, and permissions (SPEC-016-R09; EP-025 WM-FEAT-0077).",
+  "type": "object",
+  "required": ["schema_version", "id", "pack", "license", "provenance", "sha256", "user_local", "permissions"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "pack": { "type": "string", "minLength": 1 },
+    "license": { "type": "string", "minLength": 1 },
+    "provenance": { "type": "string", "minLength": 1 },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "signature": { "type": ["string", "null"] },
+    "user_local": { "type": "boolean" },
+    "permissions": { "type": "array", "items": { "type": "string" } }
+  }
+}

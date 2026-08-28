@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/renderer/emit-v1.json",
+  "title": "WireMudder Renderer Emit",
+  "description": "Visual emit with complete catalog, visible confidence when inferred, and provenance (SPEC-016-R03, SPEC-016-R09; EP-025 WM-FEAT-0071/0207).",
+  "type": "object",
+  "required": ["schema_version", "id", "kind", "label", "confidence", "inferred", "provenance"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["npc", "mob", "animal", "player", "pvp-visible", "item", "spell", "combat", "movement", "door", "weather", "ambience", "room-event"] },
+    "label": { "type": "string", "minLength": 1 },
+    "confidence": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "inferred": { "type": "boolean" },
+    "critical": { "type": "boolean" },
+    "provenance": { "type": "string", "minLength": 1 },
+    "at_ms": { "type": "integer", "minimum": 0 }
+  }
+}

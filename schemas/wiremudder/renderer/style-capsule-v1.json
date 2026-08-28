@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/renderer/style-capsule-v1.json",
+  "title": "WireMudder Renderer Style Capsule",
+  "description": "Style capsule derived from user-owned assets and World Bible continuity rules (SPEC-016-R02; EP-025 WM-FEAT-0074).",
+  "type": "object",
+  "required": ["schema_version", "id", "room_ids", "palette", "provenance"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "room_ids": { "type": "array", "items": { "type": "string" } },
+    "palette": { "type": "array", "items": { "type": "string" } },
+    "provenance": { "type": "string", "minLength": 1 }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/renderer/snapshot-v1.json",
+  "title": "WireMudder Renderer Snapshot",
+  "description": "Visible retro renderer snapshot: mode, bounded queue, drop/coalesce counters, freeze state, combat, packs, capsules, exits (SPEC-016, EP-025).",
+  "type": "object",
+  "required": ["schema_version", "mode", "queue_len", "drops", "coalesces"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "mode": { "enum": ["disabled", "static", "low-power", "no-animation", "animated", "text-only"] },
+    "queue_len": { "type": "integer", "minimum": 0 },
+    "drops": { "type": "integer", "minimum": 0 },
+    "coalesces": { "type": "integer", "minimum": 0 },
+    "frozen": { "type": "boolean" },
+    "combat": { "type": "boolean" },
+    "pack_count": { "type": "integer", "minimum": 0 },
+    "capsule_count": { "type": "integer", "minimum": 0 },
+    "exit_count": { "type": "integer", "minimum": 0 }
+  }
+}
