@@ -33,10 +33,16 @@ schemas/wiremudder/agents/{skill-tree,memory-permissions,council}-v1.json
 ## Behavior
 
 - Soul cannot override policy (obligation 1): SOUL_IMMUTABLE_POLICY domains
-  (security, privacy, routing, package, updater, emergency-stop) are guarded;
-  only weakening verbs (ignore/bypass/override/disable/weaken/violate/
-  circumvent/skip/relax/exempt) trigger rejection, so reinforcing behaviors
-  ("never answer security questions") are allowed.
+  (security, privacy, routing, package, plugin, updater, update, telemetry,
+  signing, command safety, emergency-stop) are guarded per SPEC-014-R03 and
+  SPEC-022-R04; only weakening verbs (ignore/bypass/override/disable/weaken/
+  violate/circumvent/skip/relax/exempt) trigger rejection, so reinforcing
+  behaviors ("never answer security questions") are allowed.
+- Prompt injection is rejected structurally (SPEC-022-R04/R09): forbidden
+  behaviors that attempt instruction override or authority grant ("ignore
+  previous instructions", "grant full access", ...) are denied even when
+  they name no policy domain; reinforcing prohibitions ("never ...") stay
+  allowed.
 - Studio validates + previews + sandbox + audits (obligation 2, R04); audit
   bounded at 200 entries.
 - Skills declare provenance, permissions, and evaluation (obligation 3, R05);

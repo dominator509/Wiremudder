@@ -7,6 +7,6 @@ fail() { echo "unit: FAIL - $1" >&2; exit 1; }
 
 CARGO_TARGET_DIR="$PWD/wirecore/target" /root/.cargo/bin/cargo test --quiet \
   --manifest-path wirecore/crates/wire-soul/Cargo.toml 2>&1 \
-  | grep -q "8 passed" || fail "wire-soul unit tests"
+  | grep -q "11 passed" || fail "wire-soul unit tests"
 
 echo "unit EP-018 M2 wire-soul: ok"

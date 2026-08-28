@@ -211,3 +211,6 @@
 2026-08-28T01:34:27Z | ipman-hermes | EP-018 | MILESTONE_PASS | M1 EP-018 M1: ok; evidence=.agent/state/evidence/EP-018/M1
 2026-08-28T01:36:23Z | ipman-hermes | EP-018 | MILESTONE_PASS | M2 EP-018 M2: ok; evidence=.agent/state/evidence/EP-018/M2
 2026-08-28T01:38:36Z | ipman-hermes | EP-018 | MILESTONE_PASS | M3 EP-018 M3: ok; evidence=.agent/state/evidence/EP-018/M3
+2026-08-28T02:08:30Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T02:13:55Z | ipman-hermes | EP-018 | MILESTONE_PASS | M4 EP-018 M4: ok; evidence=.agent/state/evidence/EP-018/M4
+2026-08-28T02:13:58Z | ipman-hermes | EP-018 | HEARTBEAT | holder=ipman-hermes
