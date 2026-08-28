@@ -313,7 +313,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -339,3 +339,35 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+## EP-031 Outcomes (2026-08-28)
+
+- Changed vs expected: all changes inside the static fence plus the one
+  discovered-path amendment (`src/CMakeLists.txt`, WM-SRC-000230).
+  Changed files per milestone: M1 9, M2 10, M3 8, M4 8, M5 5 (plus ledger).
+- Source evidence: WM-SRC-000222..000230 recorded at M1 (translation
+  convention, requirement anchor, boundary anchors).
+- Commands and observed sentinels:
+  - `sh scripts/node-verifiers/EP-031.sh M1` -> `EP-031 M1: ok`
+  - M2 -> `EP-031 M2: ok`; M3 -> `EP-031 M3: ok`; M4 -> `EP-031 M4: ok`;
+    M5 -> `EP-031 M5: ok`
+  - `sh scripts/live-fire/LF-031-accessibility-keyboard-screenreader.sh`
+    -> `LF-031: ok` (obligations 1..6 true)
+  - `sh scripts/node-contract-check.sh EP-031` -> `node contract check EP-031: ok`
+  - `sh scripts/scope-audit.sh EP-031` -> `scope audit EP-031: ok changed=31`
+  - Expected-files audit passed inside M5 verifier.
+- Feature disposition: EP-031 owns no feature rows (cross-cutting). The
+  cross-cutting feature test proves the SPEC-027-R07 accessibility
+  dimensions (keyboard, focus, semantics, non-color, reduced-motion,
+  no-animation, subtitles, raw-text) are all exposed by the boundary.
+- Requirement disposition: WM-SPEC-007-R10 owned and satisfied
+  (catalog follows inherited Mudlet convention with translator context;
+  real lrelease compile; boundary requires translator context).
+- Provider/platform certification: no external provider; Qt6 (6.8.2)
+  boundary compile certified with zero warnings; lrelease certified.
+- Assumptions changed: none.
+- Risks: none open; performance 0.008 us/op, far inside budget.
+- Rollback: remove boundary sources/tests/docs, `git checkout --
+  src/CMakeLists.txt`, remove translations/wiremudder.
+- Green tag: `green/EP-031` (created after `node verify EP-031: ok`).
+- Next scheduler output: per `scripts/graph-next.sh` after lease release.
