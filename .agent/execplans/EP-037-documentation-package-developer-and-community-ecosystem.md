@@ -316,7 +316,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -324,11 +324,11 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: EP-037 lease base corrected to f56c838 (HEAD at lease time); initial row copied EP-036 base by mistake — scope audit caught it immediately (correct base is a hard gate).
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28 | EP-037 M1 | Node verifier follows the EP-036 pattern: M1 contract tests, M2 unit + boundary existence, M3 integration/e2e + design docs, M4 failure/security/perf + operations runbook, M5 LF-037 + feature tests + full audits. Evidence: scripts/node-verifiers/EP-037.sh. Alternatives: verifier checked docs by word count (rejected — empty boundary check via find -type f is stricter). Consequence: all five subcommands run real checks. Reversal: edit verifier + re-run M1..M5. Affects: WM-FEAT-0164, WM-FEAT-0243, SPEC-000/008/018/021/026/028. Security/privacy: docs only; no new authority. License: no new deps. Compatibility: new docs boundaries only. Performance: no runtime impact. Upstream: no inherited-source edits in M1 (13 source-evidence rows WM-SRC-000303..315).
 
 # 14. Outcomes and Retrospective
 

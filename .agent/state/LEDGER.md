@@ -373,3 +373,5 @@
 2026-08-28T15:16:16Z | ipman-hermes | EP-036 | MILESTONE_PASS | M5 EP-036 M5: ok; evidence=.agent/state/evidence/EP-036/M5
 2026-08-28T15:16:27Z | ipman-hermes | EP-036 | NODE_DONE | node verify EP-036 pending; green/EP-036 tag creation
 2026-08-28T16:10:24Z | ipman-hermes | EP-036 | LEASE_RELEASE | holder=ipman-hermes
+2026-08-28T16:10:39Z | ipman-hermes | EP-037 | LEASE | holder=ipman-hermes base=f56c838ecb876440d355f2203b4f554afc39c791
+2026-08-28T16:14:12Z | ipman-hermes | EP-037 | MILESTONE_PASS | M1 EP-037 M1: ok; evidence=.agent/state/evidence/EP-037/M1
