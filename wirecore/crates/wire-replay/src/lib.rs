@@ -400,6 +400,19 @@ impl FixtureGenerator {
         FixtureGenerator { redactor }
     }
 
+    /// Add known player names to the redaction corpus so sanitized
+    /// fixtures strip actual player names (WM-SPEC-019-R05), not just
+    /// the generic marker word. The caller supplies the player names it
+    /// knows from profile/world scope.
+    pub fn with_player_names(mut self, player_names: &[&str]) -> Self {
+        for name in player_names {
+            if !name.is_empty() {
+                self.redactor.corpus.push(name.to_string());
+            }
+        }
+        self
+    }
+
     /// Generate a sanitized fixture replay. Kinds in `stripped_kinds`
     /// (voice, transcript) are dropped entirely unless `approved_kinds`
     /// contains them; all text is redacted.

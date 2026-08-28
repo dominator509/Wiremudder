@@ -509,6 +509,16 @@ impl TelemetryEngine {
                 "event detail payload exceeds bound",
             ));
         }
+        if serde_json::to_vec(&event.details)
+            .map(|v| v.len())
+            .unwrap_or(usize::MAX)
+            > MAX_DETAIL_BYTES
+        {
+            return Err(TelemetryError::invalid(
+                "event-details",
+                "event detail payload exceeds byte bound",
+            ));
+        }
         let redacted = self.redactor.redact_details(&mut event.details);
         event.redacted = redacted;
         if let Some(path) = &self.journal {
