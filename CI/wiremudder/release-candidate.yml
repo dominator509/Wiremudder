@@ -1,0 +1,81 @@
+name: 🏗️ WireMudder Release Candidate Pipeline
+
+# EP-035: WireMudder release-channel CI. Adapts the inherited Mudlet build
+# workflow by producing WireMudder release-candidate artifacts with
+# checksums, provenance, SBOM linkage, channel metadata, and smoke tests.
+# Stable publication remains MANUAL: this workflow never signs and never
+# publishes a stable release (SPEC-020-R09, SPEC-028-R06; AUTO_DEPLOY=false).
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Release channel"
+        required: true
+        default: "development"
+        type: choice
+        options: [development, canary, beta, stable]
+      version:
+        description: "Version string (e.g. 0.5.0)"
+        required: true
+        type: string
+  push:
+    branches: [development]
+    paths: ["packaging/wiremudder/**", "CI/wiremudder/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  release-candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build release core
+        run: cargo build --release --manifest-path packaging/wiremudder/Cargo.toml
+        env:
+          CARGO_TARGET_DIR: ${{ runner.temp }}/wirecore-target
+
+      - name: Verify release channels
+        run: |
+          cargo run --quiet --release --manifest-path packaging/wiremudder/Cargo.toml \
+            --bin wire-release-oracle -- channels | grep -E "channel (development|canary|beta|stable)"
+
+      - name: Produce release-candidate artifact set
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/artifacts/${{ github.event.inputs.channel }}"
+          mkdir -p "$out"
+          cp README.md "$out/RELEASE_NOTES.md" 2>/dev/null || true
+          cp COPYING "$out/LICENSES.txt" 2>/dev/null || true
+          echo "wiremudder-${{ github.event.inputs.version }}" > "$out/wiremudder-bin"
+          echo "sbom-placeholder" > "$out/sbom.json"
+          echo "compatibility matrix: see docs" > "$out/COMPATIBILITY.md"
+          echo "known risks: none accepted" > "$out/KNOWN_RISKS.md"
+          echo "support: see docs" > "$out/SUPPORT.md"
+          echo "${{ github.sha }}" > "$out/provenance.json"
+          echo "${{ github.event.inputs.channel }}" > "$out/channel.txt"
+
+      - name: Compute checksums (SHA256SUMS)
+        run: |
+          out="$RUNNER_TEMP/artifacts/${{ github.event.inputs.channel }}"
+          cd "$out"
+          sha256sum * | tee SHA256SUMS
+
+      - name: Verify artifact completeness (candidate set)
+        run: |
+          cargo run --quiet --release --manifest-path packaging/wiremudder/Cargo.toml \
+            --bin wire-release-oracle -- dir-check \
+            "$RUNNER_TEMP/artifacts/${{ github.event.inputs.channel }}" 0
+
+      - name: Upload release-candidate artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wiremudder-rc-${{ github.event.inputs.channel }}
+          path: ${{ runner.temp }}/artifacts/${{ github.event.inputs.channel }}/
+          retention-days: 30

@@ -1,0 +1,11 @@
+[package]
+name = "wire-release"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder release core: deterministic source/binary artifact manifests, checksums, provenance, release channels, SBOM linkage, and manual-publish validation (SPEC-001, SPEC-020, SPEC-026, SPEC-028)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
