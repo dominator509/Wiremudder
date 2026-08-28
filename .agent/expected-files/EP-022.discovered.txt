@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T03:54:06Z","agent_id":"unknown-agent","node":"EP-022","path":"src/CMakeLists.txt","rationale":"Client build list enumerates WireMudder UI pane sources (lines 220-223, 463-466); EP-022 power-tools pane is wired into this exact list following the copilot/soul/autopilot/assistance pattern.","repository_commit":"deee6a41524d6265137c2d3b2a39d69420bff0ec","rollback":"git checkout -- src/CMakeLists.txt","source_evidence_id":"WM-SRC-000146","test":"tests/wiremudder/ep022/contract/power-tools-build-integration.sh"}

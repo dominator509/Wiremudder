@@ -298,7 +298,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -306,11 +306,12 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: EP-022 M1. The client build list `src/CMakeLists.txt` enumerates pane sources at lines 220-223 (.cpp) and 463-466 (.h); the power-tools pane must be wired into that exact list following the copilot/soul/autopilot/assistance pattern (WM-SRC-000146). Discovered-path amendment recorded for `src/CMakeLists.txt` (discovered path check: ok rows=1).
+- 2026-08-28: EP-022 owns WM-FEAT-0106/0107/0108/0127/0161/0162 and WM-SPEC-008-R02/R07/R08 plus WM-SPEC-019-R06; AI Debugger is explicitly barred from self-certifying success and from editing gates (contract test ai-debugger-authority).
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28 | M1 | Authorized new boundaries locked: `src/wiremudder/ui/power-tools/`, `wirecore/crates/wire-debugger/`, `compatibility/automation/`, `schemas/wiremudder/debug/`. | Node contract EP-022 authorized boundaries; static fence `.agent/expected-files/EP-022.txt`. | None considered; contract mandates these exact names. | Consequence: M2-M5 product work confined to these namespaced paths. | Reversal: contract amendment. | Affects WM-FEAT-0106/0107/0108/0127/0161/0162, WM-SPEC-008-R02/R07/R08, WM-SPEC-019-R06. | Security/privacy: SPEC-010/SPEC-022 apply; no new authority, secret access, or egress. | License/compat/perf: no new dependency; SPEC-004 budgets apply.
 
 # 14. Outcomes and Retrospective
 
