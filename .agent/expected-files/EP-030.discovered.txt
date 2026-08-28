@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T08:28:59Z","agent_id":"unknown-agent","node":"EP-030","path":"src/CMakeLists.txt","rationale":"Import boundary source list wiring: add wiremudder/ui/import/import_boundary.cpp to mudlet_SRCS and import_boundary.h to the UI headers, exactly beside the owned soundscape/diagnostics/help panes, following the same model-side Qt boundary pattern (WM-SRC-000221).","repository_commit":"3f2e4cc12828bb2e4b07a212c40ab4130a51b916","rollback":"git checkout -- src/CMakeLists.txt","source_evidence_id":"WM-SRC-000221","test":"tests/wiremudder/ep030/contract/import-build-integration.sh"}
