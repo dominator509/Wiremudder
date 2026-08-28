@@ -310,7 +310,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -323,6 +323,15 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+2026-08-28: M1 decisions recorded.
+- Architecture: renderer core lives in `wirecore/crates/wire-renderer/` (namespaced new code); the desktop surface is a model-side Qt boundary in `src/wiremudder/ui/renderer/` following the EP-020/EP-022/EP-024 pane pattern; schemas under `schemas/wiremudder/renderer/`; original assets under `assets/wiremudder/renderer/`. Evidence: WM-SRC-000168..175.
+- Licensing: assets are original or properly licensed; no protected Nintendo/Zelda/Mario or third-party trade dress (SPEC-016-R01); asset packs carry license, provenance, hash, signature or user-local source, and permissions (SPEC-016-R09).
+- Security: asset metadata is validated; renderer interactions cannot grant scopes or send commands (WIREMUDDER_SECURITY.md lines 21/32); no new authority, secret access, or remote egress (contract).
+- Performance: renderer is P3 (SPEC-004-R04); frame-budgeted queues drop/coalesce noncritical emits and freeze to static before terminal degrades (SPEC-016-R06); 4-6 ms frame budget target (SPEC-016 Performance).
+- Compatibility: renderer integrates through the inherited `src/CMakeLists.txt` source list exactly beside prior owned panes; discovered-path amendment WM-SRC-000168 authorizes that single inherited edit; rollback is `git checkout -- src/CMakeLists.txt`.
+- Dependency: crate uses serde/serde_json only; no new dependency; raw text remains visible and authoritative (SPEC-016-R04).
+- Fallback: static user-selected room backdrops; disable animation, inferred emits, and external asset generation.
 
 # 14. Outcomes and Retrospective
 
