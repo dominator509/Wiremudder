@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/agents/memory-permissions-v1.json",
+  "title": "WireMudder Agent Memory Permissions",
+  "description": "Role-scoped memory class access, denied by default; only explicit grants allow read/propose/summarize/share (WM-SPEC-014-R06, EP-018).",
+  "type": "object",
+  "required": ["schema_version", "default_deny", "grants"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "default_deny": { "const": true },
+    "grants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "class", "access"],
+        "properties": {
+          "role": { "type": "string", "enum": ["mapper", "cartographer", "lore-curator", "quest", "tactical", "renderer-scene", "voice-companion", "help-setup", "command-safety", "token-budget", "privacy-firewall"] },
+          "class": { "type": "string", "enum": ["profile", "transcript", "world", "lore", "messages", "voice", "credentials", "telemetry"] },
+          "access": { "type": "string", "enum": ["deny", "read", "propose", "summarize", "share"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

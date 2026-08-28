@@ -1,0 +1,10 @@
+[package]
+name = "wire-soul"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder Soul documents and Studio: Soul.md personas with tone/roleplay/boundaries, schema validation, compiled-prompt preview, sandbox conversation, policy precedence, and change audit (SPEC-014, EP-018)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

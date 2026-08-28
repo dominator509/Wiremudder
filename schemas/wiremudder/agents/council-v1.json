@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/agents/council-v1.json",
+  "title": "WireMudder Agent Council Record",
+  "description": "Budgeted council record with roles, evidence, disagreements, and final synthesis; only for tasks whose policy permits multi-agent reasoning (WM-SPEC-014-R07, EP-018).",
+  "type": "object",
+  "required": ["schema_version", "council_id", "task", "budget_usd_micros", "roles", "votes", "disagreements", "final_synthesis", "permitted"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "council_id": { "type": "string", "minLength": 1 },
+    "task": { "type": "string", "minLength": 1 },
+    "budget_usd_micros": { "type": "integer", "minimum": 0 },
+    "roles": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "votes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "position", "evidence"],
+        "properties": {
+          "role": { "type": "string", "minLength": 1 },
+          "position": { "type": "string", "enum": ["support", "oppose", "abstain"] },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "disagreement": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "disagreements": { "type": "array", "items": { "type": "string" } },
+    "final_synthesis": { "type": "string", "minLength": 1 },
+    "permitted": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

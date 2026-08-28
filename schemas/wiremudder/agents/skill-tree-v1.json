@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/agents/skill-tree-v1.json",
+  "title": "WireMudder Agent Skill Tree",
+  "description": "Installed skills with provenance, version, permissions, evaluation status, profile scope, and enable state (WM-SPEC-014-R05, EP-018).",
+  "type": "object",
+  "required": ["schema_version", "skills"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "version", "source", "permissions", "evaluation_status", "profile_scope", "enabled", "added_at_ms"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "version": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "permissions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "evaluation_status": { "type": "string", "enum": ["evaluated", "pending", "failed"] },
+          "profile_scope": { "type": "string", "minLength": 1 },
+          "enabled": { "type": "boolean" },
+          "added_at_ms": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
