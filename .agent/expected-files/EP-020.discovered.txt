@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T02:36:53Z","agent_id":"ipman-hermes","node":"EP-020","path":"src/CMakeLists.txt","rationale":"Assistance UI sources must compile into the actual Mudlet-derived client; src/CMakeLists.txt set(mudlet_SRCS) is the explicit build list and the smallest evidence-backed inherited integration patch (EP-018/EP-019 precedent).","repository_commit":"b238f6e1e19c63bbb846648d1bb78098477cf2ef","rollback":"Remove assistance .cpp entries from mudlet_SRCS and delete the assistance UI sources; client build returns to pre-EP-020 state.","source_evidence_id":"WM-SRC-000136","test":"tests/wiremudder/ep020/contract/assistance-build-integration.sh"}
