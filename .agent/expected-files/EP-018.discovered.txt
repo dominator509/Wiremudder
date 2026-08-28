@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T01:33:45Z","agent_id":"unknown-agent","node":"EP-018","path":"src/CMakeLists.txt","rationale":"Soul UI sources must compile into the actual Mudlet-derived client; src/CMakeLists.txt set(mudlet_SRCS) is the explicit build list and the smallest evidence-backed inherited integration patch (execplan M1 goal, EP-017 precedent).","repository_commit":"28f7f62e6e863469b4260acca25cf5859d270426","rollback":"Remove soul .cpp entries from mudlet_SRCS and delete the soul UI sources; client build returns to pre-EP-018 state.","source_evidence_id":"WM-SRC-000120","test":"tests/wiremudder/ep018/contract/soul-build-integration.sh"}
