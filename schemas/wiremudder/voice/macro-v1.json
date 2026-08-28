@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/voice/macro-v1.json",
+  "title": "WireMudder Voice Macro",
+  "description": "Voice macro that produces an Action Proposal through the deterministic command-safety gate (SPEC-015-R05, SPEC-009-R02; EP-024 WM-FEAT-0062).",
+  "type": "object",
+  "required": ["id", "name", "phrase", "command", "risk_tier", "confirmation_required"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "phrase": { "type": "string", "minLength": 1 },
+    "command": { "type": "string", "minLength": 1, "maxLength": 1024 },
+    "risk_tier": { "enum": ["manual", "low", "medium", "high", "critical"] },
+    "confirmation_required": { "type": "boolean" }
+  }
+}

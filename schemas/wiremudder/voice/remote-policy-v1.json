@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/voice/remote-policy-v1.json",
+  "title": "WireMudder Remote Speech Policy",
+  "description": "Remote speech requires configured provider, privacy policy, redaction, and scoped revocable consent; Local Only Lockdown blocks remote speech (SPEC-015-R04, SPEC-010-R08/R09; EP-024 WM-FEAT-0061).",
+  "type": "object",
+  "required": ["schema_version", "provider_configured", "privacy_policy_accepted", "redaction_enabled", "local_only", "consent_receipts"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "provider_configured": { "type": "boolean" },
+    "privacy_policy_accepted": { "type": "boolean" },
+    "redaction_enabled": { "type": "boolean" },
+    "local_only": { "type": "boolean" },
+    "consent_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["receipt_id", "feature", "provider", "data_class", "profile", "version", "revoked"],
+        "properties": {
+          "receipt_id": { "type": "string", "minLength": 1 },
+          "feature": { "const": "voice" },
+          "provider": { "type": "string", "minLength": 1 },
+          "data_class": { "type": "string", "minLength": 1 },
+          "profile": { "type": "string", "minLength": 1 },
+          "version": { "type": "integer", "minimum": 1 },
+          "revoked": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

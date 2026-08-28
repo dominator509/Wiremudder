@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/voice/companion-state-v1.json",
+  "title": "WireMudder Voice Companion State",
+  "description": "Always-visible voice companion snapshot: mic state, activation, wake phrase, bounded queue, load shed, and remote policy (SPEC-015, EP-024 WM-FEAT-0057/0058).",
+  "type": "object",
+  "required": ["schema_version", "state", "mic", "activation", "queue_len"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "state": { "enum": ["loading", "ready", "disabled", "denied", "degraded", "canceled", "unavailable", "error"] },
+    "mic": { "enum": ["off", "listening", "speaking", "barge-in", "error", "disabled"] },
+    "activation": { "enum": ["push-to-talk", "hold-to-talk"] },
+    "wake_phrase_enabled": { "type": "boolean" },
+    "queue_len": { "type": "integer", "minimum": 0 },
+    "load_shed": { "type": "boolean" },
+    "combat_suppress": { "type": "boolean" },
+    "remote_configured": { "type": "boolean" },
+    "local_only": { "type": "boolean" },
+    "style_count": { "type": "integer", "minimum": 0 },
+    "macro_count": { "type": "integer", "minimum": 0 }
+  }
+}

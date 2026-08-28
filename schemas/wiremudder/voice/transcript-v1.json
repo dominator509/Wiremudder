@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/voice/transcript-v1.json",
+  "title": "WireMudder Voice Transcript",
+  "description": "Subtitle/transcript line with configurable retention and default private-content suppression (SPEC-015-R09; EP-024 WM-FEAT-0067).",
+  "type": "object",
+  "required": ["text", "private", "at_ms"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "text": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "private": { "type": "boolean" },
+    "at_ms": { "type": "integer", "minimum": 0 }
+  }
+}

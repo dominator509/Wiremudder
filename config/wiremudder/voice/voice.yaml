@@ -1,0 +1,47 @@
+# WireMudder Voice Configuration (EP-024)
+#
+# Local-first voice configuration. Remote providers stay disabled
+# (certified=false, configured=false) until real certification evidence
+# exists (EP-024 fallback: ship voice disabled or with one certified
+# local push-to-talk provider; omit wake phrase and remote speech until
+# separately certified).
+
+schema_version: 1
+
+# Activation mode: push-to-talk (default) or hold-to-talk.
+activation_mode: push-to-talk
+
+# Mic state must remain visible at all times (WM-SPEC-015-R01).
+mic_visibility: always
+
+# Wake phrase: disabled by default; requires explicit consent; paused
+# under Local Only policy when the provider is not local.
+wake_phrase:
+  enabled: false
+  phrase: ""
+  consented: false
+
+# Speech queue bounds (SPEC-004-R04 P3: may drop, coalesce, freeze,
+# cancel, or disable).
+speech_queue_capacity: 64
+load_shed_noncritical: true
+combat_suppress_narration: true
+
+# Subtitles and transcripts (WM-SPEC-015-R09).
+transcript_retention: 64
+transcript_private_suppressed: true
+
+# Remote speech (WM-SPEC-015-R04, WM-SPEC-010-R08).
+remote:
+  provider_configured: false
+  privacy_policy_accepted: false
+  redaction_enabled: true
+  local_only: true
+
+# Voice styles are licensed profiles (WM-SPEC-015-R07). Protected
+# identities require lawful authorization.
+styles: []
+
+# Voice macros enter the deterministic command-safety gate
+# (WM-SPEC-015-R05, WM-SPEC-009-R02).
+macros: []
