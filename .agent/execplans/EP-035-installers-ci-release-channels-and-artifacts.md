@@ -303,7 +303,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock — commit ef4be3f; verifier EP-035 M1: ok; 3 contract tests; evidence WM-SRC-000276..000289
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -316,6 +316,8 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-28: M1 — release tooling is a namespaced WireMudder CI/installer/packaging boundary; the inherited create-github-release workflow stays untouched and the WireMudder channel/artifact tooling lives at `CI/wiremudder/`, `installers/wiremudder/`, `packaging/wiremudder/`, `docs/wiremudder/release/`. Alternative (editing inherited workflows directly) rejected: violates the inherited-source rule and would disturb upstream CI. Consequence: release-candidate artifacts can be produced with checksums/provenance; stable publication remains manual (AUTO_DEPLOY false). Affects WM-FEAT-0239/0241 and WM-SPEC-020-R01/R09, WM-SPEC-026-R10, WM-SPEC-028-R05/R07/R09/R10. Security: no signing keys enter agent env; provenance recorded from UPSTREAM.lock.yaml.
 
 # 14. Outcomes and Retrospective
 
