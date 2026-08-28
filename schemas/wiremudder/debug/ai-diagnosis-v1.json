@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/debug/ai-diagnosis-v1.json",
+  "title": "WireMudder AI Debugger Diagnosis",
+  "description": "Evidence-cited diagnosis proposal that cannot self-certify success and never edits gates (SPEC-019-R06, EP-022).",
+  "type": "object",
+  "required": ["schema_version", "id", "evidence", "hypothesis", "reproduction", "patch_plan", "tests", "risk", "rollback", "self_certified"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "evidence": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "hypothesis": { "type": "string", "minLength": 1 },
+    "reproduction": { "type": "string", "minLength": 1 },
+    "patch_plan": { "type": "string", "minLength": 1 },
+    "tests": { "type": "array", "items": { "type": "string" } },
+    "risk": { "type": "string", "minLength": 1 },
+    "rollback": { "type": "string", "minLength": 1 },
+    "self_certified": { "const": false }
+  }
+}

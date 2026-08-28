@@ -247,3 +247,4 @@
 2026-08-28T03:47:36Z | ipman-hermes | EP-022 | LEASE | holder=ipman-hermes base=deee6a41524d6265137c2d3b2a39d69420bff0ec
 2026-08-28T03:54:06Z | unknown-agent | EP-022 | HEARTBEAT | discovered_path=src/CMakeLists.txt evidence=WM-SRC-000146
 2026-08-28T03:54:20Z | ipman-hermes | EP-022 | MILESTONE_PASS | M1 EP-022 M1: ok; evidence=.agent/state/evidence/EP-022/M1
+2026-08-28T03:55:47Z | ipman-hermes | EP-022 | MILESTONE_PASS | M2 EP-022 M2: ok; evidence=.agent/state/evidence/EP-022/M2

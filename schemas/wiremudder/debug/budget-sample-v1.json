@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/debug/budget-sample-v1.json",
+  "title": "WireMudder Execution Budget Sample",
+  "description": "Measured execution budget with slow-offender flag (SPEC-008-R02, EP-022).",
+  "type": "object",
+  "required": ["schema_version", "run_id", "kind", "name", "elapsed_ms", "budget_ms", "over_budget"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["macro", "trigger"] },
+    "name": { "type": "string", "minLength": 1 },
+    "elapsed_ms": { "type": "integer", "minimum": 0 },
+    "budget_ms": { "type": "integer", "minimum": 0 },
+    "over_budget": { "type": "boolean" }
+  }
+}

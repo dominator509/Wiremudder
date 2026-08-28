@@ -1,0 +1,10 @@
+[package]
+name = "wire-debugger"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder Macro Forge, Trigger Test Lab, and AI Debugger (SPEC-008, SPEC-019, EP-022)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
