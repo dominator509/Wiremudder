@@ -296,7 +296,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -304,11 +304,14 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: `cargo deny`/`cargo about` are not configured for this repository (no deny.toml / about.hbs); the real dependency/license mechanism is the `security/wiremudder` CLI whose `sbom` subcommand reproduces the committed `document_sha256=b38005dc...` and enforces `license_gate_passes()` (evidence WM-SRC-000338/000339).
+- 2026-08-28: `clang-tidy` on a directory target fails ("Is a directory"); the working form is a per-file loop with `--extra-arg=-I"$PWD"` (repo root), verified status 0 over all 53 WireMudder-owned boundary files (WM-SRC-000332).
+- 2026-08-28: `scripts/production_readiness.py` used `ledger.sh status`, whose last-row semantics report released nodes as PENDING; fixed to require a NODE_DONE ledger row plus the green tag (boot commit c4d4c647).
+- 2026-08-28: EP-033/EP-038 fences own `sbom/wiremudder/`, `licenses/wiremudder/`, `release/wiremudder/candidate/` but never produced SBOM.spdx.json / THIRD_PARTY_NOTICES.md / EVIDENCE_INDEX.json; the run gates require them, so EP-039 extended its static fence with those exact paths (EP-038 fence-extension precedent 642d5c5e).
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28: Lock the 12 missing ship-gate commands (lint, typecheck, integration, e2e, compatibility, security, dependency_audit, license, performance, accessibility, platform, smoke) using docs/ai-instructions.md as the accepted command authority. Evidence: WM-SRC-000332..000343; COMMANDS.lock.tsv rows; verify.sh now passes lint and typecheck. Alternatives: cargo deny / cargo about rejected (not configured for this repo). Consequence: run-level gates execute real, evidenced commands. Reversal: remove lock rows and evidence records. Security/privacy/license/compat/perf/upstream impact: none; commands are read-only and fail-closed.
 
 # 14. Outcomes and Retrospective
 
