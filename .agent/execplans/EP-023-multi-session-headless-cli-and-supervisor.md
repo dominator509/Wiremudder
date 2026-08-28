@@ -305,20 +305,47 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 - 2026-08-28: EP-023 M1. The headless runtime integrates through the WireCore bridge (`src/wiremudder/bridge/wirecore_bridge.h`, EP-008/EP-009/EP-014 deps) and lives in `tools/wiremudder-supervisor/` plus `wirecore/crates/wire-headless/` — no inherited UI path is edited (WM-SRC-000154). No discovered-path amendment required for M1.
 - 2026-08-28: EP-023 owns WM-FEAT-0078/0081/0083/0121/0122/0123/0124/0125 and WM-SPEC-006-R10, WM-SPEC-017-R02/R04/R06/R10, WM-SPEC-024-R04/R08, WM-SPEC-026-R01; the global emergency stop (SPEC-009) applies to headless sessions identically to desktop.
+- 2026-08-28: EP-023 M4. Perf fixtures must stay within the real bounds they prove: a 5000-session create loop trips the 64-session cap (fresh scheduler per sample), and a 5000-enqueue loop trips the 256-queue cap (drain a full batch between batches). Same class of self-limiting fixture as EP-019/EP-021/EP-022.
 
 # 13. Decision Log
 
 - 2026-08-28 | M1 | Authorized new boundaries locked: `src/wiremudder/headless/`, `wirecore/crates/wire-headless/`, `schemas/wiremudder/headless/`, `tools/wiremudder-supervisor/`. | Node contract EP-023 authorized boundaries; static fence `.agent/expected-files/EP-023.txt`. | None considered; contract mandates these exact names. | Consequence: M2-M5 product work confined to these namespaced paths; no inherited `src/` edit planned. | Reversal: contract amendment. | Affects WM-FEAT-0078/0081/0083/0121/0122/0123/0124/0125, WM-SPEC-006-R10, WM-SPEC-017-R02/R04/R06/R10, WM-SPEC-024-R04/R08, WM-SPEC-026-R01. | Security/privacy: SPEC-010/SPEC-022 apply; no new authority, secret access, or egress; emergency stop shared with desktop. | License/compat/perf: no new dependency; SPEC-004 budgets apply.
+- 2026-08-28 | M3 | The headless user-visible surface is the real CLI tool `tools/wiremudder-supervisor/` consuming the `wire-headless` crate; the desktop headless adapter boundary `src/wiremudder/headless/` is reserved but not required for this node's integration. | Node contract authorized boundaries; no inherited path requires editing. | C++ pane wiring into `src/CMakeLists.txt`. | Consequence: M3 e2e runs the real supervisor CLI; scope audit stays clean with zero discovered paths. | Reversal: none. | Affects WM-FEAT-0121/0122/0123/0124/0125. | Security/privacy: unchanged. | License/compat/perf: no new dependency.
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+- Changed vs expected: all changes inside the static fence; zero
+  discovered paths (no inherited source edited).
+- Source evidence: WM-SRC-000150..000154 (M1: SPEC-017 R02/R04/R06/R10,
+  SPEC-024 R04/R08, SPEC-006 R10, SPEC-026 R01, WireCore bridge).
+- Commands and sentinels:
+  - `sh scripts/node-verifiers/EP-023.sh M1` -> `EP-023 M1: ok`
+  - `sh scripts/node-verifiers/EP-023.sh M2` -> `EP-023 M2: ok` (crate 9/9 unit tests)
+  - `sh scripts/node-verifiers/EP-023.sh M3` -> `EP-023 M3: ok` (real supervisor CLI + Rust e2e flow)
+  - `sh scripts/node-verifiers/EP-023.sh M4` -> `EP-023 M4: ok` (failure 8/8, security 5/5, perf p95<=3.83us)
+  - `sh scripts/node-verifiers/EP-023.sh M5` -> `EP-023 M5: ok` (LF-023 7 obligations true; 8 feature tests; 8 requirement tests)
+  - `sh scripts/node-verify.sh EP-023` -> `node verify EP-023: ok`
+- Evidence hashes: recorded in `.agent/state/evidence/EP-023/M{1..5}/`.
+- Feature disposition: WM-FEAT-0078/0081/0083/0121/0122/0123/0124/0125
+  all required/full, implemented and certified by LF-023.
+- Requirement disposition: WM-SPEC-006-R10, WM-SPEC-017-R02/R04/R06/R10,
+  WM-SPEC-024-R04/R08, WM-SPEC-026-R01 all automated-test green.
+- Provider/platform certification: none (no provider or platform in this
+  node).
+- Assumptions changed: none.
+- Risks: session/queue state is in-memory; restart re-creates sessions
+  through normal flows (documented in operations runbook).
+- Rollback: delete `tools/wiremudder-supervisor/`,
+  `wirecore/crates/wire-headless/`, and `schemas/wiremudder/headless/`.
+  No inherited path is modified.
+- Green tag: `green/EP-023`.
+- Next scheduler output: per `scripts/graph-next.sh`.
