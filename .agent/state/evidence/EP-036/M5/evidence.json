@@ -5,12 +5,12 @@
     "scripts/node-verifiers/EP-036.sh",
     "M5"
   ],
-  "exit_code": 1,
+  "exit_code": 0,
   "expected_sentinel": "EP-036 M5: ok",
   "milestone": "M5",
   "node": "EP-036",
-  "observed_at": "2026-08-28T15:15:32Z",
-  "output_sha256": "be030bedfbe48a00b4b88a3ae7a2d04b8374f90c1db6b7846909c422a32e897c",
+  "observed_at": "2026-08-28T15:16:40Z",
+  "output_sha256": "b94092469391a184ef58b4ecd8ff00db6e732cbd39d5b29fad5eda0aabf05a11",
   "schema_version": 1,
-  "sentinel_observed": false
+  "sentinel_observed": true
 }
