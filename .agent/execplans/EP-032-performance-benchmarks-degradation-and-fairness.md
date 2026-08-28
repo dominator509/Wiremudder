@@ -295,7 +295,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -323,3 +323,36 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+## EP-032 Outcomes (2026-08-28)
+
+- Changed vs expected: all changes inside the static fence; no discovered
+  amendment (rows=0 — all four boundaries are new paths). Changed files
+  per milestone: M1 8, M2 13, M3 8, M4 8, M5 ~40 (14 feature tests + 5
+  requirement tests + LF + verifier + ledger).
+- Source evidence: WM-SRC-000231..000242 (SPEC-004/027 anchors, feature
+  rows, constitution, crate perf infrastructure, boundary anchors).
+- Commands and observed sentinels:
+  - `sh scripts/node-verifiers/EP-032.sh M1..M5` -> `EP-032 M{1..5}: ok`
+  - `sh scripts/live-fire/LF-032-performance-priority-flood.sh` ->
+    `LF-032: ok` (obligations 1..6 true; flood=5000 coalesced=4992
+    voice_dropped=4996 p0_processed=5000)
+  - `sh scripts/node-contract-check.sh EP-032` -> `node contract check EP-032: ok`
+  - `sh scripts/scope-audit.sh EP-032` -> `scope audit EP-032: ok changed=50`
+  - Expected-files audit passed inside M5 verifier.
+- Feature disposition: 14/14 owned features implemented and tested
+  (WM-FEAT-0131, 0134..0145, 0163) — benchmark suite, priority rings,
+  bounded queues, metrics, degradation, quarantine, budgets.
+- Requirement disposition: 5/5 owned requirements satisfied
+  (WM-SPEC-002-R07/R09, WM-SPEC-004-R12, WM-SPEC-019-R10,
+  WM-SPEC-027-R06) with 5-level depth tests.
+- Provider/platform certification: no external provider; real measured
+  distributions on x86_64 linux; all six owned subsystems inside budgets.
+- Assumptions changed: none.
+- Risks: none open. Worst observed p95 across owned subsystems was
+  replay-batch 201-216µs, far inside the 5ms budget.
+- Rollback: remove benchmarks/wiremudder/, tools/perf-capture/,
+  tests/wiremudder/ep032/, tests/wiremudder/performance/,
+  docs/wiremudder/performance/. No inherited path touched.
+- Green tag: `green/EP-032` (created after `node verify EP-032: ok`).
+- Next scheduler output: per `scripts/graph-next.sh` after lease release.

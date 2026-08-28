@@ -81,12 +81,25 @@ case "${1:-}" in
     [ -f tests/live-fire/LF-032-performance-priority-flood.sh ] \
       || fail "missing LF-032 live-fire script"
     sh tests/live-fire/LF-032-performance-priority-flood.sh || fail "LF-032 failed"
-    [ -d tests/wiremudder/ep032/features ] || fail "missing feature tests"
-    [ -d tests/wiremudder/ep032/requirements ] || fail "missing requirement tests"
-    for d in features requirements; do
-      for t in tests/wiremudder/ep032/$d/*.sh; do
-        [ -f "$t" ] || fail "no $d tests found"
-        sh "$t" || fail "$d test failed: $t"
+    # Owned features per FEATURES.tsv test_path column.
+    for f in WM-FEAT-0131 WM-FEAT-0134 WM-FEAT-0135 WM-FEAT-0136 WM-FEAT-0137 \
+             WM-FEAT-0138 WM-FEAT-0139 WM-FEAT-0140 WM-FEAT-0141 WM-FEAT-0142 \
+             WM-FEAT-0143 WM-FEAT-0144 WM-FEAT-0145 WM-FEAT-0163; do
+      idx=${f#WM-FEAT-}
+      dir="tests/wiremudder/ep032/feature-$idx"
+      [ -d "$dir" ] || fail "missing feature test dir $dir"
+      for t in "$dir"/*.sh; do
+        [ -f "$t" ] || fail "no feature tests in $dir"
+        sh "$t" || fail "feature test failed: $t"
+      done
+    done
+    # Owned requirements per VALIDATION_MATRIX test_path column.
+    for r in WM-SPEC-002-R07 WM-SPEC-002-R09 WM-SPEC-004-R12 WM-SPEC-019-R10 WM-SPEC-027-R06; do
+      p=$(grep -m1 "^$r	" .agent/requirements/VALIDATION_MATRIX.tsv | awk -F'\t' '{print $6}')
+      [ -n "$p" ] || fail "no test path for $r"
+      for t in "$p"/*.sh; do
+        [ -f "$t" ] || fail "no requirement tests in $p"
+        sh "$t" || fail "requirement test failed: $t"
       done
     done
     sh scripts/expected-files-audit.sh EP-032 >/dev/null || fail "expected-files audit"
