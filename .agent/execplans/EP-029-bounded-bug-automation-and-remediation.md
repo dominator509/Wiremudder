@@ -308,16 +308,56 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
 - [x] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: `complete()` initially rejected the Canary stage, yet
+  SPEC-019-R09 defines DONE as reachable after a passed canary; the gate now
+  accepts Review, Canary, or Rollback (commit 71f76003).
+- 2026-08-28: the bug-lab CLI printed `intake: ok` before persisting state;
+  with an unavailable state path it claimed success for a non-durable
+  workflow. Fixed by persisting before the success sentinel (WM-SPEC-025-R05,
+  commit 261acbff).
+- 2026-08-28: the M4 unavailable-worker proof cannot rely on file-mode
+  denial when the executor runs as root; a nonexistent parent directory is
+  the user-independent failure mechanism.
+- 2026-08-28: redaction markers must match both assignment forms
+  (`token=`) and prose forms (`token is`) with word boundaries so
+  `tokenizer` is not over-redacted (19/19 crate tests).
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28: bounded state machine with ten explicit stages and terminal
+  DONE/BLOCKED (SPEC-019-R09). Evidence: crate unit suite. Alternatives:
+  free-form pipeline (rejected: no bounded states). Consequence: every
+  transition is auditable.
+- 2026-08-28: independent review is enforced in code (reviewer != planner),
+  with mandatory performance review for P0/P1 and mandatory security review
+  for voice/provider/update/package/security subsystems (SPEC-019-R10).
+  Evidence: review gate + unit tests. Consequence: no self-certification.
+- 2026-08-28: retry policy bounded (default 3, ceiling 10) with tracked
+  signatures and required idempotency keys for destructive effects
+  (WM-SPEC-025-R03). Evidence: RetryPolicy + unit tests. Consequence:
+  bounded failure behavior, quarantine after repeated failures.
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+- Changed versus expected: exactly the static fence paths plus evidence dirs;
+  no inherited source path edited (discovered amendment rows=0).
+- Source evidence: WM-SRC-000193..000207 (EP-029 M1).
+- Commands and sentinels: `EP-029 M1: ok`, `EP-029 M2: ok`,
+  `EP-029 M3: ok`, `EP-029 M4: ok`, `EP-029 M5: ok`, `LF-029: ok`
+  (6/6 obligations), `node verify EP-029: ok` pending at write.
+- Evidence hashes: recorded per milestone in `.agent/state/evidence/EP-029/`.
+- Feature disposition: WM-FEAT-0133 (future, human-reviewed fallback only),
+  WM-FEAT-0226 (required, certified), WM-FEAT-0228 (required, certified),
+  WM-FEAT-0229 (required, certified).
+- Requirement disposition: WM-SPEC-019-R09 and WM-SPEC-025-R03 certified by
+  automated tests at the validation-matrix paths.
+- Provider/platform certification: none (no external adapter in scope).
+- Risks: autonomous patch planning is bounded and human-reviewed by design;
+  the future feature (WM-FEAT-0133) remains research-decision-required.
+- Rollback: revert EP-029 commits; no inherited path affected.
+- Green tag: `green/EP-029` (after node verify).
+- Next scheduler output: (after release).
