@@ -321,11 +321,11 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [x] M1: Evidence, contracts, and exact path lock — commit 20e7685; verifier EP-036 M1: ok; 3 contract tests; evidence WM-SRC-000290..000301
-- [x] M2: Core behavior and deterministic invariants — commit f2d2938; platform certification + chaos fault injection; compatibility matrix; verifier EP-036 M2: ok
-- [x] M3: Real integration and user-visible flow — commit cdc484c; certification harness integration; e2e outcome; design doc; verifier EP-036 M3: ok
-- [x] M4: Forced failures, abuse cases, performance, and operations — commit f2a191a; 7 forced failures; security surface; perf updater p95=67us release p95=177us budget=1000us; runbook; verifier EP-036 M4: ok
-- [x] M5: Live-fire, evidence closure, and green tag readiness — LF-036 8/8 certified; 2 requirement tests; event schema extended for WM-SPEC-019-R02 (sanctioned fence amendment); verifier EP-036 M5: ok
+- [x] M1: Evidence, contracts, and exact path lock -- commit 20e7685; verifier EP-036 M1: ok; 3 contract tests; evidence WM-SRC-000290..000301
+- [x] M2: Core behavior and deterministic invariants -- commit f2d2938; platform certification + chaos fault injection; compatibility matrix; verifier EP-036 M2: ok
+- [x] M3: Real integration and user-visible flow -- commit cdc484c; certification harness integration; e2e outcome; design doc; verifier EP-036 M3: ok
+- [x] M4: Forced failures, abuse cases, performance, and operations -- commit f2a191a; 7 forced failures; security surface; perf updater p95=67us release p95=177us budget=1000us; runbook; verifier EP-036 M4: ok
+- [x] M5: Live-fire, evidence closure, and green tag readiness -- LF-036 8/8 certified; 2 requirement tests; event schema extended for WM-SPEC-019-R02 (sanctioned fence amendment); verifier EP-036 M5: ok
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -342,7 +342,7 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
 
-- 2026-08-28: M1 — platform certification and chaos are test-and-evidence boundaries (`tests/wiremudder/platform/`, `tests/wiremudder/chaos/`, `compatibility/platform/`, `docs/wiremudder/certification/`); no inherited source is edited. Certification evidence is real controlled runs on the Linux host plus documented cross-platform evidence requirements (SPEC-027-R08). Alternative (claiming Windows/macOS certification without evidence) rejected: violates the reality gate. Consequence: platform claims are bounded by evidence; the fallback keeps uncertified platforms development-only. Affects WM-FEAT-0159/0242 and WM-SPEC-019-R02, WM-SPEC-027-R08.
+- 2026-08-28: M1 -- platform certification and chaos are test-and-evidence boundaries (`tests/wiremudder/platform/`, `tests/wiremudder/chaos/`, `compatibility/platform/`, `docs/wiremudder/certification/`); no inherited source is edited. Certification evidence is real controlled runs on the Linux host plus documented cross-platform evidence requirements (SPEC-027-R08). Alternative (claiming Windows/macOS certification without evidence) rejected: violates the reality gate. Consequence: platform claims are bounded by evidence; the fallback keeps uncertified platforms development-only. Affects WM-FEAT-0159/0242 and WM-SPEC-019-R02, WM-SPEC-027-R08.
 
 # 14. Outcomes and Retrospective
 

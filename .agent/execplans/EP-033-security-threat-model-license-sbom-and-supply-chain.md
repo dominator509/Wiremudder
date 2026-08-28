@@ -310,11 +310,11 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [x] M1: Evidence, contracts, and exact path lock — commit c279fbdd; verifier EP-033 M1: ok; 3 contract tests; evidence WM-SRC-000243..000254
-- [x] M2: Core behavior and deterministic invariants — commit b2d6a16; wiremudder-security crate 33/33 tests, zero warnings; verifier EP-033 M2: ok
-- [x] M3: Real integration and user-visible flow — commit 18e255c; real repo inventory/SBOM/license artifacts; hostile-import e2e; verifier EP-033 M3: ok
-- [x] M4: Forced failures, abuse cases, performance, and operations — commit a0c5b40; failure/denial/security/supply-chain tests; perf p95=6us budget=1000us; runbook; verifier EP-033 M4: ok
-- [x] M5: Live-fire, evidence closure, and green tag readiness — LF-033 7/7 certified; 10 requirement tests; verifier EP-033 M5: ok
+- [x] M1: Evidence, contracts, and exact path lock -- commit c279fbdd; verifier EP-033 M1: ok; 3 contract tests; evidence WM-SRC-000243..000254
+- [x] M2: Core behavior and deterministic invariants -- commit b2d6a16; wiremudder-security crate 33/33 tests, zero warnings; verifier EP-033 M2: ok
+- [x] M3: Real integration and user-visible flow -- commit 18e255c; real repo inventory/SBOM/license artifacts; hostile-import e2e; verifier EP-033 M3: ok
+- [x] M4: Forced failures, abuse cases, performance, and operations -- commit a0c5b40; failure/denial/security/supply-chain tests; perf p95=6us budget=1000us; runbook; verifier EP-033 M4: ok
+- [x] M5: Live-fire, evidence closure, and green tag readiness -- LF-033 7/7 certified; 10 requirement tests; verifier EP-033 M5: ok
 
 # 12. Surprises and Discoveries
 
@@ -339,7 +339,7 @@ At completion record changed versus expected files, source evidence, commands, e
 - Changed vs expected: all changes inside the EP-033 static fence; 0 discovered-path rows; scope audit changed=53; expected-files audit ok (21 paths).
 - Source evidence: WM-SRC-000243..000254 (12 rows) appended in M1.
 - Commands and sentinels: `node verify EP-033: ok`; `EP-033 M1..M5: ok`; `LF-033: ok checks=7/7`; perf `p50=3us p95=6us max=19us budget=1000us`; contract/scope/expected-files audits ok.
-- Feature disposition: cross-cutting node — no owned feature rows; coverage proven via owned requirements.
+- Feature disposition: cross-cutting node -- no owned feature rows; coverage proven via owned requirements.
 - Requirement disposition: WM-SPEC-001-R03/R08, WM-SPEC-020-R02/R03/R08, WM-SPEC-022-R06/R08/R09, WM-SPEC-028-R02/R03 all closed with tests at the matrix test_paths (10/10).
 - Provider/platform certification: none claimed (no external adapter).
 - Assumptions changed: none.

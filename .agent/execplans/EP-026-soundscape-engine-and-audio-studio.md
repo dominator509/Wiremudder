@@ -327,13 +327,13 @@ At completion record changed versus expected files, source evidence, commands, e
 - 2026-08-28: Lease acquired (known EP-018 ellipsis preflight FAIL, documented, outside fence, same state as EP-020-025).
 - Source evidence WM-SRC-000176..000179: inherited TMedia audio API (playMedia/stopMedia/stopAllMediaPlayers/setVolume), owned UI boundary pattern, src/CMakeLists.txt integration point, asset manifest pattern.
 - Discovered-path amendment for src/CMakeLists.txt (WM-SRC-000178); soundscape-build-integration contract test.
-- Contract tests: soundscape-authority, soundscape-boundaries, soundscape-build-integration, soundscape-obligations — all ok.
+- Contract tests: soundscape-authority, soundscape-boundaries, soundscape-build-integration, soundscape-obligations -- all ok.
 - Node verifier scripts/node-verifiers/EP-026.sh (M1-M5 + verify).
 - `node contract check EP-026: ok`; `EP-026 M1: ok`; `scope audit EP-026: ok changed=9`.
 
 ## 16. M2 Progress
 
-- 2026-08-28: wire-soundscape crate (wirecore/crates/wire-soundscape) — 9 binding classes (room/area/combat/boss/weather/death/victory/ambience/user-authored), profile-scoped volume+disable, independent per-binding volume/enable, bounded+coalescing queue (MAX_AUDIO_QUEUE=64), bounded+cancelable transitions (MAX_TRANSITION_MS=5000), provenance gate (protected/unlicensed/remote-unsigned rejected, user-local fallback), emergency stop, audio-failure degrade preserving text (no text path), can_send_command=false. 21/21 deterministic tests.
+- 2026-08-28: wire-soundscape crate (wirecore/crates/wire-soundscape) -- 9 binding classes (room/area/combat/boss/weather/death/victory/ambience/user-authored), profile-scoped volume+disable, independent per-binding volume/enable, bounded+coalescing queue (MAX_AUDIO_QUEUE=64), bounded+cancelable transitions (MAX_TRANSITION_MS=5000), provenance gate (protected/unlicensed/remote-unsigned rejected, user-local fallback), emergency stop, audio-failure degrade preserving text (no text path), can_send_command=false. 21/21 deterministic tests.
 - Audio schemas schemas/wiremudder/audio/ (binding/asset-pack/soundscape-state/studio-config/transition v1).
 - Original CC0 procedural audio manifest assets/wiremudder/audio/manifest.json + README (SPEC-016-R01/R09).
 - M2 unit test scripts (audio-schemas, wire-soundscape). `EP-026 M2: ok`; `scope audit EP-026: ok changed=23`.
@@ -360,7 +360,7 @@ At completion record changed versus expected files, source evidence, commands, e
 
 ## 20. Surprises and Discoveries
 
-- 2026-08-28: The failure matrix exposed that tick() never promoted a queued job to the current loop, so duplicate-replay detection was unreachable in real flow. Fixed promotion in tick() (front-of-queue when no transition in flight and nothing playing); coalescing test rewritten (Room/Area/Room → coalesce=1, Room promoted). 21/21 deterministic tests still pass; all three matrices green after the fix.
+- 2026-08-28: The failure matrix exposed that tick() never promoted a queued job to the current loop, so duplicate-replay detection was unreachable in real flow. Fixed promotion in tick() (front-of-queue when no transition in flight and nothing playing); coalescing test rewritten (Room/Area/Room -> coalesce=1, Room promoted). 21/21 deterministic tests still pass; all three matrices green after the fix.
 - 2026-08-28: Injected provenance strings (e.g. `original:wiremudder:procedural; rm -rf /`) are stored as inert data and never executed; the security matrix proves readback is literal and the engine has no evaluation surface.
 
 ## 21. Decision Log

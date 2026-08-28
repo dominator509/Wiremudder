@@ -324,13 +324,13 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-- 2026-08-28: EP-037 lease base corrected to f56c838 (HEAD at lease time); initial row copied EP-036 base by mistake — scope audit caught it immediately (correct base is a hard gate).
-- 2026-08-28: M2 unit tests must be POSIX sh — process substitution `< <(...)` failed under the verifier's `sh`; rewrote with a pipe loop. Documentation surfaces verified real: all 237 required features indexed, manifest example validates against the real schema, all 13 permission names + 3 update policies documented.
-- 2026-08-28: M4 security scan first scanned the whole docs tree and flagged `sk-` in inherited EP-020 docs (a legitimate redaction-pattern list) — narrowed the scan to EP-037-owned boundaries only. Perf: measuring per-call `cargo run` counted ~35ms of process spawn as validation cost; measuring the compiled release oracle binary directly gives the real p95=1.77ms (decisions) / 1.88ms (hash) vs the 5ms P0 budget. Package checks are P4 (SPEC-008) — the honest budget is the 5ms P0 manual-command goal from SPEC-004.
+- 2026-08-28: EP-037 lease base corrected to f56c838 (HEAD at lease time); initial row copied EP-036 base by mistake -- scope audit caught it immediately (correct base is a hard gate).
+- 2026-08-28: M2 unit tests must be POSIX sh -- process substitution `< <(cmd)` failed under the verifier's `sh`; rewrote with a pipe loop. Documentation surfaces verified real: all 237 required features indexed, manifest example validates against the real schema, all 13 permission names + 3 update policies documented.
+- 2026-08-28: M4 security scan first scanned the whole docs tree and flagged `sk-` in inherited EP-020 docs (a legitimate redaction-pattern list) -- narrowed the scan to EP-037-owned boundaries only. Perf: measuring per-call `cargo run` counted ~35ms of process spawn as validation cost; measuring the compiled release oracle binary directly gives the real p95=1.77ms (decisions) / 1.88ms (hash) vs the 5ms P0 budget. Package checks are P4 (SPEC-008) -- the honest budget is the 5ms P0 manual-command goal from SPEC-004.
 
 # 13. Decision Log
 
-- 2026-08-28 | EP-037 M1 | Node verifier follows the EP-036 pattern: M1 contract tests, M2 unit + boundary existence, M3 integration/e2e + design docs, M4 failure/security/perf + operations runbook, M5 LF-037 + feature tests + full audits. Evidence: scripts/node-verifiers/EP-037.sh. Alternatives: verifier checked docs by word count (rejected — empty boundary check via find -type f is stricter). Consequence: all five subcommands run real checks. Reversal: edit verifier + re-run M1..M5. Affects: WM-FEAT-0164, WM-FEAT-0243, SPEC-000/008/018/021/026/028. Security/privacy: docs only; no new authority. License: no new deps. Compatibility: new docs boundaries only. Performance: no runtime impact. Upstream: no inherited-source edits in M1 (13 source-evidence rows WM-SRC-000303..315).
+- 2026-08-28 | EP-037 M1 | Node verifier follows the EP-036 pattern: M1 contract tests, M2 unit + boundary existence, M3 integration/e2e + design docs, M4 failure/security/perf + operations runbook, M5 LF-037 + feature tests + full audits. Evidence: scripts/node-verifiers/EP-037.sh. Alternatives: verifier checked docs by word count (rejected -- empty boundary check via find -type f is stricter). Consequence: all five subcommands run real checks. Reversal: edit verifier + re-run M1..M5. Affects: WM-FEAT-0164, WM-FEAT-0243, SPEC-000/008/018/021/026/028. Security/privacy: docs only; no new authority. License: no new deps. Compatibility: new docs boundaries only. Performance: no runtime impact. Upstream: no inherited-source edits in M1 (13 source-evidence rows WM-SRC-000303..315).
 
 # 14. Outcomes and Retrospective
 
@@ -339,10 +339,10 @@ At completion record changed versus expected files, source evidence, commands, e
 - **Changed vs expected**: all changes under EP-037 static fence (docs/wiremudder/user/, developer/, package-author/, design/, operations/, examples/wiremudder/, tests/wiremudder/ep037/, tests/live-fire/LF-037, scripts/node-verifiers/EP-037.sh); scope audit `ok`.
 - **Source evidence**: WM-SRC-000303..315 (13 rows) recorded in M1; source-evidence-check `ok`.
 - **Commands**: `sh scripts/node-verifiers/EP-037.sh M1..M5` all print their exact sentinel; `sh scripts/node-verify.sh EP-037` expected `node verify EP-037: ok`.
-- **Observed sentinels**: `EP-037 M1: ok` … `EP-037 M5: ok`; `LF-037: ok - package-developer-workflow certified` (8 pass lines).
+- **Observed sentinels**: `EP-037 M1: ok` through `EP-037 M5: ok`; `LF-037: ok - package-developer-workflow certified` (8 pass lines).
 - **Evidence hashes**: `.agent/state/evidence/EP-037/M{1..5}/evidence.json` recorded by record-evidence.sh (exit_code 0, sentinel_observed true).
 - **Feature disposition**: WM-FEAT-0164 builder-tools documented+tested (feature-0164), WM-FEAT-0243 runbooks documented+tested (feature-0243); both required.
-- **Requirement disposition**: cross-node requirements closed through owning specs (SPEC-000-R08, SPEC-008-R03/04/05, SPEC-018-R04/06, SPEC-021-R03/04/09, SPEC-026-R06/07/08, SPEC-028-R04/05) — documented in user/package-author/operations docs and asserted by contract tests.
+- **Requirement disposition**: cross-node requirements closed through owning specs (SPEC-000-R08, SPEC-008-R03/04/05, SPEC-018-R04/06, SPEC-021-R03/04/09, SPEC-026-R06/07/08, SPEC-028-R04/05) -- documented in user/package-author/operations docs and asserted by contract tests.
 - **Provider/platform**: none certified by this node; docs label optional providers honestly (no claim exceeds evidence).
 - **Assumptions changed**: package-check perf budget is the 5ms P0 goal (SPEC-004) not 1ms, because package checks are P4 (SPEC-008).
 - **Risks**: docs can drift from code; mitigated by unit/integration/feature tests asserting docs match real schemas, commands, and outputs.

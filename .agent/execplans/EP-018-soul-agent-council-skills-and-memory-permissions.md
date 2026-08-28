@@ -331,7 +331,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
   R04 prompt-injection holes; (b) reject all non-reinforcing forbidden
   entries - breaks legitimate personas. Chose the narrow structural marker
   set with reinforcing-prefix exemption. Consequence: fail-closed behavior
-  for injected souls; legitimate "never ..." prohibitions unchanged.
+  for injected souls; legitimate "never"-phrased prohibitions unchanged.
   Reversal: remove the marker check and extra domains; existing tests
   remain green except the new ones. Affected: WM-FEAT-0042/0043,
   WM-SPEC-014-R03, WM-SPEC-022-R04. Security: strict improvement. Privacy,

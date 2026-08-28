@@ -304,11 +304,11 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [x] M1: Evidence, contracts, and exact path lock — commit 02cc6e31; verifier EP-034 M1: ok; 4 contract tests; evidence WM-SRC-000255..000275; discovered amendment src/CMakeLists.txt (WM-SRC-000262)
-- [x] M2: Core behavior and deterministic invariants — commit 2dc543e; wire-updater crate 17/17 tests zero warnings; oracle CLI; update-fixtures tool; C++ boundary; schema; verifier EP-034 M2: ok
-- [x] M3: Real integration and user-visible flow — commit 2cf25de; CMake wiring; Qt6 boundary compile zero warnings; e2e signed flow; design doc; verifier EP-034 M3: ok
-- [x] M4: Forced failures, abuse cases, performance, and operations — commit ec13daa; 11 forced failures + 5 denials; security surface; perf p50=53us p95=69us budget=1000us; runbook; verifier EP-034 M4: ok
-- [x] M5: Live-fire, evidence closure, and green tag readiness — LF-034 10/10 certified; 5 requirement tests; verifier EP-034 M5: ok
+- [x] M1: Evidence, contracts, and exact path lock -- commit 02cc6e31; verifier EP-034 M1: ok; 4 contract tests; evidence WM-SRC-000255..000275; discovered amendment src/CMakeLists.txt (WM-SRC-000262)
+- [x] M2: Core behavior and deterministic invariants -- commit 2dc543e; wire-updater crate 17/17 tests zero warnings; oracle CLI; update-fixtures tool; C++ boundary; schema; verifier EP-034 M2: ok
+- [x] M3: Real integration and user-visible flow -- commit 2cf25de; CMake wiring; Qt6 boundary compile zero warnings; e2e signed flow; design doc; verifier EP-034 M3: ok
+- [x] M4: Forced failures, abuse cases, performance, and operations -- commit ec13daa; 11 forced failures + 5 denials; security surface; perf p50=53us p95=69us budget=1000us; runbook; verifier EP-034 M4: ok
+- [x] M5: Live-fire, evidence closure, and green tag readiness -- LF-034 10/10 certified; 5 requirement tests; verifier EP-034 M5: ok
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -326,7 +326,7 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
 
-- 2026-08-28: M1 — updater boundary is a namespaced Qt model-side boundary at `src/wiremudder/updater/` wired into `mudlet_SRCS` via the USE_UPDATER-adjacent source list, exactly beside owned panes (EP-030/031 precedent, WM-SRC-000262). Alternative (editing inherited `src/updater.cpp` directly) rejected: violates the inherited-source rule; the inherited dblsqd surface stays untouched and the new signed-update core lives in `wirecore/crates/wire-updater/` with schema at `schemas/wiremudder/update/` and real fixtures at `tools/update-fixtures/`. Consequence: manual gameplay is preserved; rollback is a single `git checkout -- src/CMakeLists.txt`. Affects WM-FEAT-0102/0230..0238/0240 and WM-SPEC-020-R04/R06/R10, WM-SPEC-028-R04/R08. Security: no signing keys enter agent env (SPEC-020-R09).
+- 2026-08-28: M1 -- updater boundary is a namespaced Qt model-side boundary at `src/wiremudder/updater/` wired into `mudlet_SRCS` via the USE_UPDATER-adjacent source list, exactly beside owned panes (EP-030/031 precedent, WM-SRC-000262). Alternative (editing inherited `src/updater.cpp` directly) rejected: violates the inherited-source rule; the inherited dblsqd surface stays untouched and the new signed-update core lives in `wirecore/crates/wire-updater/` with schema at `schemas/wiremudder/update/` and real fixtures at `tools/update-fixtures/`. Consequence: manual gameplay is preserved; rollback is a single `git checkout -- src/CMakeLists.txt`. Affects WM-FEAT-0102/0230..0238/0240 and WM-SPEC-020-R04/R06/R10, WM-SPEC-028-R04/R08. Security: no signing keys enter agent env (SPEC-020-R09).
 
 # 14. Outcomes and Retrospective
 

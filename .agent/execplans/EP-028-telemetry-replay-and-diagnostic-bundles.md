@@ -315,16 +315,16 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 Append dated evidence-backed discoveries. Speculation is not a discovery.
 
 - 2026-08-28: The first redactor implementation used a while-loop that re-matched its own replacement (`password=[REDACTED]` still contains `password=`), causing an infinite loop during tests. Replaced with a single-pass scanner that consumes the marker itself (evidence: wire-telemetry tests, M2).
-- 2026-08-28: `serde_json::Map::len()` counts entries, not bytes — the detail-payload size bound was never enforced until the M4 failure matrix exposed it. Fixed by measuring serialized byte length (evidence: failure_matrix, M4).
-- 2026-08-28: The corpus stripped the word "player" but not actual player names. SPEC-019-R05 requires stripping player names; the honest mechanism is `FixtureGenerator::with_player_names` — the caller supplies known names from profile/world scope (evidence: security_matrix, M4).
-- 2026-08-28: Live-fire LF-028 found a real leak: "Your token is hunter2-f00" — the redactor consumed only the adjacent token after the marker (`is`), leaving the secret value exposed. The value span now runs to the sentence boundary; over-redaction is accepted over secret leakage (evidence: LF-028, M5).
+- 2026-08-28: `serde_json::Map::len()` counts entries, not bytes -- the detail-payload size bound was never enforced until the M4 failure matrix exposed it. Fixed by measuring serialized byte length (evidence: failure_matrix, M4).
+- 2026-08-28: The corpus stripped the word "player" but not actual player names. SPEC-019-R05 requires stripping player names; the honest mechanism is `FixtureGenerator::with_player_names` -- the caller supplies known names from profile/world scope (evidence: security_matrix, M4).
+- 2026-08-28: Live-fire LF-028 found a real leak: "Your token is hunter2-f00" -- the redactor consumed only the adjacent token after the marker (`is`), leaving the secret value exposed. The value span now runs to the sentence boundary; over-redaction is accepted over secret leakage (evidence: LF-028, M5).
 
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
 
-- 2026-08-28: Architecture — telemetry/replay implemented as two isolated WireCore crates (`wire-telemetry`, `wire-replay`) with canonical schemas under `schemas/wiremudder/telemetry/`, a passive Qt6 diagnostics UI boundary, and LF-028 live-fire. Evidence: WM-SRC-000186..192; node contract EP-028. Alternative: single combined crate — rejected to keep ring-buffer capture separate from deterministic replay and bundles. Consequence: narrow, testable boundaries. Reversal: delete crates and revert CMakeLists. Affects WM-FEAT-0128/0132/0221/0223/0224/0225/0227. Privacy: telemetry off by default, redaction corpus, no hosted endpoint. Compatibility: schemas versioned const 1; replay deterministic. Performance: SPEC-004 budgets measured in M4.
-- 2026-08-28: Inherited integration — `src/CMakeLists.txt` is the only inherited edit, via discovered amendment WM-SRC-000186, wiring `src/wiremudder/ui/diagnostics/` into `mudlet_SRCS` exactly beside the soundscape/help panes. Alternative: separate shared library — rejected (inherited client compiles all UI sources in one list). Rollback: `git checkout -- src/CMakeLists.txt`.
+- 2026-08-28: Architecture -- telemetry/replay implemented as two isolated WireCore crates (`wire-telemetry`, `wire-replay`) with canonical schemas under `schemas/wiremudder/telemetry/`, a passive Qt6 diagnostics UI boundary, and LF-028 live-fire. Evidence: WM-SRC-000186..192; node contract EP-028. Alternative: single combined crate -- rejected to keep ring-buffer capture separate from deterministic replay and bundles. Consequence: narrow, testable boundaries. Reversal: delete crates and revert CMakeLists. Affects WM-FEAT-0128/0132/0221/0223/0224/0225/0227. Privacy: telemetry off by default, redaction corpus, no hosted endpoint. Compatibility: schemas versioned const 1; replay deterministic. Performance: SPEC-004 budgets measured in M4.
+- 2026-08-28: Inherited integration -- `src/CMakeLists.txt` is the only inherited edit, via discovered amendment WM-SRC-000186, wiring `src/wiremudder/ui/diagnostics/` into `mudlet_SRCS` exactly beside the soundscape/help panes. Alternative: separate shared library -- rejected (inherited client compiles all UI sources in one list). Rollback: `git checkout -- src/CMakeLists.txt`.
 
 # 14. Outcomes and Retrospective
 
@@ -335,7 +335,7 @@ At completion record changed versus expected files, source evidence, commands, e
 - Source evidence: WM-SRC-000186..192 (CMake anchor, telemetry schema, replay schema, SPEC-019/023/026 anchors, UI boundary pattern).
 - Commands: `sh scripts/node-verifiers/EP-028.sh M1..M5,verify`; `cargo test` wire-telemetry 11/11, wire-replay 8/8; `cargo run --example e2e_diagnostics|failure_matrix|security_matrix|perf_fixture|lf028_live`.
 - Sentinels: `EP-028 M1: ok` .. `EP-028 M5: ok`, `node verify EP-028: ok`, `LF-028 diagnostic-bundle-redaction: ok`.
-- Performance (release, this host): ring-record p50=1µs p95=2µs worst=231µs; ring-raw worst=109µs; redaction worst=60µs; replay-hash worst=640µs; bundle-build worst=269µs; budget 5000µs (SPEC-004) — all green.
+- Performance (release, this host): ring-record p50=1us p95=2us worst=231us; ring-raw worst=109us; redaction worst=60us; replay-hash worst=640us; bundle-build worst=269us; budget 5000us (SPEC-004) -- all green.
 - Features: WM-FEAT-0128, WM-FEAT-0132, WM-FEAT-0221, WM-FEAT-0223, WM-FEAT-0224, WM-FEAT-0225, WM-FEAT-0227 all implemented and certified by feature tests + LF-028.
 - Requirements: WM-SPEC-011-R03, WM-SPEC-011-R10, WM-SPEC-019-R01, WM-SPEC-019-R03, WM-SPEC-023-R05, WM-SPEC-024-R09, WM-SPEC-025-R02, WM-SPEC-026-R07, WM-SPEC-026-R08 all green.
 - Real findings fixed in code (never weakened): redactor infinite loop; detail byte bound; player-name stripping; sentence-boundary redaction.

@@ -328,9 +328,9 @@ matrix's preserved-data-integrity proof now asserts the exact audit
 count and passes.
 
 2026-08-28: The renderer M4 fixture proved the frame-budget path with a
-real 128-emit queue: a full 5 ms frame drains the whole batch at ~70 µs
+real 128-emit queue: a full 5 ms frame drains the whole batch at ~70 us
 measured, far under the 4-6 ms SPEC-016 frame budget; worst-case P3 path
-stays ~70 µs and emergency stop ~66 µs (P0 budget 10 ms).
+stays ~70 us and emergency stop ~66 us (P0 budget 10 ms).
 
 2026-08-28: Asset provenance is enforced at the deterministic gate:
 `protected:` provenance and `unlicensed` license are rejected outright;

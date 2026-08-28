@@ -322,7 +322,7 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 
 2026-08-28: The security matrix surfaced a real fail-closed gap: a voice
 macro with risk tier `manual` was initially accepted when
-`confirmation_required=false`. That is wrong for an automated source —
+`confirmation_required=false`. That is wrong for an automated source --
 `manual` is the direct user-typed tier and must never be claimed by
 voice/automation. Fixed `VoiceMacro::validate()` to reject `manual`
 outright (WM-SPEC-009-R02 fail-closed); unit suite and security matrix
@@ -336,9 +336,9 @@ real cap is the only constraint (same class of self-limiting fixture issue
 as EP-022/EP-023 M4).
 
 2026-08-28: Real measured performance: all P3 voice paths stay well under
-the 5 ms SPEC-004 budget (mean worst case ~27 µs across recognize,
+the 5 ms SPEC-004 budget (mean worst case ~27 us across recognize,
 enqueue, barge-in, snapshot, remote-policy, emergency-stop samples);
-emergency stop measured ~24-27 µs, far under the 10 ms P0 target.
+emergency stop measured ~24-27 us, far under the 10 ms P0 target.
 
 # 13. Decision Log
 

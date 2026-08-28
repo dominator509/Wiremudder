@@ -312,7 +312,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-- 2026-08-28: EP-023 M1. The headless runtime integrates through the WireCore bridge (`src/wiremudder/bridge/wirecore_bridge.h`, EP-008/EP-009/EP-014 deps) and lives in `tools/wiremudder-supervisor/` plus `wirecore/crates/wire-headless/` — no inherited UI path is edited (WM-SRC-000154). No discovered-path amendment required for M1.
+- 2026-08-28: EP-023 M1. The headless runtime integrates through the WireCore bridge (`src/wiremudder/bridge/wirecore_bridge.h`, EP-008/EP-009/EP-014 deps) and lives in `tools/wiremudder-supervisor/` plus `wirecore/crates/wire-headless/` -- no inherited UI path is edited (WM-SRC-000154). No discovered-path amendment required for M1.
 - 2026-08-28: EP-023 owns WM-FEAT-0078/0081/0083/0121/0122/0123/0124/0125 and WM-SPEC-006-R10, WM-SPEC-017-R02/R04/R06/R10, WM-SPEC-024-R04/R08, WM-SPEC-026-R01; the global emergency stop (SPEC-009) applies to headless sessions identically to desktop.
 - 2026-08-28: EP-023 M4. Perf fixtures must stay within the real bounds they prove: a 5000-session create loop trips the 64-session cap (fresh scheduler per sample), and a 5000-enqueue loop trips the 256-queue cap (drain a full batch between batches). Same class of self-limiting fixture as EP-019/EP-021/EP-022.
 

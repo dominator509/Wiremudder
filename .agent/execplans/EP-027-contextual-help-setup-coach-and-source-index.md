@@ -327,15 +327,15 @@ At completion record changed versus expected files, source evidence, commands, e
 - 2026-08-28: Lease acquired (known EP-018 ellipsis preflight FAIL, documented, outside fence).
 - Source evidence WM-SRC-000180..000185: accepted docs tree, COMMANDS.md command catalog, UI boundary pattern, src/CMakeLists.txt integration point, headless supervisor CLI anchor, SPEC-018-R06 coach-authority anchor.
 - Discovered-path amendment for src/CMakeLists.txt (WM-SRC-000183); help-build-integration contract test.
-- Contract tests: help-authority, help-boundaries, help-build-integration, help-obligations — all ok.
+- Contract tests: help-authority, help-boundaries, help-build-integration, help-obligations -- all ok.
 - Node verifier scripts/node-verifiers/EP-027.sh (M1-M5 + verify, 11 features + 4 requirements).
 - `node contract check EP-027: ok`; `EP-027 M1: ok`; `scope audit EP-027: ok changed=9`.
 
 ## 16. M2 Progress
 
-- 2026-08-28: wire-help crate (wirecore/crates/wire-help) — Help Knowledge Index (reproducible via stable_hash; 6 source kinds; stale/unavailable source reporting), field help bubbles (safe default/validation hint/privacy note/doc link), scoped sanitized Ask context (secret redaction, approved-ref filtering), help modes (local-only/remote-redacted/disabled), Setup Coach (propose-only, apply_step hard-denied, side-effect-free), source index (opt-in/local/idle/secret-aware/ignore-aware/resumable/removable), evidence-based capability onboarding (no guessing), CLI/UI help parity, app versioning. 27/27 deterministic tests.
+- 2026-08-28: wire-help crate (wirecore/crates/wire-help) -- Help Knowledge Index (reproducible via stable_hash; 6 source kinds; stale/unavailable source reporting), field help bubbles (safe default/validation hint/privacy note/doc link), scoped sanitized Ask context (secret redaction, approved-ref filtering), help modes (local-only/remote-redacted/disabled), Setup Coach (propose-only, apply_step hard-denied, side-effect-free), source index (opt-in/local/idle/secret-aware/ignore-aware/resumable/removable), evidence-based capability onboarding (no guessing), CLI/UI help parity, app versioning. 27/27 deterministic tests.
 - Help schemas schemas/wiremudder/help/ (index-entry/field-help/ask-context/coach-step/source-index-state v1).
-- tools/help-indexer: real Rust CLI ingesting docs/, COMMANDS.md, schemas/wiremudder/, ADRs, sanitized source refs; reproducible output (identical runs, identical hash) — 174 entries across all 6 kinds.
+- tools/help-indexer: real Rust CLI ingesting docs/, COMMANDS.md, schemas/wiremudder/, ADRs, sanitized source refs; reproducible output (identical runs, identical hash) -- 174 entries across all 6 kinds.
 - M2 unit test scripts (help-schemas, wire-help, help-indexer). `EP-027 M2: ok`; `scope audit EP-027: ok changed=25`.
 
 ## 17. M3 Progress
@@ -349,7 +349,7 @@ At completion record changed versus expected files, source evidence, commands, e
 ## 18. M4 Progress
 
 - 2026-08-28: failure_matrix (8/8 proofs), security_matrix (5/5 proofs), perf_fixture (6 measured paths).
-- Real finding: help-indexer walk() compared p.extension() ("md") against ext (".md") so docs ingestion silently produced 0 entries; fixed by trimming the leading dot. Also: failure-8 exposed that the versions map lacked command-catalog, returning UnavailableSource instead of the entry — fixture now carries all kind versions. Both fixes verified by re-running.
+- Real finding: help-indexer walk() compared p.extension() ("md") against ext (".md") so docs ingestion silently produced 0 entries; fixed by trimming the leading dot. Also: failure-8 exposed that the versions map lacked command-catalog, returning UnavailableSource instead of the entry -- fixture now carries all kind versions. Both fixes verified by re-running.
 - Perf (release, real hardware): index-add 0.66us, answer-lookup 0.35us, ask-context 1.21us, coach-propose 0.01us, source-index-scan 1.60us, cli-help 0.84us. worst 1.60us vs 5000us budget (SPEC-018-R10 non-blocking).
 - Operations runbook docs/wiremudder/help/operations/runbook.md (health, readiness, disable, recovery, backup/restore, upgrade, rollback).
 - `EP-027 M4: ok`; `scope audit EP-027: ok changed=41`.
@@ -374,7 +374,7 @@ At completion record changed versus expected files, source evidence, commands, e
 - Commands and sentinels: `node contract check EP-027: ok`; `EP-027 M1..M5: ok`; `scope audit EP-027: ok` (58 changed at M5); `LF-027 help-coach-no-side-effects: ok` (6/6 obligations); `node verify EP-027: ok` (after gates).
 - Evidence hashes: .agent/state/evidence/EP-027/M1..M5/evidence.json.
 - Feature disposition: WM-FEAT-0109/0111/0112/0187/0213..0219 all implemented + certified (LF-027 + feature tests). Requirements WM-SPEC-007-R09, WM-SPEC-018-R04/R05/R09 implemented + certified.
-- Provider/platform: no external provider; AI handoff is a scoped context producer (no LLM call — provider stays disabled until certified); Qt6 UI boundary compiled (integration test). help-indexer tool reproducible.
+- Provider/platform: no external provider; AI handoff is a scoped context producer (no LLM call -- provider stays disabled until certified); Qt6 UI boundary compiled (integration test). help-indexer tool reproducible.
 - Assumptions changed: none beyond discovery log.
 - Risks: Ask WireMudder AI remains a handoff context; actual model call is external/provider territory (not claimed, consistent with fallback).
 - Rollback: git checkout -- src/CMakeLists.txt; deletion of crate/schemas/tool (additive).
