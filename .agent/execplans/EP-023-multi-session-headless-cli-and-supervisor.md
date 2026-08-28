@@ -304,7 +304,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -312,11 +312,12 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: EP-023 M1. The headless runtime integrates through the WireCore bridge (`src/wiremudder/bridge/wirecore_bridge.h`, EP-008/EP-009/EP-014 deps) and lives in `tools/wiremudder-supervisor/` plus `wirecore/crates/wire-headless/` — no inherited UI path is edited (WM-SRC-000154). No discovered-path amendment required for M1.
+- 2026-08-28: EP-023 owns WM-FEAT-0078/0081/0083/0121/0122/0123/0124/0125 and WM-SPEC-006-R10, WM-SPEC-017-R02/R04/R06/R10, WM-SPEC-024-R04/R08, WM-SPEC-026-R01; the global emergency stop (SPEC-009) applies to headless sessions identically to desktop.
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28 | M1 | Authorized new boundaries locked: `src/wiremudder/headless/`, `wirecore/crates/wire-headless/`, `schemas/wiremudder/headless/`, `tools/wiremudder-supervisor/`. | Node contract EP-023 authorized boundaries; static fence `.agent/expected-files/EP-023.txt`. | None considered; contract mandates these exact names. | Consequence: M2-M5 product work confined to these namespaced paths; no inherited `src/` edit planned. | Reversal: contract amendment. | Affects WM-FEAT-0078/0081/0083/0121/0122/0123/0124/0125, WM-SPEC-006-R10, WM-SPEC-017-R02/R04/R06/R10, WM-SPEC-024-R04/R08, WM-SPEC-026-R01. | Security/privacy: SPEC-010/SPEC-022 apply; no new authority, secret access, or egress; emergency stop shared with desktop. | License/compat/perf: no new dependency; SPEC-004 budgets apply.
 
 # 14. Outcomes and Retrospective
 
