@@ -308,7 +308,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -316,11 +316,11 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: All 38 green tags present; all 6 EP-038 dependency nodes (EP-029/032/033/035/036/037) released. `WIREMUDDER_AUTO_DEPLOY=false` confirmed in .env, `scripts/probes/auto_deploy.sh`, and `scripts/production-readiness-check.sh` — auto-deploy disabled at three real layers.
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28 | EP-038 M1 | Node verifier follows the EP-037 pattern with 4 owned requirements (WM-SPEC-000-R01/R09/R10, WM-SPEC-028-R01) checked at M5 against their VALIDATION_MATRIX test paths. Evidence: scripts/node-verifiers/EP-038.sh. Alternatives: checking requirements in M1 (rejected — requirement tests are live-fire class and belong to M5 closure). Consequence: all five subcommands run real checks; M5 asserts requirement test paths. Reversal: edit verifier + re-run M1..M5. Affects: WM-FEAT-0244, SPEC-000/020/022/027/028. Security/privacy: RC evidence only; no new authority, no egress, no signing keys. License: no new deps. Compatibility: candidate boundary is additive. Performance: gate time only. Upstream: no inherited-source edits (12 evidence rows WM-SRC-000316..327).
 
 # 14. Outcomes and Retrospective
 
