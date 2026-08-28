@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/autopilot/autopilot-config-v1.json",
+  "title": "WireMudder Guarded Autopilot Config",
+  "description": "Profile-scoped autopilot configuration. Disabled by default; every action is a visible Action Proposal; rate limits and allowlist are deterministic (WM-SPEC-009-R04, WM-SPEC-014-R10, EP-019).",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "profile",
+    "mode",
+    "queue_capacity",
+    "max_actions_per_window",
+    "window_ms",
+    "allowlist"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["disabled", "confirm-every", "allowlist-auto"]
+    },
+    "queue_capacity": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_actions_per_window": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "window_ms": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "allowlist": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[package]
+name = "wire-autopilot"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder opt-in guarded autopilot: visible bounded Action Proposals, stale-state detection, rate limits, confirmations, pause/cancel, and audit under the deterministic command gateway (SPEC-009, SPEC-014, EP-019)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+wire-actions = { path = "../wire-actions" }
+wire-policy = { path = "../wire-policy" }

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/autopilot/autopilot-status-v1.json",
+  "title": "WireMudder Guarded Autopilot Status",
+  "description": "Observable autopilot status: disabled/ready/paused/denied/error with stale reason, pending queue count, and last action time (WM-SPEC-014-R10, EP-019).",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "stale_reason",
+    "pending_count",
+    "last_action_at_ms"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["disabled", "ready", "paused", "denied", "error"]
+    },
+    "stale_reason": {
+      "type": ["string", "null"],
+      "enum": ["state-stale", "command-policy-stale", "route-stale", "approval-stale", null]
+    },
+    "pending_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_action_at_ms": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
