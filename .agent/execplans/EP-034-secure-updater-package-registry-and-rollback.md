@@ -305,6 +305,10 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock — commit 02cc6e31; verifier EP-034 M1: ok; 4 contract tests; evidence WM-SRC-000255..000275; discovered amendment src/CMakeLists.txt (WM-SRC-000262)
+- [x] M2: Core behavior and deterministic invariants — commit 2dc543e; wire-updater crate 17/17 tests zero warnings; oracle CLI; update-fixtures tool; C++ boundary; schema; verifier EP-034 M2: ok
+- [x] M3: Real integration and user-visible flow — commit 2cf25de; CMake wiring; Qt6 boundary compile zero warnings; e2e signed flow; design doc; verifier EP-034 M3: ok
+- [x] M4: Forced failures, abuse cases, performance, and operations — commit ec13daa; 11 forced failures + 5 denials; security surface; perf p50=53us p95=69us budget=1000us; runbook; verifier EP-034 M4: ok
+- [x] M5: Live-fire, evidence closure, and green tag readiness — LF-034 10/10 certified; 5 requirement tests; verifier EP-034 M5: ok
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -313,6 +317,10 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
+
+- 2026-08-28: ed25519-dalek 3.0 pins rand_core 0.10, which has no OsRng; key generation uses getrandom 0.3 seeding directly. In-crate tests use deterministic seeds (no RNG), keeping the unit suite reproducible.
+- 2026-08-28: Requirement tests live one directory deeper than milestone suites; `cd` depth is 5 (`../../../../..`), not 4 (EP-034 M5 fix, matches EP-033 lesson).
+- 2026-08-28: Oracle typed denials print to stdout with exit 0 by design (fail-closed via output); only hard errors (missing file, invalid key hex, unknown subcommand) exit nonzero. Forced-failure tests assert denial text, not exit codes.
 
 # 13. Decision Log
 
