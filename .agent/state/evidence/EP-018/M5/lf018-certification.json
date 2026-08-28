@@ -1,0 +1,31 @@
+{
+  "council_budget_enforced": true,
+  "council_budget_usd_micros": 42,
+  "council_denied_without_permission": true,
+  "council_disagreement_recorded": true,
+  "memory_deny_by_default": true,
+  "memory_pairs_denied_by_default": 87,
+  "memory_pairs_total": 88,
+  "no_self_grant_authority": true,
+  "pane_no_command_path": true,
+  "pane_passive_observer": true,
+  "policy_domains_guarded": [
+    "security",
+    "privacy",
+    "routing",
+    "package",
+    "updater",
+    "emergency-stop",
+    "command safety",
+    "telemetry",
+    "signing",
+    "plugin",
+    "update",
+    "instruction-layer"
+  ],
+  "safe_message_leak_count": 0,
+  "skill_evaluated_enabled": true,
+  "skill_pending_not_enabled": true,
+  "soul_denials": 12,
+  "studio_audit_records_denials": true
+}
