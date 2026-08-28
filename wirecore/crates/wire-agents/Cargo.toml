@@ -8,3 +8,4 @@ description = "WireMudder specialized agent registry, Agent Skill Tree, role-sco
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+wire-soul = { path = "../wire-soul" }
