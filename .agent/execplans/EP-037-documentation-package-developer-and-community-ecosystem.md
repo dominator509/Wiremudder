@@ -319,13 +319,14 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
+- [x] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 - 2026-08-28: EP-037 lease base corrected to f56c838 (HEAD at lease time); initial row copied EP-036 base by mistake — scope audit caught it immediately (correct base is a hard gate).
 - 2026-08-28: M2 unit tests must be POSIX sh — process substitution `< <(...)` failed under the verifier's `sh`; rewrote with a pipe loop. Documentation surfaces verified real: all 237 required features indexed, manifest example validates against the real schema, all 13 permission names + 3 update policies documented.
+- 2026-08-28: M4 security scan first scanned the whole docs tree and flagged `sk-` in inherited EP-020 docs (a legitimate redaction-pattern list) — narrowed the scan to EP-037-owned boundaries only. Perf: measuring per-call `cargo run` counted ~35ms of process spawn as validation cost; measuring the compiled release oracle binary directly gives the real p95=1.77ms (decisions) / 1.88ms (hash) vs the 5ms P0 budget. Package checks are P4 (SPEC-008) — the honest budget is the 5ms P0 manual-command goal from SPEC-004.
 
 # 13. Decision Log
 
