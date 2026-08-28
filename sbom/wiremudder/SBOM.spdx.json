@@ -1,0 +1,119 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "WireMudder-SBOM",
+  "documentNamespace": "https://github.com/dominator509/Wiremudder/sbom/wiremudder/sbom.spdx.json",
+  "creationInfo": {
+    "created": "2026-08-28T22:30:00Z",
+    "creators": [
+      "Tool: wiremudder-security sbom CLI",
+      "Organization: WireMudder"
+    ]
+  },
+  "packages": [
+    {
+      "name": "mudlet-core",
+      "SPDXID": "SPDXRef-Package-mudlet-core",
+      "versionInfo": "pinned",
+      "downloadLocation": "https://github.com/Mudlet/Mudlet.git",
+      "licenseConcluded": "GPL-2.0-or-later",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "3rdparty/edbee-lib",
+      "SPDXID": "SPDXRef-Package-edbee-lib",
+      "versionInfo": "locked",
+      "downloadLocation": "https://github.com/Mudlet/edbee-lib.git",
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "3rdparty/lcf",
+      "SPDXID": "SPDXRef-Package-lcf",
+      "versionInfo": "locked",
+      "downloadLocation": "https://github.com/martin-eden/lua_code_formatter.git",
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "3rdparty/qt-tags-widget",
+      "SPDXID": "SPDXRef-Package-qt-tags-widget",
+      "versionInfo": "locked",
+      "downloadLocation": "https://github.com/julian-go/qt-tags-widget.git",
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "3rdparty/qtkeychain",
+      "SPDXID": "SPDXRef-Package-qtkeychain",
+      "versionInfo": "locked",
+      "downloadLocation": "https://github.com/frankosterfeld/qtkeychain.git",
+      "licenseConcluded": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "3rdparty/sentry-native",
+      "SPDXID": "SPDXRef-Package-sentry-native",
+      "versionInfo": "locked",
+      "downloadLocation": "https://github.com/getsentry/sentry-native.git",
+      "licenseConcluded": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "wire-secrets",
+      "SPDXID": "SPDXRef-Package-wire-secrets",
+      "versionInfo": "0.1.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "GPL-3.0-or-later",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "wire-policy",
+      "SPDXID": "SPDXRef-Package-wire-policy",
+      "versionInfo": "0.1.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "GPL-3.0-or-later",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "wire-privacy",
+      "SPDXID": "SPDXRef-Package-wire-privacy",
+      "versionInfo": "0.1.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "GPL-3.0-or-later",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "wire-routing",
+      "SPDXID": "SPDXRef-Package-wire-routing",
+      "versionInfo": "0.1.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "GPL-3.0-or-later",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "wire-packages",
+      "SPDXID": "SPDXRef-Package-wire-packages",
+      "versionInfo": "0.1.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "GPL-3.0-or-later",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "name": "wire-contracts",
+      "SPDXID": "SPDXRef-Package-wire-contracts",
+      "versionInfo": "0.1.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "GPL-3.0-or-later",
+      "copyrightText": "NOASSERTION"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-mudlet-core"
+    }
+  ]
+}

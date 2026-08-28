@@ -2,3 +2,15 @@ key	command	evidence_id	owner_node	platform	verified_at
 configure	cmake --preset linux-debug-nosan	WM-SRC-000019	EP-000	linux	2026-08-27T10:41:04Z
 build	cmake --build --preset linux-debug-nosan	WM-SRC-000019	EP-000	linux	2026-08-27T10:41:04Z
 unit	ctest --preset linux-debug-nosan	WM-SRC-000019	EP-000	linux	2026-08-27T10:41:05Z
+lint	"for f in $(find src/wiremudder -type f \( -name ""*.cpp"" -o -name ""*.h"" -o -name ""*.hpp"" \) | sort); do clang-tidy -p build-linux-debug-nosan --extra-arg=-I""$PWD"" --quiet --config-file=.clang-tidy ""$f"" >/dev/null 2>&1 || { echo ""lint FAIL: $f""; exit 1; }; done; echo ""lint: ok"""	WM-SRC-000332	EP-039	linux	2026-08-28T20:39:23Z
+typecheck	cargo check --manifest-path packaging/wiremudder/Cargo.toml	WM-SRC-000333	EP-039	linux	2026-08-28T20:39:25Z
+integration	"for t in tests/wiremudder/*/integration/*.sh; do sh ""$t"" || exit 1; done"	WM-SRC-000334	EP-039	linux	2026-08-28T20:39:27Z
+e2e	"for t in tests/wiremudder/*/e2e/*.sh; do sh ""$t"" || exit 1; done"	WM-SRC-000335	EP-039	linux	2026-08-28T20:39:29Z
+compatibility	sh tests/live-fire/LF-003-compatibility-oracle-roundtrip.sh	WM-SRC-000336	EP-039	linux	2026-08-28T20:39:31Z
+security	"for t in tests/wiremudder/*/security/*.sh; do sh ""$t"" || exit 1; done"	WM-SRC-000337	EP-039	linux	2026-08-28T20:39:33Z
+dependency_audit	CARGO_TARGET_DIR=$PWD/wirecore/target cargo run --quiet --release --manifest-path security/wiremudder/Cargo.toml -- sbom sbom/wiremudder/inventory.json	WM-SRC-000338	EP-039	linux	2026-08-28T20:39:35Z
+license	CARGO_TARGET_DIR=$PWD/wirecore/target cargo run --quiet --release --manifest-path security/wiremudder/Cargo.toml -- sbom sbom/wiremudder/inventory.json	WM-SRC-000339	EP-039	linux	2026-08-28T20:39:37Z
+performance	cargo run --release --manifest-path tools/perf-capture/Cargo.toml -- --suite ep032 --out tools/perf-capture/artifacts	WM-SRC-000340	EP-039	linux	2026-08-28T20:39:39Z
+accessibility	"for t in tests/wiremudder/ep031/unit/*.sh tests/wiremudder/ep031/integration/*.sh tests/wiremudder/ep031/e2e/*.sh tests/wiremudder/ep031/security/*.sh tests/wiremudder/ep031/performance/*.sh tests/wiremudder/ep031/features/*.sh tests/wiremudder/ep031/contract/*.sh tests/wiremudder/ep031/failure/*.sh; do sh ""$t"" || exit 1; done"	WM-SRC-000341	EP-039	linux	2026-08-28T20:39:41Z
+platform	sh tests/wiremudder/platform/linux-certification.sh	WM-SRC-000342	EP-039	linux	2026-08-28T20:39:43Z
+smoke	sh tests/wiremudder/ui/001-ui-smoke.sh	WM-SRC-000343	EP-039	linux	2026-08-28T20:39:45Z

@@ -406,3 +406,6 @@
 2026-08-28T20:07:49Z | ipman-hermes | EP-039 | HEARTBEAT | discovered_path=docs/ai-instructions.md evidence=WM-SRC-000331
 2026-08-28T20:10:49Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-28T20:30:37Z | ipman-hermes | EP-039 | LEASE_TAKEOVER | holder=ipman-hermes base=cecd0c01b679e1ba299c47f8c180951d5a5fd5ad gatefix=boot repairs: ASCII execplans e992a55b, clang-format batch e6b1576b, schema-bindings array-root cecd0c01
+2026-08-28T20:39:56Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T20:42:59Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T20:45:23Z | ipman-hermes | EP-039 | LEASE_TAKEOVER | holder=ipman-hermes base=c4d4c6474d4e44ad8a567c1de24f6125279be044 gatefix=production-readiness NODE_DONE check fix

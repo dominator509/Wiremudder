@@ -19,3 +19,6 @@ tests/wiremudder/ep039/
 docs/wiremudder/ship/
 release/wiremudder/final/
 .agent/state/final-evidence/
+sbom/wiremudder/SBOM.spdx.json
+licenses/wiremudder/THIRD_PARTY_NOTICES.md
+release/wiremudder/candidate/EVIDENCE_INDEX.json
