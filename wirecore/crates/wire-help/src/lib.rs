@@ -493,6 +493,10 @@ impl HelpEngine {
         Err(HelpDenial::DeniedPolicy)
     }
 
+    pub fn coach_steps_len(&self) -> usize {
+        self.coach_steps.len()
+    }
+
     // ---- World capability onboarding (WM-SPEC-018-R08) ----
 
     /// Record an observed capability with evidence. Guessing is not

@@ -307,7 +307,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
 - [x] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
+- [x] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
@@ -345,3 +345,11 @@ At completion record changed versus expected files, source evidence, commands, e
 - Integration test help-boundary-qt6 (compile proof + passive/no-settings/no-apply invariants); e2e test help-flow (6 obligation greps).
 - Design docs docs/wiremudder/help/design/architecture.md (data scope, privacy, authority, audit, health, restart, fallback, rollback).
 - `EP-027 M3: ok`; `scope audit EP-027: ok changed=33`.
+
+## 18. M4 Progress
+
+- 2026-08-28: failure_matrix (8/8 proofs), security_matrix (5/5 proofs), perf_fixture (6 measured paths).
+- Real finding: help-indexer walk() compared p.extension() ("md") against ext (".md") so docs ingestion silently produced 0 entries; fixed by trimming the leading dot. Also: failure-8 exposed that the versions map lacked command-catalog, returning UnavailableSource instead of the entry — fixture now carries all kind versions. Both fixes verified by re-running.
+- Perf (release, real hardware): index-add 0.66us, answer-lookup 0.35us, ask-context 1.21us, coach-propose 0.01us, source-index-scan 1.60us, cli-help 0.84us. worst 1.60us vs 5000us budget (SPEC-018-R10 non-blocking).
+- Operations runbook docs/wiremudder/help/operations/runbook.md (health, readiness, disable, recovery, backup/restore, upgrade, rollback).
+- `EP-027 M4: ok`; `scope audit EP-027: ok changed=41`.
