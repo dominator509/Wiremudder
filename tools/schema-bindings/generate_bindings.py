@@ -19,7 +19,9 @@ def validate_schema(path: Path) -> dict:
     doc = json.loads(path.read_text(encoding='utf-8'))
     for key in REQUIRED_META:
         assert key in doc, f'{path}: missing {key}'
-    assert doc['type'] == 'object', f'{path}: root type not object'
+    # JSON Schema permits any root type; the transcript export is a
+    # legitimate top-level array (EP-014). Accept object and array roots.
+    assert doc['type'] in ('object', 'array'), f'{path}: unsupported root type {doc["type"]!r}'
     assert str(path).startswith(str(SCHEMA_ROOT)), f'{path}: outside schema root'
     return doc
 

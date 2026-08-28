@@ -1,6 +1,48 @@
 {
   "schemas": [
     {
+      "path": "schemas/wiremudder/actions/action-audit.schema.json",
+      "id": "https://wiremudder.dev/schemas/actions/action-audit.schema.json",
+      "title": "WireMudder Action Audit Entry",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/actions/action-proposal.schema.json",
+      "id": "https://wiremudder.dev/schemas/actions/action-proposal.schema.json",
+      "title": "WireMudder Action Proposal",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/actions/gate-decision.schema.json",
+      "id": "https://wiremudder.dev/schemas/actions/gate-decision.schema.json",
+      "title": "WireMudder Gate Decision",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/bridge/frame.schema.json",
+      "id": "https://wiremudder.dev/schemas/bridge/frame.schema.json",
+      "title": "WireMudder Bridge Frame",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/bugs/blocked.schema.json",
+      "id": "https://wiremudder.dev/schemas/bugs/blocked.schema.json",
+      "title": "WireMudder BLOCKED Report",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/bugs/report.schema.json",
+      "id": "https://wiremudder.dev/schemas/bugs/report.schema.json",
+      "title": "WireMudder Bug Report",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/bugs/workflow.schema.json",
+      "id": "https://wiremudder.dev/schemas/bugs/workflow.schema.json",
+      "title": "WireMudder Bug Remediation Workflow",
+      "schema_version": 1
+    },
+    {
       "path": "schemas/wiremudder/capability/capability.schema.json",
       "id": "https://wiremudder.dev/schemas/capability/capability.schema.json",
       "title": "WireMudder Capability",
@@ -13,9 +55,45 @@
       "schema_version": "unversioned"
     },
     {
+      "path": "schemas/wiremudder/import/plan.schema.json",
+      "id": "https://wiremudder.dev/schemas/import/plan.schema.json",
+      "title": "WireMudder Import Plan",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/import/report.schema.json",
+      "id": "https://wiremudder.dev/schemas/import/report.schema.json",
+      "title": "WireMudder Migration Report",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/packages/manifest.schema.json",
+      "id": "https://wiremudder.dev/schemas/packages/manifest.schema.json",
+      "title": "WireMudder Package Manifest",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/privacy/consent-receipt.schema.json",
+      "id": "https://wiremudder.dev/schemas/privacy/consent-receipt.schema.json",
+      "title": "WireMudder Consent Receipt",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/privacy/egress-policy.schema.json",
+      "id": "https://wiremudder.dev/schemas/privacy/egress-policy.schema.json",
+      "title": "WireMudder Egress Policy",
+      "schema_version": "unversioned"
+    },
+    {
       "path": "schemas/wiremudder/privacy/privacy.schema.json",
       "id": "https://wiremudder.dev/schemas/privacy/privacy.schema.json",
       "title": "WireMudder Privacy Class",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/privacy/redaction-policy.schema.json",
+      "id": "https://wiremudder.dev/schemas/privacy/redaction-policy.schema.json",
+      "title": "WireMudder Redaction Policy",
       "schema_version": "unversioned"
     },
     {
@@ -25,9 +103,27 @@
       "schema_version": 1
     },
     {
+      "path": "schemas/wiremudder/protocol/capability.schema.json",
+      "id": "https://wiremudder.dev/schemas/protocol/capability.schema.json",
+      "title": "WireMudder Protocol Capability Report",
+      "schema_version": "unversioned"
+    },
+    {
       "path": "schemas/wiremudder/replay/session-replay.schema.json",
       "id": "https://wiremudder.dev/schemas/replay/session-replay.schema.json",
       "title": "WireMudder Session Replay",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/storage/transcript-export.schema.json",
+      "id": "wiremudder/storage/transcript-export.schema.json",
+      "title": "WireMudder Transcript Export",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/telemetry/diagnostic-bundle.schema.json",
+      "id": "https://wiremudder.dev/schemas/telemetry/diagnostic-bundle.schema.json",
+      "title": "WireMudder Diagnostic Bundle",
       "schema_version": 1
     },
     {
@@ -35,7 +131,37 @@
       "id": "https://wiremudder.dev/schemas/telemetry/event.schema.json",
       "title": "WireMudder Telemetry Event",
       "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/telemetry/redaction-corpus.schema.json",
+      "id": "https://wiremudder.dev/schemas/telemetry/redaction-corpus.schema.json",
+      "title": "WireMudder Redaction Corpus",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/update/manifest.schema.json",
+      "id": "https://wiremudder.dev/schemas/update/manifest.schema.json",
+      "title": "WireMudder Signed Update Manifest",
+      "schema_version": 1
+    },
+    {
+      "path": "schemas/wiremudder/world/derived-fact.schema.json",
+      "id": "wiremudder/world/derived-fact.schema.json",
+      "title": "WireMudder Derived Fact",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/world/world-event.schema.json",
+      "id": "wiremudder/world/world-event.schema.json",
+      "title": "WireMudder World Event",
+      "schema_version": "unversioned"
+    },
+    {
+      "path": "schemas/wiremudder/world/world-graph.schema.json",
+      "id": "wiremudder/world/world-graph.schema.json",
+      "title": "WireMudder World Graph Snapshot",
+      "schema_version": 1
     }
   ],
-  "count": 6
+  "count": 27
 }
