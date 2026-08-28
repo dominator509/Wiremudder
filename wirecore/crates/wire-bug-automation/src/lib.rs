@@ -626,10 +626,13 @@ impl BugWorkflow {
     }
 
     pub fn complete(&mut self) -> Result<(), BugError> {
-        if self.stage != BugStage::Review && self.stage != BugStage::Rollback {
+        if self.stage != BugStage::Review
+            && self.stage != BugStage::Canary
+            && self.stage != BugStage::Rollback
+        {
             return Err(BugError::new(
                 "stage_mismatch",
-                "completion requires an approved review or completed rollback",
+                "completion requires an approved review, a passed canary, or a completed rollback",
             ));
         }
         self.stage = BugStage::Done;
