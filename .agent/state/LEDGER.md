@@ -203,3 +203,4 @@
 2026-08-28T01:12:49Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-28T01:17:31Z | ipman-hermes | EP-017 | LEASE_TAKEOVER | holder=ipman-hermes base=ee57f8cd4591cc5739df8c38e64accd502012165 gatefix=boot ellipsis repair ee57f8cd
 2026-08-28T01:26:42Z | ipman-hermes | EP-017 | MILESTONE_PASS | M3 EP-017 M3: ok; evidence=.agent/state/evidence/EP-017/M3
+2026-08-28T01:28:13Z | ipman-hermes | EP-017 | MILESTONE_PASS | M4 EP-017 M4: ok; evidence=.agent/state/evidence/EP-017/M4
