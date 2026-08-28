@@ -182,6 +182,16 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2",
+ "wire-telemetry",
+]
+
+[[package]]
+name = "wire-telemetry"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "sha2",
 ]
 
 [[package]]

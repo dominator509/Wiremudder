@@ -509,7 +509,7 @@ fn now_iso8601() -> String {
         .unwrap_or(0);
     let days = (secs / 86_400) as i64;
     let rem = secs % 86_400;
-    let (h, m, s) = (rem / 3600, (rem % 3600) / 60, rem % 60);
+    let (h, _m, s) = (rem / 3600, (rem % 3600) / 60, rem % 60);
     // civil_from_days (Howard Hinnant's algorithm)
     let z = days + 719_468;
     let era = if z >= 0 { z } else { z - 146_096 } / 146_097;

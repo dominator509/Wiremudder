@@ -9,3 +9,4 @@ description = "WireMudder deterministic session replay, diagnostic bundles, and 
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 sha2 = "0.10"
+wire-telemetry = { path = "../wire-telemetry" }
