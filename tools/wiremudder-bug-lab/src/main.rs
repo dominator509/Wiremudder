@@ -101,6 +101,10 @@ fn main() -> ExitCode {
                 created_epoch_ms: 0,
             };
             workflow = BugWorkflow::new(report);
+            // Persist before claiming success: an unavailable state path
+            // must fail loudly instead of reporting an intake that was
+            // never durable (WM-SPEC-025-R05).
+            save_state(&workflow);
             println!("intake: ok id={}", workflow.report.id.0);
         }
         Some("reproduce") => {
