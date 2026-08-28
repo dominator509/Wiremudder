@@ -304,7 +304,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -321,3 +321,12 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+## 15. M1 Progress
+
+- 2026-08-28: Lease acquired (known EP-018 ellipsis preflight FAIL, documented, outside fence, same state as EP-020-025).
+- Source evidence WM-SRC-000176..000179: inherited TMedia audio API (playMedia/stopMedia/stopAllMediaPlayers/setVolume), owned UI boundary pattern, src/CMakeLists.txt integration point, asset manifest pattern.
+- Discovered-path amendment for src/CMakeLists.txt (WM-SRC-000178); soundscape-build-integration contract test.
+- Contract tests: soundscape-authority, soundscape-boundaries, soundscape-build-integration, soundscape-obligations — all ok.
+- Node verifier scripts/node-verifiers/EP-026.sh (M1-M5 + verify).
+- `node contract check EP-026: ok`; `EP-026 M1: ok`; `scope audit EP-026: ok changed=9`.
