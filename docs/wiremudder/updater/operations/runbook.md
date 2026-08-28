@@ -72,6 +72,14 @@ All update work is P4 and cannot block manual text gameplay (SPEC-004).
 - **Denied update**: signature/hash/permission/downgrade/rollout denials are
   typed (SPEC-025) and never silently retried past the bounded retry class.
 
+## Migration
+
+A manifest with a higher `migration_version` requires a completed backup
+before install and a restore on rollback (`plan_migration`). Migration is
+planned per lane: `backup_required` (target > current), `none` (equal), or
+`restore_required` (target < current). A migration never runs during an
+active session and never silently bundles optional lanes (SPEC-020-R07/R08).
+
 ## Uninstall
 
 The updater subsystem is optional (SPEC-020-R08): it can be disabled via
