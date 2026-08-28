@@ -70,7 +70,14 @@ for row in existing:
     if row.get('commit') == commit and row.get('path') == path_text and row.get('symbol_or_range') == symbol and row.get('claim') == claim and row.get('command') == command:
         print(str(row['evidence_id']))
         raise SystemExit(0)
-evidence_id = f'WM-SRC-{len(existing) + 1:06d}'
+# Allocate the next evidence ID by scanning existing IDs, never by
+# len()+1: renumbered or repaired ledgers have gaps and would collide.
+max_id = 0
+for row in existing:
+    m = re.fullmatch(r'WM-SRC-(\d{6})', str(row.get('evidence_id', '')))
+    if m:
+        max_id = max(max_id, int(m.group(1)))
+evidence_id = f'WM-SRC-{max_id + 1:06d}'
 log_rel = f'.agent/state/source-evidence/{evidence_id}.log'
 log_path = ROOT / log_rel
 log_path.write_text(output, encoding='utf-8')

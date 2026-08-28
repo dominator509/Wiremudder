@@ -3,6 +3,7 @@
 .agent/node-contracts/EP-021.md
 .agent/expected-files/EP-021.txt
 .agent/expected-files/EP-021.discovered.txt
+.agent/AUTHORITY_FILES.tsv
 .agent/milestone-files/EP-021-M1.txt
 .agent/milestone-files/EP-021-M2.txt
 .agent/milestone-files/EP-021-M3.txt
@@ -14,6 +15,7 @@
 .agent/state/COMMANDS.lock.tsv
 .agent/state/evidence/EP-021/
 scripts/node-verifiers/EP-021.sh
+scripts/source_evidence.py
 tests/live-fire/LF-021-world-memory-correction.sh
 tests/wiremudder/ep021/
 docs/wiremudder/world-brain/
