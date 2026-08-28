@@ -291,7 +291,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -301,9 +301,16 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
 
+- 2026-08-28 (M1): EP-032 owns 14 feature rows (WM-FEAT-0131, 0134..0145, 0163) and 5 requirements (WM-SPEC-002-R07, 002-R09, 004-R12, 019-R10, 027-R06). All four authorized boundaries (benchmarks/wiremudder/, tests/wiremudder/performance/, docs/wiremudder/performance/, tools/perf-capture/) are NEW paths — unlike EP-030/031, this node requires no inherited-source edit and no discovered-path amendment (discovered rows=0).
+- 2026-08-28 (M1): The per-crate perf fixture pattern already exists across the owned subsystems (wire-renderer, wire-voice, wire-replay, wire-import, wire-bug-automation, wire-soundscape all ship examples/perf_fixture.rs). EP-032's job is to orchestrate them reproducibly (benchmarks/wiremudder), capture raw artifacts (tools/perf-capture), and enforce budgets — not to create fixtures from scratch.
+- 2026-08-28 (M1): The performance constitution (PERFORMANCE_CONSTITUTION.md) is the binding policy: P0 never waits on optional work, every queue has capacity/priority/overflow/latency/drop/owner, one session cannot starve another, and target budgets are input < 5 ms, outbound < 10 ms, terminal append < 10 ms, emergency stop < 10 ms, renderer 4-6 ms/frame. R12/R06 demand distributions, hardware profile, workload, raw artifacts, and regression thresholds — no single anecdotal timings.
+
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-28 (M1): Adopt the performance constitution as the binding oracle for this node: every benchmark must report distributions (p50/p95/max), hardware profile, workload, raw artifacts, and regression thresholds per WM-SPEC-004-R12 and WM-SPEC-027-R06. Evidence: WM-SRC-000231..000242. Alternatives: single-sample timings rejected by R12 explicitly. Consequence: every perf fixture output is captured into raw artifacts under tools/perf-capture. Reversal: revert the benchmark harness. Affects WM-SPEC-004-R12, WM-SPEC-027-R06, WM-FEAT-0131..0139; security/privacy neutral.
+- 2026-08-28 (M1): Orchestrate the existing per-crate perf fixtures through a new benchmarks/wiremudder harness rather than duplicating fixtures. Evidence: perf_fixture.rs in wire-renderer/voice/replay/import/bug-automation/soundscape (WM-SRC-000240..000241). Alternatives: new standalone benchmarks rejected as duplication of the established pattern. Consequence: reproducible driver + raw artifact capture across all owned crates. Reversal: remove the harness and tool. Affects WM-FEAT-0131; performance only.
 
 # 14. Outcomes and Retrospective
 
