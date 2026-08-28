@@ -1,0 +1,10 @@
+[package]
+name = "wiremudder-benchmarks"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder benchmark model: SPEC-004 priority rings, budgets, bounded queues, overflow policies, session fairness, and degradation (EP-032)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

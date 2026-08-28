@@ -1,0 +1,121 @@
+{
+  "hardware": {
+    "arch": "x86_64",
+    "host": "linux",
+    "os": "linux"
+  },
+  "observed_at": 1787908278161,
+  "raw_evidence": true,
+  "regression_thresholds": [
+    {
+      "max_us_limit": 6000,
+      "metric": "renderer-emits",
+      "p95_us_limit": 6000
+    },
+    {
+      "max_us_limit": 5000,
+      "metric": "voice-jobs",
+      "p95_us_limit": 5000
+    },
+    {
+      "max_us_limit": 5000,
+      "metric": "import-plan",
+      "p95_us_limit": 5000
+    },
+    {
+      "max_us_limit": 5000,
+      "metric": "replay-batch",
+      "p95_us_limit": 5000
+    },
+    {
+      "max_us_limit": 5000,
+      "metric": "bug-automation",
+      "p95_us_limit": 5000
+    },
+    {
+      "max_us_limit": 5000,
+      "metric": "soundscape-transitions",
+      "p95_us_limit": 5000
+    }
+  ],
+  "runs": [
+    {
+      "budget_met": true,
+      "budget_us": 6000,
+      "fixture": "perf_fixture",
+      "max_us": 33,
+      "overflow": "coalesce",
+      "owner": "renderer",
+      "p50_us": 33,
+      "p95_us": 33,
+      "priority": "P3",
+      "queue": "renderer-emits"
+    },
+    {
+      "budget_met": true,
+      "budget_us": 5000,
+      "fixture": "perf_fixture",
+      "max_us": 14,
+      "overflow": "drop",
+      "owner": "voice",
+      "p50_us": 14,
+      "p95_us": 14,
+      "priority": "P3",
+      "queue": "voice-jobs"
+    },
+    {
+      "budget_met": true,
+      "budget_us": 5000,
+      "fixture": "perf_fixture",
+      "max_us": 54,
+      "overflow": "defer",
+      "owner": "import",
+      "p50_us": 6,
+      "p95_us": 10,
+      "priority": "P2",
+      "queue": "import-plan"
+    },
+    {
+      "budget_met": true,
+      "budget_us": 5000,
+      "fixture": "perf_fixture",
+      "max_us": 273,
+      "overflow": "defer",
+      "owner": "replay",
+      "p50_us": 97,
+      "p95_us": 172,
+      "priority": "P4",
+      "queue": "replay-batch"
+    },
+    {
+      "budget_met": true,
+      "budget_us": 5000,
+      "fixture": "perf_fixture",
+      "max_us": 48,
+      "overflow": "defer",
+      "owner": "bug-lab",
+      "p50_us": 0,
+      "p95_us": 1,
+      "priority": "P4",
+      "queue": "bug-automation"
+    },
+    {
+      "budget_met": true,
+      "budget_us": 5000,
+      "fixture": "perf_fixture",
+      "max_us": 2,
+      "overflow": "coalesce",
+      "owner": "soundscape",
+      "p50_us": 2,
+      "p95_us": 2,
+      "priority": "P3",
+      "queue": "soundscape-transitions"
+    }
+  ],
+  "suite": "ep032",
+  "workload": {
+    "fixture": "owned-crate perf fixtures (release)",
+    "iterations": 6,
+    "note": "each fixture reports its own p50/p95/max distribution"
+  }
+}
