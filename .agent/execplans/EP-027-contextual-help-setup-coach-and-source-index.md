@@ -304,7 +304,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -321,3 +321,12 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+## 15. M1 Progress
+
+- 2026-08-28: Lease acquired (known EP-018 ellipsis preflight FAIL, documented, outside fence).
+- Source evidence WM-SRC-000180..000185: accepted docs tree, COMMANDS.md command catalog, UI boundary pattern, src/CMakeLists.txt integration point, headless supervisor CLI anchor, SPEC-018-R06 coach-authority anchor.
+- Discovered-path amendment for src/CMakeLists.txt (WM-SRC-000183); help-build-integration contract test.
+- Contract tests: help-authority, help-boundaries, help-build-integration, help-obligations — all ok.
+- Node verifier scripts/node-verifiers/EP-027.sh (M1-M5 + verify, 11 features + 4 requirements).
+- `node contract check EP-027: ok`; `EP-027 M1: ok`; `scope audit EP-027: ok changed=9`.
