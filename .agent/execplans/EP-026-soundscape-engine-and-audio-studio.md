@@ -306,7 +306,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
 - [x] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
+- [x] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
 - [ ] M5: Live-fire, evidence closure, and green tag readiness
 
@@ -337,3 +337,11 @@ At completion record changed versus expected files, source evidence, commands, e
 - Audio schemas schemas/wiremudder/audio/ (binding/asset-pack/soundscape-state/studio-config/transition v1).
 - Original CC0 procedural audio manifest assets/wiremudder/audio/manifest.json + README (SPEC-016-R01/R09).
 - M2 unit test scripts (audio-schemas, wire-soundscape). `EP-026 M2: ok`; `scope audit EP-026: ok changed=23`.
+
+## 17. M3 Progress
+
+- 2026-08-28: Soundscape UI boundary src/wiremudder/ui/soundscape/soundscape_boundary.{h,cpp} (passive Qt6 model-side pane, states Loading/Ready/Disabled/Denied/Degraded/Canceled/Unavailable/Error, bindings with independent volume/disable, profile-scoped studio controls, mode, provenance display, transition request flags, failed state). Wired into src/CMakeLists.txt mudlet_SRCS + UI headers (discovered amendment WM-SRC-000178). Compiles clean vs real Qt6 (/opt/qt/6.8.2/gcc_64) with -Wall -Wextra zero warnings.
+- Rust e2e example e2e_soundscape.rs proves all 6 acceptance obligations with real output lines.
+- Integration test soundscape-boundary-qt6 (compile proof + passive invariants); e2e test soundscape-flow (6 obligation greps).
+- Design docs docs/wiremudder/soundscape/design/architecture.md (data scope, privacy, authority, audit, health, restart, fallback, rollback).
+- `EP-026 M3: ok`; `scope audit EP-026: ok changed=31`.

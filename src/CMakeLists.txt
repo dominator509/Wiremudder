@@ -224,6 +224,7 @@ set(mudlet_SRCS
     wiremudder/ui/power-tools/power_tools_boundary.cpp
     wiremudder/ui/voice/voice_boundary.cpp
     wiremudder/ui/renderer/renderer_boundary.cpp
+    wiremudder/ui/soundscape/soundscape_boundary.cpp
     XMLexport.cpp
     XMLimport.cpp)
 
@@ -470,6 +471,7 @@ set(mudlet_HDRS
     wiremudder/ui/power-tools/power_tools_boundary.h
     wiremudder/ui/voice/voice_boundary.h
     wiremudder/ui/renderer/renderer_boundary.h
+    wiremudder/ui/soundscape/soundscape_boundary.h
     XMLexport.h
     XMLimport.h)
 
