@@ -222,6 +222,7 @@ set(mudlet_SRCS
     wiremudder/ui/autopilot/autopilot_boundary.cpp
     wiremudder/ui/assistance/assistance_boundary.cpp
     wiremudder/ui/power-tools/power_tools_boundary.cpp
+    wiremudder/ui/voice/voice_boundary.cpp
     XMLexport.cpp
     XMLimport.cpp)
 
@@ -466,6 +467,7 @@ set(mudlet_HDRS
     wiremudder/ui/autopilot/autopilot_boundary.h
     wiremudder/ui/assistance/assistance_boundary.h
     wiremudder/ui/power-tools/power_tools_boundary.h
+    wiremudder/ui/voice/voice_boundary.h
     XMLexport.h
     XMLimport.h)
 
