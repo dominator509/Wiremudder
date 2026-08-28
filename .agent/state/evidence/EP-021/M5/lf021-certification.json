@@ -1,0 +1,14 @@
+{
+  "bible_exportable": true,
+  "bible_observer": true,
+  "brain_observer": true,
+  "correction_supersedes": true,
+  "history_preserved": true,
+  "hot_durable_separate": true,
+  "no_protected_assets": true,
+  "private_scoped": true,
+  "provenance_recorded": true,
+  "restore_approved": true,
+  "restore_denied_until_approved": true,
+  "time_machine_observer": true
+}

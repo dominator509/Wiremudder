@@ -304,20 +304,86 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M1: Evidence, contracts, and exact path lock
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
+
+Evidence: `.agent/state/evidence/EP-021/M1..M5`, `LF-021` certification
+`lf021-certification.json`, commits `640f3fe7` (M1), `8b111807` (M2),
+`13c05d0a` (M3), `54a20127` (M4).
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: The evidence ID allocator in `scripts/source_evidence.py`
+  (len(existing)+1) collided for the third time when EP-021 records
+  reused IDs 133-137 that belonged to EP-020's renumbered records. The
+  log files for WM-SRC-000133..000137 were overwritten. Repaired by
+  restoring each original log from its own recorded command (all hashes
+  verified) and renumbering the new EP-021 records to 139-145; the
+  allocator was then fixed to scan max existing ID + 1 (WM-SRC-000144
+  records the change) and the script added to the EP-021 static fence.
+- 2026-08-28: `TacticalHud`-style private-field limits recurred in the
+  failure matrix (max_entities); the fix is to use real public defaults.
+  For EP-021 the equivalent pitfall was the Time Machine perf fixture
+  exhausting the 50-snapshot cap during warmup; the fixture now
+  pre-creates one approved snapshot and measures only the read path.
+- 2026-08-28: The security matrix initially corrected a fact that was
+  never observed (`exit.north`), producing NotFound; corrected to use the
+  fact that exists in the scenario (`note`).
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28: World memory surfaces are observer-only by construction
+  (no command path); facts, continuity, and snapshots are read-only
+  data. Evidence: crate tests + LF-021 certification (`brain_observer`,
+  `bible_observer`, `time_machine_observer`). Consequence: nothing in
+  the memory stack can send a command; manual gameplay is preserved.
+- 2026-08-28: User corrections supersede derived facts while preserving
+  history (SPEC-012-R10); Time Machine restore is gated on explicit
+  user approval (SPEC-012-R09). Evidence: `correct()` + `approve()`
+  invariants + LF-021. Alternatives: silent merge/overwrite (rejected:
+  violates spec). Consequence: history is never erased and restores are
+  never automatic.
+- 2026-08-28: World Bible stores text metadata only; no protected asset
+  bytes, no base64 blobs, no live generation. Evidence:
+  `no_protected_assets` test + security matrix. Impact: SPEC-016-R02/R07.
+- 2026-08-28: The evidence ID allocator root cause was fixed in
+  `scripts/source_evidence.py` (scan max existing ID + 1) and the script
+  was added to the EP-021 static fence and authority ledger. Evidence:
+  WM-SRC-000144, contract test `evidence-allocator.sh`. Reversal: revert
+  the patch; ledger returns to colliding behavior.
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+Changed vs expected: all static expected paths present; `scripts/
+source_evidence.py` added to the static fence + authority ledger for the
+allocator root-cause fix (WM-SRC-000144).
+
+Commands and sentinels (all observed):
+- `sh scripts/node-contract-check.sh EP-021` -> `node contract check EP-021: ok`
+- `sh scripts/node-verifiers/EP-021.sh M1` -> `EP-021 M1: ok`
+- `sh scripts/node-verifiers/EP-021.sh M2` -> `EP-021 M2: ok`
+- `sh scripts/node-verifiers/EP-021.sh M3` -> `EP-021 M3: ok`
+- `sh scripts/node-verifiers/EP-021.sh M4` -> `EP-021 M4: ok`
+- `sh scripts/node-verifiers/EP-021.sh M5` -> `EP-021 M5: ok`
+- `sh tests/live-fire/LF-021-world-memory-correction.sh` -> `LF-021: ok`
+- `sh scripts/scope-audit.sh EP-021` -> `scope audit EP-021: ok`
+
+Feature disposition: WM-FEAT-0050/0051/0052/0053/0191/0192/0193/0194/
+0195 certified (full/ai release profile) with feature tests + LF-021.
+Requirement disposition: WM-SPEC-012-R01/R08/R09, WM-SPEC-016-R02/R04/
+R07, WM-SPEC-023-R02 certified with requirement tests.
+
+Provider/platform certification: none claimed. RAG memory (WM-FEAT-0052)
+ships the deterministic observation store; vector retrieval stays
+disabled per the node's accepted fallback (no vector index exists).
+
+Performance: `perf_world_memory` fixture, runs=5000, p95=2us (SPEC-004
+budget 5ms), recorded in `tests/wiremudder/ep021/performance/`.
+
+Assumptions changed: none. Risks: format-check pre-existing violations
+remain outside the EP-021 fence (documented at EP-020). Rollback:
+documented in `docs/wiremudder/world-brain/operations/`.
+Next scheduler output: see `scripts/graph-next.sh`.
