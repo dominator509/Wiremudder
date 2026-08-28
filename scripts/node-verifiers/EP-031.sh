@@ -94,6 +94,20 @@ case "${1:-}" in
     sh scripts/scope-audit.sh EP-031 >/dev/null || fail "scope audit"
     ok "EP-031 M5: ok"
     ;;
+  verify)
+    for m in M1 M2 M3 M4 M5; do
+      sh "$0" "$m" >/dev/null || fail "subcommand $m"
+    done
+    sh scripts/authority-check.sh >/dev/null || fail "authority check"
+    sh scripts/source-evidence-check.sh >/dev/null || fail "source evidence check"
+    sh scripts/discovered-path-check.sh EP-031 >/dev/null || fail "discovered path check"
+    sh scripts/node-contract-check.sh EP-031 >/dev/null || fail "node contract check"
+    sh scripts/expected-files-audit.sh EP-031 >/dev/null || fail "expected files audit"
+    sh scripts/scope-audit.sh EP-031 >/dev/null || fail "scope audit"
+    grep -q 'NODE_DONE' .agent/state/LEDGER.md || fail "NODE_DONE not in ledger"
+    git rev-parse -q --verify "refs/tags/green/EP-031" >/dev/null || fail "green/EP-031 tag missing"
+    ok "EP-031 verify: ok"
+    ;;
   *)
     fail "unknown subcommand ${1:-<none>}"
     ;;
