@@ -1,0 +1,10 @@
+[package]
+name = "wire-time-machine"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder Time Machine: background, compacted, exportable snapshots reversible to user-approved checkpoints (SPEC-012-R09, EP-021)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

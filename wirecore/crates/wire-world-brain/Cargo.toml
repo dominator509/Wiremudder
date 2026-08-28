@@ -1,0 +1,10 @@
+[package]
+name = "wire-world-brain"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder World Brain: provenance-aware world memory with confidence, corrections, and separate hot/durable state (SPEC-012-R01/R02/R10, SPEC-023-R02/R03, EP-021)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

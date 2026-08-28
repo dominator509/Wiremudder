@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorldBibleRegionContinuity",
+  "description": "Region continuity metadata without protected assets (SPEC-012-R08, SPEC-016-R02, EP-021).",
+  "type": "object",
+  "required": [
+    "region", "palette", "terrain", "lighting", "faction", "silhouette",
+    "architecture_motif", "sound_rule", "roleplay_tone", "constraints",
+    "schema_version"
+  ],
+  "properties": {
+    "region": { "type": "string" },
+    "palette": { "type": "array", "items": { "type": "string" } },
+    "terrain": { "type": "string" },
+    "lighting": { "type": "string" },
+    "faction": { "type": "string" },
+    "silhouette": { "type": "string" },
+    "architecture_motif": { "type": "string" },
+    "sound_rule": { "type": "string" },
+    "roleplay_tone": { "type": "string" },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "schema_version": { "type": "integer", "const": 1 }
+  }
+}

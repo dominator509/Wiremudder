@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeMachineSnapshot",
+  "description": "Background, compacted, exportable snapshot reversible only to user-approved checkpoints (SPEC-012-R09, EP-021).",
+  "type": "object",
+  "required": ["id", "label", "view", "at_ms", "user_approved", "schema_version"],
+  "properties": {
+    "id": { "type": "string" },
+    "label": { "type": "string" },
+    "view": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": "string" }
+      }
+    },
+    "at_ms": { "type": "integer", "minimum": 0 },
+    "user_approved": { "type": "boolean" },
+    "schema_version": { "type": "integer", "const": 1 }
+  }
+}
