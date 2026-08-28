@@ -216,3 +216,4 @@
 2026-08-28T02:13:58Z | ipman-hermes | EP-018 | HEARTBEAT | holder=ipman-hermes
 2026-08-28T02:16:09Z | ipman-hermes | EP-018 | MILESTONE_PASS | M5 EP-018 M5: ok; LF-018 green; evidence=.agent/state/evidence/EP-018/M5
 2026-08-28T02:16:09Z | ipman-hermes | EP-018 | HEARTBEAT | holder=ipman-hermes
+2026-08-28T02:16:22Z | ipman-hermes | EP-018 | NODE_DONE | node verify EP-018: ok; green/EP-018 tag created
