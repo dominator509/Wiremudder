@@ -25,11 +25,13 @@ enum class DoorStatus { None, Open, Closed, Locked };
 enum class IdentityState { Confirmed, Ambiguous, Corrected };
 
 // Timed exit availability window in minutes of day [0, 1440).
-struct TimedWindow {
+struct TimedWindow
+{
     quint32 startMinute = 0;
     quint32 endMinute = 0;
 
-    bool contains(quint32 minute) const {
+    bool contains(quint32 minute) const
+    {
         if (startMinute <= endMinute) {
             return minute >= startMinute && minute < endMinute;
         }
@@ -38,7 +40,8 @@ struct TimedWindow {
 };
 
 // A single typed exit (WM-FEAT-0166, WM-SPEC-005-R07).
-struct ExitSpec {
+struct ExitSpec
+{
     quint32 to = 0;
     QString command;
     ExitKind kind = ExitKind::Normal;
@@ -48,7 +51,8 @@ struct ExitSpec {
 };
 
 // Room snapshot (WM-SPEC-005-R07).
-struct RoomSnapshot {
+struct RoomSnapshot
+{
     quint32 id = 0;
     quint32 area = 0;
     QString name;
@@ -60,7 +64,8 @@ struct RoomSnapshot {
 };
 
 // Area grouping (WM-FEAT-0165).
-struct AreaSpec {
+struct AreaSpec
+{
     quint32 id = 0;
     QString name;
     std::optional<quint32> zone;
@@ -68,14 +73,16 @@ struct AreaSpec {
 };
 
 // Zone clustering (WM-FEAT-0165).
-struct ZoneSpec {
+struct ZoneSpec
+{
     quint32 id = 0;
     QString name;
     QSet<quint32> areaIds;
 };
 
 // Route result (WM-FEAT-0167).
-struct RouteResult {
+struct RouteResult
+{
     quint32 from = 0;
     quint32 to = 0;
     QList<quint32> nodes;
@@ -86,7 +93,8 @@ struct RouteResult {
 // Derived fact provenance (WM-SPEC-012-R02).
 enum class Sensitivity { Public, Private, Secret };
 
-struct DerivedFact {
+struct DerivedFact
+{
     quint64 id = 0;
     QString sourceEvent;
     quint64 time = 0;
@@ -98,7 +106,8 @@ struct DerivedFact {
     QVariantMap payload;
 };
 
-struct Correction {
+struct Correction
+{
     quint64 factId = 0;
     quint64 time = 0;
     QVariantMap payload;
@@ -106,21 +115,24 @@ struct Correction {
 };
 
 // Bounded hot current-state cache (WM-SPEC-012-R03).
-class HotCacheQt {
+class HotCacheQt
+{
 public:
     static constexpr int kMaxEntries = 4096;
 
     void setCurrentRoom(quint32 room) { currentRoom_ = room; }
     std::optional<quint32> currentRoom() const { return currentRoom_; }
 
-    bool set(const QString& key, const QVariant& value) {
+    bool set(const QString& key, const QVariant& value)
+    {
         if (!entries_.contains(key) && entries_.size() >= kMaxEntries) {
             return false;
         }
         entries_.insert(key, value);
         return true;
     }
-    std::optional<QVariant> get(const QString& key) const {
+    std::optional<QVariant> get(const QString& key) const
+    {
         if (!entries_.contains(key)) {
             return std::nullopt;
         }
@@ -134,7 +146,8 @@ private:
 };
 
 // World graph core (WM-FEAT-0165..0168).
-class WorldGraphQt {
+class WorldGraphQt
+{
 public:
     static constexpr quint32 kSchemaVersion = 1;
     static constexpr int kMaxRooms = 1000000;
@@ -154,17 +167,11 @@ public:
     // Weighted/timed A*-style routing (deterministic Dijkstra).
     // `now` = minute of day; nullopt ignores timed windows. Hidden exits
     // routable only when allowHidden is true.
-    std::optional<RouteResult> route(quint32 from, quint32 to,
-                                     std::optional<quint32> now,
-                                     bool allowHidden) const;
+    std::optional<RouteResult> route(quint32 from, quint32 to, std::optional<quint32> now, bool allowHidden) const;
 
     // Derived facts and corrections (WM-SPEC-012-R02/R10).
-    quint64 insertFact(const QString& sourceEvent, quint64 time,
-                       const QString& scope, double confidence,
-                       Sensitivity sensitivity, const QString& modelVersion,
-                       const QVariantMap& payload);
-    bool applyCorrection(quint64 factId, quint64 time,
-                         const QVariantMap& payload, const QString& note);
+    quint64 insertFact(const QString& sourceEvent, quint64 time, const QString& scope, double confidence, Sensitivity sensitivity, const QString& modelVersion, const QVariantMap& payload);
+    bool applyCorrection(quint64 factId, quint64 time, const QVariantMap& payload, const QString& note);
     int activeFactCount() const;
     int correctionCount() const { return corrections_.size(); }
 

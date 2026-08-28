@@ -18,14 +18,22 @@ static_assert(sizeof(AccessibilityPaneModel) > 0, "AccessibilityPaneModel must b
 QString AccessibilityPaneModel::stateLabel() const
 {
     switch (m_state) {
-        case AccessibilityPaneState::Loading: return QStringLiteral("loading");
-        case AccessibilityPaneState::Ready: return QStringLiteral("ready");
-        case AccessibilityPaneState::Disabled: return QStringLiteral("disabled");
-        case AccessibilityPaneState::Denied: return QStringLiteral("denied");
-        case AccessibilityPaneState::Degraded: return QStringLiteral("degraded");
-        case AccessibilityPaneState::Canceled: return QStringLiteral("canceled");
-        case AccessibilityPaneState::Unavailable: return QStringLiteral("unavailable");
-        case AccessibilityPaneState::Error: return QStringLiteral("error");
+    case AccessibilityPaneState::Loading:
+        return QStringLiteral("loading");
+    case AccessibilityPaneState::Ready:
+        return QStringLiteral("ready");
+    case AccessibilityPaneState::Disabled:
+        return QStringLiteral("disabled");
+    case AccessibilityPaneState::Denied:
+        return QStringLiteral("denied");
+    case AccessibilityPaneState::Degraded:
+        return QStringLiteral("degraded");
+    case AccessibilityPaneState::Canceled:
+        return QStringLiteral("canceled");
+    case AccessibilityPaneState::Unavailable:
+        return QStringLiteral("unavailable");
+    case AccessibilityPaneState::Error:
+        return QStringLiteral("error");
     }
     return QStringLiteral("unavailable");
 }

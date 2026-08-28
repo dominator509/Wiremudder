@@ -49,7 +49,8 @@ enum class HelpModeQt {
 };
 
 // One help bubble (WM-SPEC-018-R01).
-struct HelpBubbleQt {
+struct HelpBubbleQt
+{
     QString fieldId;
     QString label;
     QString safeDefault;
@@ -59,7 +60,8 @@ struct HelpBubbleQt {
 };
 
 // One coach step: explain and propose only (WM-SPEC-018-R06).
-struct CoachStepQt {
+struct CoachStepQt
+{
     QString id;
     QString title;
     QString explanation;
@@ -68,7 +70,8 @@ struct CoachStepQt {
 };
 
 // One evidence-based capability probe (WM-SPEC-018-R08).
-struct CapabilityProbeQt {
+struct CapabilityProbeQt
+{
     QString name;
     bool observed = false;
     QStringList evidence;
@@ -76,7 +79,8 @@ struct CapabilityProbeQt {
 };
 
 // Source index state (WM-SPEC-018-R05).
-struct SourceIndexQt {
+struct SourceIndexQt
+{
     bool enabled = false;
     bool localOnly = true;
     bool idleOnly = true;
@@ -88,7 +92,8 @@ struct SourceIndexQt {
 
 // Help pane. Model-side Qt surface; no QWidget dependency.
 // Passive: never sends commands, never mutates settings.
-class HelpPaneQt {
+class HelpPaneQt
+{
 public:
     explicit HelpPaneQt();
 
@@ -119,8 +124,8 @@ public:
     QString modeLabel() const;
 
     // Ask WireMudder AI handoff (scoped sanitized context).
-    void setAskContext(const QString& fieldId, const QString& sanitizedState,
-                       const QString& validationError, const QStringList& approvedRefs) {
+    void setAskContext(const QString& fieldId, const QString& sanitizedState, const QString& validationError, const QStringList& approvedRefs)
+    {
         askFieldId_ = fieldId;
         askSanitizedState_ = sanitizedState;
         askValidationError_ = validationError;
@@ -151,7 +156,8 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         bubbles_.clear();
         coachSteps_.clear();
         capabilities_.clear();

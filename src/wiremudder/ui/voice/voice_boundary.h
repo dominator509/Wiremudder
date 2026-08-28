@@ -52,7 +52,8 @@ enum class VoiceMicState {
 };
 
 // One visible voice macro (passes command safety; never auto-sends).
-struct VoiceMacroQt {
+struct VoiceMacroQt
+{
     QString id;
     QString name;
     QString phrase;
@@ -63,17 +64,19 @@ struct VoiceMacroQt {
 };
 
 // One licensed voice style (protected identities require authorization).
-struct VoiceStyleQt {
+struct VoiceStyleQt
+{
     QString id;
     QString label;
-    QString kind;      // character | agent
+    QString kind; // character | agent
     QString license;
     bool authorized = false;
     bool protectedIdentity = false;
 };
 
 // One subtitle line (private content suppressed by default).
-struct SubtitleLineQt {
+struct SubtitleLineQt
+{
     QString text;
     bool privateLine = false;
     quint64 atMs = 0;
@@ -82,7 +85,8 @@ struct SubtitleLineQt {
 // Voice Companion pane. Model-side Qt surface; no QWidget dependency.
 // Passive: never sends commands, never grants itself authority, mic
 // state is always visible.
-class VoicePaneQt {
+class VoicePaneQt
+{
 public:
     explicit VoicePaneQt();
 
@@ -138,7 +142,8 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         macros_.clear();
         styles_.clear();
         subtitles_.clear();

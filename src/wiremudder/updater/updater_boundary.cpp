@@ -41,14 +41,14 @@ static bool versionGe(const QString& a, const QString& b)
             return av.at(i) > bv.at(i);
         }
     }
-    if (!aprere && bprere) return true;
-    if (aprere && !bprere) return false;
+    if (!aprere && bprere)
+        return true;
+    if (aprere && !bprere)
+        return false;
     return true;
 }
 
-VerifyState UpdaterBoundary::verifyManifest(const SignedManifest& manifest,
-                                            const QString& publicKeyHex,
-                                            const QByteArray& manifestBytes)
+VerifyState UpdaterBoundary::verifyManifest(const SignedManifest& manifest, const QString& publicKeyHex, const QByteArray& manifestBytes)
 {
     Q_UNUSED(manifestBytes);
     if (manifest.signature.isEmpty()) {
@@ -64,12 +64,8 @@ VerifyState UpdaterBoundary::verifyManifest(const SignedManifest& manifest,
     return VerifyState::Verified;
 }
 
-VerifyState UpdaterBoundary::admit(const SignedManifest& manifest,
-                                   const QSet<QString>& grantedPermissions,
-                                   const QString& currentVersion,
-                                   bool localOnlyLockdown,
-                                   quint32 activeSessions,
-                                   quint64 clientShare)
+VerifyState
+UpdaterBoundary::admit(const SignedManifest& manifest, const QSet<QString>& grantedPermissions, const QString& currentVersion, bool localOnlyLockdown, quint32 activeSessions, quint64 clientShare)
 {
     if (localOnlyLockdown) {
         return VerifyState::DeferredLockdown;

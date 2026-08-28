@@ -31,22 +31,25 @@ enum class AssistancePaneState {
 };
 
 // One cited quest clue (WM-SPEC-012-R06).
-struct QuestClueQt {
+struct QuestClueQt
+{
     QString text;
     QString citedFrom; // source location for the clue
 };
 
 // One tracked quest with visible uncertainty.
-struct QuestEntryQt {
+struct QuestEntryQt
+{
     QString questId;
     QString title;
-    QString state; // observed | inferred | completed | failed | user-corrected
+    QString state;       // observed | inferred | completed | failed | user-corrected
     QString uncertainty; // empty unless inferred/user-corrected
     QVector<QuestClueQt> clues;
 };
 
 // Bounded tactical snapshot (WM-SPEC-012-R07).
-struct TacticalSnapshotQt {
+struct TacticalSnapshotQt
+{
     QString room;
     int healthPct = 0;
     int energyPct = 0;
@@ -56,7 +59,8 @@ struct TacticalSnapshotQt {
 };
 
 // Narrator summary with source disclosure and privacy flag.
-struct NarratorSummaryQt {
+struct NarratorSummaryQt
+{
     QString text;
     QString source; // quest | tactical | help | setup | combat
     QStringList cites;
@@ -67,7 +71,8 @@ struct NarratorSummaryQt {
 // Quest Compass, Tactical HUD, and Personal Narrator pane. Model-side Qt
 // surface; no QWidget dependency. Passive: never sends commands, never
 // writes to terminal, never triggers input.
-class AssistancePaneQt {
+class AssistancePaneQt
+{
 public:
     explicit AssistancePaneQt();
 
@@ -81,8 +86,16 @@ public:
     const QVector<QuestEntryQt>& quests() const { return quests_; }
 
     // Tactical HUD (WM-FEAT-0055, WM-SPEC-012-R07).
-    void setTactical(const TacticalSnapshotQt& s) { tactical_ = s; hasTactical_ = true; }
-    void clearTactical() { hasTactical_ = false; tactical_ = TacticalSnapshotQt(); }
+    void setTactical(const TacticalSnapshotQt& s)
+    {
+        tactical_ = s;
+        hasTactical_ = true;
+    }
+    void clearTactical()
+    {
+        hasTactical_ = false;
+        tactical_ = TacticalSnapshotQt();
+    }
     bool hasTactical() const { return hasTactical_; }
     const TacticalSnapshotQt& tactical() const { return tactical_; }
 
@@ -100,7 +113,8 @@ public:
     // No command path exists on this boundary (narrator never sends commands).
     bool canSendCommand() const { return false; }
 
-    void clear() {
+    void clear()
+    {
         quests_.clear();
         hasTactical_ = false;
         tactical_ = TacticalSnapshotQt();

@@ -33,7 +33,8 @@ enum class PaneState {
     Error,
 };
 
-struct ImportSummary {
+struct ImportSummary
+{
     bool valid = false;
     QString source_format;
     QString source_hash;

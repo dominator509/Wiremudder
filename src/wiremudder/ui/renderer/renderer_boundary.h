@@ -40,20 +40,22 @@ enum class RendererPaneState {
 };
 
 // One visual emit (visible confidence when inferred).
-struct RendererEmitQt {
+struct RendererEmitQt
+{
     QString id;
-    QString kind;   // npc | mob | animal | player | pvp-visible | item
-                    // | spell | combat | movement | door | weather
-                    // | ambience | room-event
+    QString kind; // npc | mob | animal | player | pvp-visible | item
+                  // | spell | combat | movement | door | weather
+                  // | ambience | room-event
     QString label;
-    int confidence = 0;   // 0..100
+    int confidence = 0; // 0..100
     bool inferred = false;
     bool critical = false;
     QString provenance;
 };
 
 // One asset pack manifest entry (provenance-aware).
-struct AssetPackQt {
+struct AssetPackQt
+{
     QString id;
     QString pack;
     QString license;
@@ -64,7 +66,8 @@ struct AssetPackQt {
 };
 
 // One style capsule from World Bible.
-struct StyleCapsuleQt {
+struct StyleCapsuleQt
+{
     QString id;
     QStringList roomIds;
     QStringList palette;
@@ -72,7 +75,8 @@ struct StyleCapsuleQt {
 };
 
 // One clickable exit (visible exits cannot spoof trusted commands).
-struct ClickableExitQt {
+struct ClickableExitQt
+{
     QString id;
     QString direction;
     QString targetRoom;
@@ -82,7 +86,8 @@ struct ClickableExitQt {
 // Retro Renderer pane. Model-side Qt surface; no QWidget dependency.
 // Passive: never sends commands, never grants itself authority, raw
 // text remains authoritative.
-class RendererPaneQt {
+class RendererPaneQt
+{
 public:
     explicit RendererPaneQt();
 
@@ -132,7 +137,8 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         emits_.clear();
         packs_.clear();
         capsules_.clear();

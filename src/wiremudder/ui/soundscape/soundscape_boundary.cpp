@@ -6,33 +6,48 @@ namespace wiremudder::ui {
 
 SoundscapePaneQt::SoundscapePaneQt() = default;
 
-void SoundscapePaneQt::setState(SoundscapePaneState s) {
+void SoundscapePaneQt::setState(SoundscapePaneState s)
+{
     state_ = s;
     if (s != SoundscapePaneState::Loading && s != SoundscapePaneState::Ready) {
         clear();
     }
 }
 
-QString SoundscapePaneQt::stateLabel() const {
+QString SoundscapePaneQt::stateLabel() const
+{
     switch (state_) {
-        case SoundscapePaneState::Loading: return QStringLiteral("loading");
-        case SoundscapePaneState::Ready: return QStringLiteral("ready");
-        case SoundscapePaneState::Disabled: return QStringLiteral("disabled");
-        case SoundscapePaneState::Denied: return QStringLiteral("denied");
-        case SoundscapePaneState::Degraded: return QStringLiteral("degraded");
-        case SoundscapePaneState::Canceled: return QStringLiteral("canceled");
-        case SoundscapePaneState::Unavailable: return QStringLiteral("unavailable");
-        case SoundscapePaneState::Error: return QStringLiteral("error");
+    case SoundscapePaneState::Loading:
+        return QStringLiteral("loading");
+    case SoundscapePaneState::Ready:
+        return QStringLiteral("ready");
+    case SoundscapePaneState::Disabled:
+        return QStringLiteral("disabled");
+    case SoundscapePaneState::Denied:
+        return QStringLiteral("denied");
+    case SoundscapePaneState::Degraded:
+        return QStringLiteral("degraded");
+    case SoundscapePaneState::Canceled:
+        return QStringLiteral("canceled");
+    case SoundscapePaneState::Unavailable:
+        return QStringLiteral("unavailable");
+    case SoundscapePaneState::Error:
+        return QStringLiteral("error");
     }
     return QStringLiteral("unavailable");
 }
 
-QString SoundscapePaneQt::modeLabel() const {
+QString SoundscapePaneQt::modeLabel() const
+{
     switch (mode_) {
-        case SoundscapeModeQt::Disabled: return QStringLiteral("disabled");
-        case SoundscapeModeQt::Muted: return QStringLiteral("muted");
-        case SoundscapeModeQt::Manual: return QStringLiteral("manual");
-        case SoundscapeModeQt::Auto: return QStringLiteral("auto");
+    case SoundscapeModeQt::Disabled:
+        return QStringLiteral("disabled");
+    case SoundscapeModeQt::Muted:
+        return QStringLiteral("muted");
+    case SoundscapeModeQt::Manual:
+        return QStringLiteral("manual");
+    case SoundscapeModeQt::Auto:
+        return QStringLiteral("auto");
     }
     return QStringLiteral("disabled");
 }

@@ -38,9 +38,10 @@ enum class PowerToolsPaneState {
 };
 
 // One Macro Forge automation draft (disabled until approved).
-struct AutomationDraftQt {
+struct AutomationDraftQt
+{
     QString id;
-    QString kind;      // macro | trigger
+    QString kind; // macro | trigger
     QString name;
     QString body;
     bool approved = false;
@@ -48,7 +49,8 @@ struct AutomationDraftQt {
 };
 
 // One Trigger Test Lab fixture with its last replay run summary.
-struct ReplayFixtureQt {
+struct ReplayFixtureQt
+{
     QString id;
     QString name;
     int steps = 0;
@@ -58,7 +60,8 @@ struct ReplayFixtureQt {
 };
 
 // One AI Debugger diagnosis (cites evidence; never self-certifies).
-struct AiDiagnosisQt {
+struct AiDiagnosisQt
+{
     QString id;
     QStringList evidence;
     QString hypothesis;
@@ -72,14 +75,16 @@ struct AiDiagnosisQt {
 };
 
 // One inspected variable (privacy-scoped; private values redacted).
-struct InspectedVariableQt {
+struct InspectedVariableQt
+{
     QString name;
-    QString scope;   // public | private
-    QString value;   // "<redacted>" for private
+    QString scope; // public | private
+    QString value; // "<redacted>" for private
 };
 
 // One event on the debug timeline.
-struct DebugEventQt {
+struct DebugEventQt
+{
     quint64 seq = 0;
     quint64 atMs = 0;
     QString source;
@@ -88,7 +93,8 @@ struct DebugEventQt {
 };
 
 // One budget sample / slow offender.
-struct BudgetSampleQt {
+struct BudgetSampleQt
+{
     QString runId;
     QString kind;
     QString name;
@@ -99,7 +105,8 @@ struct BudgetSampleQt {
 
 // Power Tools pane. Model-side Qt surface; no QWidget dependency.
 // Passive: never sends commands, never grants itself authority.
-class PowerToolsPaneQt {
+class PowerToolsPaneQt
+{
 public:
     explicit PowerToolsPaneQt();
 
@@ -152,7 +159,8 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         drafts_.clear();
         fixtures_.clear();
         diagnoses_.clear();

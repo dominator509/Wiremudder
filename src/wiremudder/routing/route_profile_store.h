@@ -22,32 +22,32 @@ enum class RouteKind {
     TorLocalSocks,
     SshDynamicForward,
     VpnMetadata,
-    InterfaceBinding,  // future, disabled
-    VmNetns,           // future, disabled
-    SelfHostedRelay,   // future, disabled
+    InterfaceBinding, // future, disabled
+    VmNetns,          // future, disabled
+    SelfHostedRelay,  // future, disabled
 };
 
 bool routeKindEnabled(RouteKind k);
 const char* routeKindLabel(RouteKind k);
 
-struct RouteProfile {
+struct RouteProfile
+{
     QString id;
     QString name;
     RouteKind kind = RouteKind::Direct;
     QString host;
     int port = 0;
-    QString username;  // stored locally; never serialized into audit
+    QString username; // stored locally; never serialized into audit
 
-    static RouteProfile create(const QString& id, const QString& name, RouteKind kind,
-                               const QString& host, int port, const QString& username,
-                               QString* err);
+    static RouteProfile create(const QString& id, const QString& name, RouteKind kind, const QString& host, int port, const QString& username, QString* err);
     bool validate(QString* err) const;
     QJsonObject toJson() const;
-    QJsonObject toRedactedJson() const;  // no username field at all
+    QJsonObject toRedactedJson() const; // no username field at all
     static bool fromJson(const QJsonObject& obj, RouteProfile* out, QString* err);
 };
 
-struct RouteDecision {
+struct RouteDecision
+{
     QString routeId;
     RouteKind kind = RouteKind::Direct;
     QString effectiveHost;
@@ -58,13 +58,15 @@ struct RouteDecision {
     QJsonObject toJson() const;
 };
 
-struct EgressResult {
+struct EgressResult
+{
     QString routeId;
     bool ok = false;
     QString detail;
 };
 
-struct RoutingAuditEntry {
+struct RoutingAuditEntry
+{
     qint64 atUnix = 0;
     QString routeId;
     RouteKind kind = RouteKind::Direct;
@@ -73,7 +75,8 @@ struct RoutingAuditEntry {
     QString detail;
 };
 
-class RoutingStoreQt {
+class RoutingStoreQt
+{
 public:
     RoutingStoreQt() = default;
 
@@ -101,4 +104,4 @@ private:
     void appendAudit(const QString& routeId, const QString& event, const QString& detail);
 };
 
-}  // namespace wiremudder
+} // namespace wiremudder

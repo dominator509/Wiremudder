@@ -17,19 +17,26 @@
 namespace wiremudder {
 
 namespace {
-QString classToStr(SecretClass cls) {
+QString classToStr(SecretClass cls)
+{
     switch (cls) {
-        case SecretClass::MudPassword: return QStringLiteral("mud-password");
-        case SecretClass::ProviderToken: return QStringLiteral("provider-token");
-        case SecretClass::RoutingCredential: return QStringLiteral("routing-credential");
-        case SecretClass::SshReference: return QStringLiteral("ssh-reference");
-        case SecretClass::SigningMetadata: return QStringLiteral("signing-metadata");
+    case SecretClass::MudPassword:
+        return QStringLiteral("mud-password");
+    case SecretClass::ProviderToken:
+        return QStringLiteral("provider-token");
+    case SecretClass::RoutingCredential:
+        return QStringLiteral("routing-credential");
+    case SecretClass::SshReference:
+        return QStringLiteral("ssh-reference");
+    case SecretClass::SigningMetadata:
+        return QStringLiteral("signing-metadata");
     }
     return QStringLiteral("unknown");
 }
 
 // Run a QtKeychain job to completion with a bounded wait.
-bool runJob(QKeychain::Job* job, int timeoutMs = 3000) {
+bool runJob(QKeychain::Job* job, int timeoutMs = 3000)
+{
     QEventLoop loop;
     QTimer timeout;
     timeout.setSingleShot(true);
@@ -40,9 +47,10 @@ bool runJob(QKeychain::Job* job, int timeoutMs = 3000) {
     loop.exec();
     return job->error() == QKeychain::NoError;
 }
-}  // namespace
+} // namespace
 
-SecretVaultQt::SecretVaultQt() {
+SecretVaultQt::SecretVaultQt()
+{
     // Probe the OS backend with a sentinel read. If no keyring service
     // exists (e.g. headless without gnome-keyring/kwallet), the vault
     // falls back to the documented local-only in-memory store.
@@ -52,64 +60,77 @@ SecretVaultQt::SecretVaultQt() {
     m_osBackend = runJob(&probe);
 }
 
-bool SecretVaultQt::backendAvailable() const {
+bool SecretVaultQt::backendAvailable() const
+{
     return m_osBackend;
 }
 
-bool SecretVaultQt::store(const QString& id, SecretClass cls, const QByteArray& value) {
-    if (id.size() < 4 || value.isEmpty()) return false;
-    if (m_ids.contains(id)) return false;  // duplicate rejected
+bool SecretVaultQt::store(const QString& id, SecretClass cls, const QByteArray& value)
+{
+    if (id.size() < 4 || value.isEmpty())
+        return false;
+    if (m_ids.contains(id))
+        return false; // duplicate rejected
     const QByteArray payload = classToStr(cls).toUtf8() + ':' + value;
     if (m_osBackend) {
         QKeychain::WritePasswordJob job(QStringLiteral("WireMudder"));
         job.setKey(id);
         job.setTextData(QString::fromUtf8(payload));
         job.setAutoDelete(false);
-        if (!runJob(&job)) return false;
+        if (!runJob(&job))
+            return false;
     }
     m_memory.insert(id, payload);
     m_ids.insert(id);
     return true;
 }
 
-QByteArray SecretVaultQt::retrieve(const QString& id) const {
+QByteArray SecretVaultQt::retrieve(const QString& id) const
+{
     QByteArray payload;
     if (m_osBackend) {
         QKeychain::ReadPasswordJob job(QStringLiteral("WireMudder"));
         job.setKey(id);
         job.setAutoDelete(false);
-        if (!runJob(&job)) return QByteArray();
+        if (!runJob(&job))
+            return QByteArray();
         payload = job.textData().toUtf8();
     } else {
         const auto it = m_memory.constFind(id);
-        if (it == m_memory.constEnd()) return QByteArray();
+        if (it == m_memory.constEnd())
+            return QByteArray();
         payload = it.value();
     }
     const int colon = payload.indexOf(':');
-    if (colon < 0) return QByteArray();
+    if (colon < 0)
+        return QByteArray();
     return payload.mid(colon + 1);
 }
 
-bool SecretVaultQt::remove(const QString& id) {
-    if (!m_ids.contains(id)) return false;
+bool SecretVaultQt::remove(const QString& id)
+{
+    if (!m_ids.contains(id))
+        return false;
     if (m_osBackend) {
         QKeychain::DeletePasswordJob job(QStringLiteral("WireMudder"));
         job.setKey(id);
         job.setAutoDelete(false);
-        runJob(&job);  // best effort; the local index is authoritative
+        runJob(&job); // best effort; the local index is authoritative
     }
     m_memory.remove(id);
     m_ids.remove(id);
     return true;
 }
 
-QStringList SecretVaultQt::ids() const {
+QStringList SecretVaultQt::ids() const
+{
     QStringList out = m_ids.values();
     out.sort();
     return out;
 }
 
-QString SecretVaultQt::redactLeak(const QString& text) const {
+QString SecretVaultQt::redactLeak(const QString& text) const
+{
     QString out = text;
     for (const QString& id : m_ids) {
         const QByteArray value = retrieve(id);
@@ -123,4 +144,4 @@ QString SecretVaultQt::redactLeak(const QString& text) const {
     return out;
 }
 
-}  // namespace wiremudder
+} // namespace wiremudder

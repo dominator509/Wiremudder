@@ -39,7 +39,8 @@ enum class DiagnosticsPaneState {
 };
 
 // One telemetry event row (redacted; SPEC-019-R02).
-struct TelemetryEventQt {
+struct TelemetryEventQt
+{
     QString eventId;
     QString subsystem;
     QString severity;
@@ -50,7 +51,8 @@ struct TelemetryEventQt {
 };
 
 // Session replay summary (SPEC-019-R04).
-struct ReplaySummaryQt {
+struct ReplaySummaryQt
+{
     QString sessionId;
     QString app;
     QString gitSha;
@@ -59,7 +61,8 @@ struct ReplaySummaryQt {
 };
 
 // Diagnostic bundle display (SPEC-019-R03, SPEC-026-R07).
-struct DiagnosticBundleQt {
+struct DiagnosticBundleQt
+{
     QString bundleId;
     QString contentSha256;
     int eventCount = 0;
@@ -70,7 +73,8 @@ struct DiagnosticBundleQt {
 
 // Diagnostics pane. Model-side Qt surface; no QWidget dependency.
 // Passive: never submits bundles, never enables capture on its own.
-class DiagnosticsPaneQt {
+class DiagnosticsPaneQt
+{
 public:
     explicit DiagnosticsPaneQt();
 
@@ -86,7 +90,11 @@ public:
     bool captureRequested() const { return captureRequested_; }
 
     // Ring buffer occupancy (bounded; WM-FEAT-0223).
-    void setRingOccupancy(int events, int capacity) { ringEvents_ = events; ringCapacity_ = capacity; }
+    void setRingOccupancy(int events, int capacity)
+    {
+        ringEvents_ = events;
+        ringCapacity_ = capacity;
+    }
     int ringEvents() const { return ringEvents_; }
     int ringCapacity() const { return ringCapacity_; }
     void setDropped(quint64 dropped) { dropped_ = dropped; }
@@ -95,8 +103,13 @@ public:
     quint64 coalesced() const { return coalesced_; }
 
     // Severity counters (WM-FEAT-0225).
-    void setSeverityCounts(int critical, int error, int warn, int info, int debug) {
-        critical_ = critical; error_ = error; warn_ = warn; info_ = info; debug_ = debug;
+    void setSeverityCounts(int critical, int error, int warn, int info, int debug)
+    {
+        critical_ = critical;
+        error_ = error;
+        warn_ = warn;
+        info_ = info;
+        debug_ = debug;
     }
     int critical() const { return critical_; }
     int error() const { return error_; }
@@ -124,7 +137,11 @@ public:
     // Sanitized fixture generation (WM-FEAT-0128, SPEC-019-R05).
     void setFixtureReady(bool r) { fixtureReady_ = r; }
     bool fixtureReady() const { return fixtureReady_; }
-    void requestGenerateFixture(bool approvedVoice) { fixtureRequested_ = true; fixtureApprovedVoice_ = approvedVoice; }
+    void requestGenerateFixture(bool approvedVoice)
+    {
+        fixtureRequested_ = true;
+        fixtureApprovedVoice_ = approvedVoice;
+    }
     bool fixtureRequested() const { return fixtureRequested_; }
     bool fixtureApprovedVoice() const { return fixtureApprovedVoice_; }
 
@@ -143,14 +160,19 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         captureEnabled_ = false;
         captureRequested_ = false;
         ringEvents_ = 0;
         ringCapacity_ = 0;
         dropped_ = 0;
         coalesced_ = 0;
-        critical_ = 0; error_ = 0; warn_ = 0; info_ = 0; debug_ = 0;
+        critical_ = 0;
+        error_ = 0;
+        warn_ = 0;
+        info_ = 0;
+        debug_ = 0;
         events_.clear();
         replay_ = ReplaySummaryQt();
         bundle_ = DiagnosticBundleQt();

@@ -35,7 +35,8 @@ enum class HeadlessAdapterState {
 };
 
 // One session snapshot for the desktop adapter (WM-SPEC-017-R06).
-struct HeadlessSessionQt {
+struct HeadlessSessionQt
+{
     QString sessionId;
     QString state;
     QString room;
@@ -52,7 +53,8 @@ struct HeadlessSessionQt {
 // Headless adapter. Model-side Qt surface; no QWidget dependency.
 // Passive: never sends commands, never grants itself authority, and
 // never triggers the global emergency stop (the scheduler owns it).
-class HeadlessAdapterQt {
+class HeadlessAdapterQt
+{
 public:
     explicit HeadlessAdapterQt();
 

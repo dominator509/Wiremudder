@@ -28,7 +28,8 @@ enum class SoulPaneState {
 };
 
 // One skill row in the tree (WM-SPEC-014-R05).
-struct SkillRowQt {
+struct SkillRowQt
+{
     QString id;
     QString name;
     QString version;
@@ -40,14 +41,16 @@ struct SkillRowQt {
 };
 
 // One memory permission row (WM-SPEC-014-R06).
-struct MemoryPermissionQt {
+struct MemoryPermissionQt
+{
     QString role;
     QString memoryClass;
     QString access; // deny | read | propose | summarize | share
 };
 
 // One council record row (WM-SPEC-014-R07).
-struct CouncilRowQt {
+struct CouncilRowQt
+{
     QString councilId;
     QString task;
     QString finalSynthesis;
@@ -58,7 +61,8 @@ struct CouncilRowQt {
 
 // Soul Studio pane (WM-FEAT-0043). Model-side Qt surface; no QWidget
 // dependency. Passive: never grants authority, never self-modifies.
-class SoulPaneQt {
+class SoulPaneQt
+{
 public:
     explicit SoulPaneQt();
 
@@ -98,7 +102,8 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         soulName_.clear();
         compiledPrompt_.clear();
         policyPrecedence_.clear();

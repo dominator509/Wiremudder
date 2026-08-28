@@ -33,7 +33,8 @@ enum class AccessibilityPaneState {
     Error,
 };
 
-struct AccessibilityProfile {
+struct AccessibilityProfile
+{
     bool valid = false;
     bool keyboard_operable = false;
     bool visible_focus = false;
@@ -43,16 +44,17 @@ struct AccessibilityProfile {
     bool reduced_motion = false;
     bool no_animation = false;
     bool subtitles_available = false;
-    bool raw_text_mode = true;      // raw terminal text always visible
+    bool raw_text_mode = true;          // raw terminal text always visible
     bool raw_text_authoritative = true; // server text never spoofs commands
 };
 
-struct TranslationCatalog {
+struct TranslationCatalog
+{
     bool valid = false;
-    QString name;          // e.g. "wiremudder" (inherited Mudlet convention)
-    QString resource;      // e.g. ":/lang" (inherited runtime load path)
-    QString suffix;        // e.g. ".qm"
-    QStringList locales;   // e.g. {"de_DE", "fr_FR", ...}
+    QString name;                   // e.g. "wiremudder" (inherited Mudlet convention)
+    QString resource;               // e.g. ":/lang" (inherited runtime load path)
+    QString suffix;                 // e.g. ".qm"
+    QStringList locales;            // e.g. {"de_DE", "fr_FR", ...}
     bool translator_context = true; // WM-SPEC-007-R10
 };
 

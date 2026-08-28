@@ -32,18 +32,7 @@ class QTimer;
 namespace wiremudder {
 
 // Bridge frame kinds mirroring schemas/wiremudder/bridge/frame.schema.json.
-enum class FrameKind {
-    Hello,
-    HelloAck,
-    Ping,
-    Pong,
-    Snapshot,
-    Request,
-    Response,
-    Event,
-    Cancel,
-    Shutdown
-};
+enum class FrameKind { Hello, HelloAck, Ping, Pong, Snapshot, Request, Response, Event, Cancel, Shutdown };
 
 // A small RAII guard that keeps WireCore alive for the lifetime of the
 // client and shuts it down cleanly. It does not own any gameplay path.
@@ -54,14 +43,18 @@ enum class FrameKind {
 //   crashCallback() fires when the peer dies unexpectedly; the
 //   supervisor restarts it and readyCallback fires again.
 //   stop() sends shutdown, waits a bounded time, then kills if needed.
-class WireCoreSupervisor final : public QObject {
+class WireCoreSupervisor final : public QObject
+{
 public:
     using ReadyCallback = std::function<void(bool ok, const QString& error)>;
     using CrashCallback = std::function<void()>;
     using FrameCallback = std::function<void(const QByteArray& jsonFrame)>;
 
     explicit WireCoreSupervisor(QString socketPath, QObject* parent = nullptr)
-        : QObject(parent), m_socketPath(std::move(socketPath)) {}
+    : QObject(parent)
+    , m_socketPath(std::move(socketPath))
+    {
+    }
     ~WireCoreSupervisor();
 
     WireCoreSupervisor(const WireCoreSupervisor&) = delete;
@@ -73,8 +66,7 @@ public:
 
     // Optional work: enqueue a request frame; returns immediately.
     // Never blocks the caller. Returns false when WireCore is absent.
-    bool postRequest(FrameKind kind, const QString& frameId,
-                     const QByteArray& payloadJson, QString* error = nullptr);
+    bool postRequest(FrameKind kind, const QString& frameId, const QByteArray& payloadJson, QString* error = nullptr);
 
     // Snapshot health without blocking.
     bool healthy() const;
@@ -109,7 +101,7 @@ private:
     QProcess* m_process = nullptr;
     QLocalSocket* m_socket = nullptr;
     QTimer* m_healthTimer = nullptr;
-    QVector<QByteArray> m_pending;      // bounded (256) P2-P4 queue
+    QVector<QByteArray> m_pending; // bounded (256) P2-P4 queue
     qint64 m_lastPongMs = 0;
     qint64 m_pid = -1;
     int m_connectAttempts = 0;
@@ -126,6 +118,6 @@ private:
 // Convert a bridge frame kind to its on-wire snake_case name.
 QByteArray frameKindToWire(FrameKind kind);
 
-}  // namespace wiremudder
+} // namespace wiremudder
 
-#endif  // WIREMUDDER_BRIDGE_WIRECORE_BRIDGE_H
+#endif // WIREMUDDER_BRIDGE_WIRECORE_BRIDGE_H

@@ -18,7 +18,8 @@
 namespace wiremudder::ui {
 
 // Status bar / gauge registry (WM-FEAT-0012).
-class StatusGaugeQt {
+class StatusGaugeQt
+{
 public:
     void set(const models::StatusGauge& g);
     bool has(const QString& id) const;
@@ -33,7 +34,8 @@ private:
 };
 
 // Theme store with contrast check (WM-FEAT-0021, WM-SPEC-027-R07).
-class ThemeQt {
+class ThemeQt
+{
 public:
     explicit ThemeQt(QString name = QStringLiteral("default"));
     QString name() const { return name_; }
@@ -55,7 +57,8 @@ private:
 };
 
 // Named, persistable workspace layout (WM-SPEC-007-R04).
-class WorkspaceLayoutQt {
+class WorkspaceLayoutQt
+{
 public:
     explicit WorkspaceLayoutQt(QString name = QStringLiteral("default"));
     QString name() const { return name_; }

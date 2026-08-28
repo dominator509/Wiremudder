@@ -29,19 +29,26 @@ enum class DefaultDomain {
 };
 
 constexpr DefaultDomain kAllDomains[] = {
-    DefaultDomain::World,       DefaultDomain::Memory,      DefaultDomain::Routing,
-    DefaultDomain::Ai,          DefaultDomain::Voice,       DefaultDomain::Renderer,
-    DefaultDomain::Soundscape,  DefaultDomain::AutomationPack,
-    DefaultDomain::Soul,        DefaultDomain::CommandDatabase,
+        DefaultDomain::World,
+        DefaultDomain::Memory,
+        DefaultDomain::Routing,
+        DefaultDomain::Ai,
+        DefaultDomain::Voice,
+        DefaultDomain::Renderer,
+        DefaultDomain::Soundscape,
+        DefaultDomain::AutomationPack,
+        DefaultDomain::Soul,
+        DefaultDomain::CommandDatabase,
 };
 
 constexpr int kDomainCount = 10;
 
-bool domainIsSensitive(DefaultDomain d);  // Routing and Ai only.
+bool domainIsSensitive(DefaultDomain d); // Routing and Ai only.
 
 enum class Actor { User, Automation };
 
-struct ProfileDefaults {
+struct ProfileDefaults
+{
     QString world;
     QString memory;
     QString routingProfile;
@@ -57,7 +64,8 @@ struct ProfileDefaults {
     void set(DefaultDomain d, const QString& value);
 };
 
-struct CharacterProfile {
+struct CharacterProfile
+{
     QString id;
     QString name;
     int schemaVersion = PROFILE_SCHEMA_VERSION;
@@ -70,7 +78,8 @@ struct CharacterProfile {
     static bool fromJson(const QJsonObject& obj, CharacterProfile* out, QString* err);
 };
 
-struct SensitiveChangeAudit {
+struct SensitiveChangeAudit
+{
     qint64 atUnix = 0;
     QString profileId;
     DefaultDomain domain = DefaultDomain::Routing;
@@ -78,7 +87,8 @@ struct SensitiveChangeAudit {
     QString valueRedacted;
 };
 
-class ProfileStoreQt {
+class ProfileStoreQt
+{
 public:
     ProfileStoreQt() = default;
 
@@ -107,4 +117,4 @@ private:
     CharacterProfile* findMutable(const QString& id);
 };
 
-}  // namespace wiremudder
+} // namespace wiremudder

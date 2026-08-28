@@ -14,7 +14,8 @@
 
 namespace wiremudder {
 
-class RouterQt {
+class RouterQt
+{
 public:
     // Map a validated decision to a QNetworkProxy. Direct/system routes
     // yield QNetworkProxy::NoProxy (the explicit user choice).
@@ -24,9 +25,7 @@ public:
     // connect. Returns false (and sets err) when the route is missing,
     // invalid, or the connection fails -- the caller must block or
     // prompt, never fall back to direct (WM-SPEC-006-R06).
-    static bool connectViaDecision(QTcpSocket* socket, const RouteDecision& d,
-                                   const QString& targetHost, quint16 targetPort,
-                                   int timeoutMs, QString* err);
+    static bool connectViaDecision(QTcpSocket* socket, const RouteDecision& d, const QString& targetHost, quint16 targetPort, int timeoutMs, QString* err);
 };
 
-}  // namespace wiremudder
+} // namespace wiremudder

@@ -10,34 +10,49 @@ namespace wiremudder::mapper {
 
 namespace {
 
-QString exitKindName(ExitKind kind) {
+QString exitKindName(ExitKind kind)
+{
     switch (kind) {
-        case ExitKind::Normal: return QStringLiteral("normal");
-        case ExitKind::Hidden: return QStringLiteral("hidden");
-        case ExitKind::Locked: return QStringLiteral("locked");
-        case ExitKind::OneWay: return QStringLiteral("one-way");
-        case ExitKind::Portal: return QStringLiteral("portal");
+    case ExitKind::Normal:
+        return QStringLiteral("normal");
+    case ExitKind::Hidden:
+        return QStringLiteral("hidden");
+    case ExitKind::Locked:
+        return QStringLiteral("locked");
+    case ExitKind::OneWay:
+        return QStringLiteral("one-way");
+    case ExitKind::Portal:
+        return QStringLiteral("portal");
     }
     return QStringLiteral("normal");
 }
 
-QString doorStatusName(DoorStatus door) {
+QString doorStatusName(DoorStatus door)
+{
     switch (door) {
-        case DoorStatus::None: return QStringLiteral("none");
-        case DoorStatus::Open: return QStringLiteral("open");
-        case DoorStatus::Closed: return QStringLiteral("closed");
-        case DoorStatus::Locked: return QStringLiteral("locked");
+    case DoorStatus::None:
+        return QStringLiteral("none");
+    case DoorStatus::Open:
+        return QStringLiteral("open");
+    case DoorStatus::Closed:
+        return QStringLiteral("closed");
+    case DoorStatus::Locked:
+        return QStringLiteral("locked");
     }
     return QStringLiteral("none");
 }
 
 // QJsonValue construction from quint32 is ambiguous (int vs double);
 // force the signed 64-bit path used by the schemas.
-QJsonValue jv(quint32 v) { return QJsonValue(static_cast<qint64>(v)); }
+QJsonValue jv(quint32 v)
+{
+    return QJsonValue(static_cast<qint64>(v));
+}
 
 } // namespace
 
-bool WorldGraphQt::addRoom(const RoomSnapshot& room) {
+bool WorldGraphQt::addRoom(const RoomSnapshot& room)
+{
     if (rooms_.size() >= kMaxRooms) {
         return false;
     }
@@ -48,7 +63,8 @@ bool WorldGraphQt::addRoom(const RoomSnapshot& room) {
     return true;
 }
 
-bool WorldGraphQt::addArea(const AreaSpec& area) {
+bool WorldGraphQt::addArea(const AreaSpec& area)
+{
     if (areas_.contains(area.id)) {
         return false;
     }
@@ -56,7 +72,8 @@ bool WorldGraphQt::addArea(const AreaSpec& area) {
     return true;
 }
 
-bool WorldGraphQt::addZone(const ZoneSpec& zone) {
+bool WorldGraphQt::addZone(const ZoneSpec& zone)
+{
     if (zones_.contains(zone.id)) {
         return false;
     }
@@ -64,7 +81,8 @@ bool WorldGraphQt::addZone(const ZoneSpec& zone) {
     return true;
 }
 
-bool WorldGraphQt::assignAreaToZone(quint32 areaId, quint32 zoneId) {
+bool WorldGraphQt::assignAreaToZone(quint32 areaId, quint32 zoneId)
+{
     auto areaIt = areas_.find(areaId);
     auto zoneIt = zones_.find(zoneId);
     if (areaIt == areas_.end() || zoneIt == zones_.end()) {
@@ -75,7 +93,8 @@ bool WorldGraphQt::assignAreaToZone(quint32 areaId, quint32 zoneId) {
     return true;
 }
 
-QList<quint32> WorldGraphQt::roomsInZone(quint32 zoneId) const {
+QList<quint32> WorldGraphQt::roomsInZone(quint32 zoneId) const
+{
     QSet<quint32> out;
     auto zoneIt = zones_.find(zoneId);
     if (zoneIt != zones_.end()) {
@@ -91,7 +110,8 @@ QList<quint32> WorldGraphQt::roomsInZone(quint32 zoneId) const {
     return list;
 }
 
-bool WorldGraphQt::addExit(quint32 from, const ExitSpec& exit) {
+bool WorldGraphQt::addExit(quint32 from, const ExitSpec& exit)
+{
     if (!rooms_.contains(from) || !rooms_.contains(exit.to)) {
         return false;
     }
@@ -113,14 +133,14 @@ bool WorldGraphQt::addExit(quint32 from, const ExitSpec& exit) {
     return true;
 }
 
-const RoomSnapshot* WorldGraphQt::room(quint32 id) const {
+const RoomSnapshot* WorldGraphQt::room(quint32 id) const
+{
     auto it = rooms_.find(id);
     return it == rooms_.end() ? nullptr : &it.value();
 }
 
-std::optional<RouteResult> WorldGraphQt::route(quint32 from, quint32 to,
-                                               std::optional<quint32> now,
-                                               bool allowHidden) const {
+std::optional<RouteResult> WorldGraphQt::route(quint32 from, quint32 to, std::optional<quint32> now, bool allowHidden) const
+{
     if (!rooms_.contains(from) || !rooms_.contains(to)) {
         return std::nullopt;
     }
@@ -210,11 +230,8 @@ std::optional<RouteResult> WorldGraphQt::route(quint32 from, quint32 to,
     return r;
 }
 
-quint64 WorldGraphQt::insertFact(const QString& sourceEvent, quint64 time,
-                                 const QString& scope, double confidence,
-                                 Sensitivity sensitivity,
-                                 const QString& modelVersion,
-                                 const QVariantMap& payload) {
+quint64 WorldGraphQt::insertFact(const QString& sourceEvent, quint64 time, const QString& scope, double confidence, Sensitivity sensitivity, const QString& modelVersion, const QVariantMap& payload)
+{
     DerivedFact f;
     f.id = facts_.size() + 1;
     f.sourceEvent = sourceEvent;
@@ -228,9 +245,8 @@ quint64 WorldGraphQt::insertFact(const QString& sourceEvent, quint64 time,
     return f.id;
 }
 
-bool WorldGraphQt::applyCorrection(quint64 factId, quint64 time,
-                                   const QVariantMap& payload,
-                                   const QString& note) {
+bool WorldGraphQt::applyCorrection(quint64 factId, quint64 time, const QVariantMap& payload, const QString& note)
+{
     bool found = false;
     for (DerivedFact& f : facts_) {
         if (f.id == factId) {
@@ -251,7 +267,8 @@ bool WorldGraphQt::applyCorrection(quint64 factId, quint64 time,
     return true;
 }
 
-int WorldGraphQt::activeFactCount() const {
+int WorldGraphQt::activeFactCount() const
+{
     int n = 0;
     for (const DerivedFact& f : facts_) {
         if (!f.supersededBy.has_value()) {
@@ -261,10 +278,10 @@ int WorldGraphQt::activeFactCount() const {
     return n;
 }
 
-QString WorldGraphQt::exportJson() const {
+QString WorldGraphQt::exportJson() const
+{
     QJsonObject root;
-    root.insert(QStringLiteral("schema_version"),
-                QJsonValue::fromVariant(kSchemaVersion));
+    root.insert(QStringLiteral("schema_version"), QJsonValue::fromVariant(kSchemaVersion));
 
     QJsonArray roomArr;
     QList<quint32> roomIds = rooms_.keys();
@@ -279,11 +296,7 @@ QString WorldGraphQt::exportJson() const {
         o.insert(QStringLiteral("y"), jv(r.y));
         o.insert(QStringLiteral("z"), jv(r.z));
         o.insert(QStringLiteral("identity"),
-                 r.identity == IdentityState::Confirmed
-                     ? QStringLiteral("confirmed")
-                     : (r.identity == IdentityState::Ambiguous
-                            ? QStringLiteral("ambiguous")
-                            : QStringLiteral("corrected")));
+                 r.identity == IdentityState::Confirmed ? QStringLiteral("confirmed") : (r.identity == IdentityState::Ambiguous ? QStringLiteral("ambiguous") : QStringLiteral("corrected")));
         QJsonArray exitArr;
         for (const ExitSpec& e : r.exits) {
             QJsonObject x;
@@ -294,8 +307,7 @@ QString WorldGraphQt::exportJson() const {
             x.insert(QStringLiteral("door"), doorStatusName(e.door));
             if (e.timed.has_value()) {
                 QJsonObject t;
-                t.insert(QStringLiteral("start_minute"),
-                         jv(e.timed->startMinute));
+                t.insert(QStringLiteral("start_minute"), jv(e.timed->startMinute));
                 t.insert(QStringLiteral("end_minute"), jv(e.timed->endMinute));
                 x.insert(QStringLiteral("timed"), t);
             }
@@ -350,7 +362,8 @@ QString WorldGraphQt::exportJson() const {
     return QString::fromUtf8(QJsonDocument(root).toJson(QJsonDocument::Compact));
 }
 
-bool WorldGraphQt::importJson(const QString& json) {
+bool WorldGraphQt::importJson(const QString& json)
+{
     QJsonParseError err;
     QJsonDocument doc = QJsonDocument::fromJson(json.toUtf8(), &err);
     if (err.error != QJsonParseError::NoError || !doc.isObject()) {
@@ -360,8 +373,7 @@ bool WorldGraphQt::importJson(const QString& json) {
     if (!root.contains(QStringLiteral("schema_version"))) {
         return false;
     }
-    if (root.value(QStringLiteral("schema_version")).toInt() !=
-        static_cast<int>(kSchemaVersion)) {
+    if (root.value(QStringLiteral("schema_version")).toInt() != static_cast<int>(kSchemaVersion)) {
         return false;
     }
     WorldGraphQt fresh;
@@ -375,23 +387,18 @@ bool WorldGraphQt::importJson(const QString& json) {
         r.y = o.value(QStringLiteral("y")).toInt();
         r.z = o.value(QStringLiteral("z")).toInt();
         QString idstate = o.value(QStringLiteral("identity")).toString();
-        r.identity = idstate == QStringLiteral("ambiguous")
-                         ? IdentityState::Ambiguous
-                         : (idstate == QStringLiteral("corrected")
-                                ? IdentityState::Corrected
-                                : IdentityState::Confirmed);
+        r.identity = idstate == QStringLiteral("ambiguous") ? IdentityState::Ambiguous : (idstate == QStringLiteral("corrected") ? IdentityState::Corrected : IdentityState::Confirmed);
         for (const QJsonValue& xv : o.value(QStringLiteral("exits")).toArray()) {
             QJsonObject x = xv.toObject();
             ExitSpec e;
             e.to = x.value(QStringLiteral("to")).toInt();
             e.command = x.value(QStringLiteral("command")).toString();
             QString kind = x.value(QStringLiteral("kind")).toString();
-            e.kind = kind == QStringLiteral("hidden")   ? ExitKind::Hidden
-                     : kind == QStringLiteral("locked") ? ExitKind::Locked
-                     : kind == QStringLiteral("one-way")
-                         ? ExitKind::OneWay
-                     : kind == QStringLiteral("portal") ? ExitKind::Portal
-                                                        : ExitKind::Normal;
+            e.kind = kind == QStringLiteral("hidden")    ? ExitKind::Hidden
+                     : kind == QStringLiteral("locked")  ? ExitKind::Locked
+                     : kind == QStringLiteral("one-way") ? ExitKind::OneWay
+                     : kind == QStringLiteral("portal")  ? ExitKind::Portal
+                                                         : ExitKind::Normal;
             e.weight = x.value(QStringLiteral("weight")).toInt();
             QString door = x.value(QStringLiteral("door")).toString();
             e.door = door == QStringLiteral("open")     ? DoorStatus::Open

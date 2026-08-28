@@ -33,31 +33,45 @@ constexpr int kStopWaitMs = 1500;
 constexpr int kFrameIdMinLen = 8;
 const char* kMagic = "WMC1";
 constexpr int kVersion = 1;
-}  // namespace
+} // namespace
 
-QByteArray frameKindToWire(FrameKind kind) {
+QByteArray frameKindToWire(FrameKind kind)
+{
     switch (kind) {
-        case FrameKind::Hello: return "hello";
-        case FrameKind::HelloAck: return "hello_ack";
-        case FrameKind::Ping: return "ping";
-        case FrameKind::Pong: return "pong";
-        case FrameKind::Snapshot: return "snapshot";
-        case FrameKind::Request: return "request";
-        case FrameKind::Response: return "response";
-        case FrameKind::Event: return "event";
-        case FrameKind::Cancel: return "cancel";
-        case FrameKind::Shutdown: return "shutdown";
+    case FrameKind::Hello:
+        return "hello";
+    case FrameKind::HelloAck:
+        return "hello_ack";
+    case FrameKind::Ping:
+        return "ping";
+    case FrameKind::Pong:
+        return "pong";
+    case FrameKind::Snapshot:
+        return "snapshot";
+    case FrameKind::Request:
+        return "request";
+    case FrameKind::Response:
+        return "response";
+    case FrameKind::Event:
+        return "event";
+    case FrameKind::Cancel:
+        return "cancel";
+    case FrameKind::Shutdown:
+        return "shutdown";
     }
     return "unknown";
 }
 
-WireCoreSupervisor::~WireCoreSupervisor() {
+WireCoreSupervisor::~WireCoreSupervisor()
+{
     stop();
 }
 
-bool WireCoreSupervisor::start(const QString& wirecoreBinary, QString* error) {
+bool WireCoreSupervisor::start(const QString& wirecoreBinary, QString* error)
+{
     if (m_process && m_process->state() != QProcess::NotRunning) {
-        if (error) *error = "already running";
+        if (error)
+            *error = "already running";
         return false;
     }
     m_wirecoreBinary = wirecoreBinary;
@@ -70,7 +84,8 @@ bool WireCoreSupervisor::start(const QString& wirecoreBinary, QString* error) {
     return true;
 }
 
-void WireCoreSupervisor::launchAndConnect() {
+void WireCoreSupervisor::launchAndConnect()
+{
     m_process = new QProcess(this);
     m_process->setProgram(m_wirecoreBinary);
     m_process->setArguments(QStringList() << m_socketPath);
@@ -79,7 +94,8 @@ void WireCoreSupervisor::launchAndConnect() {
         // Sidecar absent or failed to launch: report disabled state.
         // This is the "unavailable worker" path; manual gameplay is
         // unaffected because nothing here owns a gameplay path.
-        if (m_readyCb) m_readyCb(false, "sidecar failed to start");
+        if (m_readyCb)
+            m_readyCb(false, "sidecar failed to start");
         return;
     }
     m_pid = m_process->processId();
@@ -90,43 +106,37 @@ void WireCoreSupervisor::launchAndConnect() {
         m_connectAttempts = 0;
         sendHello();
     });
-    QObject::connect(m_socket, &QLocalSocket::readyRead, this,
-                     &WireCoreSupervisor::onReadyRead);
-    QObject::connect(m_socket, &QLocalSocket::disconnected, this,
-                     &WireCoreSupervisor::onDisconnected);
-    QObject::connect(m_socket,
-                     QOverload<QLocalSocket::LocalSocketError>::of(
-                         &QLocalSocket::errorOccurred),
-                     this, [this](QLocalSocket::LocalSocketError) {
-                         if (m_handshakeDone || m_stopping) return;
-                         // The sidecar removes and re-binds its socket
-                         // at startup; a connect that lands before the
-                         // listener is ready is refused. Retry while
-                         // the supervised process is still running.
-                         if (m_process && m_process->state() == QProcess::Running &&
-                             m_connectAttempts < 100) {
-                             m_connectAttempts++;
-                             QTimer::singleShot(std::chrono::milliseconds(50), this,
-                                                [this]() {
-                                                    if (!m_stopping && m_socket)
-                                                        m_socket->connectToServer(m_socketPath);
-                                                });
-                         } else if (m_readyCb) {
-                             m_readyCb(false, "socket error before handshake");
-                         }
-                     });
+    QObject::connect(m_socket, &QLocalSocket::readyRead, this, &WireCoreSupervisor::onReadyRead);
+    QObject::connect(m_socket, &QLocalSocket::disconnected, this, &WireCoreSupervisor::onDisconnected);
+    QObject::connect(m_socket, QOverload<QLocalSocket::LocalSocketError>::of(&QLocalSocket::errorOccurred), this, [this](QLocalSocket::LocalSocketError) {
+        if (m_handshakeDone || m_stopping)
+            return;
+        // The sidecar removes and re-binds its socket
+        // at startup; a connect that lands before the
+        // listener is ready is refused. Retry while
+        // the supervised process is still running.
+        if (m_process && m_process->state() == QProcess::Running && m_connectAttempts < 100) {
+            m_connectAttempts++;
+            QTimer::singleShot(std::chrono::milliseconds(50), this, [this]() {
+                if (!m_stopping && m_socket)
+                    m_socket->connectToServer(m_socketPath);
+            });
+        } else if (m_readyCb) {
+            m_readyCb(false, "socket error before handshake");
+        }
+    });
     m_socket->connectToServer(m_socketPath);
 
     if (!m_healthTimer) {
         m_healthTimer = new QTimer(this);
         m_healthTimer->setInterval(kHealthIntervalMs);
-        QObject::connect(m_healthTimer, &QTimer::timeout, this,
-                         &WireCoreSupervisor::maybeRestartUnhealthy);
+        QObject::connect(m_healthTimer, &QTimer::timeout, this, &WireCoreSupervisor::maybeRestartUnhealthy);
     }
     m_healthTimer->start();
 }
 
-void WireCoreSupervisor::sendHello() {
+void WireCoreSupervisor::sendHello()
+{
     QJsonObject hello;
     hello["magic"] = QLatin1String(kMagic);
     hello["version"] = kVersion;
@@ -140,19 +150,22 @@ void WireCoreSupervisor::sendHello() {
     m_socket->write("\n");
 }
 
-void WireCoreSupervisor::onReadyRead() {
+void WireCoreSupervisor::onReadyRead()
+{
     while (m_socket->canReadLine()) {
         const QByteArray line = m_socket->readLine().trimmed();
-        if (line.isEmpty()) continue;
+        if (line.isEmpty())
+            continue;
         processFrame(line);
     }
 }
 
-void WireCoreSupervisor::processFrame(const QByteArray& line) {
+void WireCoreSupervisor::processFrame(const QByteArray& line)
+{
     QJsonParseError err{};
     const QJsonDocument doc = QJsonDocument::fromJson(line, &err);
     if (err.error != QJsonParseError::NoError) {
-        return;  // malformed frame is dropped; never trusted
+        return; // malformed frame is dropped; never trusted
     }
     const QJsonObject frame = doc.object();
     if (frame.value("magic").toString() != QLatin1String(kMagic)) {
@@ -169,34 +182,44 @@ void WireCoreSupervisor::processFrame(const QByteArray& line) {
         // Baseline health from the handshake: a peer that goes silent
         // right after connecting must still be detected as stale.
         m_lastPongMs = QDateTime::currentMSecsSinceEpoch();
-        if (m_readyCb) m_readyCb(m_connected, m_connected ? QString() : "handshake rejected");
-        if (m_connected) flushPending();
+        if (m_readyCb)
+            m_readyCb(m_connected, m_connected ? QString() : "handshake rejected");
+        if (m_connected)
+            flushPending();
         return;
     }
     if (kind == QLatin1String(frameKindToWire(FrameKind::Pong))) {
         m_lastPongMs = QDateTime::currentMSecsSinceEpoch();
         return;
     }
-    if (m_frameCb) m_frameCb(line);
+    if (m_frameCb)
+        m_frameCb(line);
 }
 
-void WireCoreSupervisor::onDisconnected() {
+void WireCoreSupervisor::onDisconnected()
+{
     m_connected = false;
     m_handshakeDone = false;
-    if (m_stopping) return;
-    if (m_restartPending) return;  // one restart in flight is enough
+    if (m_stopping)
+        return;
+    if (m_restartPending)
+        return; // one restart in flight is enough
     m_restartPending = true;
-    if (m_crashCb) m_crashCb();
+    if (m_crashCb)
+        m_crashCb();
     scheduleRestart();
 }
 
-void WireCoreSupervisor::onProcessError() {
+void WireCoreSupervisor::onProcessError()
+{
     if (!m_handshakeDone && !m_stopping) {
-        if (m_readyCb) m_readyCb(false, "sidecar process failed");
+        if (m_readyCb)
+            m_readyCb(false, "sidecar process failed");
     }
 }
 
-void WireCoreSupervisor::flushPending() {
+void WireCoreSupervisor::flushPending()
+{
     for (const QByteArray& frame : m_pending) {
         m_socket->write(frame);
         m_socket->write("\n");
@@ -204,13 +227,15 @@ void WireCoreSupervisor::flushPending() {
     m_pending.clear();
 }
 
-void WireCoreSupervisor::scheduleRestart() {
-    QTimer::singleShot(std::chrono::milliseconds(kRestartDelayMs), this,
-                       &WireCoreSupervisor::restartNow);
+void WireCoreSupervisor::scheduleRestart()
+{
+    QTimer::singleShot(std::chrono::milliseconds(kRestartDelayMs), this, &WireCoreSupervisor::restartNow);
 }
 
-void WireCoreSupervisor::restartNow() {
-    if (m_stopping) return;
+void WireCoreSupervisor::restartNow()
+{
+    if (m_stopping)
+        return;
     if (m_process) {
         m_process->terminate();
         if (!m_process->waitForFinished(500)) {
@@ -228,12 +253,14 @@ void WireCoreSupervisor::restartNow() {
     m_connected = false;
     m_handshakeDone = false;
     launchAndConnect();
-    m_restartPending = false;  // restart attempt launched; next health
-                               // tick decides whether it succeeded
+    m_restartPending = false; // restart attempt launched; next health
+                              // tick decides whether it succeeded
 }
 
-void WireCoreSupervisor::sendPing() {
-    if (!m_connected) return;
+void WireCoreSupervisor::sendPing()
+{
+    if (!m_connected)
+        return;
     QJsonObject ping;
     ping["magic"] = QLatin1String(kMagic);
     ping["version"] = kVersion;
@@ -244,33 +271,37 @@ void WireCoreSupervisor::sendPing() {
     m_socket->write("\n");
 }
 
-void WireCoreSupervisor::maybeRestartUnhealthy() {
+void WireCoreSupervisor::maybeRestartUnhealthy()
+{
     sendPing();
     const qint64 now = QDateTime::currentMSecsSinceEpoch();
     const bool stale = m_connected && m_lastPongMs > 0 && (now - m_lastPongMs) > kPongStaleMs;
     if (stale && !m_stopping && !m_restartPending) {
         m_restartPending = true;
-        if (m_crashCb) m_crashCb();
+        if (m_crashCb)
+            m_crashCb();
         scheduleRestart();
     }
 }
 
-bool WireCoreSupervisor::postRequest(FrameKind kind, const QString& frameId,
-                                     const QByteArray& payloadJson,
-                                     QString* error) {
+bool WireCoreSupervisor::postRequest(FrameKind kind, const QString& frameId, const QByteArray& payloadJson, QString* error)
+{
     // WireCore absent: disabled state, never blocks, never fakes success.
     if (!m_process || m_process->state() == QProcess::NotRunning) {
-        if (error) *error = "wirecore absent";
+        if (error)
+            *error = "wirecore absent";
         return false;
     }
     if (frameId.size() < kFrameIdMinLen) {
-        if (error) *error = "frame id too short";
+        if (error)
+            *error = "frame id too short";
         return false;
     }
     QJsonParseError perr{};
     const QJsonDocument pdoc = QJsonDocument::fromJson(payloadJson, &perr);
     if (perr.error != QJsonParseError::NoError) {
-        if (error) *error = "payload is not valid json";
+        if (error)
+            *error = "payload is not valid json";
         return false;
     }
     QJsonObject frame;
@@ -295,22 +326,32 @@ bool WireCoreSupervisor::postRequest(FrameKind kind, const QString& frameId,
     return true;
 }
 
-bool WireCoreSupervisor::healthy() const {
+bool WireCoreSupervisor::healthy() const
+{
     if (!m_connected || !m_process || m_process->state() != QProcess::Running) {
         return false;
     }
-    if (m_lastPongMs == 0) return false;  // no handshake baseline yet
+    if (m_lastPongMs == 0)
+        return false; // no handshake baseline yet
     const qint64 now = QDateTime::currentMSecsSinceEpoch();
     return (now - m_lastPongMs) <= kPongStaleMs;
 }
 
-bool WireCoreSupervisor::isConnected() const { return m_connected; }
+bool WireCoreSupervisor::isConnected() const
+{
+    return m_connected;
+}
 
-qint64 WireCoreSupervisor::pid() const { return m_pid; }
+qint64 WireCoreSupervisor::pid() const
+{
+    return m_pid;
+}
 
-void WireCoreSupervisor::stop() {
+void WireCoreSupervisor::stop()
+{
     m_stopping = true;
-    if (m_healthTimer) m_healthTimer->stop();
+    if (m_healthTimer)
+        m_healthTimer->stop();
     if (m_socket && m_connected) {
         QJsonObject frame;
         frame["magic"] = QLatin1String(kMagic);
@@ -342,4 +383,4 @@ void WireCoreSupervisor::stop() {
     m_pid = -1;
 }
 
-}  // namespace wiremudder
+} // namespace wiremudder

@@ -20,24 +20,26 @@ namespace wiremudder::ui {
 
 // Copilot pane state (SPEC-025 error classes, mapped to UI states).
 enum class CopilotPaneState {
-    Loading,      // provider request in flight
-    Ready,        // suggestion available
-    Disabled,     // copilot disabled by policy/config
-    Denied,       // route or policy denied
-    Degraded,     // deterministic hints only (provider unavailable/failed)
-    Canceled,     // request canceled by the player
-    Unavailable,  // no provider configured or reachable
-    Error,        // invariant/security error
+    Loading,     // provider request in flight
+    Ready,       // suggestion available
+    Disabled,    // copilot disabled by policy/config
+    Denied,      // route or policy denied
+    Degraded,    // deterministic hints only (provider unavailable/failed)
+    Canceled,    // request canceled by the player
+    Unavailable, // no provider configured or reachable
+    Error,       // invariant/security error
 };
 
 // One cited piece of evidence for a Why explanation (WM-SPEC-014-R09).
-struct WhyCitationQt {
-    QString kind;   // observation | memory | policy | rejected-alternative
-    QString text;   // redacted before display
+struct WhyCitationQt
+{
+    QString kind; // observation | memory | policy | rejected-alternative
+    QString text; // redacted before display
 };
 
 // Why explanation: cited evidence + uncertainty + rejected alternatives.
-struct WhyExplanationQt {
+struct WhyExplanationQt
+{
     QVector<WhyCitationQt> evidence;
     QString uncertainty;
     QStringList rejectedAlternatives;
@@ -45,7 +47,8 @@ struct WhyExplanationQt {
 };
 
 // Visible disclosure (acceptance obligation 5).
-struct CopilotDisclosureQt {
+struct CopilotDisclosureQt
+{
     QString providerId;
     QString routeId;
     QString privacyMode;
@@ -60,7 +63,8 @@ struct CopilotDisclosureQt {
 
 // Explicit Action Proposal. NEVER executed by this boundary; requires
 // SPEC-009 confirmation (WM-SPEC-014-R10, SPEC-009).
-struct ActionProposalQt {
+struct ActionProposalQt
+{
     QString proposalId;
     QString command;
     int riskTier = 1;
@@ -69,10 +73,11 @@ struct ActionProposalQt {
 };
 
 // One copilot suggestion (WM-FEAT-0040).
-struct CopilotSuggestionQt {
-    QString text;                 // redacted suggestion text
+struct CopilotSuggestionQt
+{
+    QString text; // redacted suggestion text
     QVector<WhyCitationQt> citations;
-    double confidence = 0.0;      // calibrated, non-authoritative (R08)
+    double confidence = 0.0; // calibrated, non-authoritative (R08)
     QString uncertainty;
     WhyExplanationQt why;
     CopilotDisclosureQt disclosure;
@@ -82,7 +87,8 @@ struct CopilotSuggestionQt {
 // Player Copilot pane (WM-FEAT-0040, WM-FEAT-0046, WM-FEAT-0047).
 // Model-side Qt surface; no QWidget dependency. The pane is a passive
 // observer: it holds state and never sends commands or mutates the terminal.
-class CopilotPaneQt {
+class CopilotPaneQt
+{
 public:
     explicit CopilotPaneQt();
 

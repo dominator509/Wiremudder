@@ -46,8 +46,9 @@ enum class SoundscapeModeQt {
 };
 
 // One visible soundscape binding (WM-SPEC-016-R08).
-struct SoundscapeBindingQt {
-    QString kind;        // room|area|combat|boss|weather|death|victory|ambience|user-authored
+struct SoundscapeBindingQt
+{
+    QString kind; // room|area|combat|boss|weather|death|victory|ambience|user-authored
     QString assetId;
     int volume = 70;     // independent, 0..=100
     bool enabled = true; // independent disable
@@ -55,14 +56,16 @@ struct SoundscapeBindingQt {
 };
 
 // Profile-scoped studio controls (obligation 3).
-struct SoundscapeProfileQt {
+struct SoundscapeProfileQt
+{
     QString profile;
-    int volume = 70;     // 0..=100
+    int volume = 70; // 0..=100
     bool disabled = false;
 };
 
 // One loaded asset pack with provenance (WM-SPEC-016-R09).
-struct SoundscapeAssetQt {
+struct SoundscapeAssetQt
+{
     QString id;
     QString license;
     QString provenance;
@@ -72,7 +75,8 @@ struct SoundscapeAssetQt {
 
 // Soundscape pane. Model-side Qt surface; no QWidget dependency.
 // Passive: never sends commands, never grants itself authority.
-class SoundscapePaneQt {
+class SoundscapePaneQt
+{
 public:
     explicit SoundscapePaneQt();
 
@@ -85,10 +89,18 @@ public:
     int bindingCount() const { return bindings_.size(); }
     const QVector<SoundscapeBindingQt>& bindings() const { return bindings_; }
     // User intent: adjust a binding. The pane only records the request.
-    void requestSetBindingVolume(const QString& kind, int volume) { bindingVolumeRequested_ = kind; bindingVolumeValue_ = volume; }
+    void requestSetBindingVolume(const QString& kind, int volume)
+    {
+        bindingVolumeRequested_ = kind;
+        bindingVolumeValue_ = volume;
+    }
     QString bindingVolumeRequested() const { return bindingVolumeRequested_; }
     int bindingVolumeValue() const { return bindingVolumeValue_; }
-    void requestSetBindingEnabled(const QString& kind, bool enabled) { bindingEnabledRequested_ = kind; bindingEnabledValue_ = enabled; }
+    void requestSetBindingEnabled(const QString& kind, bool enabled)
+    {
+        bindingEnabledRequested_ = kind;
+        bindingEnabledValue_ = enabled;
+    }
     QString bindingEnabledRequested() const { return bindingEnabledRequested_; }
     bool bindingEnabledValue() const { return bindingEnabledValue_; }
 
@@ -116,7 +128,11 @@ public:
     void setTransitionRemainingMs(int ms) { transitionRemainingMs_ = ms; }
     int transitionRemainingMs() const { return transitionRemainingMs_; }
     // User intent: start or cancel a transition. Records requests only.
-    void requestTransition(const QString& kind, int durationMs) { transitionRequested_ = kind; transitionDurationMs_ = durationMs; }
+    void requestTransition(const QString& kind, int durationMs)
+    {
+        transitionRequested_ = kind;
+        transitionDurationMs_ = durationMs;
+    }
     QString transitionRequested() const { return transitionRequested_; }
     int transitionDurationMs() const { return transitionDurationMs_; }
     void requestCancelTransition() { cancelTransitionRequested_ = true; }
@@ -142,7 +158,8 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         bindings_.clear();
         profiles_.clear();
         assets_.clear();

@@ -59,7 +59,8 @@ enum class GateDecision {
     Queued,
 };
 
-struct GateContext {
+struct GateContext
+{
     bool connected = true;
     bool emergencyStopEngaged = false;
     bool sourceVisible = true;
@@ -70,7 +71,8 @@ struct GateContext {
     static GateContext ready() { return GateContext(); }
 };
 
-struct CommandRule {
+struct CommandRule
+{
     QString command;
     RiskTier tier = RiskTier::Standard;
     bool deny = false;
@@ -78,7 +80,8 @@ struct CommandRule {
     QString argPolicy = "any";
 };
 
-struct CommandPolicy {
+struct CommandPolicy
+{
     QString command;
     RiskTier tier = RiskTier::Standard;
     bool denied = false;
@@ -88,10 +91,14 @@ struct CommandPolicy {
 };
 
 // Per-world command database (WM-FEAT-0174).
-class CommandDatabaseQt {
+class CommandDatabaseQt
+{
 public:
     CommandDatabaseQt() = default;
-    explicit CommandDatabaseQt(const QString& world) : m_world(world) {}
+    explicit CommandDatabaseQt(const QString& world)
+    : m_world(world)
+    {
+    }
 
     void addRule(const CommandRule& rule) { m_rules.append(rule); }
     CommandPolicy evaluate(const QString& command, const QStringList& args) const;
@@ -104,12 +111,15 @@ private:
 
 // Human-Tempo pacing (WM-SPEC-009-R07): bounded burst per window,
 // inter-group cooldown. Anti-spam only.
-class HumanTempoQt {
+class HumanTempoQt
+{
 public:
     HumanTempoQt(quint64 minIntervalMs, int maxBurst, quint64 burstWindowMs)
-        : m_minIntervalMs(minIntervalMs),
-          m_maxBurst(maxBurst),
-          m_burstWindowMs(burstWindowMs) {}
+    : m_minIntervalMs(minIntervalMs)
+    , m_maxBurst(maxBurst)
+    , m_burstWindowMs(burstWindowMs)
+    {
+    }
 
     // Returns true when a send may proceed now.
     bool shouldSend(quint64 nowMs, quint64* waitMs);
@@ -123,7 +133,8 @@ private:
     int m_burstCount = 0;
 };
 
-struct ActionProposal {
+struct ActionProposal
+{
     QString id;
     ActionSource source = ActionSource::Ai;
     QString originalSuggestion;
@@ -136,7 +147,8 @@ struct ActionProposal {
     QJsonObject toJson() const;
 };
 
-struct QueueEntry {
+struct QueueEntry
+{
     QString proposalId;
     ActionSource source = ActionSource::Ai;
     QString originalSuggestion;
@@ -147,7 +159,8 @@ struct QueueEntry {
     QString status;
 };
 
-struct ActionAuditEntry {
+struct ActionAuditEntry
+{
     quint64 atMs = 0;
     QString proposalId;
     ActionSource source = ActionSource::Ai;
@@ -162,9 +175,13 @@ struct ActionAuditEntry {
 };
 
 // Bounded visible queue (WM-SPEC-009-R08).
-class VisibleQueueQt {
+class VisibleQueueQt
+{
 public:
-    explicit VisibleQueueQt(int capacity) : m_capacity(capacity) {}
+    explicit VisibleQueueQt(int capacity)
+    : m_capacity(capacity)
+    {
+    }
 
     bool push(const QueueEntry& entry);
     int cancelAll();
@@ -178,7 +195,8 @@ private:
 };
 
 // Global emergency stop (WM-SPEC-009-R06, WM-SPEC-017-R08).
-class EmergencyStopQt {
+class EmergencyStopQt
+{
 public:
     void engage() { m_engaged = true; }
     void release() { m_engaged = false; }
@@ -190,7 +208,8 @@ private:
 };
 
 // Deterministic Action Proposal gateway.
-class ActionGatewayQt {
+class ActionGatewayQt
+{
 public:
     ActionGatewayQt(const CommandDatabaseQt& db, const HumanTempoQt& tempo, int queueCapacity);
 
@@ -202,9 +221,7 @@ public:
     GateDecision evaluate(const ActionProposal& proposal, const GateContext& ctx) const;
 
     // Approve and send (or pace/deny); writes the audit record.
-    bool approveAndSend(const ActionProposal& proposal, const GateContext& ctx,
-                        const std::function<QString(const QString&)>& send,
-                        QString* result, QString* err);
+    bool approveAndSend(const ActionProposal& proposal, const GateContext& ctx, const std::function<QString(const QString&)>& send, QString* result, QString* err);
 
     bool queueEntry(const ActionProposal& proposal, QString* err);
     void engageEmergencyStop();
@@ -222,8 +239,7 @@ private:
     QVector<ActionAuditEntry> m_audit;
     quint64 m_seq = 0;
 
-    ActionAuditEntry makeAudit(const ActionProposal& p, const QString& result,
-                               const QString& detail) const;
+    ActionAuditEntry makeAudit(const ActionProposal& p, const QString& result, const QString& detail) const;
 };
 
-}  // namespace wiremudder
+} // namespace wiremudder

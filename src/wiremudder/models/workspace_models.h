@@ -12,14 +12,16 @@ namespace wiremudder::models {
 
 // One raw terminal line (WM-FEAT-0001/0003). `raw` is the exact text
 // received; decoration is applied by renderers, never by the model.
-struct TerminalLine {
-    int seq = 0;        // monotonically increasing line number
-    QString raw;        // raw text, unmodified
-    qint64 atMs = 0;    // arrival timestamp (ms since epoch)
+struct TerminalLine
+{
+    int seq = 0;     // monotonically increasing line number
+    QString raw;     // raw text, unmodified
+    qint64 atMs = 0; // arrival timestamp (ms since epoch)
 };
 
 // Dock pane specification (WM-FEAT-0011, WM-SPEC-007-R04).
-struct DockPaneSpec {
+struct DockPaneSpec
+{
     QString id;
     QString title;
     bool visible = true;
@@ -27,7 +29,8 @@ struct DockPaneSpec {
 };
 
 // Theme specification (WM-FEAT-0021, WM-SPEC-027-R07 contrast).
-struct ThemeSpec {
+struct ThemeSpec
+{
     QString name;
     QString fg;
     QString bg;
@@ -36,7 +39,8 @@ struct ThemeSpec {
 };
 
 // Status bar gauge (WM-FEAT-0012).
-struct StatusGauge {
+struct StatusGauge
+{
     QString id;
     QString label;
     QString value;
@@ -46,9 +50,10 @@ struct StatusGauge {
 
 // Capture pane filter (WM-FEAT-0011). A line is captured when the
 // predicate (substring match) holds.
-struct CaptureFilter {
+struct CaptureFilter
+{
     QString id;
-    QString match;      // substring match against raw line
+    QString match; // substring match against raw line
     bool caseSensitive = false;
 };
 

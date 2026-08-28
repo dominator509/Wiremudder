@@ -20,16 +20,11 @@
 namespace wiremudder {
 
 // Privacy modes with exact egress behavior (WM-SPEC-010-R03).
-enum class PrivacyMode {
-    Disabled,
-    LocalOnly,
-    LocalPreferred,
-    RemoteRedacted,
-    RemoteApproved
-};
+enum class PrivacyMode { Disabled, LocalOnly, LocalPreferred, RemoteRedacted, RemoteApproved };
 
 // A user-visible, consent-backed egress override (WM-SPEC-010-R04).
-struct OverrideEntry {
+struct OverrideEntry
+{
     QString overrideId;
     QString category;
     bool userVisible = false;
@@ -39,7 +34,8 @@ struct OverrideEntry {
 // Denial-first egress control (WM-SPEC-010-R04, WM-SPEC-022-R03).
 // Default posture is LocalOnly + lockdown: no remote egress until the
 // user visibly overrides with a consent-backed override.
-class PrivacyFirewall final {
+class PrivacyFirewall final
+{
 public:
     PrivacyFirewall();
 
@@ -68,28 +64,27 @@ public:
     bool addOverride(const OverrideEntry& entry);
 
     // Consent registry (WM-SPEC-010-R09): scoped, revocable receipts.
-    bool grantConsent(const QString& receiptId, const QString& feature,
-                      const QString& provider, const QString& dataClass,
-                      const QString& profile);
+    bool grantConsent(const QString& receiptId, const QString& feature, const QString& provider, const QString& dataClass, const QString& profile);
     bool revokeConsent(const QString& receiptId);
-    bool isConsented(const QString& receiptId, const QString& feature,
-                     const QString& provider, const QString& dataClass,
-                     const QString& profile) const;
+    bool isConsented(const QString& receiptId, const QString& feature, const QString& provider, const QString& dataClass, const QString& profile) const;
 
 private:
     PrivacyMode m_mode = PrivacyMode::LocalOnly;
     bool m_lockdown = true;
     QStringList m_allowedDestinations;
     QStringList m_deniedCategories{
-        QStringLiteral("ai"),          QStringLiteral("speech"),
-        QStringLiteral("asset-generation"), QStringLiteral("telemetry"),
-        QStringLiteral("package-download"), QStringLiteral("update-check"),
+            QStringLiteral("ai"),
+            QStringLiteral("speech"),
+            QStringLiteral("asset-generation"),
+            QStringLiteral("telemetry"),
+            QStringLiteral("package-download"),
+            QStringLiteral("update-check"),
     };
     QHash<QString, OverrideEntry> m_overrides;
     // consent receipt id -> (feature, provider, dataClass, profile, status)
     QHash<QString, QStringList> m_consent;
 };
 
-}  // namespace wiremudder
+} // namespace wiremudder
 
-#endif  // WIREMUDDER_PRIVACY_PRIVACY_FIREWALL_H
+#endif // WIREMUDDER_PRIVACY_PRIVACY_FIREWALL_H

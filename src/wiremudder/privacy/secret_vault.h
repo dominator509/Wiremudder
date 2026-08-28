@@ -22,17 +22,12 @@
 namespace wiremudder {
 
 // Secret classes (SPEC-010-R06).
-enum class SecretClass {
-    MudPassword,
-    ProviderToken,
-    RoutingCredential,
-    SshReference,
-    SigningMetadata
-};
+enum class SecretClass { MudPassword, ProviderToken, RoutingCredential, SshReference, SigningMetadata };
 
 // Secrets Vault Qt surface. Values are never logged or serialized
 // (WM-SPEC-010-R07).
-class SecretVaultQt final {
+class SecretVaultQt final
+{
 public:
     SecretVaultQt();
 
@@ -54,10 +49,10 @@ public:
 
 private:
     bool m_osBackend = false;
-    QHash<QString, QByteArray> m_memory;   // local-only fallback store
-    QSet<QString> m_ids;                   // index of stored secret ids
+    QHash<QString, QByteArray> m_memory; // local-only fallback store
+    QSet<QString> m_ids;                 // index of stored secret ids
 };
 
-}  // namespace wiremudder
+} // namespace wiremudder
 
-#endif  // WIREMUDDER_PRIVACY_SECRET_VAULT_H
+#endif // WIREMUDDER_PRIVACY_SECRET_VAULT_H

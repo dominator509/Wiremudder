@@ -22,73 +22,76 @@
 namespace wiremudder::updater {
 
 // Release channels (SPEC-020-R01).
-enum class Channel {
-    Development,
-    Canary,
-    Beta,
-    Stable
-};
+enum class Channel { Development, Canary, Beta, Stable };
 
-inline QString channelName(Channel c) {
+inline QString channelName(Channel c)
+{
     switch (c) {
-    case Channel::Development: return QStringLiteral("development");
-    case Channel::Canary: return QStringLiteral("canary");
-    case Channel::Beta: return QStringLiteral("beta");
-    case Channel::Stable: return QStringLiteral("stable");
+    case Channel::Development:
+        return QStringLiteral("development");
+    case Channel::Canary:
+        return QStringLiteral("canary");
+    case Channel::Beta:
+        return QStringLiteral("beta");
+    case Channel::Stable:
+        return QStringLiteral("stable");
     }
     return QStringLiteral("unknown");
 }
 
 // Separate update lanes (SPEC-020-R02).
-enum class UpdateLane {
-    CoreApp,
-    ProviderAdapter,
-    ContextRules,
-    CommandPack,
-    PluginPack,
-    RendererPack,
-    AudioPack,
-    LocalModelAsset,
-    HelpIndex
-};
+enum class UpdateLane { CoreApp, ProviderAdapter, ContextRules, CommandPack, PluginPack, RendererPack, AudioPack, LocalModelAsset, HelpIndex };
 
-inline QString laneName(UpdateLane l) {
+inline QString laneName(UpdateLane l)
+{
     switch (l) {
-    case UpdateLane::CoreApp: return QStringLiteral("core_app");
-    case UpdateLane::ProviderAdapter: return QStringLiteral("provider_adapter");
-    case UpdateLane::ContextRules: return QStringLiteral("context_rules");
-    case UpdateLane::CommandPack: return QStringLiteral("command_pack");
-    case UpdateLane::PluginPack: return QStringLiteral("plugin_pack");
-    case UpdateLane::RendererPack: return QStringLiteral("renderer_pack");
-    case UpdateLane::AudioPack: return QStringLiteral("audio_pack");
-    case UpdateLane::LocalModelAsset: return QStringLiteral("local_model_asset");
-    case UpdateLane::HelpIndex: return QStringLiteral("help_index");
+    case UpdateLane::CoreApp:
+        return QStringLiteral("core_app");
+    case UpdateLane::ProviderAdapter:
+        return QStringLiteral("provider_adapter");
+    case UpdateLane::ContextRules:
+        return QStringLiteral("context_rules");
+    case UpdateLane::CommandPack:
+        return QStringLiteral("command_pack");
+    case UpdateLane::PluginPack:
+        return QStringLiteral("plugin_pack");
+    case UpdateLane::RendererPack:
+        return QStringLiteral("renderer_pack");
+    case UpdateLane::AudioPack:
+        return QStringLiteral("audio_pack");
+    case UpdateLane::LocalModelAsset:
+        return QStringLiteral("local_model_asset");
+    case UpdateLane::HelpIndex:
+        return QStringLiteral("help_index");
     }
     return QStringLiteral("unknown");
 }
 
 // Staged rollout metadata (WM-FEAT-0232).
-struct Rollout {
-    double fraction = 1.0;     // offer fraction in (0,1]
-    bool killSwitch = false;   // recall: nobody may install
+struct Rollout
+{
+    double fraction = 1.0;   // offer fraction in (0,1]
+    bool killSwitch = false; // recall: nobody may install
 };
 
 // Compatibility declaration (SPEC-020-R04).
-struct Compatibility {
+struct Compatibility
+{
     QString wiremudder;
     QString mudlet;
 };
 
 // The signed update manifest (WM-FEAT-0230). Verification happens in the
 // Rust core; this struct is the schema-shaped transport.
-struct SignedManifest {
+struct SignedManifest
+{
     int schemaVersion = 1;
     UpdateLane lane = UpdateLane::CoreApp;
     Channel channel = Channel::Stable;
     QString version;
     QString artifactSha256;
     qint64 artifactSize = 0;
-    QString signature;            // Ed25519 hex, 128 chars
+    QString signature; // Ed25519 hex, 128 chars
     Compatibility compat;
     QSet<QString> requiredPermissions; // permission-expansion rejection
     Rollout rollout;
@@ -111,25 +114,38 @@ enum class VerifyState {
     Error
 };
 
-inline QString verifyStateName(VerifyState s) {
+inline QString verifyStateName(VerifyState s)
+{
     switch (s) {
-    case VerifyState::Verified: return QStringLiteral("verified");
-    case VerifyState::DeniedUnsigned: return QStringLiteral("denied_unsigned");
-    case VerifyState::DeniedInvalidSignature: return QStringLiteral("denied_invalid_signature");
-    case VerifyState::DeniedHashMismatch: return QStringLiteral("denied_hash_mismatch");
-    case VerifyState::DeniedPermissionExpansion: return QStringLiteral("denied_permission_expansion");
-    case VerifyState::DeniedDowngrade: return QStringLiteral("denied_downgrade");
-    case VerifyState::DeniedIncompatible: return QStringLiteral("denied_incompatible");
-    case VerifyState::DeferredActiveSessions: return QStringLiteral("deferred_active_sessions");
-    case VerifyState::DeferredRollout: return QStringLiteral("deferred_rollout");
-    case VerifyState::DeferredLockdown: return QStringLiteral("deferred_lockdown");
-    case VerifyState::Error: return QStringLiteral("error");
+    case VerifyState::Verified:
+        return QStringLiteral("verified");
+    case VerifyState::DeniedUnsigned:
+        return QStringLiteral("denied_unsigned");
+    case VerifyState::DeniedInvalidSignature:
+        return QStringLiteral("denied_invalid_signature");
+    case VerifyState::DeniedHashMismatch:
+        return QStringLiteral("denied_hash_mismatch");
+    case VerifyState::DeniedPermissionExpansion:
+        return QStringLiteral("denied_permission_expansion");
+    case VerifyState::DeniedDowngrade:
+        return QStringLiteral("denied_downgrade");
+    case VerifyState::DeniedIncompatible:
+        return QStringLiteral("denied_incompatible");
+    case VerifyState::DeferredActiveSessions:
+        return QStringLiteral("deferred_active_sessions");
+    case VerifyState::DeferredRollout:
+        return QStringLiteral("deferred_rollout");
+    case VerifyState::DeferredLockdown:
+        return QStringLiteral("deferred_lockdown");
+    case VerifyState::Error:
+        return QStringLiteral("error");
     }
     return QStringLiteral("unknown");
 }
 
 // Resumable download state (WM-FEAT-0233): contiguous chunks only.
-struct ResumeState {
+struct ResumeState
+{
     QString manifestSha256;
     qint64 artifactSize = 0;
     qint64 bytesReceived = 0;
@@ -141,11 +157,15 @@ struct ResumeState {
 // startup and smoke checks; crash loops quarantine and offer rollback.
 enum class Health { Healthy, FailedStartup, CrashLoop };
 
-inline QString healthName(Health h) {
+inline QString healthName(Health h)
+{
     switch (h) {
-    case Health::Healthy: return QStringLiteral("healthy");
-    case Health::FailedStartup: return QStringLiteral("failed_startup");
-    case Health::CrashLoop: return QStringLiteral("crash_loop");
+    case Health::Healthy:
+        return QStringLiteral("healthy");
+    case Health::FailedStartup:
+        return QStringLiteral("failed_startup");
+    case Health::CrashLoop:
+        return QStringLiteral("crash_loop");
     }
     return QStringLiteral("unknown");
 }
@@ -156,7 +176,8 @@ enum class MigrationState { NoMigrationNeeded, BackupRequired, ReadyToInstall, R
 
 // Lockdown (WM-FEAT-0240): Local Only Lockdown blocks remote update checks
 // unless individually and visibly overridden by the user (SPEC-010-R04).
-struct Lockdown {
+struct Lockdown
+{
     bool active = false;
     bool userOverride = false;
 
@@ -164,22 +185,17 @@ struct Lockdown {
 };
 
 // Boundary anchor (M3 wires the Rust core through this surface).
-class UpdaterBoundary {
+class UpdaterBoundary
+{
 public:
     // Verify a signed manifest with the supplied public key (hex).
     // Implemented by the Rust wire-updater core via the bridge.
-    static VerifyState verifyManifest(const SignedManifest& manifest,
-                                      const QString& publicKeyHex,
-                                      const QByteArray& manifestBytes);
+    static VerifyState verifyManifest(const SignedManifest& manifest, const QString& publicKeyHex, const QByteArray& manifestBytes);
 
     // Full admission check: permissions, downgrade, rollout, sessions,
     // lockdown (WM-SPEC-020-R04/R07, WM-SPEC-010-R04).
-    static VerifyState admit(const SignedManifest& manifest,
-                             const QSet<QString>& grantedPermissions,
-                             const QString& currentVersion,
-                             bool localOnlyLockdown,
-                             quint32 activeSessions,
-                             quint64 clientShare);
+    static VerifyState
+    admit(const SignedManifest& manifest, const QSet<QString>& grantedPermissions, const QString& currentVersion, bool localOnlyLockdown, quint32 activeSessions, quint64 clientShare);
 
     // Health confirmation: clean startup resets the crash counter; a
     // bound of repeated failures quarantines and offers rollback.

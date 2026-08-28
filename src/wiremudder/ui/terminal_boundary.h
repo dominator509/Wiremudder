@@ -16,7 +16,8 @@
 namespace wiremudder::ui {
 
 // Bounded scrollback terminal pane (WM-FEAT-0001, WM-FEAT-0003).
-class TerminalPaneQt {
+class TerminalPaneQt
+{
 public:
     explicit TerminalPaneQt(int maxLines = 2000);
     // Append raw text; invariant: raw bytes are stored unmodified and
@@ -39,7 +40,8 @@ private:
 };
 
 // Bounded command history (WM-FEAT-0004) with up/down navigation.
-class CommandHistoryQt {
+class CommandHistoryQt
+{
 public:
     explicit CommandHistoryQt(int maxEntries = 500);
     void add(const QString& command);
@@ -61,7 +63,8 @@ private:
 
 // Capture/output pane (WM-FEAT-0011). Subscribes to the raw stream and
 // keeps a bounded copy of matching lines; never alters the source.
-class CapturePaneQt {
+class CapturePaneQt
+{
 public:
     explicit CapturePaneQt(int maxCaptured = 500);
     void setFilter(const models::CaptureFilter& filter);

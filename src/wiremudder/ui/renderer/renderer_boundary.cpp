@@ -5,23 +5,33 @@ namespace wiremudder::ui {
 
 RendererPaneQt::RendererPaneQt() = default;
 
-void RendererPaneQt::setState(RendererPaneState s) {
+void RendererPaneQt::setState(RendererPaneState s)
+{
     state_ = s;
     if (s != RendererPaneState::Loading && s != RendererPaneState::Ready) {
         clear();
     }
 }
 
-QString RendererPaneQt::stateLabel() const {
+QString RendererPaneQt::stateLabel() const
+{
     switch (state_) {
-        case RendererPaneState::Loading: return QStringLiteral("loading");
-        case RendererPaneState::Ready: return QStringLiteral("ready");
-        case RendererPaneState::Disabled: return QStringLiteral("disabled");
-        case RendererPaneState::Denied: return QStringLiteral("denied");
-        case RendererPaneState::Degraded: return QStringLiteral("degraded");
-        case RendererPaneState::Canceled: return QStringLiteral("canceled");
-        case RendererPaneState::Unavailable: return QStringLiteral("unavailable");
-        case RendererPaneState::Error: return QStringLiteral("error");
+    case RendererPaneState::Loading:
+        return QStringLiteral("loading");
+    case RendererPaneState::Ready:
+        return QStringLiteral("ready");
+    case RendererPaneState::Disabled:
+        return QStringLiteral("disabled");
+    case RendererPaneState::Denied:
+        return QStringLiteral("denied");
+    case RendererPaneState::Degraded:
+        return QStringLiteral("degraded");
+    case RendererPaneState::Canceled:
+        return QStringLiteral("canceled");
+    case RendererPaneState::Unavailable:
+        return QStringLiteral("unavailable");
+    case RendererPaneState::Error:
+        return QStringLiteral("error");
     }
     return QStringLiteral("unavailable");
 }

@@ -31,7 +31,8 @@ enum class AutopilotPaneState {
 };
 
 // One visible pending action (WM-SPEC-009-R08 visible queue).
-struct PendingActionQt {
+struct PendingActionQt
+{
     QString proposalId;
     QString command;
     bool requiresConfirmation = false;
@@ -41,7 +42,8 @@ struct PendingActionQt {
 
 // Guarded Autopilot pane. Model-side Qt surface; no QWidget dependency.
 // Passive: never sends commands, never grants itself authority.
-class AutopilotPaneQt {
+class AutopilotPaneQt
+{
 public:
     explicit AutopilotPaneQt();
 
@@ -50,7 +52,7 @@ public:
     QString stateLabel() const;
 
     // Status surface.
-    void setMode(const QString& m) { mode_ = m; }       // disabled | confirm-every | allowlist-auto
+    void setMode(const QString& m) { mode_ = m; } // disabled | confirm-every | allowlist-auto
     QString mode() const { return mode_; }
     void setProfile(const QString& p) { profile_ = p; }
     QString profile() const { return profile_; }
@@ -87,7 +89,8 @@ public:
     QString lastMessage() const { return lastMessage_; }
     void setLastMessage(const QString& m) { lastMessage_ = m; }
 
-    void clear() {
+    void clear()
+    {
         mode_.clear();
         profile_.clear();
         staleReason_.clear();

@@ -14,13 +14,13 @@ namespace wiremudder::ui {
 
 // Real spellcheck/autocorrect core: dictionary lookup, Levenshtein
 // suggestion, and a small autocorrect map.
-class SpellcheckCore {
+class SpellcheckCore
+{
 public:
     SpellcheckCore();
     bool isKnown(const QString& word) const;
     // Sorted suggestions within maxDistance of the word (maxSuggestions).
-    QStringList suggest(const QString& word, int maxDistance = 2,
-                        int maxSuggestions = 8) const;
+    QStringList suggest(const QString& word, int maxDistance = 2, int maxSuggestions = 8) const;
     // Autocorrect: known correction if the word matches the map, else
     // the closest suggestion when within maxDistance, else unchanged.
     QString autocorrect(const QString& word, int maxDistance = 2) const;
@@ -35,7 +35,8 @@ private:
 };
 
 // Tab/entity/command-template completion (WM-FEAT-0019).
-class CompletionCore {
+class CompletionCore
+{
 public:
     void add(const QString& item);
     // Prefix candidates, sorted; bounded to maxCandidates.
