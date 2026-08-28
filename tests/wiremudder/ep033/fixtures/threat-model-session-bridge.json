@@ -1,0 +1,151 @@
+{
+  "id": "wm-threat-session-bridge",
+  "scope": "session bridge between untrusted network input and core processing",
+  "elements": [
+    {
+      "kind": "DataFlow",
+      "name": "mud-text",
+      "detail": "inbound MUD text and network frames"
+    },
+    {
+      "kind": "DataFlow",
+      "name": "ai-output",
+      "detail": "model output treated as evidence only"
+    },
+    {
+      "kind": "DataFlow",
+      "name": "voice-transcripts",
+      "detail": "voice transcription payloads"
+    },
+    {
+      "kind": "Asset",
+      "name": "session",
+      "detail": "user session state and preferences"
+    },
+    {
+      "kind": "Asset",
+      "name": "profile",
+      "detail": "user profile and world scope"
+    },
+    {
+      "kind": "Asset",
+      "name": "secrets-vault",
+      "detail": "credential storage via Secrets Vault"
+    },
+    {
+      "kind": "Actor",
+      "name": "remote-server",
+      "detail": "untrusted MUD server"
+    },
+    {
+      "kind": "Actor",
+      "name": "package-provider",
+      "detail": "package and update provider"
+    },
+    {
+      "kind": "Actor",
+      "name": "plugin",
+      "detail": "plugin or package code with granted capabilities"
+    },
+    {
+      "kind": "EntryPoint",
+      "name": "network-frame",
+      "detail": "parsed network frame"
+    },
+    {
+      "kind": "EntryPoint",
+      "name": "package-import",
+      "detail": "imported package archive"
+    },
+    {
+      "kind": "EntryPoint",
+      "name": "update-metadata",
+      "detail": "update manifest metadata"
+    },
+    {
+      "kind": "TrustBoundary",
+      "name": "session-bridge",
+      "detail": "between network input and core processing"
+    },
+    {
+      "kind": "TrustBoundary",
+      "name": "package-boundary",
+      "detail": "between package code and core authority"
+    },
+    {
+      "kind": "TrustBoundary",
+      "name": "prompt-boundary",
+      "detail": "between untrusted content and policy"
+    },
+    {
+      "kind": "MisuseCase",
+      "name": "oversized-frame",
+      "detail": "resource exhaustion via oversized input"
+    },
+    {
+      "kind": "MisuseCase",
+      "name": "prompt-injection",
+      "detail": "direct, indirect, encoded, roleplay, tool-use, memory poisoning"
+    },
+    {
+      "kind": "MisuseCase",
+      "name": "secret-leak",
+      "detail": "credential leakage through diagnostics or context"
+    },
+    {
+      "kind": "MisuseCase",
+      "name": "package-traversal",
+      "detail": "archive path traversal or symlink escape"
+    },
+    {
+      "kind": "Mitigation",
+      "name": "session-bridge-bounds",
+      "detail": "bounded frame sizes, recursion, and memory",
+      "covers": [
+        "session-bridge"
+      ]
+    },
+    {
+      "kind": "Mitigation",
+      "name": "prompt-injection-guard",
+      "detail": "fail-closed injection denial on untrusted content",
+      "covers": [
+        "prompt-boundary"
+      ]
+    },
+    {
+      "kind": "Mitigation",
+      "name": "secrets-scanner",
+      "detail": "deterministic secret-shaped material scan and redaction",
+      "covers": []
+    },
+    {
+      "kind": "Mitigation",
+      "name": "package-path-validation",
+      "detail": "traversal and symlink escape rejection",
+      "covers": [
+        "package-boundary"
+      ]
+    },
+    {
+      "kind": "ResidualRisk",
+      "name": "protocol-ambiguity",
+      "detail": "unknown encodings and protocol quirks"
+    },
+    {
+      "kind": "ResidualRisk",
+      "name": "novel-injection",
+      "detail": "injection techniques not covered by marker catalog"
+    },
+    {
+      "kind": "Verification",
+      "name": "forced-failure",
+      "detail": "M4 denial, abuse, and failure tests"
+    },
+    {
+      "kind": "Verification",
+      "name": "live-fire",
+      "detail": "LF-033 security supply-chain denial"
+    }
+  ]
+}

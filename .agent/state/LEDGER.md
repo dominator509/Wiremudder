@@ -342,3 +342,4 @@
 2026-08-28T09:28:42Z | ipman-hermes | EP-032 | LEASE_RELEASE | holder=ipman-hermes
 2026-08-28T09:28:44Z | ipman-hermes | EP-033 | LEASE | holder=ipman-hermes base=7e6420d73610df778e2b6a0761635d12f12b5c6b
 2026-08-28T09:41:55Z | ipman-hermes | EP-033 | MILESTONE_PASS | M1 EP-033 M1: ok; evidence=.agent/state/evidence/EP-033/M1
+2026-08-28T09:48:25Z | ipman-hermes | EP-033 | MILESTONE_PASS | M2 EP-033 M2: ok; evidence=.agent/state/evidence/EP-033/M2

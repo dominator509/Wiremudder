@@ -1,0 +1,91 @@
+{
+  "spec": "wiremudder-sbom-1",
+  "generated_from": "sbom/wiremudder/inventory.json",
+  "entries": [
+    {
+      "name": "3rdparty/edbee-lib",
+      "version": "locked",
+      "source": "https://github.com/Mudlet/edbee-lib.git",
+      "license": "MIT",
+      "sha256": "0973869c478415b35ba129e7e62399f308182111d516e69fdb892524cfbe68ae"
+    },
+    {
+      "name": "3rdparty/lcf",
+      "version": "locked",
+      "source": "https://github.com/martin-eden/lua_code_formatter.git",
+      "license": "MIT",
+      "sha256": "ef4cb5e118f1ce5ccd6cff3b33131222436a7a8f55057ef456927a2a8ad19d6f"
+    },
+    {
+      "name": "3rdparty/qt-tags-widget",
+      "version": "locked",
+      "source": "https://github.com/julian-go/qt-tags-widget.git",
+      "license": "MIT",
+      "sha256": "9232069623b5d01f94f0e3a12ff9d6e771e2d4f3481eec948fced7ccf7ed8db4"
+    },
+    {
+      "name": "3rdparty/qtkeychain",
+      "version": "locked",
+      "source": "https://github.com/frankosterfeld/qtkeychain.git",
+      "license": "BSD-3-Clause",
+      "sha256": "82f7c9b5a47ff46ec7e6a32d571a0e283da39c44a5c6a571eaa205b349ec76bf"
+    },
+    {
+      "name": "3rdparty/sentry-native",
+      "version": "locked",
+      "source": "https://github.com/getsentry/sentry-native.git",
+      "license": "MIT",
+      "sha256": "c249489f2121722578e9ef55899751091e9542906e9b090d25a57300ec8a13a8"
+    },
+    {
+      "name": "mudlet-core",
+      "version": "pinned",
+      "source": "https://github.com/Mudlet/Mudlet.git",
+      "license": "GPL-2.0-or-later",
+      "sha256": "a8bce434095ac0549e03dc49abcb290f0953183c838e5fb4837c9364a15fa1f5"
+    },
+    {
+      "name": "wire-contracts",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-contracts",
+      "license": "GPL-3.0-or-later",
+      "sha256": "90a17e83d50937dad9cbc3063c8f8fbed0d216df1f88422d6beb3f7d57c9b6b7"
+    },
+    {
+      "name": "wire-packages",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-packages",
+      "license": "GPL-3.0-or-later",
+      "sha256": "64c8fba15aec86d221aaa28eb896db409193a84390cd6738a45d1478d9357f45"
+    },
+    {
+      "name": "wire-policy",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-policy",
+      "license": "GPL-3.0-or-later",
+      "sha256": "a0c90987b796d18620d927f65acd938afcc12b6669710c1621cd7fdabf430da9"
+    },
+    {
+      "name": "wire-privacy",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-privacy",
+      "license": "GPL-3.0-or-later",
+      "sha256": "e88842df429f02cdef4f4fed7910dc08549390fdfb13fe30584b50898ccbf8d2"
+    },
+    {
+      "name": "wire-routing",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-routing",
+      "license": "GPL-3.0-or-later",
+      "sha256": "d22fa7d814b9ac68551731c3581212746e9077a4a902c088500e45251dd75143"
+    },
+    {
+      "name": "wire-secrets",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-secrets",
+      "license": "GPL-3.0-or-later",
+      "sha256": "fc2db578d7e15b304ab768c9c3fc4fb1adca015e93795cd81dc733d97d7d71ed"
+    }
+  ],
+  "document_sha256": "b38005dc13082e9c7a58b3fb1a0a08888235222eefb8e6803971f3403cf20f94"
+}

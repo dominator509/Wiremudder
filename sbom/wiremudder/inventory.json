@@ -1,0 +1,100 @@
+{
+  "components": [
+    {
+      "kind": "Source",
+      "name": "mudlet-core",
+      "version": "pinned",
+      "source": "https://github.com/Mudlet/Mudlet.git",
+      "license": "GPL-2.0-or-later",
+      "license_ok": true
+    },
+    {
+      "kind": "Submodule",
+      "name": "3rdparty/edbee-lib",
+      "version": "locked",
+      "source": "https://github.com/Mudlet/edbee-lib.git",
+      "license": "MIT",
+      "license_ok": true
+    },
+    {
+      "kind": "Submodule",
+      "name": "3rdparty/lcf",
+      "version": "locked",
+      "source": "https://github.com/martin-eden/lua_code_formatter.git",
+      "license": "MIT",
+      "license_ok": true
+    },
+    {
+      "kind": "Submodule",
+      "name": "3rdparty/qt-tags-widget",
+      "version": "locked",
+      "source": "https://github.com/julian-go/qt-tags-widget.git",
+      "license": "MIT",
+      "license_ok": true
+    },
+    {
+      "kind": "Submodule",
+      "name": "3rdparty/qtkeychain",
+      "version": "locked",
+      "source": "https://github.com/frankosterfeld/qtkeychain.git",
+      "license": "BSD-3-Clause",
+      "license_ok": true
+    },
+    {
+      "kind": "Submodule",
+      "name": "3rdparty/sentry-native",
+      "version": "locked",
+      "source": "https://github.com/getsentry/sentry-native.git",
+      "license": "MIT",
+      "license_ok": true
+    },
+    {
+      "kind": "Dependency",
+      "name": "wire-secrets",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-secrets",
+      "license": "GPL-3.0-or-later",
+      "license_ok": true
+    },
+    {
+      "kind": "Dependency",
+      "name": "wire-policy",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-policy",
+      "license": "GPL-3.0-or-later",
+      "license_ok": true
+    },
+    {
+      "kind": "Dependency",
+      "name": "wire-privacy",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-privacy",
+      "license": "GPL-3.0-or-later",
+      "license_ok": true
+    },
+    {
+      "kind": "Dependency",
+      "name": "wire-routing",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-routing",
+      "license": "GPL-3.0-or-later",
+      "license_ok": true
+    },
+    {
+      "kind": "Dependency",
+      "name": "wire-packages",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-packages",
+      "license": "GPL-3.0-or-later",
+      "license_ok": true
+    },
+    {
+      "kind": "Dependency",
+      "name": "wire-contracts",
+      "version": "0.1.0",
+      "source": "wirecore/crates/wire-contracts",
+      "license": "GPL-3.0-or-later",
+      "license_ok": true
+    }
+  ]
+}

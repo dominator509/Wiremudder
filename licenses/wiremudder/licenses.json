@@ -1,0 +1,46 @@
+{
+  "entries": [
+    {
+      "component": "mudlet-core",
+      "license": "GPL-2.0-or-later",
+      "source_obligation": true,
+      "notice_path": "COPYING"
+    },
+    {
+      "component": "3rdparty/edbee-lib",
+      "license": "MIT",
+      "source_obligation": false,
+      "notice_path": "3rdparty/edbee-lib/LICENSE"
+    },
+    {
+      "component": "3rdparty/lcf",
+      "license": "MIT",
+      "source_obligation": false,
+      "notice_path": "3rdparty/lcf/LICENSE"
+    },
+    {
+      "component": "3rdparty/qt-tags-widget",
+      "license": "MIT",
+      "source_obligation": false,
+      "notice_path": "3rdparty/qt-tags-widget/LICENSE"
+    },
+    {
+      "component": "3rdparty/qtkeychain",
+      "license": "BSD-3-Clause",
+      "source_obligation": false,
+      "notice_path": "3rdparty/qtkeychain/COPYING"
+    },
+    {
+      "component": "3rdparty/sentry-native",
+      "license": "MIT",
+      "source_obligation": false,
+      "notice_path": "3rdparty/sentry-native/LICENSE"
+    },
+    {
+      "component": "wirecore-crates",
+      "license": "GPL-3.0-or-later",
+      "source_obligation": true,
+      "notice_path": "COPYING"
+    }
+  ]
+}

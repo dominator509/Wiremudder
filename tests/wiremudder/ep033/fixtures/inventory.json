@@ -1,0 +1,12 @@
+{
+  "components": [
+    { "kind": "Source", "name": "mudlet-core", "version": "pinned", "source": "https://github.com/Mudlet/Mudlet.git", "license": "GPL-2.0-or-later", "license_ok": true },
+    { "kind": "Submodule", "name": "3rdparty/edbee-lib", "version": "locked", "source": "https://github.com/Mudlet/edbee-lib.git", "license": "MIT", "license_ok": true },
+    { "kind": "Submodule", "name": "3rdparty/lcf", "version": "locked", "source": "https://github.com/martin-eden/lua_code_formatter.git", "license": "MIT", "license_ok": true },
+    { "kind": "Submodule", "name": "3rdparty/qt-tags-widget", "version": "locked", "source": "https://github.com/julian-go/qt-tags-widget.git", "license": "MIT", "license_ok": true },
+    { "kind": "Submodule", "name": "3rdparty/qtkeychain", "version": "locked", "source": "https://github.com/frankosterfeld/qtkeychain.git", "license": "BSD-3-Clause", "license_ok": true },
+    { "kind": "Dependency", "name": "serde", "version": "1", "source": "crates.io", "license": "MIT OR Apache-2.0", "license_ok": true },
+    { "kind": "Dependency", "name": "serde_json", "version": "1", "source": "crates.io", "license": "MIT OR Apache-2.0", "license_ok": true },
+    { "kind": "Dependency", "name": "sha2", "version": "0.10", "source": "crates.io", "license": "MIT OR Apache-2.0", "license_ok": true }
+  ]
+}
