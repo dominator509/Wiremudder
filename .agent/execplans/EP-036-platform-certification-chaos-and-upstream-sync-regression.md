@@ -321,7 +321,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock — commit 20e7685; verifier EP-036 M1: ok; 3 contract tests; evidence WM-SRC-000290..000301
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -334,6 +334,8 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-28: M1 — platform certification and chaos are test-and-evidence boundaries (`tests/wiremudder/platform/`, `tests/wiremudder/chaos/`, `compatibility/platform/`, `docs/wiremudder/certification/`); no inherited source is edited. Certification evidence is real controlled runs on the Linux host plus documented cross-platform evidence requirements (SPEC-027-R08). Alternative (claiming Windows/macOS certification without evidence) rejected: violates the reality gate. Consequence: platform claims are bounded by evidence; the fallback keeps uncertified platforms development-only. Affects WM-FEAT-0159/0242 and WM-SPEC-019-R02, WM-SPEC-027-R08.
 
 # 14. Outcomes and Retrospective
 
