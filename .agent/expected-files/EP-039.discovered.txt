@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T20:07:49Z","agent_id":"ipman-hermes","node":"EP-039","path":"docs/ai-instructions.md","rationale":"EP-039 M1 wires the 12 ship-gate locked commands; the exact command strings must be documented in an accepted command authority (docs/ai-instructions.md) so command-lock-add can evidence them verbatim","repository_commit":"c3ddda2a91561d50e356fb410246c59dfaf8bc11","rollback":"git checkout docs/ai-instructions.md; remove any added gate-command section; re-run command-lock-check","source_evidence_id":"WM-SRC-000331","test":"tests/wiremudder/ep000/performance/002-inventory-budget.sh"}

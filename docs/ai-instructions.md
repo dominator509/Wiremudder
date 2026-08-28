@@ -197,3 +197,27 @@ cmake --build --preset linux-debug
 
 Variant presets such as `linux-debug-nosan` build into `build-<preset-name>/`, so the binary is
 under that directory rather than `build/`.
+
+## WireMudder ship-gate commands
+
+WireMudder's final ship gate runs these locked commands in order. Each
+command is the exact string recorded in `.agent/state/COMMANDS.lock.tsv`;
+gate scripts in `scripts/` are thin wrappers over
+`sh scripts/run-locked-command.sh <key>`.
+
+- Lint/static analysis: `for f in $(find src/wiremudder -type f \( -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) | sort); do clang-tidy -p build-linux-debug-nosan --extra-arg=-I"$PWD" --quiet --config-file=.clang-tidy "$f" >/dev/null 2>&1 || { echo "lint FAIL: $f"; exit 1; }; done; echo "lint: ok"`
+- Type and compile check: `cargo check --manifest-path packaging/wiremudder/Cargo.toml`
+- Integration tests: `for t in tests/wiremudder/*/integration/*.sh; do sh "$t" || exit 1; done`
+- E2E tests: `for t in tests/wiremudder/*/e2e/*.sh; do sh "$t" || exit 1; done`
+- Compatibility gate: `sh tests/live-fire/LF-003-compatibility-oracle-roundtrip.sh`
+- Security check: `for t in tests/wiremudder/*/security/*.sh; do sh "$t" || exit 1; done`
+- Dependency audit: `CARGO_TARGET_DIR=$PWD/wirecore/target cargo run --quiet --release --manifest-path security/wiremudder/Cargo.toml -- sbom sbom/wiremudder/inventory.json`
+- License gate: `CARGO_TARGET_DIR=$PWD/wirecore/target cargo run --quiet --release --manifest-path security/wiremudder/Cargo.toml -- sbom sbom/wiremudder/inventory.json`
+- Performance gate: `cargo run --release --manifest-path tools/perf-capture/Cargo.toml -- --suite ep032 --out tools/perf-capture/artifacts`
+- Accessibility gate: `for t in tests/wiremudder/ep031/unit/*.sh tests/wiremudder/ep031/integration/*.sh tests/wiremudder/ep031/e2e/*.sh tests/wiremudder/ep031/security/*.sh tests/wiremudder/ep031/performance/*.sh tests/wiremudder/ep031/features/*.sh tests/wiremudder/ep031/contract/*.sh tests/wiremudder/ep031/failure/*.sh; do sh "$t" || exit 1; done`
+- Platform gate: `sh tests/wiremudder/platform/linux-certification.sh`
+- Smoke: `sh tests/wiremudder/ui/001-ui-smoke.sh`
+
+The ship-gate wrappers in `scripts/verify.sh` call these through
+`run-locked-command.sh`; the lock file is the single source of truth for
+the exact command strings.

@@ -392,3 +392,17 @@
 2026-08-28T16:59:31Z | ipman-hermes | EP-038 | LEASE_RELEASE | holder=ipman-hermes
 2026-08-28T16:59:41Z | ipman-hermes | EP-039 | LEASE | holder=ipman-hermes base=d631a6453a7bc7728a137cd8a10ea48845ccc816
 2026-08-28T18:45:18Z | ipman-hermes | EP-039 | MILESTONE_PASS | M1 evidence: ASCII boot repair of 14 manifest-owned execplans (EP-018 ellipsis + EP-023..EP-038 non-ASCII tokens); blueprint validation ok; commit e992a55b; WM-SRC-000330
+2026-08-28T18:45:32Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T18:45:47Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T18:46:02Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T18:46:21Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T18:46:36Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T18:47:14Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T19:15:24Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T19:18:44Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T19:21:53Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T19:22:08Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T19:43:41Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T20:07:49Z | ipman-hermes | EP-039 | HEARTBEAT | discovered_path=docs/ai-instructions.md evidence=WM-SRC-000331
+2026-08-28T20:10:49Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-28T20:30:37Z | ipman-hermes | EP-039 | LEASE_TAKEOVER | holder=ipman-hermes base=cecd0c01b679e1ba299c47f8c180951d5a5fd5ad gatefix=boot repairs: ASCII execplans e992a55b, clang-format batch e6b1576b, schema-bindings array-root cecd0c01
