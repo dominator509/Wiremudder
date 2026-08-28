@@ -311,14 +311,31 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
+
+2026-08-28: The failure matrix surfaced a real observability gap:
+`track_provenance` recorded provenance but did not write the audit
+trail, so an audit replay could not reconstruct provenance events.
+Fixed by appending a `provenance <origin>` audit entry; the failure
+matrix's preserved-data-integrity proof now asserts the exact audit
+count and passes.
+
+2026-08-28: The renderer M4 fixture proved the frame-budget path with a
+real 128-emit queue: a full 5 ms frame drains the whole batch at ~70 µs
+measured, far under the 4-6 ms SPEC-016 frame budget; worst-case P3 path
+stays ~70 µs and emergency stop ~66 µs (P0 budget 10 ms).
+
+2026-08-28: Asset provenance is enforced at the deterministic gate:
+`protected:` provenance and `unlicensed` license are rejected outright;
+unsigned non-local packs are rejected (SPEC-016-R09), so only
+signed/licensed or user-local packs can supply renderer content.
 
 # 13. Decision Log
 
@@ -336,3 +353,15 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+2026-08-28: EP-025 complete and released.
+- Commands and sentinels: `sh scripts/node-verify.sh EP-025` -> `node verify EP-025: ok`; `LF-025 renderer-degradation: ok` with 6/6 certification obligations true; M1-M5 verifier subcommands each print their exact sentinel.
+- Source evidence: WM-SRC-000168..175 recorded before any inherited edit; single discovered-path amendment for `src/CMakeLists.txt` (WM-SRC-000168).
+- Feature disposition: WM-FEAT-0069..0074, 0077, 0185, 0207..0210 all implemented and certified via feature tests + LF-025.
+- Requirement disposition: WM-SPEC-004-R04/R07, WM-SPEC-016-R01/R03/R05/R06/R09/R10 all implemented with automated tests; WM-SPEC-016-R10 is live-fire class and covered by LF-025.
+- Asset certification: original procedural assets (CC0, provenance `original:wiremudder:procedural`) under `assets/wiremudder/renderer/`; no protected third-party assets; pack provenance gate enforced in-crate.
+- Platform certification: Qt6 (/opt/qt/6.8.2/gcc_64) compile proof for the renderer boundary; renderer shipped in static mode by default with text-only fallback (EP-025 fallback honored).
+- Risks: animation and external asset generation remain disabled by default; inferred emits require confidence display.
+- Rollback: `git checkout -- src/CMakeLists.txt` reverts the single inherited edit; remove the four authorized boundaries to remove the node.
+- Green tag: `green/EP-025` created after full node verify.
+- Scheduler: next output recorded in the ledger.
