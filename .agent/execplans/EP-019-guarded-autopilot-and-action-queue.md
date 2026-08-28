@@ -297,20 +297,77 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M1: Evidence, contracts, and exact path lock
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
-Append dated evidence-backed discoveries. Speculation is not a discovery.
+- 2026-08-28: EP-008's ActionGateway sends only Approved proposals; a
+  NeedsConfirmation proposal is never sent by approve_and_send. The
+  autopilot's confirm path therefore treats an explicitly confirmed
+  confirmation-required action as a user-approved send (WM-SPEC-009-R04),
+  audited with the `confirmed:` marker, while approved actions still pass
+  through the gateway with pacing.
+- 2026-08-28: The perf fixture initially tripped its own rate limit during
+  warmup (2100 proposals within one 60s window). The fixture uses a
+  realistic large window cap; the rate-limit denial itself is proven in
+  the failure/security matrices.
+- 2026-08-28: Queue-full shadows denied-policy in propose() (queue check
+  precedes the gateway evaluate); the failure matrix tests each denial on
+  its own engine.
 
 # 13. Decision Log
 
-Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+- 2026-08-28 | wire-autopilot owns the EP-008 ActionGateway; propose()
+  creates visible bounded PendingActions, confirm_and_send()/auto_send()
+  are the only send paths. Evidence: wire-autopilot crate + e2e + LF-019.
+  Alternatives: (a) bypass the gateway for confirmed sends entirely -
+  loses deterministic gate; (b) duplicate the gateway in the autopilot -
+  violates EP-008 ownership. Chose composition with a user-confirmed send
+  class for confirmation-required actions. Consequence: every send is
+  visible + audited; approved sends keep gateway pacing. Reversal: route
+  confirmed sends through a future gateway confirmed-send API. Affected:
+  WM-FEAT-0041, WM-SPEC-009-R02/R04, WM-SPEC-014-R10. Security: no hidden
+  send; confirmation never bypassable by a model. Privacy, license,
+  compatibility, performance, upstream: no change.
 
 # 14. Outcomes and Retrospective
 
-At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+- Changed vs expected files: all changes are inside the EP-019 static fence
+  (`.agent/execplans/EP-019-*.md`, `.agent/milestone-files/EP-019-M*.txt`,
+  `.agent/expected-files/EP-019*.txt`, `.agent/state/evidence/EP-019/`,
+  `scripts/node-verifiers/EP-019.sh`, `tests/live-fire/LF-019-*.sh`,
+  `tests/wiremudder/ep019/`, `docs/wiremudder/autopilot/`,
+  `wirecore/crates/wire-autopilot/`, `src/wiremudder/ui/autopilot/`,
+  `schemas/wiremudder/autopilot/`) plus the discovered-path amendment
+  `src/CMakeLists.txt` (WM-SRC-000127).
+- Source evidence: WM-SRC-000124..000133 (M1); all inherited paths verified
+  from repository evidence before edit.
+- Commands and sentinels: `sh scripts/graph-next.sh` -> `NEXT EP-019`;
+  `sh scripts/node-verifiers/EP-019.sh M1..M5` -> each `EP-019 Mk: ok`;
+  `sh scripts/node-verify.sh EP-019` -> `node verify EP-019: ok`;
+  `sh scripts/expected-files-audit.sh EP-019` -> ok;
+  `sh scripts/scope-audit.sh EP-019` -> ok;
+  `sh scripts/feature-coverage-check.sh` -> ok;
+  `sh scripts/spec-trace-check.sh` -> ok;
+  `sh tests/live-fire/LF-019-guarded-autopilot-confirmation.sh` ->
+  `LF-019: ok`; perf fixture p50=1472ns p95=5208ns max=165555ns (release,
+  RUNS=2000).
+- Feature disposition: WM-FEAT-0041 certified via feature test + LF-019
+  (release profile: required/full).
+- Requirement disposition: WM-SPEC-009-R02, R04, WM-SPEC-014-R10 certified
+  via requirement tests + LF-019.
+- Provider/platform certification: none new (EP-019 owns no provider or
+  platform surface).
+- Assumptions changed: none.
+- Risks: confirmed destructive sends are user-approved and audited in the
+  autopilot audit rather than the gateway audit; if EP-008 later adds a
+  confirmed-send API, route through it.
+- Rollback: see `docs/wiremudder/autopilot/operations/runbook.md`; revert
+  `src/CMakeLists.txt` additions and delete EP-019 paths. Never cross
+  `green/EP-019` during rollback.
+- Green tag: `green/EP-019` created after `node verify EP-019: ok`.
+- Next scheduler output after completion: `sh scripts/graph-next.sh`.
