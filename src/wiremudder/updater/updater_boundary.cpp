@@ -10,11 +10,6 @@
 
 namespace wiremudder::updater {
 
-static bool equalIgnoreCase(const QString& a, const QString& b)
-{
-    return a.compare(b, Qt::CaseInsensitive) == 0;
-}
-
 // Version compare: dotted numeric with semver prerelease rule
 // (release beats its own prerelease). Returns true when a >= b.
 static bool versionGe(const QString& a, const QString& b)
@@ -107,16 +102,16 @@ VerifyState UpdaterBoundary::admit(const SignedManifest& manifest,
 
 Health UpdaterBoundary::recordStartup(bool ok, int quarantineAfter)
 {
+    // Static counters model the per-process startup history; the Rust core
+    // owns durable quarantine state across restarts. A clean startup resets
+    // the crash counter and releases quarantine.
     static int failures = 0;
-    static bool quarantined = false;
     if (ok) {
         failures = 0;
-        quarantined = false;
         return Health::Healthy;
     }
     failures += 1;
     if (failures >= quarantineAfter) {
-        quarantined = true;
         return Health::CrashLoop;
     }
     return Health::FailedStartup;
