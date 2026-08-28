@@ -217,6 +217,7 @@ set(mudlet_SRCS
     UntrustedText.cpp
     VarUnit.cpp
     WideComboBox.cpp
+    wiremudder/ui/copilot/copilot_boundary.cpp
     XMLexport.cpp
     XMLimport.cpp)
 
@@ -456,6 +457,7 @@ set(mudlet_HDRS
     VarUnit.h
     widechar_width.h
     WideComboBox.h
+    wiremudder/ui/copilot/copilot_boundary.h
     XMLexport.h
     XMLimport.h)
 
