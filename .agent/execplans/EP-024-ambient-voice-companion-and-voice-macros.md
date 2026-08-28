@@ -311,14 +311,34 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
+
+2026-08-28: The security matrix surfaced a real fail-closed gap: a voice
+macro with risk tier `manual` was initially accepted when
+`confirmation_required=false`. That is wrong for an automated source —
+`manual` is the direct user-typed tier and must never be claimed by
+voice/automation. Fixed `VoiceMacro::validate()` to reject `manual`
+outright (WM-SPEC-009-R02 fail-closed); unit suite and security matrix
+both re-verified.
+
+2026-08-28: The failure matrix exposed a fixture bug: the queue-exhaustion
+sample reused the same companion that had already queued the remote-speech
+job from the consent sample, so the 64-slot cap was hit one job early.
+Fixed by using a fresh companion for the queue-exhaustion sample so the
+real cap is the only constraint (same class of self-limiting fixture issue
+as EP-022/EP-023 M4).
+
+2026-08-28: Real measured performance: all P3 voice paths stay well under
+the 5 ms SPEC-004 budget (mean worst case ~27 µs across recognize,
+enqueue, barge-in, snapshot, remote-policy, emergency-stop samples);
+emergency stop measured ~24-27 µs, far under the 10 ms P0 target.
 
 # 13. Decision Log
 
@@ -336,3 +356,14 @@ Append date, decision, evidence, alternatives, consequence, reversal, affected f
 # 14. Outcomes and Retrospective
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.
+
+2026-08-28: EP-024 complete and released.
+- Commands and sentinels: `sh scripts/node-verify.sh EP-024` -> `node verify EP-024: ok`; `LF-024 voice-privacy-command: ok` with 6/6 certification obligations true; M1-M5 verifier subcommands each print their exact sentinel.
+- Source evidence: WM-SRC-000155..167 recorded before any inherited edit; single discovered-path amendment for `src/CMakeLists.txt` (WM-SRC-000155).
+- Feature disposition: WM-FEAT-0057..0068, 0186, 0211, 0212 all implemented and certified via feature tests + LF-024.
+- Requirement disposition: WM-SPEC-007-R02 (voice surface), WM-SPEC-010-R08 (private voice protected), WM-SPEC-015-R07 (licensed styles), WM-SPEC-015-R10 (degrade to text) all implemented with automated tests; WM-SPEC-015-R10 is live-fire class and covered by LF-024.
+- Provider/platform certification: voice shipped disabled by default with local-first architecture (local provider path certified in-crate; remote providers stay certified=false until separately certified, matching the EP-024 fallback). Qt6 (/opt/qt/6.8.2/gcc_64) compile proof for the voice boundary.
+- Risks: remote STT/TTS providers remain uncertified by design; wake phrase and remote speech are omitted until separately certified.
+- Rollback: `git checkout -- src/CMakeLists.txt` reverts the single inherited edit; remove the four authorized boundaries to remove the node.
+- Green tag: `green/EP-024` created after full node verify.
+- Scheduler: next output recorded in the ledger.
