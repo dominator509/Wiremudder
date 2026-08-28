@@ -1,0 +1,3 @@
+host: x86_64 6 cores
+date: 2026-08-28T16:51:58Z
+binary: 643904 bytes

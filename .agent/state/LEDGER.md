@@ -386,3 +386,4 @@
 2026-08-28T16:38:22Z | unknown-agent | EP-038 | HEARTBEAT | discovered_path=.gitignore evidence=WM-SRC-000328
 2026-08-28T16:44:21Z | ipman-hermes | EP-038 | MILESTONE_PASS | M2 EP-038 M2: ok; evidence=.agent/state/evidence/EP-038/M2
 2026-08-28T16:50:35Z | ipman-hermes | EP-038 | MILESTONE_PASS | M3 EP-038 M3: ok; evidence=.agent/state/evidence/EP-038/M3
+2026-08-28T16:52:02Z | ipman-hermes | EP-038 | MILESTONE_PASS | M4 EP-038 M4: ok; evidence=.agent/state/evidence/EP-038/M4

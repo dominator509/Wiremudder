@@ -1,0 +1,3 @@
+mean_us=2810 p50_us=2730 p95_us=3356 p99_us=3628 max_us=3628
+checksum_sweep_max_ms=216
+budget_us=100000
