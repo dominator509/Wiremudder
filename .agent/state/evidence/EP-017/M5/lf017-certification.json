@@ -1,0 +1,16 @@
+{
+  "action_proposal_present": false,
+  "action_proposal_requires_confirmation": false,
+  "citations": 3,
+  "completion_latency_ms": 940,
+  "confidence": 0.325,
+  "disclosure_context_bytes": 263,
+  "health_ok": true,
+  "manual_gameplay_preserved": true,
+  "model": "tinyllama:latest",
+  "privacy_leak_count": 0,
+  "provider": "ollama",
+  "route_id": "ollama-local",
+  "suggestion_nonempty": true,
+  "why_nonempty": true
+}

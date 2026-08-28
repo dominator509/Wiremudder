@@ -12,3 +12,4 @@ wire-context = { path = "../wire-context" }
 wire-ai-router = { path = "../wire-ai-router" }
 wire-privacy = { path = "../wire-privacy" }
 wire-token-budget = { path = "../wire-token-budget" }
+wire-provider-adapters = { path = "../wire-provider-adapters" }

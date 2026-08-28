@@ -298,10 +298,10 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -324,5 +324,27 @@ Append dated evidence-backed discoveries. Speculation is not a discovery.
   obligation).
 
 # 14. Outcomes and Retrospective
+
+- 2026-08-28: EP-017 CLOSED. Real Player Copilot shipped: suggestion-only
+  engine (wire-copilot crate, 10 unit tests, zero new supply chain), cited
+  Why explanations, calibrated non-authoritative confidence, visible
+  disclosures, soul policy precedence, SPEC-009-gated Action Proposals, and
+  a passive Qt pane compiled into the actual client build.
+- M1 corrective: the pack requires the smallest evidence-backed inherited
+  integration patch; a zero-integration decision was a deviation. Fixed by
+  authorizing src/CMakeLists.txt (mudlet_SRCS) via discovered amendment
+  WM-SRC-000118 with real evidence, plus build-integration contract test.
+- M2: wire-copilot crate + copilot schemas; 10/10 tests; real defects found
+  and fixed (redactor value-leak after markers, naive soul validation,
+  confidence expectation).
+- M3: real integration - copilot_boundary.cpp compiled into libmudlet_core.a
+  and the mudlet executable (rc=0); E2E Rust engine flow + compiled C++ Qt
+  pane harness; all 8 states proven.
+- M4: 9 failure classes through the real engine path, 7 security cases,
+  perf p50=1.5us p95=2.75us (budget 1ms); operations runbook.
+- M5: LF-017 live-fire against real Ollama tinyllama (completion 1034-3074ms,
+  citations=3, confidence=0.325, privacy_leak_count=0, degraded path ok);
+  4 feature tests + 5 requirement tests green; certification evidence
+  .agent/state/evidence/EP-017/M5/lf017-certification.json.
 
 At completion record changed versus expected files, source evidence, commands, exit codes, observed sentinels, evidence hashes, feature and requirement disposition, provider and platform certification, assumptions changed, risks, rollback, green tag, and next scheduler output.

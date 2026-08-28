@@ -157,6 +157,7 @@ dependencies = [
  "wire-ai-router",
  "wire-context",
  "wire-privacy",
+ "wire-provider-adapters",
  "wire-token-budget",
 ]
 
