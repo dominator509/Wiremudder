@@ -1,0 +1,14 @@
+[package]
+name = "wiremudder-update-fixtures"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder update fixture tool: generates ephemeral test signing keys and produces real signed update manifests and artifacts for EP-034 tests and live-fire (SPEC-020). Test-only; never used for production signing."
+
+[dependencies]
+wire-updater = { path = "../../wirecore/crates/wire-updater" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ed25519-dalek = { version = "3", features = ["fast", "rand_core"] }
+getrandom = "0.3"
+sha2 = "0.10"

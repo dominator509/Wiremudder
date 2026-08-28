@@ -1,0 +1,15 @@
+[package]
+name = "wire-updater"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "WireMudder secure updater core: signed manifest verification, release channels, update lanes, staged rollout, resumable downloads, permission-expansion rejection, migration safety, active-session deferral, quarantine, and rollback (SPEC-020, SPEC-010, SPEC-022, SPEC-025)"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+ed25519-dalek = { version = "3", features = ["fast", "rand_core"] }
+
+[dev-dependencies]
+rand = "0.9"

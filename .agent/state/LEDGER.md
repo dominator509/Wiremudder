@@ -351,3 +351,4 @@
 2026-08-28T09:54:25Z | ipman-hermes | EP-034 | LEASE | holder=ipman-hermes base=f5d8e19920959042e49174bd8780810244295e4b
 2026-08-28T14:28:59Z | unknown-agent | EP-034 | HEARTBEAT | discovered_path=src/CMakeLists.txt evidence=WM-SRC-000262
 2026-08-28T14:29:19Z | ipman-hermes | EP-034 | MILESTONE_PASS | M1 EP-034 M1: ok; evidence=.agent/state/evidence/EP-034/M1
+2026-08-28T14:39:33Z | ipman-hermes | EP-034 | MILESTONE_PASS | M2 EP-034 M2: ok; evidence=.agent/state/evidence/EP-034/M2

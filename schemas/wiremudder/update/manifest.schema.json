@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wiremudder.dev/schemas/update/manifest.schema.json",
+  "title": "WireMudder Signed Update Manifest",
+  "description": "Signed update manifest per SPEC-020-R03/R04: lane, channel, version, artifact hash, Ed25519 signature, compatibility, required permissions, staged rollout, and migration version. Unsigned, invalid, corrupted, incompatible, downgrade, or permission-expanding artifacts are rejected.",
+  "type": "object",
+  "required": [
+    "schema_version", "lane", "channel", "version", "artifact_sha256",
+    "artifact_size", "signature", "compat"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "lane": {
+      "enum": [
+        "core_app", "provider_adapter", "context_rules", "command_pack",
+        "plugin_pack", "renderer_pack", "audio_pack", "local_model_asset",
+        "help_index"
+      ]
+    },
+    "channel": { "enum": ["development", "canary", "beta", "stable"] },
+    "version": { "type": "string", "minLength": 1 },
+    "artifact_sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+    "artifact_size": { "type": "integer", "minimum": 1 },
+    "signature": { "type": "string", "pattern": "^[0-9a-fA-F]{128}$" },
+    "compat": {
+      "type": "object",
+      "required": ["wiremudder", "mudlet"],
+      "properties": {
+        "wiremudder": { "type": "string" },
+        "mudlet": { "type": "string" }
+      }
+    },
+    "required_permissions": {
+      "type": "array",
+      "items": {
+        "enum": ["filesystem", "network", "microphone", "ai_egress", "secrets", "routing", "updater", "telemetry", "ui", "command_send", "memory", "renderer", "audio"]
+      }
+    },
+    "rollout": {
+      "type": "object",
+      "required": ["fraction", "kill_switch"],
+      "properties": {
+        "fraction": { "type": "number", "minimum": 0, "maximum": 1 },
+        "kill_switch": { "type": "boolean" }
+      }
+    },
+    "migration_version": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}
