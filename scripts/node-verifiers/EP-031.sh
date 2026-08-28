@@ -74,7 +74,7 @@ case "${1:-}" in
       [ -f "$t" ] || fail "no security tests found"
       sh "$t" || fail "security test failed: $t"
     done
-    [ -f docs/wiremudder/accessibility/operations.md ] || fail "missing operations runbook"
+    [ -f docs/wiremudder/accessibility/operations/runbook.md ] || fail "missing operations runbook"
     ok "EP-031 M4: ok"
     ;;
   M5)
