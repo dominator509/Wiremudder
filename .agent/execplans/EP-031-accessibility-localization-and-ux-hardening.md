@@ -309,7 +309,7 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 # 11. Progress
 
-- [ ] M1: Evidence, contracts, and exact path lock
+- [x] M1: Evidence, contracts, and exact path lock
 - [ ] M2: Core behavior and deterministic invariants
 - [ ] M3: Real integration and user-visible flow
 - [ ] M4: Forced failures, abuse cases, performance, and operations
@@ -319,9 +319,16 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 
 Append dated evidence-backed discoveries. Speculation is not a discovery.
 
+- 2026-08-28 (M1): EP-031 is a cross-cutting node with no direct feature rows; the only owned requirement is WM-SPEC-007-R10 (validation matrix row maps it to live-fire LF-031 at tests/wiremudder/ep031/requirements/wm-spec-007-r10). The remaining accessibility obligations (keyboard, focus, screen-reader, reduced-motion, subtitles) live in WM-SPEC-007-R05, owned by EP-009, and WM-SPEC-027-R07. EP-031's contract still obligates cross-cutting accessibility evidence and release coverage across all enabled surfaces.
+- 2026-08-28 (M1): The inherited Mudlet translation convention is fully mechanical: master `translations/mudlet.ts` (19392 lines), locale catalogs `translations/translated/mudlet_*.ts` (24 locales), compiled `.qm` registered in `translations/translated/qm.qrc` under the `/lang` resource prefix, built by `Qt6LinguistTools 6.8.2 REQUIRED` with `lrelease -compress -qm` (translations/translated/CMakeLists.txt), wired through `add_subdirectory(translations/translated)` (CMakeLists.txt:271) and `configure_file`/`target_sources` of qm.qrc (src/CMakeLists.txt:29/697), and loaded at runtime by `QTranslator::load(userLocale, "mudlet", "_", ":/lang", ".qm")` (src/main.cpp:161). New strings must follow this convention (WM-SPEC-007-R10) and new catalogs under translations/wiremudder/ must mirror it.
+- 2026-08-28 (M1): The inherited integration seam for the new accessibility boundary is `src/CMakeLists.txt`, where the owned help/soundscape/diagnostics/import panes already sit (help_boundary.cpp at line 229, soundscape at 227, import added by EP-030). The discovered amendment (WM-SRC-000230) authorizes adding the accessibility boundary beside them; the contract test accessibility-build-integration.sh locks the pattern.
+
 # 13. Decision Log
 
 Append date, decision, evidence, alternatives, consequence, reversal, affected features and requirements, security, privacy, license, compatibility, performance, and upstream impact.
+
+- 2026-08-28 (M1): Adopt the inherited Mudlet translation convention exactly for WM-SPEC-007-R10: master .ts under translations/, locale .ts under a translated/ mirror, qm.qrc /lang registration, lrelease -compress -qm, runtime QTranslator load with the catalog name and .qm suffix. Evidence: WM-SRC-000222..000227. Alternatives: a separate ICU/fluent pipeline rejected because the spec demands the existing Mudlet convention and the runtime loader would not pick up another format. Consequence: new catalogs must mirror the inherited layout; no new runtime load path needed. Reversal: revert the translations/wiremudder/ catalog additions and any CMake wiring. Affects WM-SPEC-007-R10; compatibility and performance neutral; upstream impact none.
+- 2026-08-28 (M1): Integrate the accessibility boundary into src/CMakeLists.txt beside the established owned panes (help/soundscape/diagnostics/import), via the discovered-path amendment (WM-SRC-000230). Evidence: help_boundary.cpp at src/CMakeLists.txt:229. Alternatives: a separate static library or plugin build rejected because the inherited Mudlet build is a single CMake target and prior nodes established the in-target boundary pattern. Consequence: the boundary compiles with the real Qt6 toolchain and joins the runtime. Reversal: `git checkout -- src/CMakeLists.txt` plus removal of the boundary sources. Affects SPEC-007 surfaces; security/privacy neutral.
 
 # 14. Outcomes and Retrospective
 

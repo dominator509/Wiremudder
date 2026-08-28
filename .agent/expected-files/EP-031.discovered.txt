@@ -2,3 +2,4 @@
 # One JSON object per non-comment line. Append only through scripts/discovered-path-add.sh.
 # Required keys: node, source_evidence_id, repository_commit, path, rationale, test, rollback, added_at, agent_id.
 # Directory-wide inherited authorization is forbidden.
+{"added_at":"2026-08-28T08:59:11Z","agent_id":"ipman-hermes","node":"EP-031","path":"src/CMakeLists.txt","rationale":"Accessibility boundary source list wiring: add wiremudder/accessibility/accessibility_boundary.cpp to mudlet_SRCS and accessibility_boundary.h to the UI headers, exactly beside the owned help/soundscape/diagnostics/import panes, following the same model-side Qt boundary pattern (WM-SRC-000230).","repository_commit":"9366f94f42ed9d2493a5a41855e623c95f183d72","rollback":"git checkout -- src/CMakeLists.txt","source_evidence_id":"WM-SRC-000230","test":"tests/wiremudder/ep031/contract/accessibility-build-integration.sh"}
