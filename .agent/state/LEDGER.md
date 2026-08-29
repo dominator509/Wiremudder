@@ -422,3 +422,4 @@
 2026-08-29T00:07:00Z | ipman-hermes | EP-039 | MILESTONE_PASS | M4 EP-039 M4: ok; evidence=.agent/state/evidence/EP-039/M4; failure/security/performance tests + operations runbook 
 2026-08-29T00:06:57Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-29T00:16:13Z | ipman-hermes | EP-039 | MILESTONE_PASS | M5 EP-039 M5: ok; evidence=.agent/state/evidence/EP-039/M5; LF-039 ship-gate 10/10 + R06 requirement tests + manual publish packet
+2026-08-29T00:17:04Z | ipman-hermes | EP-039 | NODE_DONE | EP-039 node done: M1-M5 verified, audits ok, release boundary final, production not deployed (AUTO_DEPLOY=false)
