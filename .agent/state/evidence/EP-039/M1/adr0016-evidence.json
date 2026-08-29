@@ -1,0 +1,15 @@
+{
+ "agent_id": "unknown-agent",
+ "command": [
+  "build-linux-debug-nosan/test/functional_tests/ScriptEventHandlerLifetimeTest"
+ ],
+ "exit_code": 2,
+ "expected_sentinel": "Totals: 7 passed, 2 failed",
+ "milestone": "M1",
+ "node": "EP-039",
+ "observed_at": "2026-08-28T22:11:34Z",
+ "output_sha256": "331c41bbb845619fbf38f6a030469544b8e1439462db80576b940b06c5aa3603",
+ "schema_version": 1,
+ "sentinel_observed": true,
+ "_note": "ADR-0016 replacement evidence: deterministic ScriptEventHandlerLifetimeTest failure run (exit 2 corroborates the inherited defect). The milestone verifier run is evidence.json."
+}
