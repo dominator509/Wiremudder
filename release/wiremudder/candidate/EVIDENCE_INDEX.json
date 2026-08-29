@@ -1,98 +1,98 @@
 {
-  "schema_version": 1,
-  "release_candidate": "0.9.0-rc1",
-  "channel": "canary",
-  "upstream_commit": "77086c295f4adf59197e586e689d19bdde8e1008",
-  "source_commit": "cb31f98b0427c9b356bc1819fdd4e8c96e3bf9ad",
-  "indexed_at": "2026-08-28T22:30:00Z",
-  "entries": [
-    {
-      "path": "release/wiremudder/candidate/source.tar.gz",
-      "sha256": "9796096dfcc0d83c5d15a922034f4dab5f95ff54b87890f8589f8f269ea33be9",
-      "size": 51370042,
-      "kind": "artifact"
-    },
-    {
-      "path": "release/wiremudder/candidate/wiremudder-bin",
-      "sha256": "f50f151cb5154f4683a0959babf20f00de9b052b50144b4815c1c3339154e7e7",
-      "size": 247337512,
-      "kind": "artifact"
-    },
-    {
-      "path": "release/wiremudder/candidate/COMPATIBILITY.md",
-      "sha256": "1a4361b1b5825d60545589a5313e48a97a3f441cc32185bc3c04ca9d0b3212e3",
-      "size": 1790,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/KNOWN_RISKS.md",
-      "sha256": "95cd98554d47bead3b579b00c1a926fb9de737b0a0ba839863452264e0e71bde",
-      "size": 1800,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/LICENSES.txt",
-      "sha256": "12cc24ae59a43bc0ed6e822e6b7562268b71c0f04744341eb00a058eab9aa00d",
-      "size": 587,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/RELEASE_NOTES.md",
-      "sha256": "805943f2dab36d94ee9f57df9fe6434e4515c15fd70435667895559f53689652",
-      "size": 1661,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/SHA256SUMS",
-      "sha256": "0ef599079f9848934c9edf7ae80fb81ee1218a287c683e3c202bdabfed1c00df",
-      "size": 722,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/SUPPORT.md",
-      "sha256": "758cd0430ddb7ab8ec9eb334a9422047e3055ca7f5438f62eb24ee8cdc6fb897",
-      "size": 1102,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/VERSION",
-      "sha256": "ed75444d9409c6867bdb3d89cd3988460eed335c00a6c892a5c30163cb436716",
-      "size": 20,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/manifest.json",
-      "sha256": "f5b9c5913a73d5f4f79849bea341d1b5fff6d372353d05891c3402adea5d1554",
-      "size": 829,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/provenance.json",
-      "sha256": "2becc12b3e23080cd72ca3f63cf313c252f893ac1ee7cb721a716fdd8042c5ee",
-      "size": 297,
-      "kind": "release-file"
-    },
-    {
-      "path": "release/wiremudder/candidate/sbom.json",
-      "sha256": "6e223a7a2eebbe5fab3f3c3464ceafa6c9684e4d111cb1f28c1ca629a1e0887e",
-      "size": 3128,
-      "kind": "release-file"
-    },
-    {
-      "path": "sbom/wiremudder/SBOM.spdx.json",
-      "sha256": "124ac59754909d1e36019505f507488c2a79624002061c6c9c28ded9e1064bee",
-      "size": 3702,
-      "kind": "supply-chain"
-    },
-    {
-      "path": "licenses/wiremudder/THIRD_PARTY_NOTICES.md",
-      "sha256": "b3814ef47515a3ae13530a70827c5b1e5af11eff6996f9b86440aed9eb8d4729",
-      "size": 1901,
-      "kind": "supply-chain"
-    }
-  ],
-  "evidence_corpus": {
-    "file_count": 407,
-    "corpus_sha256": "3f5e621cdbaddb9d4566116dfa6903f615e58408a43ae36841a997cfb114f02d"
+ "schema_version": 1,
+ "release_candidate": "0.9.0-rc1",
+ "channel": "canary",
+ "upstream_commit": "77086c295f4adf59197e586e689d19bdde8e1008",
+ "source_commit": "cb31f98b0427c9b356bc1819fdd4e8c96e3bf9ad",
+ "indexed_at": "2026-08-28T22:30:00Z",
+ "entries": [
+  {
+   "path": "release/wiremudder/candidate/source.tar.gz",
+   "sha256": "9796096dfcc0d83c5d15a922034f4dab5f95ff54b87890f8589f8f269ea33be9",
+   "size": 51370042,
+   "kind": "artifact"
+  },
+  {
+   "path": "release/wiremudder/candidate/wiremudder-bin",
+   "sha256": "f50f151cb5154f4683a0959babf20f00de9b052b50144b4815c1c3339154e7e7",
+   "size": 247337512,
+   "kind": "artifact"
+  },
+  {
+   "path": "release/wiremudder/candidate/COMPATIBILITY.md",
+   "sha256": "1a4361b1b5825d60545589a5313e48a97a3f441cc32185bc3c04ca9d0b3212e3",
+   "size": 1790,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/KNOWN_RISKS.md",
+   "sha256": "95cd98554d47bead3b579b00c1a926fb9de737b0a0ba839863452264e0e71bde",
+   "size": 1800,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/LICENSES.txt",
+   "sha256": "12cc24ae59a43bc0ed6e822e6b7562268b71c0f04744341eb00a058eab9aa00d",
+   "size": 587,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/RELEASE_NOTES.md",
+   "sha256": "805943f2dab36d94ee9f57df9fe6434e4515c15fd70435667895559f53689652",
+   "size": 1661,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/SHA256SUMS",
+   "sha256": "0ef599079f9848934c9edf7ae80fb81ee1218a287c683e3c202bdabfed1c00df",
+   "size": 722,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/SUPPORT.md",
+   "sha256": "758cd0430ddb7ab8ec9eb334a9422047e3055ca7f5438f62eb24ee8cdc6fb897",
+   "size": 1102,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/VERSION",
+   "sha256": "ed75444d9409c6867bdb3d89cd3988460eed335c00a6c892a5c30163cb436716",
+   "size": 20,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/manifest.json",
+   "sha256": "f5b9c5913a73d5f4f79849bea341d1b5fff6d372353d05891c3402adea5d1554",
+   "size": 829,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/provenance.json",
+   "sha256": "2becc12b3e23080cd72ca3f63cf313c252f893ac1ee7cb721a716fdd8042c5ee",
+   "size": 297,
+   "kind": "release-file"
+  },
+  {
+   "path": "release/wiremudder/candidate/sbom.json",
+   "sha256": "6e223a7a2eebbe5fab3f3c3464ceafa6c9684e4d111cb1f28c1ca629a1e0887e",
+   "size": 3128,
+   "kind": "release-file"
+  },
+  {
+   "path": "sbom/wiremudder/SBOM.spdx.json",
+   "sha256": "124ac59754909d1e36019505f507488c2a79624002061c6c9c28ded9e1064bee",
+   "size": 3702,
+   "kind": "supply-chain"
+  },
+  {
+   "path": "licenses/wiremudder/THIRD_PARTY_NOTICES.md",
+   "sha256": "b3814ef47515a3ae13530a70827c5b1e5af11eff6996f9b86440aed9eb8d4729",
+   "size": 1901,
+   "kind": "supply-chain"
   }
+ ],
+ "evidence_corpus": {
+  "file_count": 432,
+  "corpus_sha256": "ea51ad4a7620ca28c103dee3b861adb9578e5f62073c4c977f9e9f9f0638c83f"
+ }
 }

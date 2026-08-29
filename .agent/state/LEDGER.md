@@ -420,3 +420,5 @@
 2026-08-29T01:40:00Z | ipman-hermes | EP-039 | MILESTONE_PASS | M2 EP-039 M2: ok; evidence=.agent/state/evidence/EP-039/M2; final release boundary + unit tests
 2026-08-29T01:50:00Z | ipman-hermes | EP-039 | MILESTONE_PASS | M3 EP-039 M3: ok; evidence=.agent/state/evidence/EP-039/M3; release-claims integration, provenance reproducibility, run-complete chain rehearsal + design docs
 2026-08-29T00:07:00Z | ipman-hermes | EP-039 | MILESTONE_PASS | M4 EP-039 M4: ok; evidence=.agent/state/evidence/EP-039/M4; failure/security/performance tests + operations runbook 
+2026-08-29T00:06:57Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-29T00:16:13Z | ipman-hermes | EP-039 | MILESTONE_PASS | M5 EP-039 M5: ok; evidence=.agent/state/evidence/EP-039/M5; LF-039 ship-gate 10/10 + R06 requirement tests + manual publish packet

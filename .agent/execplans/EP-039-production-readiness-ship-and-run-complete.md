@@ -297,10 +297,10 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 # 11. Progress
 
 - [x] M1: Evidence, contracts, and exact path lock
-- [ ] M2: Core behavior and deterministic invariants
-- [ ] M3: Real integration and user-visible flow
-- [ ] M4: Forced failures, abuse cases, performance, and operations
-- [ ] M5: Live-fire, evidence closure, and green tag readiness
+- [x] M2: Core behavior and deterministic invariants
+- [x] M3: Real integration and user-visible flow
+- [x] M4: Forced failures, abuse cases, performance, and operations
+- [x] M5: Live-fire, evidence closure, and green tag readiness
 
 # 12. Surprises and Discoveries
 
@@ -308,10 +308,15 @@ Resume cold by running the boot sequence, confirming the lease, reading Progress
 - 2026-08-28: `clang-tidy` on a directory target fails ("Is a directory"); the working form is a per-file loop with `--extra-arg=-I"$PWD"` (repo root), verified status 0 over all 53 WireMudder-owned boundary files (WM-SRC-000332).
 - 2026-08-28: `scripts/production_readiness.py` used `ledger.sh status`, whose last-row semantics report released nodes as PENDING; fixed to require a NODE_DONE ledger row plus the green tag (boot commit c4d4c647).
 - 2026-08-28: EP-033/EP-038 fences own `sbom/wiremudder/`, `licenses/wiremudder/`, `release/wiremudder/candidate/` but never produced SBOM.spdx.json / THIRD_PARTY_NOTICES.md / EVIDENCE_INDEX.json; the run gates require them, so EP-039 extended its static fence with those exact paths (EP-038 fence-extension precedent 642d5c5e).
+- 2026-08-29: the release oracle's `stable-check` validates the manifest completeness FLAG only, not cryptographic signature content; the real signature denial surface is the physical artifact gate `dir-check <dir> 1`, which demands an on-disk `wiremudder.sig`. A fabricated JSON signature claim passes `stable-check` but cannot survive `dir-check` (evidence: EP-039 M4 failure tests).
+- 2026-08-29: the candidate `EVIDENCE_INDEX.json` evidence-corpus hash was frozen at M2 (425 files) while the corpus grew to 432 through M3/M4; M5 evidence closure regenerated `.agent/state/final-evidence/index.json` + `evidence-corpus.sha256` by the canonical method (`find .agent/state/evidence -type f | sort | xargs sha256sum | sha256sum`) and synced the candidate index to `ea51ad4a7620ca28c103dee3b861adb9578e5f62073c4c977f9e9f9f0638c83f`.
+- 2026-08-29: posix sh env-prefix commands (`VAR=x cmd`) cannot be passed through a function's `"$@"` under `set -eu`; the release-claims measurement used `env WIREMUDDER_RELEASE_PROFILE=full sh ...` instead. Test paths one directory deeper than `tests/wiremudder/ep039/unit` need one extra `..` in the cd chain (requirements/wm-spec-028-r06 uses five `..`).
 
 # 13. Decision Log
 
 - 2026-08-28: Lock the 12 missing ship-gate commands (lint, typecheck, integration, e2e, compatibility, security, dependency_audit, license, performance, accessibility, platform, smoke) using docs/ai-instructions.md as the accepted command authority. Evidence: WM-SRC-000332..000343; COMMANDS.lock.tsv rows; verify.sh now passes lint and typecheck. Alternatives: cargo deny / cargo about rejected (not configured for this repo). Consequence: run-level gates execute real, evidenced commands. Reversal: remove lock rows and evidence records. Security/privacy/license/compat/perf/upstream impact: none; commands are read-only and fail-closed.
+- 2026-08-29: M4 signature-lie test rewritten to assert the oracle's real contract: `stable-check` is a completeness-flag check; the artifact gate `dir-check 1` is the signature denial surface. The test now proves honest-manifest refusal, physical-gate refusal of the unsigned dir, and absence of signature material — no assertion the oracle does not make.
+- 2026-08-29: M5 evidence closure regenerated the final evidence index and corpus hash (432 files, canonical method) and synced the candidate EVIDENCE_INDEX `evidence_corpus` to the closed hash. The M2-time frozen hash was not reproducible by any standard aggregation and would have failed the ship gate.
 
 # 14. Outcomes and Retrospective
 

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "run": "EP-039 final",
+ "run": "EP-039 final (evidence closure)",
  "entries": [
   {
    "path": ".agent/state/evidence/EP-000/M1/evidence.json",
@@ -1701,6 +1701,34 @@
   {
    "path": ".agent/state/evidence/EP-039/M1/output.log",
    "sha256": "331c41bbb845619fbf38f6a030469544b8e1439462db80576b940b06c5aa3603"
+  },
+  {
+   "path": ".agent/state/evidence/EP-039/M2/evidence.json",
+   "sha256": "01f3ac83c89343b142222aa91539ed708849198c2b0c06713edcd689bf903d69"
+  },
+  {
+   "path": ".agent/state/evidence/EP-039/M2/output.log",
+   "sha256": "146991d86ab748eafbf9b6827b526cd665eb94cc4aaed9b2372402c344e2ad62"
+  },
+  {
+   "path": ".agent/state/evidence/EP-039/M3/evidence.json",
+   "sha256": "59b72d2f53588d18bbb42c98e8f92c97cf9abb609e22de6a0075e275e3de7e71"
+  },
+  {
+   "path": ".agent/state/evidence/EP-039/M3/output.log",
+   "sha256": "f5578f066cec4002854f5c012b03db455842ef16312902d389908107ad6f3337"
+  },
+  {
+   "path": ".agent/state/evidence/EP-039/M4/evidence.json",
+   "sha256": "a6d9275b8089b1aac27d60b922555da045bdade35df8fb52f7cd16ff848bff5b"
+  },
+  {
+   "path": ".agent/state/evidence/EP-039/M4/output.log",
+   "sha256": "075b911c0ad3188390ec3de4000f140a1a074e2a6645e7bd4869c742b29ca82e"
+  },
+  {
+   "path": ".agent/state/evidence/EP-039/M4/perf-ship-gate.raw.tsv",
+   "sha256": "147910fd0cdca8df7421abd65820006371e4d8c4ccdd50b764beb3a8f621f8f0"
   }
  ]
 }
