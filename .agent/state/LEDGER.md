@@ -423,3 +423,8 @@
 2026-08-29T00:06:57Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
 2026-08-29T00:16:13Z | ipman-hermes | EP-039 | MILESTONE_PASS | M5 EP-039 M5: ok; evidence=.agent/state/evidence/EP-039/M5; LF-039 ship-gate 10/10 + R06 requirement tests + manual publish packet
 2026-08-29T00:17:04Z | ipman-hermes | EP-039 | NODE_DONE | EP-039 node done: M1-M5 verified, audits ok, release boundary final, production not deployed (AUTO_DEPLOY=false)
+2026-08-29T00:23:44Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-29T00:23:54Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-29T00:38:59Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-29T01:01:29Z | ipman-hermes | - | PREFLIGHT_OK | baseline preflight: ok
+2026-08-29T01:11:17Z | ipman-hermes | - | RUN_COMPLETE | RUN_COMPLETE: graph ALL_DONE; release tag release/wiremudder-0.9.0-canary; green/EP-039; node verify EP-039: ok; LF-039 ship-gate 10/10; production readiness structural: ok; verify.sh unit gate 108/110 (2 ADR-0016 deterministic inherited failures, blocking analysis reported); AUTO_DEPLOY=false; production NOT deployed
