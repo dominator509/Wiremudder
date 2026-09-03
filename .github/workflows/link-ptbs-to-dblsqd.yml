@@ -35,7 +35,7 @@ jobs:
           echo "PTB_COMMIT=$PTB_COMMIT"
         } >> "$GITHUB_ENV"
 
-    - name: Retrieve binaries available on make.mudlet.org
+    - name: Retrieve binaries available on make.wiremudder.org
       run: |
         LATEST_FEED=$(mktemp /tmp/latest_feed.XXXXXX) || exit 1
         curl --silent --output $LATEST_FEED "https://make.mudlet.org/snapshots/json.php?commitid=$PTB_COMMIT"

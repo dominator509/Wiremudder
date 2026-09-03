@@ -1,4 +1,4 @@
-name: Update autocompletion in Mudlet
+name: Update autocompletion in Wiremudder
 
 on:
   workflow_dispatch:

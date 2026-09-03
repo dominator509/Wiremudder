@@ -143,7 +143,7 @@ jobs:
         ${{github.workspace}}/CI/validate_deployment.sh
         ${{github.workspace}}/CI/set-build-info.sh
 
-    - name: Build Mudlet
+    - name: Build Wiremudder
       uses: lukka/run-cmake@v3
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced

@@ -1,6 +1,6 @@
 # DUPLICATE WORKFLOW: This file is paired with build-mudlet-pr.yml
 # Changes here likely need to be mirrored there as well.
-name: 🔨 Build Mudlet
+name: 🔨 Build Wiremudder
 on:
   push:
     branches: [master, development, release-*]
@@ -64,7 +64,7 @@ jobs:
             run_tests: 'true'
 
     steps:
-    - name: Checkout Mudlet source code
+    - name: Checkout Wiremudder source code
       uses: actions/checkout@v7
       with:
         submodules: recursive
@@ -333,7 +333,7 @@ jobs:
           3rdparty/sentry-native/install_with_transport
         key: sentry-${{ runner.os }}-${{ runner.arch }}-${{ steps.sentry-hash.outputs.SENTRY_HASH }}
 
-    - name: Build Mudlet
+    - name: Build Wiremudder
       uses: lukka/run-cmake@v3
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
@@ -420,7 +420,7 @@ jobs:
       with:
         ssh-private-key: ${{secrets.UPLOAD_PRIVATEKEY}}
 
-    - name: package Mudlet
+    - name: package Wiremudder
       if: (runner.os == 'Linux' || runner.os == 'macOS') && matrix.deploy == 'deploy'
       run: |
         export ARCH=$(uname -m)
@@ -452,14 +452,14 @@ jobs:
         # needed so CI/*.after_success.sh can query existing releases to skip duplicate PTBs
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upload packaged Mudlet
+    - name: Upload packaged Wiremudder
       uses: actions/upload-artifact@v7
       if: env.UPLOAD_FILENAME
       with:
         name: ${{env.UPLOAD_FILENAME}}
         path: ${{env.FOLDER_TO_UPLOAD}}
 
-    - name: Submit to make.mudlet.org
+    - name: Submit to make.wiremudder.org
       if: env.UPLOAD_FILENAME
       run: curl --retry 5 -X POST "https://make.mudlet.org/snapshots/gha_queue.php?artifact_name=${{env.UPLOAD_FILENAME}}&unzip=1"
       shell: bash

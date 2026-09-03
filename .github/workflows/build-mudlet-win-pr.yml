@@ -1,6 +1,6 @@
 # DUPLICATE WORKFLOW: This file is paired with build-mudlet-win.yml
 # Changes here likely need to be mirrored there as well.
-name: 🔨 Build Mudlet - PR (windows)
+name: 🔨 Build Wiremudder - PR (windows)
 on:
   pull_request:
 
@@ -59,7 +59,7 @@ jobs:
             buildname: 'windows64'
 
     steps:
-    - name: Checkout Mudlet source code
+    - name: Checkout Wiremudder source code
       uses: actions/checkout@v7
       with:
         submodules: recursive
@@ -374,7 +374,7 @@ jobs:
         path: ${{env.ARTIFACT_WINPATHORFILE}}
         compression-level: ${{env.ARTIFACT_COMPRESSION}}
 
-    - name: Upload artifact to make.mudlet.org
+    - name: Upload artifact to make.wiremudder.org
       shell: msys2 {0}
       if: env.ARTIFACT_NAME
       run: curl --retry 5 -X POST "https://make.mudlet.org/snapshots/gha_queue.php?artifact_name=${{env.ARTIFACT_NAME}}&unzip=${{env.ARTIFACT_UNZIP}}"

@@ -22,7 +22,7 @@ jobs:
         format: ["html", "md"]
 
     steps:
-    - name: Checkout Mudlet repository
+    - name: Checkout Wiremudder repository
       uses: actions/checkout@v7
       with:
         fetch-depth: 0

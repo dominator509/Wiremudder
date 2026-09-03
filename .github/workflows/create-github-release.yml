@@ -1,7 +1,7 @@
 name: 📦 Create GitHub Release
 on:
   workflow_run:
-    workflows: ["🔨 Build Mudlet", "🔨 Build Mudlet (windows)"]
+    workflows: ["🔨 Build Wiremudder", "🔨 Build Wiremudder (windows)"]
     types: [completed]
     branches: [master, development, release-*, Mudlet-*]
 
@@ -540,7 +540,7 @@ jobs:
           echo "Generated appcast files:"
           ls -la appcast/ 2>/dev/null || echo "No appcast files generated"
 
-      - name: Upload appcast to mudlet.org
+      - name: Upload appcast to wiremudder.org
         if: steps.release-type.outputs.type == 'release' || steps.release-type.outputs.type == 'ptb'
         env:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}

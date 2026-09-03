@@ -52,7 +52,7 @@ jobs:
       if: runner.os == 'Linux' || runner.os == 'macOS'
       run: ccache --zero-stats --show-stats
 
-    - name: Build Mudlet
+    - name: Build Wiremudder
       run : |
         WITH_UPDATER=NO WITH_3DMAPPER=NO cmake -DCMAKE_BUILD_TYPE=Release -DUSE_SANITIZER="" -S${{github.workspace}} -B${{github.workspace}}/build -G Ninja
         cd ${{github.workspace}}/build
@@ -63,11 +63,11 @@ jobs:
       if: runner.os == 'Linux' || runner.os == 'macOS'
       run: ccache --show-stats
 
-    - name: Copy mudlet executable in place for executing display benchmark
+    - name: Copy wiremudder executable in place for executing display benchmark
       run: cp ${{github.workspace}}/build/src/mudlet ${{github.workspace}}/src
       shell: bash
 
-    - name: Remove Mudlet config directory
+    - name: Remove Wiremudder config directory
       run: rm -rf $HOME/.config/mudlet
       shell: bash
 

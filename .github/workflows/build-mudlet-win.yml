@@ -1,6 +1,6 @@
 # DUPLICATE WORKFLOW: This file is paired with build-mudlet-win-pr.yml
 # Changes here likely need to be mirrored there as well.
-name: 🔨 Build Mudlet (windows)
+name: 🔨 Build Wiremudder (windows)
 on:
   push:
     branches: [master, development, release-*]
@@ -36,7 +36,7 @@ jobs:
             buildname: 'windows64'
 
     steps:
-    - name: Checkout Mudlet source code
+    - name: Checkout Wiremudder source code
       uses: actions/checkout@v7
       with:
         submodules: recursive
@@ -355,7 +355,7 @@ jobs:
           exit 1
         fi
 
-    - name: (Windows) Re-upload signed installer to mudlet.org
+    - name: (Windows) Re-upload signed installer to wiremudder.org
       # The deploy step scp'd the installer before signing existed for tag
       # builds, so overwrite it with the signed version. Non-fatal: the GitHub
       # release (primary distribution) gets the signed installer either way.
@@ -411,7 +411,7 @@ jobs:
         path: ${{env.ARTIFACT_WINPATHORFILE}}
         compression-level: ${{env.ARTIFACT_COMPRESSION}}
 
-    - name: Upload artifact to make.mudlet.org
+    - name: Upload artifact to make.wiremudder.org
       shell: msys2 {0}
       if: env.ARTIFACT_NAME != '' && !startsWith(github.ref, 'refs/tags/')
       run: curl --retry 5 -X POST "https://make.mudlet.org/snapshots/gha_queue.php?artifact_name=${{env.ARTIFACT_NAME}}&unzip=${{env.ARTIFACT_UNZIP}}"
